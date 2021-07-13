@@ -127,6 +127,7 @@ namespace yu_gi_oh
             this.btnPlay.TabIndex = 5;
             this.btnPlay.Text = "Duel";
             this.btnPlay.UseVisualStyleBackColor = false;
+            this.btnPlay.Click += new System.EventHandler(this.btnPlay_Click);
             // 
             // button1
             // 

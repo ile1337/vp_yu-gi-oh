@@ -23,5 +23,12 @@ namespace yu_gi_oh
             MainMenu form = new MainMenu();
             form.ShowDialog();
         }
+
+        private void btnPlay_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            Duel duelForm = new Duel();
+            duelForm.ShowDialog();
+        }
     }
 }
