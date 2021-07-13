@@ -63,6 +63,7 @@ namespace yu_gi_oh
             // 
             // btnRegister
             // 
+            this.btnRegister.CausesValidation = false;
             this.btnRegister.Location = new System.Drawing.Point(18, 204);
             this.btnRegister.Name = "btnRegister";
             this.btnRegister.Size = new System.Drawing.Size(74, 32);

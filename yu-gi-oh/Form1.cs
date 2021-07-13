@@ -39,6 +39,7 @@ namespace yu_gi_oh
 
         private void textBox1_Validating(object sender, CancelEventArgs e)
         {
+            
             if(tbUsername.Text == "")
             {
                 ep1.SetError(tbUsername, "Username is needed");
