@@ -56,6 +56,7 @@ namespace yu_gi_oh
             this.btnDeckBuild.TabIndex = 1;
             this.btnDeckBuild.Text = "Deckbuilder";
             this.btnDeckBuild.UseVisualStyleBackColor = false;
+            this.btnDeckBuild.Click += new System.EventHandler(this.btnDeckBuild_Click);
             // 
             // btnQuit
             // 

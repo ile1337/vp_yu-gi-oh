@@ -34,5 +34,12 @@ namespace yu_gi_oh
             Lobby form = new Lobby();
             form.ShowDialog();
         }
+
+        private void btnDeckBuild_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            Deckbuilder deckbuilderForm = new Deckbuilder();
+            deckbuilderForm.ShowDialog();
+        }
     }
 }
