@@ -16,5 +16,23 @@ namespace yu_gi_oh
         {
             InitializeComponent();
         }
+
+        private void MainMenu_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnQuit_Click(object sender, EventArgs e)
+        {
+            DialogResult = DialogResult.OK;
+            this.Close();        
+        }
+
+        private void btnPlay_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            Lobby form = new Lobby();
+            form.ShowDialog();
+        }
     }
 }

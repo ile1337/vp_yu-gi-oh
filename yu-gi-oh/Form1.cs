@@ -26,5 +26,49 @@ namespace yu_gi_oh
         {
 
         }
+
+        private void btnLogIn_Click(object sender, EventArgs e)
+        {
+            if(tbUsername.Text != "" && mtbPassword.Text != "")
+            {
+                this.Hide();
+                MainMenu form = new MainMenu();
+                form.ShowDialog();
+            }                       
+        }
+
+        private void textBox1_Validating(object sender, CancelEventArgs e)
+        {
+            if(tbUsername.Text == "")
+            {
+                ep1.SetError(tbUsername, "Username is needed");
+                e.Cancel = true;
+            }
+            else
+            {
+                ep1.SetError(tbUsername, null);
+                e.Cancel = false;
+            }
+        }
+
+        private void maskedTextBox1_Validating(object sender, CancelEventArgs e)
+        {
+            if(mtbPassword.Text == "")
+            {
+                ep1.SetError(mtbPassword, "Password is needed");
+                e.Cancel = true;
+            }
+            else
+            {
+                ep1.SetError(mtbPassword, null);
+                e.Cancel = false;
+            }
+        }
+
+        private void btnRegister_Click(object sender, EventArgs e)
+        {
+            Register registerForm = new Register();
+            registerForm.ShowDialog();
+        }
     }
 }
