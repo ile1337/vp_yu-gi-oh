@@ -4,9 +4,12 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Net.Http;
+using System.Net.Http.Json;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using yu_gi_oh.middleware;
 
 namespace yu_gi_oh
 {
@@ -31,6 +34,11 @@ namespace yu_gi_oh
         {
             if(tbUsername.Text != "" && mtbPassword.Text != "")
             {
+                HttpClient c = new HttpClient();
+                c.BaseAddress = new Uri("/* TODO: api call to server */");
+                HttpResponseMessage response = c.PostAsJsonAsync<User>(/* TODO: api call to server */"insert URL here",);
+
+
                 this.Hide();
                 MainMenu form = new MainMenu();
                 form.ShowDialog();

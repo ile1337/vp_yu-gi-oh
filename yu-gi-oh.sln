@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.31424.327
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "yu-gi-oh", "yu-gi-oh\yu-gi-oh.csproj", "{83A2683F-2D67-4F92-B151-2F325882A852}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "yu-gi-oh", "yu-gi-oh\yu-gi-oh.csproj", "{83A2683F-2D67-4F92-B151-2F325882A852}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Middleware", "ClassLibrary1\Middleware.csproj", "{80FE831C-C51B-4EF1-982A-D436DF02BFE5}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{83A2683F-2D67-4F92-B151-2F325882A852}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{83A2683F-2D67-4F92-B151-2F325882A852}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{83A2683F-2D67-4F92-B151-2F325882A852}.Release|Any CPU.Build.0 = Release|Any CPU
+		{80FE831C-C51B-4EF1-982A-D436DF02BFE5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{80FE831C-C51B-4EF1-982A-D436DF02BFE5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{80FE831C-C51B-4EF1-982A-D436DF02BFE5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{80FE831C-C51B-4EF1-982A-D436DF02BFE5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
