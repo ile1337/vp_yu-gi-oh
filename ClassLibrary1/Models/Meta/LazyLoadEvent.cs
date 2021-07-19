@@ -13,11 +13,24 @@ namespace Middleware.Models.Meta
     }
     public class LazyLoadEvent
     {
+
+        public LazyLoadEvent(int pageNumber, string[] sortFields)
+        {
+            this.first = (pageNumber - 1) * int.Parse(Properties.PAGE_SIZE);
+            this.sortFields = sortFields;
+
+            if(this.sortFields.Length == 0)
+            {
+                this.sortFields = null;
+            }
+
+        }
+
         public int first { get; set; }
-        public int rows { get; set; }
+        public int rows { get; set; } = int.Parse(Properties.PAGE_SIZE);
         public string sortField { get; set; }
         public string[] sortFields { get; set; }
-        public SortOrder sortOrder { get; set; }
-       
-    }
+        public SortOrder sortOrder { get; set; } = SortOrder.ASC;
+
+}
 }

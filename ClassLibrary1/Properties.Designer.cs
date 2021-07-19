@@ -68,5 +68,14 @@ namespace Middleware {
                 return ResourceManager.GetString("DB_HOST", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 40.
+        /// </summary>
+        internal static string PAGE_SIZE {
+            get {
+                return ResourceManager.GetString("PAGE_SIZE", resourceCulture);
+            }
+        }
     }
 }

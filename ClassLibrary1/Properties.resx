@@ -120,4 +120,7 @@
   <data name="DB_HOST" xml:space="preserve">
     <value>localhost</value>
   </data>
+  <data name="PAGE_SIZE" xml:space="preserve">
+    <value>40</value>
+  </data>
 </root>
