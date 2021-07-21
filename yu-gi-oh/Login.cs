@@ -1,18 +1,16 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
+using System.Diagnostics;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Middleware.Models;
+using Middleware.Models.Meta;
 
 namespace yu_gi_oh
 {
-    public partial class Form1 : Form
+    public partial class Login : Form
     {
-        public Form1()
+        public Login()
         {
             InitializeComponent();
         }
@@ -29,12 +27,24 @@ namespace yu_gi_oh
 
         private void btnLogIn_Click(object sender, EventArgs e)
         {
-            if(tbUsername.Text != "" && mtbPassword.Text != "")
+            //if (tbUsername.Text != "" && mtbPassword.Text != "")
+            //{
+            //    HttpClient c = new HttpClient();
+            //    c.BaseAddress = new Uri("/* TODO: api call to server */");
+            //    HttpResponseMessage response = c.PostAsJsonAsync(/* TODO: api call to server */"insert URL here", tbUsername.Text);
+
+
+            //    this.Hide();
+            //    MainMenu form = new MainMenu();
+            //    form.ShowDialog();
+            //}
+
+            Task.Factory.StartNew( async () => 
             {
-                this.Hide();
-                MainMenu form = new MainMenu();
-                form.ShowDialog();
-            }                       
+                CardDto card = new CardDto();
+                card.name = "Dark";
+                PageResponse<CardDto> res = await Middleware.Controllers.CardController.GetAllCardDtosShortAsync(card, 1, "atk");
+            });
         }
 
         private void textBox1_Validating(object sender, CancelEventArgs e)
