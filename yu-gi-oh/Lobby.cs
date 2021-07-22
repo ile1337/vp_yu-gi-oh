@@ -22,6 +22,8 @@ namespace yu_gi_oh
             this.Hide();
             MainMenu form = new MainMenu();
             form.ShowDialog();
+            this.Close();
+
         }
 
         private void btnPlay_Click(object sender, EventArgs e)
@@ -29,6 +31,8 @@ namespace yu_gi_oh
             this.Hide();
             Duel duelForm = new Duel();
             duelForm.ShowDialog();
+            this.Close();
+
         }
     }
 }

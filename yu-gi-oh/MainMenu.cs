@@ -25,7 +25,7 @@ namespace yu_gi_oh
         private void btnQuit_Click(object sender, EventArgs e)
         {
             DialogResult = DialogResult.OK;
-            this.Close();        
+            this.Close();      
         }
 
         private void btnPlay_Click(object sender, EventArgs e)
@@ -42,6 +42,8 @@ namespace yu_gi_oh
             this.Hide();
             Deckbuilder deckbuilderForm = new Deckbuilder();
             deckbuilderForm.ShowDialog();
+            this.Close();
+
         }
     }
 }
