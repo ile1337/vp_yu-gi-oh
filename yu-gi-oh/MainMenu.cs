@@ -33,8 +33,8 @@ namespace yu_gi_oh
             //this.Hide();
             //Lobby form = new Lobby();
             //form.ShowDialog();
+            //this.Close();
             this.BackgroundImage = Middleware.Controllers.YGOController.GetImage("86198326");
-            Middleware.Controllers.YGOController.Clear();
         }
 
         private void btnDeckBuild_Click(object sender, EventArgs e)

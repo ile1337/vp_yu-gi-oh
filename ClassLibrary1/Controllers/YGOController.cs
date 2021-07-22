@@ -22,34 +22,20 @@ namespace Middleware.Controllers
         // Add preload method which loads the images into the dictionary
         public async static Task PreLoadCache()
         {
+            Clear();
             await LoadCache(imageCache, Properties.FULL_IMAGES_PATH);
             await LoadCache(previewCache, Properties.PREVIEW_IMAGES_PATH);
         }
 
-        public static void Clear()
-        {
-            previewCache.Clear();
-            imageCache.Clear();
-        }
-
         private async static Task LoadCache(Dictionary<string, Image> cache, string mainPath)
         {
-            cache.Clear();
             string path = folder + mainPath;
 
             // TODO: Implement custom exceptions with tracebacks & explanations
             if (!Directory.Exists(path) || Directory.GetFiles(path).Length == 0) throw new Exception();
 
             // TODO: Check if Threads are the better approach here since we aren't awaiting a result
-            LoadCacheDebug(path, cache);
-        }
-
-        private static void LoadCacheDebug(string path, Dictionary<string, Image> cache)
-        {
-            Directory.GetFiles(path).ToList().ForEach(img =>
-            {
-                cache.Add(Path.GetFileNameWithoutExtension(img), (Image)Image.FromFile(img).Clone());
-            });
+            Task.Run(() => Directory.GetFiles(path).ToList().ForEach(img => cache.Add(Path.GetFileNameWithoutExtension(img), (Image)Image.FromFile(img).Clone())));
         }
 
 
@@ -75,7 +61,7 @@ namespace Middleware.Controllers
 
 
         // Add orchestration method which calls the downloading orchestration for both preview & full/main images
-        public async static Task DownloadAllImages(string[] ids)
+        public async static void DownloadAllImages(string[] ids)
         {
             await DownloadImages(ids, Properties.YGO_FULL_IMAGES_URL, Properties.FULL_IMAGES_PATH);
             await DownloadImages(ids, Properties.YGO_PREVIEW_IMAGES_URL, Properties.PREVIEW_IMAGES_PATH);
@@ -91,6 +77,12 @@ namespace Middleware.Controllers
         public static Image GetImage(string id)
         {
             return imageCache.GetValueOrDefault(id);
+        }
+
+        public static void Clear()
+        {
+            previewCache.Clear();
+            imageCache.Clear();
         }
     }
 }

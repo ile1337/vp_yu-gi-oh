@@ -18,7 +18,7 @@ namespace Middleware.Controllers
         {
             PageRequestByExample<Models.CardDto> prbe = new PageRequestByExample<Models.CardDto>(example, pageNumber, sortFields);
             
-            using (HttpClient http = new HttpClient())
+            using (HttpClient http = HttpClientBuilder.GetHttpClient())
             {
                 var data = new HttpRequestMessage(HttpMethod.Post, $"http://{Properties.DB_HOST}:8080/api/cards/find");
                 data.Headers.Accept.Add(MediaTypeWithQualityHeaderValue.Parse("application/json"));
@@ -31,6 +31,29 @@ namespace Middleware.Controllers
                 try
                 {
                     return JsonConvert.DeserializeObject<PageResponse<Models.CardDto>>(await response.Content.ReadAsStringAsync());
+                }
+                catch (JsonSerializationException e)
+                {
+                    Debug.WriteLine(e.Message);
+                }
+            }
+
+            return null;
+        }
+
+        public static async Task<List<string>> GetAllCardIds()
+        {
+
+            using (HttpClient http = HttpClientBuilder.GetHttpClient())
+            {
+                var data = new HttpRequestMessage(HttpMethod.Post, $"http://{Properties.DB_HOST}:8080/api/cards/ids");
+                data.Headers.Accept.Add(MediaTypeWithQualityHeaderValue.Parse("application/json"));
+
+                var response = await http.SendAsync(data).ConfigureAwait(false);
+                if (!response.IsSuccessStatusCode) throw new Exception(await response.Content.ReadAsStringAsync());
+                try
+                {
+                    return JsonConvert.DeserializeObject<List<string>>(await response.Content.ReadAsStringAsync());
                 }
                 catch (JsonSerializationException e)
                 {
