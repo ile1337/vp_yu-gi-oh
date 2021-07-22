@@ -70,11 +70,47 @@ namespace Middleware {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to big-images.
+        /// </summary>
+        internal static string FULL_IMAGES_PATH {
+            get {
+                return ResourceManager.GetString("FULL_IMAGES_PATH", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to 40.
         /// </summary>
         internal static string PAGE_SIZE {
             get {
                 return ResourceManager.GetString("PAGE_SIZE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to small-images.
+        /// </summary>
+        internal static string PREVIEW_IMAGES_PATH {
+            get {
+                return ResourceManager.GetString("PREVIEW_IMAGES_PATH", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to https://storage.googleapis.com/ygoprodeck.com/pics/.
+        /// </summary>
+        internal static string YGO_FULL_IMAGES_URL {
+            get {
+                return ResourceManager.GetString("YGO_FULL_IMAGES_URL", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to https://storage.googleapis.com/ygoprodeck.com/pics_small/.
+        /// </summary>
+        internal static string YGO_PREVIEW_IMAGES_URL {
+            get {
+                return ResourceManager.GetString("YGO_PREVIEW_IMAGES_URL", resourceCulture);
             }
         }
     }

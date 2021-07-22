@@ -13,6 +13,7 @@ namespace yu_gi_oh
         public Login()
         {
             InitializeComponent();
+            //_ = Middleware.Controllers.YGOController.DownloadAllImages(new string[] { "86198326", "24140059", "32207100" });
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -25,7 +26,7 @@ namespace yu_gi_oh
 
         }
 
-        private void btnLogIn_Click(object sender, EventArgs e)
+        private async void btnLogIn_Click(object sender, EventArgs e)
         {
             //if (tbUsername.Text != "" && mtbPassword.Text != "")
             //{
@@ -33,18 +34,18 @@ namespace yu_gi_oh
             //    c.BaseAddress = new Uri("/* TODO: api call to server */");
             //    HttpResponseMessage response = c.PostAsJsonAsync(/* TODO: api call to server */"insert URL here", tbUsername.Text);
 
-
-            //    this.Hide();
-            //    MainMenu form = new MainMenu();
-            //    form.ShowDialog();
+            //await Middleware.Controllers.YGOController.PreLoadCache();
+            this.Hide();
+            MainMenu form = new MainMenu();
+            form.ShowDialog();
             //}
 
-            Task.Factory.StartNew( async () => 
-            {
-                CardDto card = new CardDto();
-                card.name = "Dark";
-                PageResponse<CardDto> res = await Middleware.Controllers.CardController.GetAllCardDtosShortAsync(card, 1, "atk");
-            });
+            //Task.Factory.StartNew( async () => 
+            //{
+            //    CardDto card = new CardDto();
+            //    card.name = "Dark";
+            //    PageResponse<CardDto> res = await Middleware.Controllers.CardController.GetAllCardDtosShortAsync(card, 1, "atk");
+            //});
         }
 
         private void textBox1_Validating(object sender, CancelEventArgs e)

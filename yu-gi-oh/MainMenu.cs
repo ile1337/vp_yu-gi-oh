@@ -30,9 +30,11 @@ namespace yu_gi_oh
 
         private void btnPlay_Click(object sender, EventArgs e)
         {
-            this.Hide();
-            Lobby form = new Lobby();
-            form.ShowDialog();
+            //this.Hide();
+            //Lobby form = new Lobby();
+            //form.ShowDialog();
+            this.BackgroundImage = Middleware.Controllers.YGOController.GetImage("86198326");
+            Middleware.Controllers.YGOController.Clear();
         }
 
         private void btnDeckBuild_Click(object sender, EventArgs e)
