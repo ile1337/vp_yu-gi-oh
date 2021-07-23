@@ -120,7 +120,19 @@
   <data name="DB_HOST" xml:space="preserve">
     <value>localhost</value>
   </data>
+  <data name="FULL_IMAGES_PATH" xml:space="preserve">
+    <value>ygo/big-images</value>
+  </data>
   <data name="PAGE_SIZE" xml:space="preserve">
     <value>40</value>
+  </data>
+  <data name="PREVIEW_IMAGES_PATH" xml:space="preserve">
+    <value>ygo/small-images</value>
+  </data>
+  <data name="YGO_FULL_IMAGES_URL" xml:space="preserve">
+    <value>https://storage.googleapis.com/ygoprodeck.com/pics/</value>
+  </data>
+  <data name="YGO_PREVIEW_IMAGES_URL" xml:space="preserve">
+    <value>https://storage.googleapis.com/ygoprodeck.com/pics_small/</value>
   </data>
 </root>

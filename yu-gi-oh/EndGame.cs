@@ -16,5 +16,10 @@ namespace yu_gi_oh
         {
             InitializeComponent();
         }
+
+        private void btnPlayAgain_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

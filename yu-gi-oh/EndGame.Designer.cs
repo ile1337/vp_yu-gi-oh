@@ -41,6 +41,7 @@ namespace yu_gi_oh
             this.btnPlayAgain.TabIndex = 0;
             this.btnPlayAgain.Text = "PlayAgain";
             this.btnPlayAgain.UseVisualStyleBackColor = true;
+            this.btnPlayAgain.Click += new System.EventHandler(this.btnPlayAgain_Click);
             // 
             // btnQuit
             // 

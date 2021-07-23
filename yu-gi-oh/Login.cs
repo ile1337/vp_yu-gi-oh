@@ -1,6 +1,7 @@
 ﻿using System;
 using System.ComponentModel;
 using System.Diagnostics;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Middleware.Models;
@@ -13,6 +14,9 @@ namespace yu_gi_oh
         public Login()
         {
             InitializeComponent();
+            Thread t = new Thread(new ThreadStart(Middleware.Controllers.YGOController.DownloadAllImages));
+            t.IsBackground = true;
+            t.Start();
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -25,26 +29,16 @@ namespace yu_gi_oh
 
         }
 
-        private void btnLogIn_Click(object sender, EventArgs e)
+        private async void btnLogIn_Click(object sender, EventArgs e)
         {
             if (tbUsername.Text != "" && mtbPassword.Text != "")
             {
-                //HttpClient c = new HttpClient();
-                //c.BaseAddress = new Uri("/* TODO: api call to server */");
-                //HttpResponseMessage response = c.PostAsJsonAsync(/* TODO: api call to server */"insert URL here", tbUsername.Text);
-
-
-                this.Hide();
-                MainMenu form = new MainMenu();
-                form.ShowDialog();
+            await Middleware.Controllers.YGOController.PreLoadCache();
+            this.Hide();
+            MainMenu form = new MainMenu();
+            form.ShowDialog();
+            this.Close();
             }
-
-            Task.Factory.StartNew( async () => 
-            {
-                CardDto card = new CardDto();
-                card.name = "Dark";
-               PageResponse<CardDto> res = await Middleware.Controllers.CardController.GetAllCardDtosShortAsync(card, 1, "atk");
-           });
         }
 
         private void textBox1_Validating(object sender, CancelEventArgs e)

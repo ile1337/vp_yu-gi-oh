@@ -25,14 +25,16 @@ namespace yu_gi_oh
         private void btnQuit_Click(object sender, EventArgs e)
         {
             DialogResult = DialogResult.OK;
-            this.Close();        
+            this.Close();      
         }
 
         private void btnPlay_Click(object sender, EventArgs e)
         {
-            this.Hide();
-            Lobby form = new Lobby();
-            form.ShowDialog();
+            //this.Hide();
+            //Lobby form = new Lobby();
+            //form.ShowDialog();
+            //this.Close();
+            this.BackgroundImage = Middleware.Controllers.YGOController.GetImage(Middleware.Controllers.YGOController.GetRandomId());
         }
 
         private void btnDeckBuild_Click(object sender, EventArgs e)
@@ -40,6 +42,8 @@ namespace yu_gi_oh
             this.Hide();
             Deckbuilder deckbuilderForm = new Deckbuilder();
             deckbuilderForm.ShowDialog();
+            this.Close();
+
         }
     }
 }
