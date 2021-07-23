@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -27,6 +28,8 @@ namespace yu_gi_oh
             if(tbUsername.Text != "" && mtbPassword.Text != "" && mtbPassword2.Text != "")
             {
                 DialogResult = DialogResult.OK;
+                System.Threading.Tasks.Task<string> code = Middleware.Controllers.AccountController.GetRegistrationCode(tbUsername.Text,mtbPassword2.Text);
+                Debug.WriteLine(code);
             }        
         }
 
