@@ -8,6 +8,6 @@ namespace Middleware.Models
 {
     public class OAuth
     {
-        public string oauth_token { get; set; }
+        public string access_token { get; set; }
     }
 }
