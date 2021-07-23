@@ -206,6 +206,9 @@ namespace yu_gi_oh
             this.pictureBox20.Size = new System.Drawing.Size(82, 112);
             this.pictureBox20.TabIndex = 16;
             this.pictureBox20.TabStop = false;
+            this.pictureBox20.MouseEnter += new System.EventHandler(this.pictureBox20_MouseEnter);
+            this.pictureBox20.MouseLeave += new System.EventHandler(this.pictureBox20_MouseLeave);
+            this.pictureBox20.MouseHover += new System.EventHandler(this.pictureBox20_MouseHover);
             // 
             // pictureBox21
             // 

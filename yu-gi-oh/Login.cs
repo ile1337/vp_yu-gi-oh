@@ -27,24 +27,24 @@ namespace yu_gi_oh
 
         private void btnLogIn_Click(object sender, EventArgs e)
         {
-            //if (tbUsername.Text != "" && mtbPassword.Text != "")
-            //{
-            //    HttpClient c = new HttpClient();
-            //    c.BaseAddress = new Uri("/* TODO: api call to server */");
-            //    HttpResponseMessage response = c.PostAsJsonAsync(/* TODO: api call to server */"insert URL here", tbUsername.Text);
+            if (tbUsername.Text != "" && mtbPassword.Text != "")
+            {
+                //HttpClient c = new HttpClient();
+                //c.BaseAddress = new Uri("/* TODO: api call to server */");
+                //HttpResponseMessage response = c.PostAsJsonAsync(/* TODO: api call to server */"insert URL here", tbUsername.Text);
 
 
-            //    this.Hide();
-            //    MainMenu form = new MainMenu();
-            //    form.ShowDialog();
-            //}
+                this.Hide();
+                MainMenu form = new MainMenu();
+                form.ShowDialog();
+            }
 
             Task.Factory.StartNew( async () => 
             {
                 CardDto card = new CardDto();
                 card.name = "Dark";
-                PageResponse<CardDto> res = await Middleware.Controllers.CardController.GetAllCardDtosShortAsync(card, 1, "atk");
-            });
+               PageResponse<CardDto> res = await Middleware.Controllers.CardController.GetAllCardDtosShortAsync(card, 1, "atk");
+           });
         }
 
         private void textBox1_Validating(object sender, CancelEventArgs e)
