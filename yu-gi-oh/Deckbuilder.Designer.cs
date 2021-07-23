@@ -32,6 +32,7 @@ namespace yu_gi_oh
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.lbDeckCards = new System.Windows.Forms.ListBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.loadingPB = new System.Windows.Forms.PictureBox();
             this.tbSearch = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.lbAllCards = new System.Windows.Forms.ListBox();
@@ -43,6 +44,7 @@ namespace yu_gi_oh
             this.btnOpenDeck = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.loadingPB)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBox1
@@ -71,6 +73,7 @@ namespace yu_gi_oh
             // 
             this.groupBox2.BackgroundImage = global::yu_gi_oh.Properties.Resources.link_wizard__bg__by_alanmac95_dcbum43_250t;
             this.groupBox2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.groupBox2.Controls.Add(this.loadingPB);
             this.groupBox2.Controls.Add(this.tbSearch);
             this.groupBox2.Controls.Add(this.label2);
             this.groupBox2.Controls.Add(this.lbAllCards);
@@ -80,6 +83,19 @@ namespace yu_gi_oh
             this.groupBox2.TabIndex = 1;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Available Cards";
+            // 
+            // loadingPB
+            // 
+            this.loadingPB.AccessibleName = "";
+            this.loadingPB.BackColor = System.Drawing.SystemColors.Window;
+            this.loadingPB.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.loadingPB.Image = global::yu_gi_oh.Properties.Resources.loading;
+            this.loadingPB.Location = new System.Drawing.Point(74, 119);
+            this.loadingPB.Name = "loadingPB";
+            this.loadingPB.Size = new System.Drawing.Size(211, 180);
+            this.loadingPB.TabIndex = 5;
+            this.loadingPB.TabStop = false;
+            this.loadingPB.Visible = false;
             // 
             // tbSearch
             // 
@@ -198,6 +214,7 @@ namespace yu_gi_oh
             this.groupBox1.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.loadingPB)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -216,5 +233,6 @@ namespace yu_gi_oh
         private System.Windows.Forms.Button btnAddtoDeck;
         private System.Windows.Forms.Button btnRemoveFromDeck;
         private System.Windows.Forms.Button btnOpenDeck;
+        private System.Windows.Forms.PictureBox loadingPB;
     }
 }

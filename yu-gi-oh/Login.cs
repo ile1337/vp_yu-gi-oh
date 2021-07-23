@@ -11,12 +11,11 @@ namespace yu_gi_oh
 {
     public partial class Login : Form
     {
+        Thread loadImages = new Thread(new ThreadStart(Middleware.Controllers.YGOController.DownloadAllImages));
         public Login()
         {
             InitializeComponent();
-            Thread t = new Thread(new ThreadStart(Middleware.Controllers.YGOController.DownloadAllImages));
-            t.IsBackground = true;
-            t.Start();
+            loadImages.IsBackground = true;
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -31,14 +30,17 @@ namespace yu_gi_oh
 
         private async void btnLogIn_Click(object sender, EventArgs e)
         {
-            if (tbUsername.Text != "" && mtbPassword.Text != "")
-            {
-            await Middleware.Controllers.YGOController.PreLoadCache();
+
+            OAuth oauth = await Middleware.Controllers.AccountController.GetLoginToken(tbUsername.Text, mtbPassword.Text);
+            Middleware.Controllers.HttpClientBuilder.SetToken(oauth.access_token);
+
             this.Hide();
             MainMenu form = new MainMenu();
+            loadImages.Start();
+            await Middleware.Controllers.YGOController.PreLoadCache();
             form.ShowDialog();
+            loadImages.Join();
             this.Close();
-            }
         }
 
         private void textBox1_Validating(object sender, CancelEventArgs e)

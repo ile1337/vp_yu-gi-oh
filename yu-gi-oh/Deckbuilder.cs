@@ -20,11 +20,17 @@ namespace yu_gi_oh
         public void init()
         {
             lbAllCards.Items.Clear();
-            Task<Middleware.Models.Meta.PageResponse<Middleware.Models.CardDto>> tmp = Middleware.Controllers.CardController.GetAllCardDtosShortAsync(new Middleware.Models.CardDto(), 1);
-            foreach (CardDto t in tmp.Result.content)
+            loadingPB.Visible = true;
+            Middleware.Controllers.CardController.GetAllCardDtosShortAsync(new CardDto(), 1).ContinueWith(t =>
             {
-                lbAllCards.Items.Add(t);
-            }
+                foreach (CardDto card in t.Result.content)
+                {
+                    this.Invoke((MethodInvoker)(() => lbAllCards.Items.Add(card)));
+                }
+                this.Invoke((MethodInvoker)(() => loadingPB.Visible = false));
+            });
+            
+            
         }
         private void btnBack_Click(object sender, EventArgs e)
         {
@@ -146,6 +152,11 @@ namespace yu_gi_oh
                 }
 
             }
+        }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 
