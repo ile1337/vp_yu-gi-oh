@@ -25,7 +25,7 @@ namespace yu_gi_oh
 
         }
 
-        private void btnLogIn_Click(object sender, EventArgs e)
+        private async void btnLogIn_Click(object sender, EventArgs e)
         {
             //if (tbUsername.Text != "" && mtbPassword.Text != "")
             //{
@@ -39,12 +39,9 @@ namespace yu_gi_oh
             //    form.ShowDialog();
             //}
 
-            Task.Factory.StartNew( async () => 
-            {
-                CardDto card = new CardDto();
-                card.name = "Dark";
-                PageResponse<CardDto> res = await Middleware.Controllers.CardController.GetAllCardDtosShortAsync(card, 1, "atk");
-            });
+            Middleware.Models.OAuth oauth = await Middleware.Controllers.AccountController.GetLoginToken(tbUsername.Text, mtbPassword.Text);
+            Debug.WriteLine(oauth.access_token);
+            
         }
 
         private void textBox1_Validating(object sender, CancelEventArgs e)
