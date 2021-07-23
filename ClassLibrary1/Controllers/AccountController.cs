@@ -7,6 +7,7 @@ using System.Diagnostics;
 using System.Linq;
 using System.Net.Http;
 using System.Net.Http.Headers;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -17,9 +18,10 @@ namespace Middleware.Controllers
         public static async Task<Models.OAuth> GetLoginToken(string username, string password)
         {
             var dict = new Dictionary<string, string>();
+            string hashedPassword = ComputeSha256Hash(password);
             dict.Add("grant_type", "password");
             dict.Add("username",username);
-            dict.Add("password", password);
+            dict.Add("password", hashedPassword);
   
 
             using (HttpClient http = new HttpClient())
@@ -48,8 +50,9 @@ namespace Middleware.Controllers
         public static async Task<string> GetRegistrationCode(string username, string password)
         {
             var dict = new Dictionary<string, string>();
+            string hashedPassword = ComputeSha256Hash(password);
             dict.Add("username", username);
-            dict.Add("password", password);
+            dict.Add("password", hashedPassword);
 
 
             using (HttpClient http = new HttpClient())
@@ -72,6 +75,24 @@ namespace Middleware.Controllers
             }
 
             return null;
+        }
+
+        public static string ComputeSha256Hash(string rawData)
+        {
+            // Create a SHA256   
+            using (SHA256 sha256Hash = SHA256.Create())
+            {
+                // ComputeHash - returns byte array  
+                byte[] bytes = sha256Hash.ComputeHash(Encoding.UTF8.GetBytes(rawData));
+
+                // Convert byte array to a string   
+                StringBuilder builder = new StringBuilder();
+                for (int i = 0; i < bytes.Length; i++)
+                {
+                    builder.Append(bytes[i].ToString("x2"));
+                }
+                return builder.ToString();
+            }
         }
     }
 }
