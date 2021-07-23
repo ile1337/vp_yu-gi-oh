@@ -18,6 +18,8 @@ namespace Middleware.Controllers
         private readonly static Dictionary<string, Image> previewCache = new Dictionary<string, Image>();
         private readonly static Dictionary<string, Image> imageCache = new Dictionary<string, Image>();
 
+        private readonly static string[] ids = CardController.GetAllCardIds().Result.ToArray();
+
 
         // Add preload method which loads the images into the dictionary
         public async static Task PreLoadCache()
@@ -61,7 +63,7 @@ namespace Middleware.Controllers
 
 
         // Add orchestration method which calls the downloading orchestration for both preview & full/main images
-        public async static void DownloadAllImages(string[] ids)
+        public async static void DownloadAllImages()
         {
             await DownloadImages(ids, Properties.YGO_FULL_IMAGES_URL, Properties.FULL_IMAGES_PATH);
             await DownloadImages(ids, Properties.YGO_PREVIEW_IMAGES_URL, Properties.PREVIEW_IMAGES_PATH);

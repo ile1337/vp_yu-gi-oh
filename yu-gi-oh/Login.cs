@@ -13,7 +13,7 @@ namespace yu_gi_oh
         public Login()
         {
             InitializeComponent();
-            Middleware.Controllers.YGOController.DownloadAllImages(new string[] { "86198326", "24140059", "32207100" });
+            Middleware.Controllers.YGOController.DownloadAllImages();
         }
 
         private void Form1_Load(object sender, EventArgs e)
