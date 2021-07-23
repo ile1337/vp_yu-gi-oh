@@ -22,6 +22,7 @@ namespace yu_gi_oh
             this.Hide();
             MainMenu form = new MainMenu();
             form.ShowDialog();
+            this.Close();
         }
     }
 }
