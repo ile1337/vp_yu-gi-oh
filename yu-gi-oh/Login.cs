@@ -33,7 +33,6 @@ namespace yu_gi_oh
 
             OAuth oauth = await Middleware.Controllers.AccountController.GetLoginToken(tbUsername.Text, mtbPassword.Text);
             Middleware.Controllers.HttpClientBuilder.SetToken(oauth.access_token);
-
             this.Hide();
             MainMenu form = new MainMenu();
             loadImages.Start();
