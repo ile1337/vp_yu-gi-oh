@@ -1,24 +1,34 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Net.Http;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace Middleware.Controllers
 {
     public class YGOController
     {
+
+        // TODO: Add synchronization between download & cache preload
+        //      Do it using a ThreadPool for download ( wait for entire thread pool to finish before letting the preload start running)
+        //      Another (possibly better) option is to add the image directly to the cache right after it gets downloaded, with this option we'd be avoiding both collision & unnecessary calls
+
         private readonly static string folder = Path.GetTempPath();
+
+        private readonly static string[] ids = CardController.GetAllCardIds().GetAwaiter().GetResult().ToArray();
+
+        private readonly static Random random = new Random();
 
 
         // Add static & final dictionary of images (card_id -> image) which is supposed to be used as a cache
-        private readonly static Dictionary<string, Image> previewCache = new Dictionary<string, Image>();
-        private readonly static Dictionary<string, Image> imageCache = new Dictionary<string, Image>();
+        private readonly static Dictionary<string, byte[]> previewCache = new Dictionary<string, byte[]>(ids.Length);
+        private readonly static Dictionary<string, byte[]> imageCache = new Dictionary<string, byte[]>(ids.Length);
 
-        private readonly static string[] ids = CardController.GetAllCardIds().Result.ToArray();
 
 
         // Add preload method which loads the images into the dictionary
@@ -29,7 +39,12 @@ namespace Middleware.Controllers
             await LoadCache(previewCache, Properties.PREVIEW_IMAGES_PATH);
         }
 
-        private async static Task LoadCache(Dictionary<string, Image> cache, string mainPath)
+        public static string GetRandomId()
+        {
+            return ids[random.Next(0, ids.Length)];
+        }
+
+        private async static Task LoadCache(Dictionary<string, byte[]> cache, string mainPath)
         {
             string path = folder + mainPath;
 
@@ -37,16 +52,37 @@ namespace Middleware.Controllers
             if (!Directory.Exists(path) || Directory.GetFiles(path).Length == 0) throw new Exception();
 
             // TODO: Check if Threads are the better approach here since we aren't awaiting a result
-            Task.Run(() => Directory.GetFiles(path).ToList().ForEach(img => cache.Add(Path.GetFileNameWithoutExtension(img), (Image)Image.FromFile(img).Clone())));
+            _ = Task.Run(() =>
+            {
+                Directory.GetFiles(path).ToList().ForEach(img =>
+                            {
+                                using (var ms = new MemoryStream())
+                                {
+                                    var image = Image.FromFile(img);
+                                    image.Save(ms, image.RawFormat);
+                                    cache.Add(Path.GetFileNameWithoutExtension(img), ms.ToArray());
+                                }
+                            });
+
+                GC.Collect();
+            });
         }
 
 
         // Add download method for downloading an image onto disc
         private async static Task DownloadImage(string id, string url, string mainPath)
         {
-            using (HttpClient client = HttpClientBuilder.GetHttpClient())
+            using (HttpClient client = new HttpClient())
             {
-                Image.FromStream(await client.GetStreamAsync(url + id + ".jpg")).Save($"{folder}{mainPath}\\{id}.jpg");
+                client.Timeout = TimeSpan.FromMinutes(2);
+                try
+                {
+                    Image.FromStream(await client.GetStreamAsync(url + id + ".jpg")).Save($"{folder}{mainPath}\\{id}.jpg");
+                } catch(HttpRequestException ex)
+                {
+                    Thread.Sleep(100);
+                    await DownloadImage(id, url, mainPath);
+                }
             }
         }
 
@@ -73,12 +109,20 @@ namespace Middleware.Controllers
         // Add getters for cards in dictionary
         public static Image GetPreview(string id)
         {
-            return previewCache.GetValueOrDefault(id);
+            return GetImageFromBytes(id, previewCache);
         }
 
         public static Image GetImage(string id)
         {
-            return imageCache.GetValueOrDefault(id);
+            return GetImageFromBytes(id, imageCache);
+        }
+
+        public static Image GetImageFromBytes(string id, Dictionary<string, byte[]> cache) 
+        {
+            using(var ms = new MemoryStream(cache.GetValueOrDefault(id)))
+            {
+                return Image.FromStream(ms);
+            }
         }
 
         public static void Clear()

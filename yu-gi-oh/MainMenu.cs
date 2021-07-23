@@ -34,7 +34,7 @@ namespace yu_gi_oh
             //Lobby form = new Lobby();
             //form.ShowDialog();
             //this.Close();
-            this.BackgroundImage = Middleware.Controllers.YGOController.GetImage("86198326");
+            this.BackgroundImage = Middleware.Controllers.YGOController.GetImage(Middleware.Controllers.YGOController.GetRandomId());
         }
 
         private void btnDeckBuild_Click(object sender, EventArgs e)

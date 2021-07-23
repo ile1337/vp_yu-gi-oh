@@ -70,7 +70,7 @@ namespace Middleware {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to big-images.
+        ///   Looks up a localized string similar to ygo/big-images.
         /// </summary>
         internal static string FULL_IMAGES_PATH {
             get {
@@ -88,7 +88,7 @@ namespace Middleware {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to small-images.
+        ///   Looks up a localized string similar to ygo/small-images.
         /// </summary>
         internal static string PREVIEW_IMAGES_PATH {
             get {

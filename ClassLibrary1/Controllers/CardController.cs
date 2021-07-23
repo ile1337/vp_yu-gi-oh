@@ -44,9 +44,9 @@ namespace Middleware.Controllers
         public static async Task<List<string>> GetAllCardIds()
         {
 
-            using (HttpClient http = HttpClientBuilder.GetHttpClient())
+            using (HttpClient http = new HttpClient())
             {
-                var data = new HttpRequestMessage(HttpMethod.Post, $"http://{Properties.DB_HOST}:8080/api/cards/ids");
+                var data = new HttpRequestMessage(HttpMethod.Get, $"http://{Properties.DB_HOST}:8080/api/cards/ids");
                 data.Headers.Accept.Add(MediaTypeWithQualityHeaderValue.Parse("application/json"));
 
                 var response = await http.SendAsync(data).ConfigureAwait(false);

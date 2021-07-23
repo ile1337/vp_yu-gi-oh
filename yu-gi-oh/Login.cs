@@ -1,6 +1,7 @@
 ﻿using System;
 using System.ComponentModel;
 using System.Diagnostics;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Middleware.Models;
@@ -13,7 +14,9 @@ namespace yu_gi_oh
         public Login()
         {
             InitializeComponent();
-            Middleware.Controllers.YGOController.DownloadAllImages();
+            Thread t = new Thread(new ThreadStart(Middleware.Controllers.YGOController.DownloadAllImages));
+            t.IsBackground = true;
+            t.Start();
         }
 
         private void Form1_Load(object sender, EventArgs e)
