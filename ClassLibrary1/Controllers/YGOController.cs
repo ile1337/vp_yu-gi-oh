@@ -48,7 +48,7 @@ namespace Middleware.Controllers
             // TODO: Implement custom exceptions with tracebacks & explanations
             if (!Directory.Exists(path) || Directory.GetFiles(path).Length == 0)
             {
-                GC.Collect();
+                GC.Collect(2, GCCollectionMode.Optimized);
                 return;
             }
 
