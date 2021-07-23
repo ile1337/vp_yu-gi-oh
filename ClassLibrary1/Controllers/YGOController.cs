@@ -101,8 +101,8 @@ namespace Middleware.Controllers
         // Add orchestration method which calls the downloading orchestration for both preview & full/main images
         public async static void DownloadAllImages()
         {
-            await DownloadImages(ids, Properties.YGO_FULL_IMAGES_URL, Properties.FULL_IMAGES_PATH);
-            await DownloadImages(ids, Properties.YGO_PREVIEW_IMAGES_URL, Properties.PREVIEW_IMAGES_PATH);
+            //await DownloadImages(ids, Properties.YGO_FULL_IMAGES_URL, Properties.FULL_IMAGES_PATH);
+           // await DownloadImages(ids, Properties.YGO_PREVIEW_IMAGES_URL, Properties.PREVIEW_IMAGES_PATH);
         }
 
 

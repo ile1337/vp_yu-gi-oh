@@ -31,7 +31,9 @@ namespace yu_gi_oh
 
         private async void btnLogIn_Click(object sender, EventArgs e)
         {
-            await Middleware.Controllers.YGOController.PreLoadCache();
+            //await Middleware.Controllers.YGOController.PreLoadCache();
+            Middleware.Models.OAuth oauth = await Middleware.Controllers.AccountController.GetLoginToken(tbUsername.Text, mtbPassword.Text);
+            Debug.WriteLine(oauth.access_token);
             this.Hide();
             MainMenu form = new MainMenu();
             form.ShowDialog();
