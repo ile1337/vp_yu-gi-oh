@@ -31,11 +31,14 @@ namespace yu_gi_oh
 
         private async void btnLogIn_Click(object sender, EventArgs e)
         {
+            if (tbUsername.Text != "" && mtbPassword.Text != "")
+            {
             await Middleware.Controllers.YGOController.PreLoadCache();
             this.Hide();
             MainMenu form = new MainMenu();
             form.ShowDialog();
             this.Close();
+            }
         }
 
         private void textBox1_Validating(object sender, CancelEventArgs e)

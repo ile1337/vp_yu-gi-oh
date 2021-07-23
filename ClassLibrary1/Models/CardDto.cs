@@ -16,6 +16,10 @@ namespace Middleware.Models
         public string subType { get; set; }//enum
         public int atk { get; set; }
         public int def { get; set; }
-       
+        public override string ToString()
+        {
+            return string.Format("{0} - {1}",name,subType);
+        }
+
     }
 }
