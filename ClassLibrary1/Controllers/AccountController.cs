@@ -17,17 +17,18 @@ namespace Middleware.Controllers
         public static async Task<Models.OAuth> GetLoginToken(string username, string password)
         {
             var dict = new Dictionary<string, string>();
+            dict.Add("grant_type", "password");
             dict.Add("username",username);
             dict.Add("password", password);
-            dict.Add("grant_type", "password");
   
 
             using (HttpClient http = new HttpClient())
             {
                 var data = new HttpRequestMessage(HttpMethod.Post, $"http://{Properties.DB_HOST}:8080/oauth/token");
-                data.Headers.Accept.Add(MediaTypeWithQualityHeaderValue.Parse("application/json"));
-                data.Headers.Add("Authorization", "Basic yugiohjwtclientid XY7kmzoNzl100");
-              
+                var base64authorization = Convert.ToBase64String(Encoding.ASCII.GetBytes("yugiohjwtclientid:XY7kmzoNzl100"));
+                data.Headers.Add("Authorization", $"Basic {base64authorization}");
+                
+
                 data.Content = new FormUrlEncodedContent(dict);
                 var response = await http.SendAsync(data).ConfigureAwait(false);
                 if (!response.IsSuccessStatusCode) throw new Exception(await response.Content.ReadAsStringAsync());

@@ -39,7 +39,7 @@ namespace yu_gi_oh
             //    form.ShowDialog();
             //}
 
-            Middleware.Models.OAuth oauth = await Middleware.Controllers.AccountController.GetLoginToken(tbUsername.Text, mtbPassword.Text);
+            Middleware.Models.OAuth oauth = await Middleware.Controllers.AccountController.GetLoginToken("pazziov4", "pazzio");
             Console.WriteLine(oauth.oauth_token);
             
         }
