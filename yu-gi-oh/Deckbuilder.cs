@@ -43,7 +43,7 @@ namespace yu_gi_oh
 
         private void btnAddtoDeck_Click(object sender, EventArgs e)
         {
-            if (lbAllCards.SelectedIndex != 0)
+            if (lbAllCards.SelectedIndex != -1)
             {
                 if (isMorethan3(lbAllCards.SelectedItem as CardDto))
                 {
