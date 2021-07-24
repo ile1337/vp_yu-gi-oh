@@ -17,6 +17,7 @@ namespace yu_gi_oh
             init();
 
         }
+
         public void init()
         {
             lbAllCards.Items.Clear();
@@ -25,13 +26,13 @@ namespace yu_gi_oh
             {
                 foreach (CardDto card in t.Result.content)
                 {
-                    this.Invoke((MethodInvoker)(() => lbAllCards.Items.Add(card)));
+                    Invoke((MethodInvoker)(() => lbAllCards.Items.Add(card)));
                 }
-                this.Invoke((MethodInvoker)(() => loadingPB.Visible = false));
+                Invoke((MethodInvoker)(() => loadingPB.Visible = false));
             });
             
-            
         }
+
         private void btnBack_Click(object sender, EventArgs e)
         {
             this.Hide();

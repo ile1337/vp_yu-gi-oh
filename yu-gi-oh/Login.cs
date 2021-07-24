@@ -30,7 +30,6 @@ namespace yu_gi_oh
 
         private async void btnLogIn_Click(object sender, EventArgs e)
         {
-
             OAuth oauth = await Middleware.Controllers.AccountController.GetLoginToken(tbUsername.Text, mtbPassword.Text);
             Middleware.Controllers.HttpClientBuilder.SetToken(oauth.access_token);
             this.Hide();

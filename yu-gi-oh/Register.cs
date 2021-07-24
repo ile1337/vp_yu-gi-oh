@@ -23,13 +23,12 @@ namespace yu_gi_oh
             DialogResult = DialogResult.Cancel;
         }
 
-        private void btnOK_Click(object sender, EventArgs e)
+        private async void btnOK_Click(object sender, EventArgs e)
         {
             if(tbUsername.Text != "" && mtbPassword.Text != "" && mtbPassword2.Text != "")
             {
                 DialogResult = DialogResult.OK;
-                System.Threading.Tasks.Task<string> code = Middleware.Controllers.AccountController.GetRegistrationCode(tbUsername.Text,mtbPassword2.Text);
-                Debug.WriteLine(code);
+                await Middleware.Controllers.AccountController.GetRegistrationCode(tbUsername.Text,mtbPassword2.Text);
             }        
         }
 
