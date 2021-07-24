@@ -20,11 +20,9 @@ namespace Middleware.Controllers
 
         private readonly static string[] ids = CardController.GetAllCardIds().GetAwaiter().GetResult().ToArray();
 
-        private readonly static Random random = new Random();
-
 
         // Add static & final IDictionary of images (card_id -> image) which is supposed to be used as a cache
-        private readonly static ConcurrentDictionary<string, byte[]> previewCache = new ConcurrentDictionary<string, byte[]>(100, ids.Length);
+        //private readonly static ConcurrentDictionary<string, byte[]> previewCache = new ConcurrentDictionary<string, byte[]>(100, ids.Length);
         private readonly static ConcurrentDictionary<string, byte[]> imageCache = new ConcurrentDictionary<string, byte[]>(100, ids.Length);
 
 
@@ -34,11 +32,6 @@ namespace Middleware.Controllers
         {
             await LoadCache(imageCache, Properties.FULL_IMAGES_PATH);
             //await LoadCache(previewCache, Properties.PREVIEW_IMAGES_PATH);
-        }
-
-        public static string GetRandomId()
-        {
-            return ids[random.Next(0, ids.Length)];
         }
 
         private async static Task LoadCache(IDictionary<string, byte[]> cache, string mainPath)
@@ -145,10 +138,5 @@ namespace Middleware.Controllers
             }
         }
 
-        public static void Clear()
-        {
-            previewCache.Clear();
-            imageCache.Clear();
-        }
     }
 }
