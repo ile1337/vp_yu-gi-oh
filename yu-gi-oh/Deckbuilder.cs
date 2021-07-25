@@ -1,5 +1,7 @@
 ﻿using Middleware.Models;
 using System;
+using System.Data;
+using System.Drawing;
 using System.IO;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -8,6 +10,8 @@ namespace yu_gi_oh
 {
     public partial class Deckbuilder : Form
     {
+        public int currentPage { get; set; } = 0;
+
         public Deck deck { get; set; } = new Deck();
         public Deckbuilder()
         {
@@ -20,17 +24,28 @@ namespace yu_gi_oh
 
         public void init()
         {
+            System.Data.DataTable table = new System.Data.DataTable();
+            table.Columns.Add("Name", typeof(string));
+            table.Columns.Add("Type", typeof(string));
+            table.Columns.Add("Image", typeof(Image));
             lbAllCards.Items.Clear();
             loadingPB.Visible = true;
-            Middleware.Controllers.CardController.GetAllCardDtosShortAsync(new CardDto(), 1).ContinueWith(t =>
+            LoadDataTable(table, Middleware.Models.Meta.Direction.FORWARDS);
+            dgv1.DataSource = table;
+        }
+
+        private void LoadDataTable(DataTable table, Middleware.Models.Meta.Direction direction)
+        {
+            currentPage = currentPage + (int)direction;
+            Middleware.Controllers.CardController.GetAllCardDtosShortAsync(new CardDto(), currentPage).ContinueWith(t =>
             {
                 foreach (CardDto card in t.Result.content)
                 {
-                    Invoke((MethodInvoker)(() => lbAllCards.Items.Add(card)));
+                    Invoke((MethodInvoker)(() => table.Rows.Add(card.name, card.type)));
                 }
                 Invoke((MethodInvoker)(() => loadingPB.Visible = false));
+
             });
-            
         }
 
         private void btnBack_Click(object sender, EventArgs e)
@@ -158,6 +173,40 @@ namespace yu_gi_oh
         private void pictureBox1_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            
+        }
+
+        private void Deckbuilder_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            System.Data.DataTable table = new System.Data.DataTable();
+            table.Columns.Add("Name", typeof(string));
+            table.Columns.Add("Type", typeof(string));
+            table.Columns.Add("Image", typeof(Image));
+            lbAllCards.Items.Clear();
+            loadingPB.Visible = true;
+            LoadDataTable(table, Middleware.Models.Meta.Direction.FORWARDS);
+            dgv1.DataSource = table;
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            System.Data.DataTable table = new System.Data.DataTable();
+            table.Columns.Add("Name", typeof(string));
+            table.Columns.Add("Type", typeof(string));
+            table.Columns.Add("Image", typeof(Image));
+            lbAllCards.Items.Clear();
+            loadingPB.Visible = true;
+            LoadDataTable(table, Middleware.Models.Meta.Direction.BACKWARDS);
+            dgv1.DataSource = table;
         }
     }
 
