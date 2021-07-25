@@ -31,16 +31,15 @@ namespace yu_gi_oh
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.lbDeckCards = new System.Windows.Forms.ListBox();
-            this.lbAllCards = new System.Windows.Forms.ListBox();
             this.loadingPB = new System.Windows.Forms.PictureBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.dgv1 = new System.Windows.Forms.DataGridView();
             this.btnSaveDeck = new System.Windows.Forms.Button();
             this.btnNewDeck = new System.Windows.Forms.Button();
             this.btnBack = new System.Windows.Forms.Button();
             this.btnAddtoDeck = new System.Windows.Forms.Button();
             this.btnRemoveFromDeck = new System.Windows.Forms.Button();
             this.btnOpenDeck = new System.Windows.Forms.Button();
-            this.dgv1 = new System.Windows.Forms.DataGridView();
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
@@ -71,25 +70,16 @@ namespace yu_gi_oh
             this.lbDeckCards.Size = new System.Drawing.Size(350, 334);
             this.lbDeckCards.TabIndex = 0;
             // 
-            // lbAllCards
-            // 
-            this.lbAllCards.AllowDrop = true;
-            this.lbAllCards.FormattingEnabled = true;
-            this.lbAllCards.ItemHeight = 15;
-            this.lbAllCards.Location = new System.Drawing.Point(6, 22);
-            this.lbAllCards.Name = "lbAllCards";
-            this.lbAllCards.Size = new System.Drawing.Size(338, 289);
-            this.lbAllCards.TabIndex = 1;
-            // 
             // loadingPB
             // 
             this.loadingPB.AccessibleName = "";
             this.loadingPB.BackColor = System.Drawing.SystemColors.Window;
             this.loadingPB.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.loadingPB.Image = global::yu_gi_oh.Properties.Resources.loading;
-            this.loadingPB.Location = new System.Drawing.Point(74, 79);
+            this.loadingPB.Location = new System.Drawing.Point(6, 0);
             this.loadingPB.Name = "loadingPB";
-            this.loadingPB.Size = new System.Drawing.Size(192, 191);
+            this.loadingPB.Size = new System.Drawing.Size(346, 342);
+            this.loadingPB.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.loadingPB.TabIndex = 5;
             this.loadingPB.TabStop = false;
             this.loadingPB.Visible = false;
@@ -99,13 +89,22 @@ namespace yu_gi_oh
             this.groupBox2.BackgroundImage = global::yu_gi_oh.Properties.Resources.link_wizard__bg__by_alanmac95_dcbum43_250t;
             this.groupBox2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.groupBox2.Controls.Add(this.loadingPB);
-            this.groupBox2.Controls.Add(this.lbAllCards);
-            this.groupBox2.Location = new System.Drawing.Point(514, 49);
+            this.groupBox2.Controls.Add(this.dgv1);
+            this.groupBox2.Location = new System.Drawing.Point(514, 35);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(362, 348);
+            this.groupBox2.Size = new System.Drawing.Size(362, 362);
             this.groupBox2.TabIndex = 1;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Available Cards";
+            // 
+            // dgv1
+            // 
+            this.dgv1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgv1.Location = new System.Drawing.Point(6, -6);
+            this.dgv1.Name = "dgv1";
+            this.dgv1.RowTemplate.Height = 25;
+            this.dgv1.Size = new System.Drawing.Size(346, 348);
+            this.dgv1.TabIndex = 15;
             // 
             // btnSaveDeck
             // 
@@ -145,7 +144,7 @@ namespace yu_gi_oh
             // 
             // btnAddtoDeck
             // 
-            this.btnAddtoDeck.Location = new System.Drawing.Point(514, 403);
+            this.btnAddtoDeck.Location = new System.Drawing.Point(514, 431);
             this.btnAddtoDeck.Name = "btnAddtoDeck";
             this.btnAddtoDeck.Size = new System.Drawing.Size(173, 53);
             this.btnAddtoDeck.TabIndex = 11;
@@ -155,7 +154,7 @@ namespace yu_gi_oh
             // 
             // btnRemoveFromDeck
             // 
-            this.btnRemoveFromDeck.Location = new System.Drawing.Point(703, 403);
+            this.btnRemoveFromDeck.Location = new System.Drawing.Point(704, 431);
             this.btnRemoveFromDeck.Name = "btnRemoveFromDeck";
             this.btnRemoveFromDeck.Size = new System.Drawing.Size(173, 53);
             this.btnRemoveFromDeck.TabIndex = 12;
@@ -175,18 +174,9 @@ namespace yu_gi_oh
             this.btnOpenDeck.UseVisualStyleBackColor = false;
             this.btnOpenDeck.Click += new System.EventHandler(this.btnOpenDeck_Click);
             // 
-            // dgv1
-            // 
-            this.dgv1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgv1.Location = new System.Drawing.Point(955, 49);
-            this.dgv1.Name = "dgv1";
-            this.dgv1.RowTemplate.Height = 25;
-            this.dgv1.Size = new System.Drawing.Size(346, 348);
-            this.dgv1.TabIndex = 15;
-            // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(1035, 412);
+            this.button1.Location = new System.Drawing.Point(589, 390);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(83, 34);
             this.button1.TabIndex = 16;
@@ -196,7 +186,7 @@ namespace yu_gi_oh
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(1135, 412);
+            this.button2.Location = new System.Drawing.Point(704, 390);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(83, 34);
             this.button2.TabIndex = 17;
@@ -210,12 +200,11 @@ namespace yu_gi_oh
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = global::yu_gi_oh.Properties.Resources.d17ad80144ef56adbf58a17a686ea619;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(1347, 562);
+            this.ClientSize = new System.Drawing.Size(947, 562);
             this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.dgv1);
             this.Controls.Add(this.btnOpenDeck);
             this.Controls.Add(this.btnRemoveFromDeck);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.btnAddtoDeck);
             this.Controls.Add(this.btnBack);
             this.Controls.Add(this.btnNewDeck);
@@ -238,7 +227,6 @@ namespace yu_gi_oh
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.ListBox lbDeckCards;
         private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.ListBox lbAllCards;
         private System.Windows.Forms.Button btnSaveDeck;
         private System.Windows.Forms.Button btnNewDeck;
         private System.Windows.Forms.Button btnBack;

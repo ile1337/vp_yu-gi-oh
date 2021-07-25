@@ -131,10 +131,16 @@ namespace Middleware.Controllers
         public static Image GetImageFromBytes(string id, IDictionary<string, byte[]> cache) 
         {
             byte[] res;
-            cache.TryGetValue(id, out res);
-            using (var ms = new MemoryStream(res))
+            if (cache.TryGetValue(id, out res))
             {
-                return Image.FromStream(ms);
+                using (var ms = new MemoryStream(res))
+                {
+                    return Image.FromStream(ms);
+                }
+            }
+            else
+            {
+                return null;
             }
         }
 

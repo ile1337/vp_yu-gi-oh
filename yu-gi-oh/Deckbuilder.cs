@@ -16,7 +16,6 @@ namespace yu_gi_oh
         public Deckbuilder()
         {
             InitializeComponent();
-            lbAllCards.AllowDrop = true;
             lbDeckCards.AllowDrop = true;
             init();
 
@@ -27,8 +26,7 @@ namespace yu_gi_oh
             System.Data.DataTable table = new System.Data.DataTable();
             table.Columns.Add("Name", typeof(string));
             table.Columns.Add("Type", typeof(string));
-            table.Columns.Add("Image", typeof(Image));
-            lbAllCards.Items.Clear();
+            table.Columns.Add("Image", typeof(Image)); 
             loadingPB.Visible = true;
             LoadDataTable(table, Middleware.Models.Meta.Direction.FORWARDS);
             dgv1.DataSource = table;
@@ -41,7 +39,7 @@ namespace yu_gi_oh
             {
                 foreach (CardDto card in t.Result.content)
                 {
-                    Invoke((MethodInvoker)(() => table.Rows.Add(card.name, card.type)));
+                    Invoke((MethodInvoker)(() => table.Rows.Add(card.name, card.type, Middleware.Controllers.YGOController.GetImage(card.cardId))));
                 }
                 Invoke((MethodInvoker)(() => loadingPB.Visible = false));
 
@@ -58,7 +56,8 @@ namespace yu_gi_oh
 
         private void btnAddtoDeck_Click(object sender, EventArgs e)
         {
-            if (lbAllCards.SelectedIndex != -1)
+            /*
+            if (dgv1.RowCount >=0)
             {
                 if (isMorethan3(lbAllCards.SelectedItem as CardDto))
                 {
@@ -72,6 +71,7 @@ namespace yu_gi_oh
                 }
                 lbDeckCards.Items.Add(lbAllCards.SelectedItem as CardDto);
             }
+            */
         }
         private bool isMorethan3(CardDto c)
         {
@@ -191,7 +191,6 @@ namespace yu_gi_oh
             table.Columns.Add("Name", typeof(string));
             table.Columns.Add("Type", typeof(string));
             table.Columns.Add("Image", typeof(Image));
-            lbAllCards.Items.Clear();
             loadingPB.Visible = true;
             LoadDataTable(table, Middleware.Models.Meta.Direction.FORWARDS);
             dgv1.DataSource = table;
@@ -203,7 +202,6 @@ namespace yu_gi_oh
             table.Columns.Add("Name", typeof(string));
             table.Columns.Add("Type", typeof(string));
             table.Columns.Add("Image", typeof(Image));
-            lbAllCards.Items.Clear();
             loadingPB.Visible = true;
             LoadDataTable(table, Middleware.Models.Meta.Direction.BACKWARDS);
             dgv1.DataSource = table;
