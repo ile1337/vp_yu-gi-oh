@@ -1,5 +1,7 @@
 ﻿using Middleware.Models;
 using System;
+using System.Collections.Generic;
+using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.IO;
@@ -12,38 +14,71 @@ namespace yu_gi_oh
     {
         public int currentPage { get; set; } = 0;
 
+        public BindingList<CardDto> cards = new();
+
+        public readonly Dictionary<string, string> dgvNaming = new() { { "img", "" }, { "name", "Name" }, { "type", "Type" }, { "atk", "ATK" }, { "def", "DEF" } };
+
         public Deck deck { get; set; } = new Deck();
         public Deckbuilder()
         {
             InitializeComponent();
             lbDeckCards.AllowDrop = true;
+            dgv1.AutoGenerateColumns = true;
+            dgv1.DataSource = cards;
+            dgv1.AutoGenerateColumns = false;
             init();
 
         }
 
-        public void init()
+        public void ConstructDGV()
         {
-            System.Data.DataTable table = new System.Data.DataTable();
-            table.Columns.Add("Name", typeof(string));
-            table.Columns.Add("Type", typeof(string));
-            table.Columns.Add("Image", typeof(Image)); 
-            loadingPB.Visible = true;
-            LoadDataTable(table, Middleware.Models.Meta.Direction.FORWARDS);
-            dgv1.DataSource = table;
+
+            // Disable useless columns
+            dgv1.Columns["id"].Visible = false;
+            dgv1.Columns["cardId"].Visible = false;
+            dgv1.Columns["description"].Visible = false;
+            dgv1.Columns["subType"].Visible = false;
+
+            int idx = 0;
+            foreach(KeyValuePair<string, string> item in dgvNaming)
+            {
+                DataGridViewColumn col = dgv1.Columns[item.Key];
+                col.HeaderText = item.Value;
+                col.DisplayIndex = idx++;
+                col.ReadOnly = true;
+            }
         }
 
-        private void LoadDataTable(DataTable table, Middleware.Models.Meta.Direction direction)
+        public void init()
+        {
+            ConstructDGV();
+            loadingPB.Visible = true;
+            LoadDataTable(Middleware.Models.Meta.Direction.FORWARDS);
+        }
+
+        private void LoadDataTable(Middleware.Models.Meta.Direction direction)
         {
             currentPage = currentPage + (int)direction;
             Middleware.Controllers.CardController.GetAllCardDtosShortAsync(new CardDto(), currentPage).ContinueWith(t =>
             {
+                Invoke((MethodInvoker)(() => {
+                    foreach(CardDto card in cards)
+                    {
+                        card.img.Dispose();
+                    }
+                    cards.Clear();
+                    }));
                 foreach (CardDto card in t.Result.content)
                 {
-                    Invoke((MethodInvoker)(() => table.Rows.Add(card.name, card.type, Middleware.Controllers.YGOController.GetImage(card.cardId))));
+                    card.img = Middleware.Controllers.YGOController.GetImage(card.cardId);
+                    Invoke((MethodInvoker)(() => cards.Add(card)));
                 }
-                Invoke((MethodInvoker)(() => loadingPB.Visible = false));
+                Invoke((MethodInvoker)(() => {
+                    loadingPB.Visible = false;
+                    }));
 
             });
+
         }
 
         private void btnBack_Click(object sender, EventArgs e)
@@ -187,24 +222,14 @@ namespace yu_gi_oh
 
         private void button2_Click(object sender, EventArgs e)
         {
-            System.Data.DataTable table = new System.Data.DataTable();
-            table.Columns.Add("Name", typeof(string));
-            table.Columns.Add("Type", typeof(string));
-            table.Columns.Add("Image", typeof(Image));
             loadingPB.Visible = true;
-            LoadDataTable(table, Middleware.Models.Meta.Direction.FORWARDS);
-            dgv1.DataSource = table;
+            LoadDataTable(Middleware.Models.Meta.Direction.FORWARDS);
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            System.Data.DataTable table = new System.Data.DataTable();
-            table.Columns.Add("Name", typeof(string));
-            table.Columns.Add("Type", typeof(string));
-            table.Columns.Add("Image", typeof(Image));
             loadingPB.Visible = true;
-            LoadDataTable(table, Middleware.Models.Meta.Direction.BACKWARDS);
-            dgv1.DataSource = table;
+            LoadDataTable(Middleware.Models.Meta.Direction.BACKWARDS);
         }
     }
 
