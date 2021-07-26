@@ -3,6 +3,7 @@ using System;
 using System.IO;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using yu_gi_oh.Threading;
 
 namespace yu_gi_oh
 {
@@ -26,9 +27,9 @@ namespace yu_gi_oh
             {
                 foreach (CardDto card in t.Result.content)
                 {
-                    Invoke((MethodInvoker)(() => lbAllCards.Items.Add(card)));
+                    Invoker.SafeInvoke(this, () => lbAllCards.Items.Add(card), false);
                 }
-                Invoke((MethodInvoker)(() => loadingPB.Visible = false));
+                Invoker.SafeInvoke(this, () => loadingPB.Visible = false, false);
             });
             
         }
@@ -159,6 +160,7 @@ namespace yu_gi_oh
         {
 
         }
+
     }
 
 }
