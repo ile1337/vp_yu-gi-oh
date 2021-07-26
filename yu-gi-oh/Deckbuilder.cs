@@ -51,15 +51,45 @@ namespace yu_gi_oh
 
         public void init()
         {
+            System.Data.DataTable table = new System.Data.DataTable();
+            table.Columns.Add("Name", typeof(string));
+            table.Columns.Add("Type", typeof(string));
+           // DataGridViewImageColumn imageCol = new DataGridViewImageColumn();
+            //imageCol.HeaderText = "Image";
+            table.Columns.Add("Image", typeof(Image)); 
             ConstructDGV();
+            
+            //dataGridView1.Columns.Add(imageCol);
+           
             loadingPB.Visible = true;
-            LoadDataTable(Middleware.Models.Meta.Direction.FORWARDS);
+            LoadDataTable(table, Middleware.Models.Meta.Direction.FORWARDS);
+            dgv1.DataSource = table;
+        }
+            dgv1.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.None;
+            dgv1.RowTemplate.Height = 100;
+            
+            //dgv1.Defa
+            
+                for (int i = 0; i < dgv1.Columns.Count; i++) { 
+                if (dgv1.Columns[i] is DataGridViewImageColumn)
+                {
+                    ((DataGridViewImageColumn)dgv1.Columns[i]).ImageLayout = DataGridViewImageCellLayout.Stretch;
+                    break;
+                }
+
+            }
         }
 
         private void LoadDataTable(Middleware.Models.Meta.Direction direction)
-        {
-            currentPage = currentPage + (int)direction;
+            if  (currentPage < 1)
+            {
+                currentPage = 1;
+            }
+
             Middleware.Controllers.CardController.GetAllCardDtosShortAsync(new CardDto(), currentPage).ContinueWith(t =>
+            {
+                foreach (CardDto card in t.Result.content)
+                {
             {
                 Invoke((MethodInvoker)(() => {
                     foreach(CardDto card in cards)
@@ -77,9 +107,19 @@ namespace yu_gi_oh
                     loadingPB.Visible = false;
                     }));
 
-            });
+            for (int i = 0; i < dgv1.Columns.Count; i++)
+            {
+                if (dgv1.Columns[i] is DataGridViewImageColumn)
+                {
+                    dgv1.Columns[i].Width = 60;
 
+                }
+                
+
+            }
         }
+
+
 
         private void btnBack_Click(object sender, EventArgs e)
         {
@@ -161,6 +201,7 @@ namespace yu_gi_oh
 
             }
         }
+
         private async void saveAsync(string s)
         {
             using (FileStream fs = new FileStream(s, FileMode.Create))
@@ -222,15 +263,41 @@ namespace yu_gi_oh
 
         private void button2_Click(object sender, EventArgs e)
         {
+            System.Data.DataTable table = new System.Data.DataTable();
+            table.Columns.Add("Name", typeof(string));
+            table.Columns.Add("Type", typeof(string));
+            }
+            else
+            {
+                button1.Enabled = true;
+            }
+            System.Data.DataTable table = new System.Data.DataTable();
+            table.Columns.Add("Name", typeof(string));
+            table.Columns.Add("Type", typeof(string));
+            table.Columns.Add("Image", typeof(Image));
             loadingPB.Visible = true;
-            LoadDataTable(Middleware.Models.Meta.Direction.FORWARDS);
+            LoadDataTable(table, Middleware.Models.Meta.Direction.FORWARDS);
+            dgv1.DataSource = table;
+        }
+
+            //if (currentPage == 1) button1.Enabled = false;
+
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            loadingPB.Visible = true;
-            LoadDataTable(Middleware.Models.Meta.Direction.BACKWARDS);
-        }
+            System.Data.DataTable table = new System.Data.DataTable();
+            table.Columns.Add("Name", typeof(string));
+            table.Columns.Add("Type", typeof(string));
+                table.Columns.Add("Image", typeof(Image));
+                loadingPB.Visible = true;
+                LoadDataTable(table, Middleware.Models.Meta.Direction.BACKWARDS);
+                dgv1.DataSource = table;
+                button2.Enabled = true;
+
+                if(currentPage == 1) button1.Enabled = false;
+            } 
+                
     }
 
 }
