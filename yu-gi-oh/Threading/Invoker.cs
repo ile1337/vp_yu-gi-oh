@@ -9,6 +9,10 @@ namespace yu_gi_oh.Threading
 {
     public class Invoker
     {
+        /**
+         * Taken from
+         * https://stackoverflow.com/a/809186
+         */
         public static void SafeInvoke(Control uiElement, Action updater, bool forceSynchronous)
         {
             if (uiElement == null)
