@@ -37,10 +37,6 @@ namespace yu_gi_oh
             this.pictureBox6 = new System.Windows.Forms.PictureBox();
             this.pictureBox7 = new System.Windows.Forms.PictureBox();
             this.pictureBox8 = new System.Windows.Forms.PictureBox();
-            this.pictureBox17 = new System.Windows.Forms.PictureBox();
-            this.pictureBox18 = new System.Windows.Forms.PictureBox();
-            this.pictureBox19 = new System.Windows.Forms.PictureBox();
-            this.pictureBox20 = new System.Windows.Forms.PictureBox();
             this.pictureBox21 = new System.Windows.Forms.PictureBox();
             this.pictureBox22 = new System.Windows.Forms.PictureBox();
             this.pictureBox23 = new System.Windows.Forms.PictureBox();
@@ -85,10 +81,6 @@ namespace yu_gi_oh
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox17)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox18)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox19)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox20)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox21)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox22)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox23)).BeginInit();
@@ -174,41 +166,6 @@ namespace yu_gi_oh
             this.pictureBox8.Size = new System.Drawing.Size(82, 112);
             this.pictureBox8.TabIndex = 4;
             this.pictureBox8.TabStop = false;
-            // 
-            // pictureBox17
-            // 
-            this.pictureBox17.Location = new System.Drawing.Point(825, 649);
-            this.pictureBox17.Name = "pictureBox17";
-            this.pictureBox17.Size = new System.Drawing.Size(82, 112);
-            this.pictureBox17.TabIndex = 19;
-            this.pictureBox17.TabStop = false;
-            // 
-            // pictureBox18
-            // 
-            this.pictureBox18.Location = new System.Drawing.Point(610, 649);
-            this.pictureBox18.Name = "pictureBox18";
-            this.pictureBox18.Size = new System.Drawing.Size(82, 112);
-            this.pictureBox18.TabIndex = 18;
-            this.pictureBox18.TabStop = false;
-            // 
-            // pictureBox19
-            // 
-            this.pictureBox19.Location = new System.Drawing.Point(717, 649);
-            this.pictureBox19.Name = "pictureBox19";
-            this.pictureBox19.Size = new System.Drawing.Size(82, 112);
-            this.pictureBox19.TabIndex = 17;
-            this.pictureBox19.TabStop = false;
-            // 
-            // pictureBox20
-            // 
-            this.pictureBox20.Location = new System.Drawing.Point(512, 649);
-            this.pictureBox20.Name = "pictureBox20";
-            this.pictureBox20.Size = new System.Drawing.Size(82, 112);
-            this.pictureBox20.TabIndex = 16;
-            this.pictureBox20.TabStop = false;
-            this.pictureBox20.MouseEnter += new System.EventHandler(this.pictureBox20_MouseEnter);
-            this.pictureBox20.MouseLeave += new System.EventHandler(this.pictureBox20_MouseLeave);
-            this.pictureBox20.MouseHover += new System.EventHandler(this.pictureBox20_MouseHover);
             // 
             // pictureBox21
             // 
@@ -367,6 +324,7 @@ namespace yu_gi_oh
             this.btnEP.TabIndex = 31;
             this.btnEP.Text = "EP";
             this.btnEP.UseVisualStyleBackColor = false;
+            this.btnEP.Click += new System.EventHandler(this.btnEP_Click);
             // 
             // btnBP
             // 
@@ -411,6 +369,7 @@ namespace yu_gi_oh
             this.btnDP.TabIndex = 27;
             this.btnDP.Text = "DP";
             this.btnDP.UseVisualStyleBackColor = false;
+            this.btnDP.Click += new System.EventHandler(this.btnDP_Click);
             // 
             // groupBox2
             // 
@@ -583,10 +542,6 @@ namespace yu_gi_oh
             this.Controls.Add(this.pictureBox22);
             this.Controls.Add(this.pictureBox23);
             this.Controls.Add(this.pictureBox24);
-            this.Controls.Add(this.pictureBox17);
-            this.Controls.Add(this.pictureBox18);
-            this.Controls.Add(this.pictureBox19);
-            this.Controls.Add(this.pictureBox20);
             this.Name = "Duel";
             this.Text = "Duel";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
@@ -597,10 +552,6 @@ namespace yu_gi_oh
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox17)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox18)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox19)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox20)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox21)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox22)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox23)).EndInit();
@@ -638,10 +589,6 @@ namespace yu_gi_oh
         private System.Windows.Forms.PictureBox pictureBox6;
         private System.Windows.Forms.PictureBox pictureBox7;
         private System.Windows.Forms.PictureBox pictureBox8;
-        private System.Windows.Forms.PictureBox pictureBox17;
-        private System.Windows.Forms.PictureBox pictureBox18;
-        private System.Windows.Forms.PictureBox pictureBox19;
-        private System.Windows.Forms.PictureBox pictureBox20;
         private System.Windows.Forms.PictureBox pictureBox21;
         private System.Windows.Forms.PictureBox pictureBox22;
         private System.Windows.Forms.PictureBox pictureBox23;
