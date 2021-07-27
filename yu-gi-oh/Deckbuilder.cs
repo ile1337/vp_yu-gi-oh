@@ -67,9 +67,10 @@ namespace yu_gi_oh
         {
             ConstructDGV(dgv1, cards);
             ConstructDGV(dgvDeck, deckCards);
-
+            btnNewDeck.Enabled = false;
             loadingPB.Visible = true;
             LoadDataTable(Middleware.Models.Meta.Direction.FORWARDS);
+        
         }
 
 
@@ -118,7 +119,8 @@ namespace yu_gi_oh
 
         private void btnAddtoDeck_Click(object sender, EventArgs e)
         {
-            
+                if(dgv1.SelectedRows.Count >0)
+                    btnNewDeck.Enabled = true;         
             if (dgv1.RowCount >=0)
             {
                 if (isMorethan3(cards[dgv1.CurrentCell.RowIndex]))
@@ -209,15 +211,22 @@ namespace yu_gi_oh
 
         private void btnNewDeck_Click(object sender, EventArgs e)
         {
-            if (MessageBox.Show("Are You sure you want to remove all cards from your deck ?", "Are you sure ?", MessageBoxButtons.YesNo) == DialogResult.Yes)
+            if (deckCards.Count > 0)
             {
-                //lbDeckCards.Items.Clear();
-            }
-            else
-            {
-                return;
-            }
+                btnNewDeck.Enabled = true;
+                if (MessageBox.Show("Are You sure you want to remove all cards from your deck ?", "Are you sure ?", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                {
+                    btnNewDeck.Enabled = false;
+                    dgvDeck.Rows.Clear();
+                }
+                else
+                {
+                    return;
+                }
 
+            }
+            
+           
         }
 
         private void btnOpenDeck_Click(object sender, EventArgs e)
