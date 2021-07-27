@@ -24,7 +24,7 @@ namespace Middleware.Controllers
         // Add static & final IDictionary of images (card_id -> image) which is supposed to be used as a cache
         private readonly static ConcurrentDictionary<string, byte[]> imageCache = new ConcurrentDictionary<string, byte[]>(100, ids.Length);
 
-
+        private readonly static Random random = new();
 
         // Add preload method which loads the images into the IDictionary
         public async static Task PreLoadCache()
@@ -114,6 +114,11 @@ namespace Middleware.Controllers
             await DownloadImages(ids, Properties.YGO_FULL_IMAGES_URL, Properties.FULL_IMAGES_PATH, imageCache);
         }
 
+        public static Image GetRandomImage()
+        {
+            return GetImage(ids[random.Next(0, ids.Length)]);
+        }
+
 
         // Add getters for cards in IDictionary
         public static Image GetImage(string id)
@@ -121,7 +126,7 @@ namespace Middleware.Controllers
             return GetImageFromBytes(id, imageCache);
         }
 
-        public static Image GetImageFromBytes(string id, IDictionary<string, byte[]> cache) 
+        private static Image GetImageFromBytes(string id, IDictionary<string, byte[]> cache) 
         {
             byte[] res;
             cache.TryGetValue(id, out res);
