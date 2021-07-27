@@ -78,7 +78,7 @@ namespace yu_gi_oh
             this.groupBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.groupBox1.Controls.Add(this.dgvDeck);
             this.groupBox1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.groupBox1.Location = new System.Drawing.Point(37, 45);
+            this.groupBox1.Location = new System.Drawing.Point(24, 222);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(714, 492);
             this.groupBox1.TabIndex = 0;
@@ -128,7 +128,7 @@ namespace yu_gi_oh
             this.groupBox2.Controls.Add(this.loadingPB);
             this.groupBox2.Controls.Add(this.dgv1);
             this.groupBox2.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.groupBox2.Location = new System.Drawing.Point(770, 44);
+            this.groupBox2.Location = new System.Drawing.Point(767, 222);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(750, 492);
             this.groupBox2.TabIndex = 1;
@@ -161,7 +161,7 @@ namespace yu_gi_oh
             // 
             this.btnSaveDeck.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.btnSaveDeck.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.btnSaveDeck.Location = new System.Drawing.Point(37, 549);
+            this.btnSaveDeck.Location = new System.Drawing.Point(105, 754);
             this.btnSaveDeck.Name = "btnSaveDeck";
             this.btnSaveDeck.Size = new System.Drawing.Size(127, 33);
             this.btnSaveDeck.TabIndex = 7;
@@ -173,7 +173,7 @@ namespace yu_gi_oh
             // 
             this.btnNewDeck.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.btnNewDeck.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.btnNewDeck.Location = new System.Drawing.Point(327, 549);
+            this.btnNewDeck.Location = new System.Drawing.Point(420, 754);
             this.btnNewDeck.Name = "btnNewDeck";
             this.btnNewDeck.Size = new System.Drawing.Size(127, 33);
             this.btnNewDeck.TabIndex = 8;
@@ -197,7 +197,7 @@ namespace yu_gi_oh
             // 
             this.btnAddtoDeck.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.btnAddtoDeck.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.btnAddtoDeck.Location = new System.Drawing.Point(770, 542);
+            this.btnAddtoDeck.Location = new System.Drawing.Point(878, 163);
             this.btnAddtoDeck.Name = "btnAddtoDeck";
             this.btnAddtoDeck.Size = new System.Drawing.Size(173, 53);
             this.btnAddtoDeck.TabIndex = 11;
@@ -209,7 +209,7 @@ namespace yu_gi_oh
             // 
             this.btnRemoveFromDeck.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.btnRemoveFromDeck.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.btnRemoveFromDeck.Location = new System.Drawing.Point(949, 542);
+            this.btnRemoveFromDeck.Location = new System.Drawing.Point(1057, 164);
             this.btnRemoveFromDeck.Name = "btnRemoveFromDeck";
             this.btnRemoveFromDeck.Size = new System.Drawing.Size(173, 53);
             this.btnRemoveFromDeck.TabIndex = 12;
@@ -221,7 +221,7 @@ namespace yu_gi_oh
             // 
             this.btnOpenDeck.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.btnOpenDeck.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.btnOpenDeck.Location = new System.Drawing.Point(182, 549);
+            this.btnOpenDeck.Location = new System.Drawing.Point(254, 754);
             this.btnOpenDeck.Name = "btnOpenDeck";
             this.btnOpenDeck.Size = new System.Drawing.Size(127, 33);
             this.btnOpenDeck.TabIndex = 14;
@@ -234,7 +234,7 @@ namespace yu_gi_oh
             this.button1.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.button1.Enabled = false;
             this.button1.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.button1.Location = new System.Drawing.Point(1128, 542);
+            this.button1.Location = new System.Drawing.Point(1068, 717);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(59, 40);
             this.button1.TabIndex = 16;
@@ -246,7 +246,7 @@ namespace yu_gi_oh
             // 
             this.button2.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.button2.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.button2.Location = new System.Drawing.Point(1193, 542);
+            this.button2.Location = new System.Drawing.Point(1133, 717);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(54, 40);
             this.button2.TabIndex = 17;
@@ -302,9 +302,9 @@ namespace yu_gi_oh
             this.gbCardFilter.Controls.Add(this.label2);
             this.gbCardFilter.Controls.Add(this.label1);
             this.gbCardFilter.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.gbCardFilter.Location = new System.Drawing.Point(776, 601);
+            this.gbCardFilter.Location = new System.Drawing.Point(296, 45);
             this.gbCardFilter.Name = "gbCardFilter";
-            this.gbCardFilter.Size = new System.Drawing.Size(738, 216);
+            this.gbCardFilter.Size = new System.Drawing.Size(1209, 112);
             this.gbCardFilter.TabIndex = 21;
             this.gbCardFilter.TabStop = false;
             this.gbCardFilter.Text = "Available Card Filter";
@@ -313,12 +313,13 @@ namespace yu_gi_oh
             // 
             this.btnFilter.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.btnFilter.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.btnFilter.Location = new System.Drawing.Point(607, 170);
+            this.btnFilter.Location = new System.Drawing.Point(970, 42);
             this.btnFilter.Name = "btnFilter";
             this.btnFilter.Size = new System.Drawing.Size(125, 40);
             this.btnFilter.TabIndex = 9;
             this.btnFilter.Text = "Filter";
             this.btnFilter.UseVisualStyleBackColor = false;
+            this.btnFilter.Click += new System.EventHandler(this.btnFilter_Click);
             // 
             // nudDEF
             // 
@@ -327,7 +328,7 @@ namespace yu_gi_oh
             0,
             0,
             0});
-            this.nudDEF.Location = new System.Drawing.Point(281, 141);
+            this.nudDEF.Location = new System.Drawing.Point(736, 52);
             this.nudDEF.Maximum = new decimal(new int[] {
             5000,
             0,
@@ -358,11 +359,9 @@ namespace yu_gi_oh
             // 
             this.cbCardType.FormattingEnabled = true;
             this.cbCardType.Items.AddRange(new object[] {
-            "Monster",
-            "Spell",
-            "Trap",
-            "Fusion Monster"});
-            this.cbCardType.Location = new System.Drawing.Point(6, 141);
+            "MONSTER",
+            "SPELL"});
+            this.cbCardType.Location = new System.Drawing.Point(489, 52);
             this.cbCardType.Name = "cbCardType";
             this.cbCardType.Size = new System.Drawing.Size(203, 25);
             this.cbCardType.TabIndex = 6;
@@ -380,7 +379,7 @@ namespace yu_gi_oh
             this.label4.BackColor = System.Drawing.Color.LightSkyBlue;
             this.label4.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.label4.ForeColor = System.Drawing.SystemColors.InactiveCaptionText;
-            this.label4.Location = new System.Drawing.Point(281, 116);
+            this.label4.Location = new System.Drawing.Point(736, 28);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(95, 21);
             this.label4.TabIndex = 4;
@@ -404,7 +403,7 @@ namespace yu_gi_oh
             this.label2.BackColor = System.Drawing.Color.LightSkyBlue;
             this.label2.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.label2.ForeColor = System.Drawing.SystemColors.InactiveCaptionText;
-            this.label2.Location = new System.Drawing.Point(6, 116);
+            this.label2.Location = new System.Drawing.Point(489, 28);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(89, 21);
             this.label2.TabIndex = 2;
@@ -427,7 +426,7 @@ namespace yu_gi_oh
             this.btnRefresh.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.btnRefresh.BackgroundImage = global::yu_gi_oh.Properties.Resources.Refresh;
             this.btnRefresh.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.btnRefresh.Location = new System.Drawing.Point(701, 540);
+            this.btnRefresh.Location = new System.Drawing.Point(105, 87);
             this.btnRefresh.Name = "btnRefresh";
             this.btnRefresh.Size = new System.Drawing.Size(50, 50);
             this.btnRefresh.TabIndex = 22;
