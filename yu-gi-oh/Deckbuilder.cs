@@ -5,6 +5,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.IO;
+using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -39,6 +40,7 @@ namespace yu_gi_oh
             dgv.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dgv.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.None;
             dgv.RowTemplate.Height = 100;
+            dgv.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
 
             // Disable useless columns
             dgv.Columns["id"].Visible = false;
@@ -197,11 +199,7 @@ namespace yu_gi_oh
                 {
                     saveAsync(sfd.FileName);
                 }
-                else
-                {
-                    MessageBox.Show("You need to enter a name for the new deck !", "ERROR");
-                    return;
-                }
+              
 
             }
         }
@@ -317,8 +315,47 @@ namespace yu_gi_oh
             {
                 card.img = Middleware.Controllers.YGOController.GetImage(card.cardId);
             }
+           
             dgvDeck.Refresh();
             dgv1.Refresh();
+        }
+
+        private void btnFilter_Click(object sender, EventArgs e)
+        {
+            if (tbCardName.Text != "" || cbCardType.Text != "" || nudATK.Value != 0 || nudDEF.Value != 0)
+            {
+                currentPage = 1;
+                CardDto card = new CardDto();
+                card.name = tbCardName.Text;
+                card.atk = (int)nudATK.Value;
+                if (cbCardType.Text == "")
+                {
+                    card.type = null;
+                }
+                else {
+                    
+                   card.type = cbCardType.Text;
+                 }
+                card.def = (int)nudDEF.Value;
+                
+                Middleware.Controllers.CardController.GetAllCardDtosShortAsync(card, currentPage).ContinueWith(t =>
+                {
+                    Invoke((MethodInvoker)(() => CleanCards()));
+
+                    Middleware.Models.Meta.PageResponse<CardDto> page = t.Result;
+                    maxPage = page.totalPages;
+
+                    foreach (CardDto card in page.content)
+                    {
+                        card.img = Middleware.Controllers.YGOController.GetImage(card.cardId);
+                        Invoke((MethodInvoker)(() => cards.Add(card)));
+                    }
+
+                    Invoke((MethodInvoker)(() => loadingPB.Visible = false));
+                });
+
+            }
+
         }
     }
 }
