@@ -70,7 +70,8 @@ namespace yu_gi_oh
             btnNewDeck.Enabled = false;
             loadingPB.Visible = true;
             LoadDataTable(Middleware.Models.Meta.Direction.FORWARDS);
-        
+            btnRefresh.BackgroundImageLayout = ImageLayout.Stretch;
+
         }
 
 
@@ -179,26 +180,30 @@ namespace yu_gi_oh
 
         private void btnSaveDeck_Click(object sender, EventArgs e)
         {
-            //if (lbDeckCards.Items.Count > 0)
-            //{
+            if (dgvDeck.Rows.Count>0)
+            {
 
-            //    foreach (CardDto card in lbDeckCards.Items)
-            //    {
-            //        deck.cards.Add(card);
-            //    }
 
-            //    SaveFileDialog sfd = new SaveFileDialog();
-            //    if (sfd.ShowDialog() == DialogResult.OK)
-            //    {
-            //        saveAsync(sfd.FileName);
-            //    }
-            //    else
-            //    {
-            //        MessageBox.Show("You need to enter a name for the new deck !", "ERROR");
-            //        return;
-            //    }
+                foreach (CardDto card in deckCards)
+                {
+                    deck.cards.Add(card);
+                }
 
-            //}
+                SaveFileDialog sfd = new SaveFileDialog();
+                sfd.AddExtension = true;
+                sfd.DefaultExt = ".ygo";
+                sfd.Filter = "ygo files (*.ygo)|*.ygo|All files (*.*)|*.*";
+                if (sfd.ShowDialog() == DialogResult.OK)
+                {
+                    saveAsync(sfd.FileName);
+                }
+                else
+                {
+                    MessageBox.Show("You need to enter a name for the new deck !", "ERROR");
+                    return;
+                }
+
+            }
         }
 
         private async void saveAsync(string s)
@@ -231,11 +236,15 @@ namespace yu_gi_oh
 
         private void btnOpenDeck_Click(object sender, EventArgs e)
         {
-
+            btnNewDeck.Enabled = true;
             OpenFileDialog ofd = new OpenFileDialog();
+            ofd.AddExtension = true;
+            ofd.DefaultExt = ".ygo";
+            ofd.Filter = "ygo files (*.ygo)|*.ygo|All files (*.*)|*.*";
+
             if (ofd.ShowDialog() == DialogResult.OK)
             {
-                //lbDeckCards.Items.Clear();
+                dgvDeck.Rows.Clear();
                 openAsync(ofd.FileName);
             }
         }
@@ -243,11 +252,12 @@ namespace yu_gi_oh
         {
             using (FileStream fs = new FileStream(s, FileMode.Open))
             {
-                Deck deck = await System.Text.Json.JsonSerializer.DeserializeAsync<Deck>(fs);
+
+               Deck deck = await System.Text.Json.JsonSerializer.DeserializeAsync<Deck>(fs);
                 foreach (CardDto card in deck.cards)
                 {
-                    //lbDeckCards.Items.Add(card);
-                   
+                    card.img = Middleware.Controllers.YGOController.GetImage(card.cardId);
+                    deckCards.Add(card);
                 }
 
             }
@@ -295,6 +305,20 @@ namespace yu_gi_oh
                 pbCardImage.BackgroundImage = Middleware.Controllers.YGOController.GetImage(dgvR.Cells["cardId"].Value.ToString());      
                 
             }
+        }
+
+        private void btnRefresh_Click(object sender, EventArgs e)
+        {
+            foreach (CardDto card in cards)
+            {
+                card.img = Middleware.Controllers.YGOController.GetImage(card.cardId);
+            }
+            foreach(CardDto card in deckCards)
+            {
+                card.img = Middleware.Controllers.YGOController.GetImage(card.cardId);
+            }
+            dgvDeck.Refresh();
+            dgv1.Refresh();
         }
     }
 }
