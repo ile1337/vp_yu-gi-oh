@@ -29,8 +29,9 @@ namespace yu_gi_oh
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.dgvDeck = new System.Windows.Forms.DataGridView();
             this.loadingPB = new System.Windows.Forms.PictureBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.dgv1 = new System.Windows.Forms.DataGridView();
@@ -42,12 +43,16 @@ namespace yu_gi_oh
             this.btnOpenDeck = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
-            this.dgvDeck = new System.Windows.Forms.DataGridView();
+            this.pbCardImage = new System.Windows.Forms.PictureBox();
+            this.rtbDescription = new System.Windows.Forms.RichTextBox();
+            this.SelectedCardGB = new System.Windows.Forms.GroupBox();
             this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvDeck)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.loadingPB)).BeginInit();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvDeck)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbCardImage)).BeginInit();
+            this.SelectedCardGB.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox1
@@ -62,15 +67,27 @@ namespace yu_gi_oh
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Your Deck";
             // 
+            // dgvDeck
+            // 
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.dgvDeck.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            this.dgvDeck.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvDeck.Location = new System.Drawing.Point(7, 22);
+            this.dgvDeck.Name = "dgvDeck";
+            this.dgvDeck.RowTemplate.Height = 25;
+            this.dgvDeck.Size = new System.Drawing.Size(701, 463);
+            this.dgvDeck.TabIndex = 0;
+            // 
             // loadingPB
             // 
             this.loadingPB.AccessibleName = "";
             this.loadingPB.BackColor = System.Drawing.SystemColors.Window;
             this.loadingPB.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.loadingPB.ErrorImage = null;
             this.loadingPB.Image = global::yu_gi_oh.Properties.Resources.loading;
-            this.loadingPB.Location = new System.Drawing.Point(6, 11);
+            this.loadingPB.Location = new System.Drawing.Point(6, 23);
             this.loadingPB.Name = "loadingPB";
-            this.loadingPB.Size = new System.Drawing.Size(738, 475);
+            this.loadingPB.Size = new System.Drawing.Size(738, 463);
             this.loadingPB.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.loadingPB.TabIndex = 5;
             this.loadingPB.TabStop = false;
@@ -92,12 +109,13 @@ namespace yu_gi_oh
             // dgv1
             // 
             this.dgv1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgv1.Location = new System.Drawing.Point(6, 11);
+            this.dgv1.Location = new System.Drawing.Point(6, 22);
             this.dgv1.Name = "dgv1";
             this.dgv1.ReadOnly = true;
             this.dgv1.RowTemplate.Height = 25;
-            this.dgv1.Size = new System.Drawing.Size(738, 475);
+            this.dgv1.Size = new System.Drawing.Size(738, 464);
             this.dgv1.TabIndex = 15;
+            this.dgv1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv1_CellClick);
             // 
             // btnSaveDeck
             // 
@@ -188,16 +206,38 @@ namespace yu_gi_oh
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
-            // dgvDeck
+            // pbCardImage
             // 
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.dgvDeck.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle2;
-            this.dgvDeck.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvDeck.Location = new System.Drawing.Point(7, 22);
-            this.dgvDeck.Name = "dgvDeck";
-            this.dgvDeck.RowTemplate.Height = 25;
-            this.dgvDeck.Size = new System.Drawing.Size(701, 463);
-            this.dgvDeck.TabIndex = 0;
+            this.pbCardImage.BackgroundImage = global::yu_gi_oh.Properties.Resources.wp2866512;
+            this.pbCardImage.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pbCardImage.Enabled = false;
+            this.pbCardImage.Location = new System.Drawing.Point(42, 32);
+            this.pbCardImage.Name = "pbCardImage";
+            this.pbCardImage.Size = new System.Drawing.Size(190, 229);
+            this.pbCardImage.TabIndex = 18;
+            this.pbCardImage.TabStop = false;
+            // 
+            // rtbDescription
+            // 
+            this.rtbDescription.Enabled = false;
+            this.rtbDescription.Location = new System.Drawing.Point(42, 267);
+            this.rtbDescription.Name = "rtbDescription";
+            this.rtbDescription.Size = new System.Drawing.Size(190, 247);
+            this.rtbDescription.TabIndex = 19;
+            this.rtbDescription.Text = "";
+            // 
+            // SelectedCardGB
+            // 
+            this.SelectedCardGB.BackgroundImage = global::yu_gi_oh.Properties.Resources.link_wizard__bg__by_alanmac95_dcbum43_250t;
+            this.SelectedCardGB.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.SelectedCardGB.Controls.Add(this.pbCardImage);
+            this.SelectedCardGB.Controls.Add(this.rtbDescription);
+            this.SelectedCardGB.Location = new System.Drawing.Point(1559, 44);
+            this.SelectedCardGB.Name = "SelectedCardGB";
+            this.SelectedCardGB.Size = new System.Drawing.Size(260, 538);
+            this.SelectedCardGB.TabIndex = 20;
+            this.SelectedCardGB.TabStop = false;
+            this.SelectedCardGB.Text = "Selected Card InfoBox";
             // 
             // Deckbuilder
             // 
@@ -205,7 +245,8 @@ namespace yu_gi_oh
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = global::yu_gi_oh.Properties.Resources.d17ad80144ef56adbf58a17a686ea619;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(1538, 703);
+            this.ClientSize = new System.Drawing.Size(1852, 703);
+            this.Controls.Add(this.SelectedCardGB);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.btnOpenDeck);
             this.Controls.Add(this.btnRemoveFromDeck);
@@ -220,10 +261,12 @@ namespace yu_gi_oh
             this.Text = "Deckbuilder";
             this.Load += new System.EventHandler(this.Deckbuilder_Load);
             this.groupBox1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dgvDeck)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.loadingPB)).EndInit();
             this.groupBox2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgv1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvDeck)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbCardImage)).EndInit();
+            this.SelectedCardGB.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -243,5 +286,8 @@ namespace yu_gi_oh
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.DataGridView dgvDeck;
+        private System.Windows.Forms.RichTextBox rtbDescription;
+        private System.Windows.Forms.GroupBox SelectedCardGB;
+        public System.Windows.Forms.PictureBox pbCardImage;
     }
 }

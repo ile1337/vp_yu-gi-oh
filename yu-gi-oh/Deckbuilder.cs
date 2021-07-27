@@ -266,5 +266,15 @@ namespace yu_gi_oh
             if (currentPage <= 1) button1.Enabled = false;
         }
 
+        private void dgv1_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if(e.RowIndex != -1)
+            {
+                DataGridViewRow dgvR = dgv1.Rows[e.RowIndex];
+                rtbDescription.Text =  dgvR.Cells["description"].Value.ToString();
+                pbCardImage.BackgroundImage = Middleware.Controllers.YGOController.GetImage(dgvR.Cells["cardId"].Value.ToString());      
+                
+            }
+        }
     }
 }
