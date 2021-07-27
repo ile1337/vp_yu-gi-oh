@@ -22,5 +22,22 @@ namespace Middleware.Models
         {
             return string.Format("{0} - {1}",name,subType);
         }
+
+        public CardDto(string id, string cardId, string type, string name, string description, string subType, int atk, int def, Image img)
+        {
+            this.id = id;
+            this.cardId = cardId;
+            this.type = type;
+            this.name = name;
+            this.description = description;
+            this.subType = subType;
+            this.atk = atk;
+            this.def = def;
+            this.img = img;
+        }
+
+        public CardDto()
+        {
+        }
     }
 }

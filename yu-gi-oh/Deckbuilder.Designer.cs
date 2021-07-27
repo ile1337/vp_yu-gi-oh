@@ -30,6 +30,9 @@ namespace yu_gi_oh
         private void InitializeComponent()
         {
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.dgvDeck = new System.Windows.Forms.DataGridView();
             this.loadingPB = new System.Windows.Forms.PictureBox();
@@ -83,9 +86,19 @@ namespace yu_gi_oh
             // 
             // dgvDeck
             // 
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Arial Black", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.dgvDeck.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            this.dgvDeck.BackgroundColor = System.Drawing.SystemColors.ActiveCaption;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvDeck.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.dgvDeck.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvDeck.GridColor = System.Drawing.SystemColors.ActiveCaption;
             this.dgvDeck.Location = new System.Drawing.Point(7, 22);
             this.dgvDeck.Name = "dgvDeck";
             this.dgvDeck.RowTemplate.Height = 25;
@@ -99,9 +112,9 @@ namespace yu_gi_oh
             this.loadingPB.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.loadingPB.ErrorImage = null;
             this.loadingPB.Image = global::yu_gi_oh.Properties.Resources.loading;
-            this.loadingPB.Location = new System.Drawing.Point(6, 23);
+            this.loadingPB.Location = new System.Drawing.Point(6, 22);
             this.loadingPB.Name = "loadingPB";
-            this.loadingPB.Size = new System.Drawing.Size(738, 463);
+            this.loadingPB.Size = new System.Drawing.Size(738, 464);
             this.loadingPB.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.loadingPB.TabIndex = 5;
             this.loadingPB.TabStop = false;
@@ -123,6 +136,17 @@ namespace yu_gi_oh
             // 
             // dgv1
             // 
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Arial Black", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.dgv1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle3;
+            this.dgv1.BackgroundColor = System.Drawing.SystemColors.ActiveCaption;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgv1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
             this.dgv1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgv1.Location = new System.Drawing.Point(6, 22);
             this.dgv1.Name = "dgv1";
@@ -234,7 +258,7 @@ namespace yu_gi_oh
             this.pbCardImage.BackgroundImage = global::yu_gi_oh.Properties.Resources.wp2866512;
             this.pbCardImage.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.pbCardImage.Enabled = false;
-            this.pbCardImage.Location = new System.Drawing.Point(42, 32);
+            this.pbCardImage.Location = new System.Drawing.Point(36, 32);
             this.pbCardImage.Name = "pbCardImage";
             this.pbCardImage.Size = new System.Drawing.Size(190, 229);
             this.pbCardImage.TabIndex = 18;
@@ -242,10 +266,10 @@ namespace yu_gi_oh
             // 
             // rtbDescription
             // 
-            this.rtbDescription.Enabled = false;
-            this.rtbDescription.Location = new System.Drawing.Point(42, 267);
+            this.rtbDescription.Location = new System.Drawing.Point(19, 267);
             this.rtbDescription.Name = "rtbDescription";
-            this.rtbDescription.Size = new System.Drawing.Size(190, 247);
+            this.rtbDescription.ReadOnly = true;
+            this.rtbDescription.Size = new System.Drawing.Size(225, 247);
             this.rtbDescription.TabIndex = 19;
             this.rtbDescription.Text = "";
             // 

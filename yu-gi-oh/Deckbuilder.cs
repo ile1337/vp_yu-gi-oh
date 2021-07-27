@@ -16,6 +16,7 @@ namespace yu_gi_oh
         public int maxPage { get; set; } = int.MaxValue;
 
         public BindingList<CardDto> cards = new();
+        public BindingList<CardDto> deckCards = new();
 
         public readonly Dictionary<string, string> dgvNaming = new() { { "img", "" }, { "name", "Name" }, { "type", "Type" }, { "atk", "ATK" }, { "def", "DEF" } };
 
@@ -24,7 +25,6 @@ namespace yu_gi_oh
         {
             InitializeComponent();
             init();
-
         }
 
         public void ConstructDGV(DataGridView dgv, BindingList<CardDto> source)
@@ -66,6 +66,7 @@ namespace yu_gi_oh
         public void init()
         {
             ConstructDGV(dgv1, cards);
+            ConstructDGV(dgvDeck, deckCards);
 
             loadingPB.Visible = true;
             LoadDataTable(Middleware.Models.Meta.Direction.FORWARDS);
@@ -117,53 +118,62 @@ namespace yu_gi_oh
 
         private void btnAddtoDeck_Click(object sender, EventArgs e)
         {
-            /*
+            
             if (dgv1.RowCount >=0)
             {
-                if (isMorethan3(lbAllCards.SelectedItem as CardDto))
+                if (isMorethan3(cards[dgv1.CurrentCell.RowIndex]))
                 {
                     MessageBox.Show("You can't add more than 3 instances of that card!", "ERROR");
-                    return;
+                   return;
                 }
-                if (maxCards())
+                     if (maxCards())
+                    {
+                         MessageBox.Show("The maximum number of cards for a deck is 30 !", "ERROR");
+                         return;
+                   }
+                   
+                foreach (DataGridViewRow row in dgv1.SelectedRows)
                 {
-                    MessageBox.Show("The maximum number of cards for a deck is 30 !", "ERROR");
-                    return;
+                    DataGridViewRow dgvR = row;
+                    deckCards.Add(new CardDto(dgvR.Cells["id"].Value.ToString(), dgvR.Cells["cardId"].Value.ToString(), dgvR.Cells["type"].Value.ToString(),dgvR.Cells["name"].Value.ToString(),dgvR.Cells["description"].Value.ToString(),dgvR.Cells["subType"].Value.ToString(), int.Parse(dgvR.Cells["atk"].Value.ToString()),int.Parse( dgvR.Cells["def"].Value.ToString()), Middleware.Controllers.YGOController.GetImage(dgvR.Cells["cardId"].Value.ToString())));                 
                 }
-                lbDeckCards.Items.Add(lbAllCards.SelectedItem as CardDto);
-            }
-            */
+            } 
         }
+
         private bool isMorethan3(CardDto c)
         {
             int ctr = 0;
-            //if (lbDeckCards.Items.Count > 0)
-            //{
-            //    foreach (CardDto card in lbDeckCards.Items)
-            //    {
-            //        if (card == c)
-            //        {
-            //            ctr++;
-            //        }
-            //    }
-
-            //}
+            if (dgvDeck.Rows.Count > 0)
+            {
+               foreach (CardDto card in deckCards)
+                {
+                    if (card.name == c.name)
+                   {
+                       ctr++;
+                   }
+               }
+            }
             if (ctr >= 3) return true;
             else return false;
         }
         private bool maxCards()
         {
-            //return lbDeckCards.Items.Count > 30;
-            return false;
+            return dgvDeck.Rows.Count > 30;        
         }
 
         private void btnRemoveFromDeck_Click(object sender, EventArgs e)
         {
-            //if (lbDeckCards.SelectedIndex != -1)
-            //{
-            //    lbDeckCards.Items.Remove(lbDeckCards.SelectedItem);
-            //}
-        }
+         
+          foreach (DataGridViewRow row in this.dgvDeck.SelectedRows)
+                {
+                    DataGridViewRow dgvR = row;
+                    CardDto card = new CardDto(dgvR.Cells["id"].Value.ToString(), dgvR.Cells["cardId"].Value.ToString(), dgvR.Cells["type"].Value.ToString(), dgvR.Cells["name"].Value.ToString(), dgvR.Cells["description"].Value.ToString(), dgvR.Cells["subType"].Value.ToString(), int.Parse(dgvR.Cells["atk"].Value.ToString()), int.Parse(dgvR.Cells["def"].Value.ToString()), Middleware.Controllers.YGOController.GetImage(dgvR.Cells["cardId"].Value.ToString()));
+                        deckCards.Remove(card);
+                        dgvDeck.Rows.RemoveAt(dgvR.Index);              
+                }
+                
+         }
+        
 
         private void btnSaveDeck_Click(object sender, EventArgs e)
         {
@@ -228,6 +238,7 @@ namespace yu_gi_oh
                 foreach (CardDto card in deck.cards)
                 {
                     //lbDeckCards.Items.Add(card);
+                   
                 }
 
             }
