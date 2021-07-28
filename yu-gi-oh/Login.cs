@@ -46,8 +46,7 @@ namespace yu_gi_oh
             
             if(tbUsername.Text == "")
             {
-                ep1.SetError(tbUsername, "Username is needed");
-                e.Cancel = true;
+                ep1.SetError(tbUsername, "Username is needed");             
             }
             else
             {
