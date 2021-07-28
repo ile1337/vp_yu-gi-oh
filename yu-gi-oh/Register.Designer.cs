@@ -106,22 +106,26 @@ namespace yu_gi_oh
             // 
             // btnOK
             // 
+            this.btnOK.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.btnOK.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.btnOK.Location = new System.Drawing.Point(13, 239);
             this.btnOK.Name = "btnOK";
             this.btnOK.Size = new System.Drawing.Size(85, 37);
             this.btnOK.TabIndex = 8;
             this.btnOK.Text = "OK";
-            this.btnOK.UseVisualStyleBackColor = true;
+            this.btnOK.UseVisualStyleBackColor = false;
             this.btnOK.Click += new System.EventHandler(this.btnOK_Click);
             // 
             // btnCancel
             // 
+            this.btnCancel.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.btnCancel.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.btnCancel.Location = new System.Drawing.Point(110, 239);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(85, 37);
             this.btnCancel.TabIndex = 9;
             this.btnCancel.Text = "Cancel";
-            this.btnCancel.UseVisualStyleBackColor = true;
+            this.btnCancel.UseVisualStyleBackColor = false;
             this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
             // ep2

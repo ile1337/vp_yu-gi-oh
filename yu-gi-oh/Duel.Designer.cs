@@ -210,6 +210,7 @@ namespace yu_gi_oh
             this.p2Zone.Controls.Add(this.pictureBox8);
             this.p2Zone.Controls.Add(this.pictureBox7);
             this.p2Zone.Controls.Add(this.pictureBox6);
+            this.p2Zone.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.p2Zone.Location = new System.Drawing.Point(483, 133);
             this.p2Zone.Name = "p2Zone";
             this.p2Zone.Size = new System.Drawing.Size(486, 252);
@@ -228,6 +229,7 @@ namespace yu_gi_oh
             this.p1Zone.Controls.Add(this.pictureBox14);
             this.p1Zone.Controls.Add(this.pictureBox15);
             this.p1Zone.Controls.Add(this.pictureBox16);
+            this.p1Zone.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.p1Zone.Location = new System.Drawing.Point(483, 391);
             this.p1Zone.Name = "p1Zone";
             this.p1Zone.Size = new System.Drawing.Size(486, 252);
@@ -307,6 +309,7 @@ namespace yu_gi_oh
             this.groupBox1.Controls.Add(this.btnMP);
             this.groupBox1.Controls.Add(this.btnSP);
             this.groupBox1.Controls.Add(this.btnDP);
+            this.groupBox1.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.groupBox1.Location = new System.Drawing.Point(388, 133);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(68, 510);
@@ -377,12 +380,13 @@ namespace yu_gi_oh
             this.groupBox2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.groupBox2.Controls.Add(this.richTextBox1);
             this.groupBox2.Controls.Add(this.pictureBox25);
+            this.groupBox2.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.groupBox2.Location = new System.Drawing.Point(58, 90);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(296, 596);
             this.groupBox2.TabIndex = 27;
             this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "groupBox2";
+            this.groupBox2.Text = "Selected Card Info";
             // 
             // richTextBox1
             // 
@@ -394,6 +398,8 @@ namespace yu_gi_oh
             // 
             // pictureBox25
             // 
+            this.pictureBox25.BackgroundImage = global::yu_gi_oh.Properties.Resources.wp2866512;
+            this.pictureBox25.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.pictureBox25.Location = new System.Drawing.Point(77, 41);
             this.pictureBox25.Name = "pictureBox25";
             this.pictureBox25.Size = new System.Drawing.Size(146, 179);
@@ -406,6 +412,7 @@ namespace yu_gi_oh
             this.groupBox3.Controls.Add(this.tbP2LifePoints);
             this.groupBox3.Controls.Add(this.label2);
             this.groupBox3.Controls.Add(this.pbP2);
+            this.groupBox3.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.groupBox3.Location = new System.Drawing.Point(1003, 33);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(178, 171);
@@ -419,7 +426,7 @@ namespace yu_gi_oh
             this.tbP2LifePoints.Location = new System.Drawing.Point(17, 53);
             this.tbP2LifePoints.Name = "tbP2LifePoints";
             this.tbP2LifePoints.ReadOnly = true;
-            this.tbP2LifePoints.Size = new System.Drawing.Size(139, 23);
+            this.tbP2LifePoints.Size = new System.Drawing.Size(139, 27);
             this.tbP2LifePoints.TabIndex = 4;
             // 
             // label2
@@ -427,7 +434,7 @@ namespace yu_gi_oh
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(17, 79);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(62, 15);
+            this.label2.Size = new System.Drawing.Size(83, 20);
             this.label2.TabIndex = 31;
             this.label2.Text = "LifePoints:";
             // 
@@ -444,6 +451,7 @@ namespace yu_gi_oh
             this.groupBox4.Controls.Add(this.tbP1LifePoints);
             this.groupBox4.Controls.Add(this.label1);
             this.groupBox4.Controls.Add(this.pbP1);
+            this.groupBox4.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.groupBox4.Location = new System.Drawing.Point(1003, 567);
             this.groupBox4.Name = "groupBox4";
             this.groupBox4.Size = new System.Drawing.Size(178, 171);
@@ -457,7 +465,7 @@ namespace yu_gi_oh
             this.tbP1LifePoints.Location = new System.Drawing.Point(17, 100);
             this.tbP1LifePoints.Name = "tbP1LifePoints";
             this.tbP1LifePoints.ReadOnly = true;
-            this.tbP1LifePoints.Size = new System.Drawing.Size(139, 23);
+            this.tbP1LifePoints.Size = new System.Drawing.Size(139, 29);
             this.tbP1LifePoints.TabIndex = 3;
             // 
             // label1
@@ -465,7 +473,7 @@ namespace yu_gi_oh
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(17, 82);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(62, 15);
+            this.label1.Size = new System.Drawing.Size(90, 21);
             this.label1.TabIndex = 2;
             this.label1.Text = "LifePoints:";
             // 
@@ -483,6 +491,7 @@ namespace yu_gi_oh
             this.groupBox5.Controls.Add(this.btnSubtraction);
             this.groupBox5.Controls.Add(this.btnAddition);
             this.groupBox5.Controls.Add(this.tbValue);
+            this.groupBox5.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.groupBox5.Location = new System.Drawing.Point(1003, 272);
             this.groupBox5.Name = "groupBox5";
             this.groupBox5.Size = new System.Drawing.Size(182, 174);
@@ -521,7 +530,7 @@ namespace yu_gi_oh
             // 
             this.tbValue.Location = new System.Drawing.Point(29, 90);
             this.tbValue.Name = "tbValue";
-            this.tbValue.Size = new System.Drawing.Size(127, 23);
+            this.tbValue.Size = new System.Drawing.Size(127, 25);
             this.tbValue.TabIndex = 0;
             // 
             // Duel
