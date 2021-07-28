@@ -126,7 +126,7 @@ namespace yu_gi_oh
             {
                 foreach (DataGridViewRow row in dgv1.SelectedRows)
                 {
-                    CardDto card = cards[row.Index];
+                    CardDto card = cards[row.Index].Clone();
                     if (IsMoreThan3(card))
                     {
                         MessageBox.Show("You can't add more than 3 instances of that card!", "ERROR");
@@ -272,7 +272,11 @@ namespace yu_gi_oh
             {
                 card.img = Middleware.Controllers.YGOController.GetImage(card.cardId);
             }
-
+            refresh();
+        }
+        private void refresh()
+        {
+           
             dgvDeck.Refresh();
             dgv1.Refresh();
         }

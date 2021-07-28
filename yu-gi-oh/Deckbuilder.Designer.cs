@@ -453,7 +453,7 @@ namespace yu_gi_oh
             this.btnRefresh.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.btnRefresh.BackgroundImage = global::yu_gi_oh.Properties.Resources.Refresh;
             this.btnRefresh.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.btnRefresh.Location = new System.Drawing.Point(105, 87);
+            this.btnRefresh.Location = new System.Drawing.Point(1239, 163);
             this.btnRefresh.Name = "btnRefresh";
             this.btnRefresh.Size = new System.Drawing.Size(50, 50);
             this.btnRefresh.TabIndex = 22;
