@@ -295,10 +295,12 @@ namespace yu_gi_oh
         private void btnResetFilter_Click(object sender, EventArgs e)
         {
             filterCard = new();
+
             tbCardName.ResetText();
             cbCardType.ResetText();
-            nudATK.ResetText();
-            nudDEF.ResetText();
+
+            nudATK.Value = 0;
+            nudDEF.Value = 0;
         }
 
     }
