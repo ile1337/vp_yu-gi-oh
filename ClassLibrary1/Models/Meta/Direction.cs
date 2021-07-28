@@ -9,6 +9,7 @@ namespace Middleware.Models.Meta
     public enum Direction
     {
         BACKWARDS = -1,
+        NONE = 0,
         FORWARDS = 1
     }
 }

@@ -10,15 +10,23 @@ namespace yu_gi_oh
 {
     public partial class Deckbuilder : Form
     {
+        // Saving
+        public Deck deck { get; set; } = new();
+
+        // Paging
         public int CurrentPage { get; set; } = 0;
         public int MaxPage { get; set; } = int.MaxValue;
 
+        // Filter
+        public CardDto filterCard = new();
+
+        // Sources
         public BindingList<CardDto> cards = new();
         public BindingList<CardDto> deckCards = new();
 
+        // DGV construction
         public readonly Dictionary<string, string> dgvNaming = new() { { "img", "" }, { "name", "Name" }, { "type", "Type" }, { "atk", "ATK" }, { "def", "DEF" } };
 
-        public Deck deck { get; set; } = new();
         public Deckbuilder()
         {
             InitializeComponent();
@@ -73,13 +81,9 @@ namespace yu_gi_oh
         private void LoadDataTable(Middleware.Models.Meta.Direction direction)
         {
             CurrentPage += (int)direction;
+            if (CurrentPage < 1) CurrentPage = 1;
 
-            if (CurrentPage < 1)
-            {
-                CurrentPage = 1;
-            }
-
-            Middleware.Controllers.CardController.GetAllCardDtosShortAsync(new(), CurrentPage).ContinueWith(t =>
+            Middleware.Controllers.CardController.GetAllCardDtosShortAsync(filterCard, CurrentPage).ContinueWith(t =>
             {
                 Invoke((MethodInvoker)(() => CleanCards()));
 
@@ -122,7 +126,7 @@ namespace yu_gi_oh
                 foreach (DataGridViewRow row in dgv1.SelectedRows)
                 {
                     CardDto card = cards[row.Index];
-                    if (IsMorethan3(card))
+                    if (IsMoreThan3(card))
                     {
                         MessageBox.Show("You can't add more than 3 instances of that card!", "ERROR");
                         return;
@@ -137,7 +141,7 @@ namespace yu_gi_oh
             }
         }
 
-        private bool IsMorethan3(CardDto c)
+        private bool IsMoreThan3(CardDto c)
         {
             return deckCards.Count((card) => card.id == c.id) >= 3;
         }
@@ -156,7 +160,7 @@ namespace yu_gi_oh
         private void btnSaveDeck_Click(object sender, EventArgs e)
         {
             if (dgvDeck.Rows.Count <= 0) return;
-            
+
             deck.cards = deckCards.ToList();
             CallFileExplorer(new SaveFileDialog(), (dialog) => SaveAsync(dialog.FileName));
         }
@@ -218,22 +222,26 @@ namespace yu_gi_oh
 
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void btnNextPage_Click(object sender, EventArgs e)
         {
             loadingPB.Visible = true;
             LoadDataTable(Middleware.Models.Meta.Direction.FORWARDS);
-            button1.Enabled = true;
-            if (CurrentPage >= MaxPage) button2.Enabled = false;
+            btnPreviousPage.Enabled = true;
+
+            if (CurrentPage >= MaxPage) btnNextPage.Enabled = false;
+            if (CurrentPage <= 1) btnPreviousPage.Enabled = false;
         }
 
 
 
-        private void button1_Click(object sender, EventArgs e)
+        private void btnPreviousPage_Click(object sender, EventArgs e)
         {
             loadingPB.Visible = true;
             LoadDataTable(Middleware.Models.Meta.Direction.BACKWARDS);
-            button2.Enabled = true;
-            if (CurrentPage <= 1) button1.Enabled = false;
+            btnNextPage.Enabled = true;
+
+            if (CurrentPage <= 1) btnPreviousPage.Enabled = false;
+            if (CurrentPage >= MaxPage) btnNextPage.Enabled = false;
         }
 
         private void ReadCard(CardDto card)
@@ -270,38 +278,26 @@ namespace yu_gi_oh
 
         private void btnFilter_Click(object sender, EventArgs e)
         {
-            // TODO: Totally rewrite filter
-
-            if (tbCardName.Text != "" || cbCardType.Text != "" || nudATK.Value != 0 || nudDEF.Value != 0)
+            CurrentPage = 1;
+            filterCard = new()
             {
-                CurrentPage = 1;
-                CardDto card = new()
-                {
-                    name = tbCardName.Text,
-                    atk = (int)nudATK.Value,
-                    type = cbCardType.Text == "" ? null : cbCardType.Text,
-                    def = (int)nudDEF.Value
-                };
-
-                Middleware.Controllers.CardController.GetAllCardDtosShortAsync(card, CurrentPage).ContinueWith(t =>
-                {
-                    Invoke((MethodInvoker)(() => CleanCards()));
-
-                    Middleware.Models.Meta.PageResponse<CardDto> page = t.Result;
-                    MaxPage = page.totalPages;
-
-                    foreach (CardDto card in page.content)
-                    {
-                        card.img = Middleware.Controllers.YGOController.GetImage(card.cardId);
-                        Invoke((MethodInvoker)(() => cards.Add(card)));
-                    }
-
-                    Invoke((MethodInvoker)(() => loadingPB.Visible = false));
-                });
-
-            }
-
+                name = tbCardName.Text == "" ? null : tbCardName.Text,
+                atk = (int)nudATK.Value == 0 ? null : (int)nudATK.Value,
+                type = cbCardType.Text == "" ? null : cbCardType.Text,
+                def = (int)nudDEF.Value == 0 ? null : (int)nudDEF.Value
+            };
+            LoadDataTable(Middleware.Models.Meta.Direction.NONE);
+            btnPreviousPage.Enabled = false;
+            btnNextPage.Enabled = true;
         }
 
+        private void btnResetFilter_Click(object sender, EventArgs e)
+        {
+            filterCard = new();
+            tbCardName.ResetText();
+            cbCardType.ResetText();
+            nudATK.ResetText();
+            nudDEF.ResetText();
+        }
     }
 }

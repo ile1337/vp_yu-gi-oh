@@ -29,10 +29,10 @@ namespace yu_gi_oh
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.dgvDeck = new System.Windows.Forms.DataGridView();
             this.loadingPB = new System.Windows.Forms.PictureBox();
@@ -44,12 +44,13 @@ namespace yu_gi_oh
             this.btnAddtoDeck = new System.Windows.Forms.Button();
             this.btnRemoveFromDeck = new System.Windows.Forms.Button();
             this.btnOpenDeck = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
+            this.btnPreviousPage = new System.Windows.Forms.Button();
+            this.btnNextPage = new System.Windows.Forms.Button();
             this.pbCardImage = new System.Windows.Forms.PictureBox();
             this.rtbDescription = new System.Windows.Forms.RichTextBox();
             this.SelectedCardGB = new System.Windows.Forms.GroupBox();
             this.gbCardFilter = new System.Windows.Forms.GroupBox();
+            this.btnResetFilter = new System.Windows.Forms.Button();
             this.btnFilter = new System.Windows.Forms.Button();
             this.nudDEF = new System.Windows.Forms.NumericUpDown();
             this.nudATK = new System.Windows.Forms.NumericUpDown();
@@ -89,17 +90,17 @@ namespace yu_gi_oh
             // 
             this.dgvDeck.AllowUserToAddRows = false;
             this.dgvDeck.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Arial Black", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.dgvDeck.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Arial Black", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.dgvDeck.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle5;
             this.dgvDeck.BackgroundColor = System.Drawing.SystemColors.ActiveCaption;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvDeck.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvDeck.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle6;
             this.dgvDeck.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvDeck.GridColor = System.Drawing.SystemColors.ActiveCaption;
             this.dgvDeck.Location = new System.Drawing.Point(7, 22);
@@ -143,17 +144,17 @@ namespace yu_gi_oh
             // 
             this.dgv1.AllowUserToAddRows = false;
             this.dgv1.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Arial Black", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.dgv1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle7.Font = new System.Drawing.Font("Arial Black", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.dgv1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle7;
             this.dgv1.BackgroundColor = System.Drawing.SystemColors.ActiveCaption;
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgv1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle8.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgv1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle8;
             this.dgv1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgv1.Location = new System.Drawing.Point(6, 22);
             this.dgv1.Name = "dgv1";
@@ -236,30 +237,30 @@ namespace yu_gi_oh
             this.btnOpenDeck.UseVisualStyleBackColor = false;
             this.btnOpenDeck.Click += new System.EventHandler(this.btnOpenDeck_Click);
             // 
-            // button1
+            // btnPreviousPage
             // 
-            this.button1.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.button1.Enabled = false;
-            this.button1.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.button1.Location = new System.Drawing.Point(1068, 717);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(59, 40);
-            this.button1.TabIndex = 16;
-            this.button1.Text = "<<";
-            this.button1.UseVisualStyleBackColor = false;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.btnPreviousPage.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.btnPreviousPage.Enabled = false;
+            this.btnPreviousPage.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btnPreviousPage.Location = new System.Drawing.Point(1068, 717);
+            this.btnPreviousPage.Name = "btnPreviousPage";
+            this.btnPreviousPage.Size = new System.Drawing.Size(59, 40);
+            this.btnPreviousPage.TabIndex = 16;
+            this.btnPreviousPage.Text = "<<";
+            this.btnPreviousPage.UseVisualStyleBackColor = false;
+            this.btnPreviousPage.Click += new System.EventHandler(this.btnPreviousPage_Click);
             // 
-            // button2
+            // btnNextPage
             // 
-            this.button2.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.button2.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.button2.Location = new System.Drawing.Point(1133, 717);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(54, 40);
-            this.button2.TabIndex = 17;
-            this.button2.Text = ">>";
-            this.button2.UseVisualStyleBackColor = false;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            this.btnNextPage.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.btnNextPage.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btnNextPage.Location = new System.Drawing.Point(1133, 717);
+            this.btnNextPage.Name = "btnNextPage";
+            this.btnNextPage.Size = new System.Drawing.Size(54, 40);
+            this.btnNextPage.TabIndex = 17;
+            this.btnNextPage.Text = ">>";
+            this.btnNextPage.UseVisualStyleBackColor = false;
+            this.btnNextPage.Click += new System.EventHandler(this.btnNextPage_Click);
             // 
             // pbCardImage
             // 
@@ -299,6 +300,7 @@ namespace yu_gi_oh
             // 
             this.gbCardFilter.BackgroundImage = global::yu_gi_oh.Properties.Resources.link_wizard__bg__by_alanmac95_dcbum43_250t;
             this.gbCardFilter.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.gbCardFilter.Controls.Add(this.btnResetFilter);
             this.gbCardFilter.Controls.Add(this.btnFilter);
             this.gbCardFilter.Controls.Add(this.nudDEF);
             this.gbCardFilter.Controls.Add(this.nudATK);
@@ -316,11 +318,23 @@ namespace yu_gi_oh
             this.gbCardFilter.TabStop = false;
             this.gbCardFilter.Text = "Available Card Filter";
             // 
+            // btnResetFilter
+            // 
+            this.btnResetFilter.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.btnResetFilter.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btnResetFilter.Location = new System.Drawing.Point(1074, 42);
+            this.btnResetFilter.Name = "btnResetFilter";
+            this.btnResetFilter.Size = new System.Drawing.Size(125, 40);
+            this.btnResetFilter.TabIndex = 10;
+            this.btnResetFilter.Text = "Reset";
+            this.btnResetFilter.UseVisualStyleBackColor = false;
+            this.btnResetFilter.Click += new System.EventHandler(this.btnResetFilter_Click);
+            // 
             // btnFilter
             // 
             this.btnFilter.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.btnFilter.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.btnFilter.Location = new System.Drawing.Point(970, 42);
+            this.btnFilter.Location = new System.Drawing.Point(943, 42);
             this.btnFilter.Name = "btnFilter";
             this.btnFilter.Size = new System.Drawing.Size(125, 40);
             this.btnFilter.TabIndex = 9;
@@ -450,10 +464,10 @@ namespace yu_gi_oh
             this.Controls.Add(this.btnRefresh);
             this.Controls.Add(this.gbCardFilter);
             this.Controls.Add(this.SelectedCardGB);
-            this.Controls.Add(this.button2);
+            this.Controls.Add(this.btnNextPage);
             this.Controls.Add(this.btnOpenDeck);
             this.Controls.Add(this.btnRemoveFromDeck);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.btnPreviousPage);
             this.Controls.Add(this.btnAddtoDeck);
             this.Controls.Add(this.btnBack);
             this.Controls.Add(this.btnNewDeck);
@@ -490,8 +504,8 @@ namespace yu_gi_oh
         private System.Windows.Forms.Button btnOpenDeck;
         private System.Windows.Forms.PictureBox loadingPB;
         private System.Windows.Forms.DataGridView dgv1;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button btnPreviousPage;
+        private System.Windows.Forms.Button btnNextPage;
         private System.Windows.Forms.DataGridView dgvDeck;
         private System.Windows.Forms.RichTextBox rtbDescription;
         private System.Windows.Forms.GroupBox SelectedCardGB;
@@ -507,5 +521,6 @@ namespace yu_gi_oh
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btnRefresh;
+        private System.Windows.Forms.Button btnResetFilter;
     }
 }

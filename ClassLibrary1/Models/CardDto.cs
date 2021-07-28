@@ -16,8 +16,8 @@ namespace Middleware.Models
         public string name { get; set; }
         public string description { get; set; }
         public string subType { get; set; }//enum
-        public int atk { get; set; }
-        public int def { get; set; }
+        public int? atk { get; set; }
+        public int? def { get; set; }
 
         [JsonIgnore]
         public Image img { get; set; }
