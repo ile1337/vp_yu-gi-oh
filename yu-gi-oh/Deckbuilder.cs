@@ -99,11 +99,11 @@ namespace yu_gi_oh
                     card.img = Middleware.Controllers.YGOController.GetImage(card.cardId);
                     Invoker.SafeInvoke(this, () => cards.Add(card), false);
                 }
-
+                Invoker.SafeInvoke(this, () => lblmax.Text = "/ " + MaxPage.ToString(), false);
                 Invoker.SafeInvoke(this, () => loadingPB.Visible = false, false);
       
             });
-            lblmax.Text = MaxPage.ToString();
+            
         }
 
         private void CleanCards()

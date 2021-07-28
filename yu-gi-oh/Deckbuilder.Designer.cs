@@ -33,6 +33,10 @@ namespace yu_gi_oh
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.dgvDeck = new System.Windows.Forms.DataGridView();
             this.loadingPB = new System.Windows.Forms.PictureBox();
@@ -64,8 +68,8 @@ namespace yu_gi_oh
             this.label5 = new System.Windows.Forms.Label();
             this.lblnumberofcardsinDeck = new System.Windows.Forms.Label();
             this.lblmax = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
             this.lblcurr = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDeck)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.loadingPB)).BeginInit();
@@ -109,10 +113,27 @@ namespace yu_gi_oh
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dgvDeck.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.dgvDeck.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvDeck.GridColor = System.Drawing.SystemColors.ActiveCaption;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Info;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvDeck.DefaultCellStyle = dataGridViewCellStyle3;
+            this.dgvDeck.GridColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.dgvDeck.Location = new System.Drawing.Point(7, 22);
             this.dgvDeck.MultiSelect = false;
             this.dgvDeck.Name = "dgvDeck";
+            this.dgvDeck.ReadOnly = true;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Info;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvDeck.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
             this.dgvDeck.RowHeadersVisible = false;
             this.dgvDeck.RowTemplate.Height = 25;
             this.dgvDeck.Size = new System.Drawing.Size(701, 463);
@@ -126,9 +147,9 @@ namespace yu_gi_oh
             this.loadingPB.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.loadingPB.ErrorImage = null;
             this.loadingPB.Image = global::yu_gi_oh.Properties.Resources.loading;
-            this.loadingPB.Location = new System.Drawing.Point(6, 22);
+            this.loadingPB.Location = new System.Drawing.Point(6, 28);
             this.loadingPB.Name = "loadingPB";
-            this.loadingPB.Size = new System.Drawing.Size(738, 464);
+            this.loadingPB.Size = new System.Drawing.Size(738, 458);
             this.loadingPB.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.loadingPB.TabIndex = 5;
             this.loadingPB.TabStop = false;
@@ -141,7 +162,7 @@ namespace yu_gi_oh
             this.groupBox2.Controls.Add(this.loadingPB);
             this.groupBox2.Controls.Add(this.dgv1);
             this.groupBox2.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.groupBox2.Location = new System.Drawing.Point(767, 222);
+            this.groupBox2.Location = new System.Drawing.Point(755, 219);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(750, 492);
             this.groupBox2.TabIndex = 1;
@@ -154,22 +175,39 @@ namespace yu_gi_oh
             this.dgv1.AllowUserToDeleteRows = false;
             this.dgv1.AllowUserToResizeColumns = false;
             this.dgv1.AllowUserToResizeRows = false;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Arial Black", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.dgv1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Arial Black", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.dgv1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle5;
             this.dgv1.BackgroundColor = System.Drawing.SystemColors.ActiveCaption;
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgv1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgv1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle6;
             this.dgv1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle7.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Info;
+            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgv1.DefaultCellStyle = dataGridViewCellStyle7;
+            this.dgv1.GridColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.dgv1.Location = new System.Drawing.Point(6, 22);
             this.dgv1.MultiSelect = false;
             this.dgv1.Name = "dgv1";
             this.dgv1.ReadOnly = true;
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            dataGridViewCellStyle8.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Info;
+            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgv1.RowHeadersDefaultCellStyle = dataGridViewCellStyle8;
             this.dgv1.RowHeadersVisible = false;
             this.dgv1.RowTemplate.Height = 25;
             this.dgv1.Size = new System.Drawing.Size(738, 464);
@@ -253,7 +291,7 @@ namespace yu_gi_oh
             this.btnPreviousPage.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.btnPreviousPage.Enabled = false;
             this.btnPreviousPage.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.btnPreviousPage.Location = new System.Drawing.Point(1066, 733);
+            this.btnPreviousPage.Location = new System.Drawing.Point(1057, 750);
             this.btnPreviousPage.Name = "btnPreviousPage";
             this.btnPreviousPage.Size = new System.Drawing.Size(59, 40);
             this.btnPreviousPage.TabIndex = 16;
@@ -265,7 +303,7 @@ namespace yu_gi_oh
             // 
             this.btnNextPage.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.btnNextPage.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.btnNextPage.Location = new System.Drawing.Point(1131, 733);
+            this.btnNextPage.Location = new System.Drawing.Point(1144, 750);
             this.btnNextPage.Name = "btnNextPage";
             this.btnNextPage.Size = new System.Drawing.Size(54, 40);
             this.btnNextPage.TabIndex = 17;
@@ -467,48 +505,58 @@ namespace yu_gi_oh
             // 
             // label5
             // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(24, 717);
+            this.label5.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.label5.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label5.Location = new System.Drawing.Point(31, 715);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(79, 15);
+            this.label5.Size = new System.Drawing.Size(141, 27);
             this.label5.TabIndex = 23;
-            this.label5.Text = "cards in deck:";
+            this.label5.Text = "Cards in Deck:";
+            this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // lblnumberofcardsinDeck
             // 
-            this.lblnumberofcardsinDeck.AutoSize = true;
-            this.lblnumberofcardsinDeck.Location = new System.Drawing.Point(105, 717);
+            this.lblnumberofcardsinDeck.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.lblnumberofcardsinDeck.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.lblnumberofcardsinDeck.Location = new System.Drawing.Point(170, 715);
             this.lblnumberofcardsinDeck.Name = "lblnumberofcardsinDeck";
-            this.lblnumberofcardsinDeck.Size = new System.Drawing.Size(79, 15);
+            this.lblnumberofcardsinDeck.Size = new System.Drawing.Size(44, 27);
             this.lblnumberofcardsinDeck.TabIndex = 24;
-            this.lblnumberofcardsinDeck.Text = "cards in deck:";
+            this.lblnumberofcardsinDeck.Text = "1";
+            this.lblnumberofcardsinDeck.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // lblmax
             // 
-            this.lblmax.AutoSize = true;
-            this.lblmax.Location = new System.Drawing.Point(1133, 717);
+            this.lblmax.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.lblmax.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.lblmax.Location = new System.Drawing.Point(1122, 717);
             this.lblmax.Name = "lblmax";
-            this.lblmax.Size = new System.Drawing.Size(79, 15);
+            this.lblmax.Size = new System.Drawing.Size(47, 25);
             this.lblmax.TabIndex = 26;
-            this.lblmax.Text = "cards in deck:";
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(1125, 717);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(12, 15);
-            this.label7.TabIndex = 25;
-            this.label7.Text = "/";
+            this.lblmax.Text = "12";
+            this.lblmax.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // lblcurr
             // 
-            this.lblcurr.AutoSize = true;
-            this.lblcurr.Location = new System.Drawing.Point(1108, 717);
+            this.lblcurr.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.lblcurr.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.lblcurr.Location = new System.Drawing.Point(1085, 717);
             this.lblcurr.Name = "lblcurr";
-            this.lblcurr.Size = new System.Drawing.Size(19, 15);
+            this.lblcurr.Size = new System.Drawing.Size(39, 25);
             this.lblcurr.TabIndex = 27;
-            this.lblcurr.Text = "12";
+            this.lblcurr.Text = "1";
+            this.lblcurr.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
+            // label8
+            // 
+            this.label8.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.label8.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label8.Location = new System.Drawing.Point(209, 715);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(50, 27);
+            this.label8.TabIndex = 29;
+            this.label8.Text = "/ 30";
+            this.label8.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // Deckbuilder
             // 
@@ -517,9 +565,9 @@ namespace yu_gi_oh
             this.BackgroundImage = global::yu_gi_oh.Properties.Resources.d17ad80144ef56adbf58a17a686ea619;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(1852, 829);
+            this.Controls.Add(this.label8);
             this.Controls.Add(this.lblcurr);
             this.Controls.Add(this.lblmax);
-            this.Controls.Add(this.label7);
             this.Controls.Add(this.lblnumberofcardsinDeck);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.btnRefresh);
@@ -550,7 +598,6 @@ namespace yu_gi_oh
             ((System.ComponentModel.ISupportInitialize)(this.nudDEF)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudATK)).EndInit();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -587,7 +634,7 @@ namespace yu_gi_oh
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label lblnumberofcardsinDeck;
         private System.Windows.Forms.Label lblmax;
-        private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label lblcurr;
+        private System.Windows.Forms.Label label8;
     }
 }
