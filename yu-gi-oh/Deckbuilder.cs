@@ -5,6 +5,7 @@ using System.ComponentModel;
 using System.IO;
 using System.Linq;
 using System.Windows.Forms;
+using yu_gi_oh.Threading;
 
 namespace yu_gi_oh
 {
@@ -299,5 +300,6 @@ namespace yu_gi_oh
             nudATK.ResetText();
             nudDEF.ResetText();
         }
+
     }
 }

@@ -100,9 +100,11 @@ namespace Middleware.Controllers
         {
             string path = folder + mainPath;
             if (!Directory.Exists(path)) Directory.CreateDirectory(path);
-            if (Directory.GetFiles(path).Length != 0) return;
+            List<string> downloaded = Directory.GetFiles(path).Select(f => Path.GetFileNameWithoutExtension(f)).ToList();
 
-            Task.Run(() => ids.ToList().ForEach(async id => await DownloadImage(id, url, mainPath, cache))).ContinueWith(_ => GC.Collect());
+            Task.Run(() => ids.Except(downloaded).ToList()
+            .ForEach(async id => await DownloadImage(id, url, mainPath, cache)))
+                .ContinueWith(_ => GC.Collect());
         }
 
 
