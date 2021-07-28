@@ -25,5 +25,20 @@ namespace Middleware.Models
         {
             return string.Format("{0} - {1}",name,subType);
         }
+        public CardDto Clone()
+        {
+            return new()
+            {
+                id = this.id,
+                cardId = this.cardId,
+                type = this.type,
+                name = this.name,
+                description = this.description,
+                subType = this.subType,
+                atk = this.atk,
+                def = this.def,
+                img =  this.img != null ? this.img.Clone() as Image : null
+            };
+        }
     }
 }
