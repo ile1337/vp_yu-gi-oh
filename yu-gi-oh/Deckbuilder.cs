@@ -2,37 +2,42 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.IO;
 using System.Linq;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace yu_gi_oh
 {
     public partial class Deckbuilder : Form
     {
-        public int currentPage { get; set; } = 0;
-        public int maxPage { get; set; } = int.MaxValue;
+        public int CurrentPage { get; set; } = 0;
+        public int MaxPage { get; set; } = int.MaxValue;
 
         public BindingList<CardDto> cards = new();
         public BindingList<CardDto> deckCards = new();
 
         public readonly Dictionary<string, string> dgvNaming = new() { { "img", "" }, { "name", "Name" }, { "type", "Type" }, { "atk", "ATK" }, { "def", "DEF" } };
 
-        public Deck deck { get; set; } = new Deck();
+        public Deck deck { get; set; } = new();
         public Deckbuilder()
         {
             InitializeComponent();
-            init();
+            Init();
+        }
+
+        public void Init()
+        {
+            ConstructDGV(dgv1, cards);
+            ConstructDGV(dgvDeck, deckCards);
+            btnNewDeck.Enabled = false;
+            loadingPB.Visible = true;
+            LoadDataTable(Middleware.Models.Meta.Direction.FORWARDS);
+            btnRefresh.BackgroundImageLayout = ImageLayout.Stretch;
         }
 
         public void ConstructDGV(DataGridView dgv, BindingList<CardDto> source)
         {
             // Base configurations
-            dgv.AllowUserToAddRows = false;
-
             dgv.AutoGenerateColumns = true;
             dgv.DataSource = source;
             dgv.AutoGenerateColumns = false;
@@ -65,33 +70,21 @@ namespace yu_gi_oh
             }
         }
 
-        public void init()
-        {
-            ConstructDGV(dgv1, cards);
-            ConstructDGV(dgvDeck, deckCards);
-            btnNewDeck.Enabled = false;
-            loadingPB.Visible = true;
-            LoadDataTable(Middleware.Models.Meta.Direction.FORWARDS);
-            btnRefresh.BackgroundImageLayout = ImageLayout.Stretch;
-
-        }
-
-
         private void LoadDataTable(Middleware.Models.Meta.Direction direction)
         {
-            currentPage += (int)direction;
+            CurrentPage += (int)direction;
 
-            if (currentPage < 1)
+            if (CurrentPage < 1)
             {
-                currentPage = 1;
+                CurrentPage = 1;
             }
 
-            Middleware.Controllers.CardController.GetAllCardDtosShortAsync(new CardDto(), currentPage).ContinueWith(t =>
+            Middleware.Controllers.CardController.GetAllCardDtosShortAsync(new(), CurrentPage).ContinueWith(t =>
             {
                 Invoke((MethodInvoker)(() => CleanCards()));
 
                 Middleware.Models.Meta.PageResponse<CardDto> page = t.Result;
-                maxPage = page.totalPages;
+                MaxPage = page.totalPages;
 
                 foreach (CardDto card in page.content)
                 {
@@ -107,7 +100,7 @@ namespace yu_gi_oh
         {
             foreach (CardDto card in cards)
             {
-                if(card.img != null) card.img.Dispose();
+                if (card.img != null) card.img.Dispose();
             }
             cards.Clear();
         }
@@ -115,101 +108,63 @@ namespace yu_gi_oh
         private void btnBack_Click(object sender, EventArgs e)
         {
             this.Hide();
-            MainMenu form = new MainMenu();
+            MainMenu form = new();
             form.ShowDialog();
             this.Close();
         }
 
         private void btnAddtoDeck_Click(object sender, EventArgs e)
         {
-                if(dgv1.SelectedRows.Count >0)
-                    btnNewDeck.Enabled = true;         
-            if (dgv1.RowCount >=0)
+            if (dgv1.SelectedRows.Count > 0) btnNewDeck.Enabled = true;
+
+            if (dgv1.RowCount >= 0)
             {
-                if (isMorethan3(cards[dgv1.CurrentCell.RowIndex]))
-                {
-                    MessageBox.Show("You can't add more than 3 instances of that card!", "ERROR");
-                   return;
-                }
-                     if (maxCards())
-                    {
-                         MessageBox.Show("The maximum number of cards for a deck is 30 !", "ERROR");
-                         return;
-                   }
-                   
                 foreach (DataGridViewRow row in dgv1.SelectedRows)
                 {
-                    DataGridViewRow dgvR = row;
-                    deckCards.Add(new CardDto(dgvR.Cells["id"].Value.ToString(), dgvR.Cells["cardId"].Value.ToString(), dgvR.Cells["type"].Value.ToString(),dgvR.Cells["name"].Value.ToString(),dgvR.Cells["description"].Value.ToString(),dgvR.Cells["subType"].Value.ToString(), int.Parse(dgvR.Cells["atk"].Value.ToString()),int.Parse( dgvR.Cells["def"].Value.ToString()), Middleware.Controllers.YGOController.GetImage(dgvR.Cells["cardId"].Value.ToString())));                 
+                    CardDto card = cards[row.Index];
+                    if (IsMorethan3(card))
+                    {
+                        MessageBox.Show("You can't add more than 3 instances of that card!", "ERROR");
+                        return;
+                    }
+                    else if (MaxCards())
+                    {
+                        MessageBox.Show("The maximum number of cards for a deck is 30 !", "ERROR");
+                        return;
+                    }
+                    deckCards.Add(card);
                 }
-            } 
+            }
         }
 
-        private bool isMorethan3(CardDto c)
+        private bool IsMorethan3(CardDto c)
         {
-            int ctr = 0;
-            if (dgvDeck.Rows.Count > 0)
-            {
-               foreach (CardDto card in deckCards)
-                {
-                    if (card.name == c.name)
-                   {
-                       ctr++;
-                   }
-               }
-            }
-            if (ctr >= 3) return true;
-            else return false;
+            return deckCards.Count((card) => card.id == c.id) >= 3;
         }
-        private bool maxCards()
+
+        private bool MaxCards()
         {
-            return dgvDeck.Rows.Count > 30;        
+            return dgvDeck.Rows.Count > 30;
         }
 
         private void btnRemoveFromDeck_Click(object sender, EventArgs e)
         {
-         
-          foreach (DataGridViewRow row in this.dgvDeck.SelectedRows)
-                {
-                    DataGridViewRow dgvR = row;
-                    CardDto card = new CardDto(dgvR.Cells["id"].Value.ToString(), dgvR.Cells["cardId"].Value.ToString(), dgvR.Cells["type"].Value.ToString(), dgvR.Cells["name"].Value.ToString(), dgvR.Cells["description"].Value.ToString(), dgvR.Cells["subType"].Value.ToString(), int.Parse(dgvR.Cells["atk"].Value.ToString()), int.Parse(dgvR.Cells["def"].Value.ToString()), Middleware.Controllers.YGOController.GetImage(dgvR.Cells["cardId"].Value.ToString()));
-                        deckCards.Remove(card);
-                        dgvDeck.Rows.RemoveAt(dgvR.Index);              
-                }
-                
-         }
-        
+            foreach (DataGridViewRow row in dgvDeck.SelectedRows)
+                deckCards.RemoveAt(row.Index);
+        }
 
         private void btnSaveDeck_Click(object sender, EventArgs e)
         {
-            if (dgvDeck.Rows.Count>0)
-            {
-
-
-                foreach (CardDto card in deckCards)
-                {
-                    deck.cards.Add(card);
-                }
-
-                SaveFileDialog sfd = new SaveFileDialog();
-                sfd.AddExtension = true;
-                sfd.DefaultExt = ".ygo";
-                sfd.Filter = "ygo files (*.ygo)|*.ygo|All files (*.*)|*.*";
-                if (sfd.ShowDialog() == DialogResult.OK)
-                {
-                    saveAsync(sfd.FileName);
-                }
-              
-
-            }
+            if (dgvDeck.Rows.Count <= 0) return;
+            
+            deck.cards = deckCards.ToList();
+            CallFileExplorer(new SaveFileDialog(), (dialog) => SaveAsync(dialog.FileName));
         }
 
-        private async void saveAsync(string s)
+        private async void SaveAsync(string s)
         {
-            using (FileStream fs = new FileStream(s, FileMode.Create))
-            {
-                await System.Text.Json.JsonSerializer.SerializeAsync(fs, deck);
-            }
+            using FileStream fs = new(s, FileMode.Create);
+            await System.Text.Json.JsonSerializer.SerializeAsync(fs, deck);
         }
 
         private void btnNewDeck_Click(object sender, EventArgs e)
@@ -220,55 +175,42 @@ namespace yu_gi_oh
                 if (MessageBox.Show("Are You sure you want to remove all cards from your deck ?", "Are you sure ?", MessageBoxButtons.YesNo) == DialogResult.Yes)
                 {
                     btnNewDeck.Enabled = false;
-                    dgvDeck.Rows.Clear();
+                    deckCards.Clear();
                 }
-                else
-                {
-                    return;
-                }
-
+                else return;
             }
-            
-           
         }
+
+        private static void CallFileExplorer(FileDialog dialog, Action<FileDialog> action)
+        {
+            dialog.AddExtension = true;
+            dialog.DefaultExt = Configuration.YGO_DEFAULT_EXTENSION;
+            dialog.Filter = Configuration.YGO_FILTER_EXTENSION;
+
+            if (dialog.ShowDialog() == DialogResult.OK) action.Invoke(dialog);
+        }
+
 
         private void btnOpenDeck_Click(object sender, EventArgs e)
         {
             btnNewDeck.Enabled = true;
-            OpenFileDialog ofd = new OpenFileDialog();
-            ofd.AddExtension = true;
-            ofd.DefaultExt = ".ygo";
-            ofd.Filter = "ygo files (*.ygo)|*.ygo|All files (*.*)|*.*";
-
-            if (ofd.ShowDialog() == DialogResult.OK)
+            CallFileExplorer(new OpenFileDialog(), (dialog) =>
             {
-                dgvDeck.Rows.Clear();
-                openAsync(ofd.FileName);
-            }
+                deckCards.Clear();
+                OpenAsync(dialog.FileName);
+            });
         }
-        private async void openAsync(string s)
+
+        private async void OpenAsync(string s)
         {
-            using (FileStream fs = new FileStream(s, FileMode.Open))
+            using FileStream fs = new(s, FileMode.Open);
+
+            Deck deck = await System.Text.Json.JsonSerializer.DeserializeAsync<Deck>(fs);
+            foreach (CardDto card in deck.cards)
             {
-
-               Deck deck = await System.Text.Json.JsonSerializer.DeserializeAsync<Deck>(fs);
-                foreach (CardDto card in deck.cards)
-                {
-                    card.img = Middleware.Controllers.YGOController.GetImage(card.cardId);
-                    deckCards.Add(card);
-                }
-
+                card.img = Middleware.Controllers.YGOController.GetImage(card.cardId);
+                deckCards.Add(card);
             }
-        }
-
-        private void pictureBox1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
         }
 
         private void Deckbuilder_Load(object sender, EventArgs e)
@@ -281,7 +223,7 @@ namespace yu_gi_oh
             loadingPB.Visible = true;
             LoadDataTable(Middleware.Models.Meta.Direction.FORWARDS);
             button1.Enabled = true;
-            if (currentPage >= maxPage) button2.Enabled = false;
+            if (CurrentPage >= MaxPage) button2.Enabled = false;
         }
 
 
@@ -291,18 +233,24 @@ namespace yu_gi_oh
             loadingPB.Visible = true;
             LoadDataTable(Middleware.Models.Meta.Direction.BACKWARDS);
             button2.Enabled = true;
-            if (currentPage <= 1) button1.Enabled = false;
+            if (CurrentPage <= 1) button1.Enabled = false;
+        }
+
+        private void ReadCard(CardDto card)
+        {
+            rtbDescription.Text = card.description;
+            pbCardImage.BackgroundImage = card.img;
         }
 
         private void dgv1_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            if(e.RowIndex != -1)
-            {
-                DataGridViewRow dgvR = dgv1.Rows[e.RowIndex];
-                rtbDescription.Text =  dgvR.Cells["description"].Value.ToString();
-                pbCardImage.BackgroundImage = Middleware.Controllers.YGOController.GetImage(dgvR.Cells["cardId"].Value.ToString());      
-                
-            }
+            if (e.RowIndex == -1) return;
+            ReadCard(cards[e.RowIndex]);
+        }
+        private void dgvDeck_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex == -1) return;
+            ReadCard(deckCards[e.RowIndex]);
         }
 
         private void btnRefresh_Click(object sender, EventArgs e)
@@ -311,39 +259,36 @@ namespace yu_gi_oh
             {
                 card.img = Middleware.Controllers.YGOController.GetImage(card.cardId);
             }
-            foreach(CardDto card in deckCards)
+            foreach (CardDto card in deckCards)
             {
                 card.img = Middleware.Controllers.YGOController.GetImage(card.cardId);
             }
-           
+
             dgvDeck.Refresh();
             dgv1.Refresh();
         }
 
         private void btnFilter_Click(object sender, EventArgs e)
         {
+            // TODO: Totally rewrite filter
+
             if (tbCardName.Text != "" || cbCardType.Text != "" || nudATK.Value != 0 || nudDEF.Value != 0)
             {
-                currentPage = 1;
-                CardDto card = new CardDto();
-                card.name = tbCardName.Text;
-                card.atk = (int)nudATK.Value;
-                if (cbCardType.Text == "")
+                CurrentPage = 1;
+                CardDto card = new()
                 {
-                    card.type = null;
-                }
-                else {
-                    
-                   card.type = cbCardType.Text;
-                 }
-                card.def = (int)nudDEF.Value;
-                
-                Middleware.Controllers.CardController.GetAllCardDtosShortAsync(card, currentPage).ContinueWith(t =>
+                    name = tbCardName.Text,
+                    atk = (int)nudATK.Value,
+                    type = cbCardType.Text == "" ? null : cbCardType.Text,
+                    def = (int)nudDEF.Value
+                };
+
+                Middleware.Controllers.CardController.GetAllCardDtosShortAsync(card, CurrentPage).ContinueWith(t =>
                 {
                     Invoke((MethodInvoker)(() => CleanCards()));
 
                     Middleware.Models.Meta.PageResponse<CardDto> page = t.Result;
-                    maxPage = page.totalPages;
+                    MaxPage = page.totalPages;
 
                     foreach (CardDto card in page.content)
                     {
@@ -357,5 +302,6 @@ namespace yu_gi_oh
             }
 
         }
+
     }
 }

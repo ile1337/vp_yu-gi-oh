@@ -87,6 +87,8 @@ namespace yu_gi_oh
             // 
             // dgvDeck
             // 
+            this.dgvDeck.AllowUserToAddRows = false;
+            this.dgvDeck.AllowUserToDeleteRows = false;
             dataGridViewCellStyle1.Font = new System.Drawing.Font("Arial Black", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.dgvDeck.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvDeck.BackgroundColor = System.Drawing.SystemColors.ActiveCaption;
@@ -102,9 +104,11 @@ namespace yu_gi_oh
             this.dgvDeck.GridColor = System.Drawing.SystemColors.ActiveCaption;
             this.dgvDeck.Location = new System.Drawing.Point(7, 22);
             this.dgvDeck.Name = "dgvDeck";
+            this.dgvDeck.RowHeadersVisible = false;
             this.dgvDeck.RowTemplate.Height = 25;
             this.dgvDeck.Size = new System.Drawing.Size(701, 463);
             this.dgvDeck.TabIndex = 0;
+            this.dgvDeck.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDeck_CellClick);
             // 
             // loadingPB
             // 
@@ -137,6 +141,8 @@ namespace yu_gi_oh
             // 
             // dgv1
             // 
+            this.dgv1.AllowUserToAddRows = false;
+            this.dgv1.AllowUserToDeleteRows = false;
             dataGridViewCellStyle3.Font = new System.Drawing.Font("Arial Black", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.dgv1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle3;
             this.dgv1.BackgroundColor = System.Drawing.SystemColors.ActiveCaption;
@@ -152,6 +158,7 @@ namespace yu_gi_oh
             this.dgv1.Location = new System.Drawing.Point(6, 22);
             this.dgv1.Name = "dgv1";
             this.dgv1.ReadOnly = true;
+            this.dgv1.RowHeadersVisible = false;
             this.dgv1.RowTemplate.Height = 25;
             this.dgv1.Size = new System.Drawing.Size(738, 464);
             this.dgv1.TabIndex = 15;
