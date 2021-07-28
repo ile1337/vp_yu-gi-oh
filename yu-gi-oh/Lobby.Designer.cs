@@ -50,12 +50,13 @@ namespace yu_gi_oh
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Controls.Add(this.textBox1);
             this.groupBox1.Controls.Add(this.comboBox1);
+            this.groupBox1.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.groupBox1.Location = new System.Drawing.Point(47, 305);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(362, 158);
             this.groupBox1.TabIndex = 1;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "groupBox1";
+            this.groupBox1.Text = "Player Filter";
             // 
             // label2
             // 
@@ -85,7 +86,7 @@ namespace yu_gi_oh
             // 
             this.textBox1.Location = new System.Drawing.Point(8, 50);
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(217, 23);
+            this.textBox1.Size = new System.Drawing.Size(217, 25);
             this.textBox1.TabIndex = 1;
             // 
             // comboBox1
@@ -93,7 +94,7 @@ namespace yu_gi_oh
             this.comboBox1.FormattingEnabled = true;
             this.comboBox1.Location = new System.Drawing.Point(6, 111);
             this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(218, 23);
+            this.comboBox1.Size = new System.Drawing.Size(218, 25);
             this.comboBox1.TabIndex = 0;
             // 
             // groupBox2
@@ -101,17 +102,18 @@ namespace yu_gi_oh
             this.groupBox2.BackgroundImage = global::yu_gi_oh.Properties.Resources.link_wizard__bg__by_alanmac95_dcbum43_250t;
             this.groupBox2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.groupBox2.Controls.Add(this.lbPlayers);
+            this.groupBox2.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.groupBox2.Location = new System.Drawing.Point(47, 28);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(362, 250);
             this.groupBox2.TabIndex = 4;
             this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "groupBox2";
+            this.groupBox2.Text = "List of players";
             // 
             // lbPlayers
             // 
             this.lbPlayers.FormattingEnabled = true;
-            this.lbPlayers.ItemHeight = 15;
+            this.lbPlayers.ItemHeight = 20;
             this.lbPlayers.Location = new System.Drawing.Point(8, 34);
             this.lbPlayers.Name = "lbPlayers";
             this.lbPlayers.Size = new System.Drawing.Size(337, 184);

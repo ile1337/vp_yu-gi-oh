@@ -53,33 +53,38 @@ namespace yu_gi_oh
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.tbUsername);
             this.groupBox1.Controls.Add(this.label1);
+            this.groupBox1.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.groupBox1.Location = new System.Drawing.Point(555, 162);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(207, 268);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "groupBox1";
+            this.groupBox1.Text = "Log In";
             this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
             // 
             // btnRegister
             // 
+            this.btnRegister.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.btnRegister.CausesValidation = false;
-            this.btnRegister.Location = new System.Drawing.Point(18, 204);
+            this.btnRegister.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btnRegister.Location = new System.Drawing.Point(6, 204);
             this.btnRegister.Name = "btnRegister";
-            this.btnRegister.Size = new System.Drawing.Size(74, 32);
+            this.btnRegister.Size = new System.Drawing.Size(81, 32);
             this.btnRegister.TabIndex = 5;
             this.btnRegister.Text = "Register";
-            this.btnRegister.UseVisualStyleBackColor = true;
+            this.btnRegister.UseVisualStyleBackColor = false;
             this.btnRegister.Click += new System.EventHandler(this.btnRegister_Click);
             // 
             // btnLogIn
             // 
-            this.btnLogIn.Location = new System.Drawing.Point(105, 204);
+            this.btnLogIn.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.btnLogIn.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btnLogIn.Location = new System.Drawing.Point(98, 204);
             this.btnLogIn.Name = "btnLogIn";
-            this.btnLogIn.Size = new System.Drawing.Size(75, 32);
+            this.btnLogIn.Size = new System.Drawing.Size(82, 32);
             this.btnLogIn.TabIndex = 4;
             this.btnLogIn.Text = "Log In";
-            this.btnLogIn.UseVisualStyleBackColor = true;
+            this.btnLogIn.UseVisualStyleBackColor = false;
             this.btnLogIn.Click += new System.EventHandler(this.btnLogIn_Click);
             // 
             // mtbPassword
@@ -87,7 +92,7 @@ namespace yu_gi_oh
             this.mtbPassword.Location = new System.Drawing.Point(7, 145);
             this.mtbPassword.Name = "mtbPassword";
             this.mtbPassword.PasswordChar = '*';
-            this.mtbPassword.Size = new System.Drawing.Size(173, 23);
+            this.mtbPassword.Size = new System.Drawing.Size(173, 27);
             this.mtbPassword.TabIndex = 3;
             this.mtbPassword.Validating += new System.ComponentModel.CancelEventHandler(this.maskedTextBox1_Validating);
             // 
@@ -107,7 +112,7 @@ namespace yu_gi_oh
             // 
             this.tbUsername.Location = new System.Drawing.Point(6, 80);
             this.tbUsername.Name = "tbUsername";
-            this.tbUsername.Size = new System.Drawing.Size(174, 23);
+            this.tbUsername.Size = new System.Drawing.Size(174, 27);
             this.tbUsername.TabIndex = 1;
             this.tbUsername.Validating += new System.ComponentModel.CancelEventHandler(this.textBox1_Validating);
             // 
@@ -127,7 +132,7 @@ namespace yu_gi_oh
             // 
             this.ep1.ContainerControl = this;
             // 
-            // Form1
+            // Login
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -135,8 +140,8 @@ namespace yu_gi_oh
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(792, 505);
             this.Controls.Add(this.groupBox1);
-            this.Name = "Form1";
-            this.Text = "Form1";
+            this.Name = "Login";
+            this.Text = "Log In";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
