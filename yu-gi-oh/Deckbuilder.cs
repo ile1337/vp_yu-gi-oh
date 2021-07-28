@@ -42,6 +42,9 @@ namespace yu_gi_oh
             loadingPB.Visible = true;
             LoadDataTable(Middleware.Models.Meta.Direction.FORWARDS);
             btnRefresh.BackgroundImageLayout = ImageLayout.Stretch;
+            lblnumberofcardsinDeck.Text = "0";
+            lblcurr.Text = CurrentPage.ToString();
+           
         }
 
         public void ConstructDGV(DataGridView dgv, BindingList<CardDto> source)
@@ -90,7 +93,7 @@ namespace yu_gi_oh
 
                 Middleware.Models.Meta.PageResponse<CardDto> page = t.Result;
                 MaxPage = page.totalPages;
-
+              
                 foreach (CardDto card in page.content)
                 {
                     card.img = Middleware.Controllers.YGOController.GetImage(card.cardId);
@@ -98,7 +101,9 @@ namespace yu_gi_oh
                 }
 
                 Invoker.SafeInvoke(this, () => loadingPB.Visible = false, false);
+      
             });
+            lblmax.Text = MaxPage.ToString();
         }
 
         private void CleanCards()
@@ -138,6 +143,7 @@ namespace yu_gi_oh
                         return;
                     }
                     deckCards.Add(card);
+                    lblnumberofcardsinDeck.Text = deckCards.Count.ToString();
                 }
             }
         }
@@ -156,6 +162,7 @@ namespace yu_gi_oh
         {
             foreach (DataGridViewRow row in dgvDeck.SelectedRows)
                 deckCards.RemoveAt(row.Index);
+            lblnumberofcardsinDeck.Text = deckCards.Count.ToString();
         }
 
         private void btnSaveDeck_Click(object sender, EventArgs e)
@@ -180,6 +187,7 @@ namespace yu_gi_oh
                 if (MessageBox.Show("Are You sure you want to remove all cards from your deck ?", "Are you sure ?", MessageBoxButtons.YesNo) == DialogResult.Yes)
                 {
                     btnNewDeck.Enabled = false;
+                    lblnumberofcardsinDeck.Text = "0";
                     deckCards.Clear();
                 }
                 else return;
@@ -216,6 +224,7 @@ namespace yu_gi_oh
                 card.img = Middleware.Controllers.YGOController.GetImage(card.cardId);
                 deckCards.Add(card);
             }
+            lblnumberofcardsinDeck.Text = deckCards.Count.ToString();
         }
 
         private void Deckbuilder_Load(object sender, EventArgs e)
@@ -231,6 +240,7 @@ namespace yu_gi_oh
 
             if (CurrentPage >= MaxPage) btnNextPage.Enabled = false;
             if (CurrentPage <= 1) btnPreviousPage.Enabled = false;
+            lblcurr.Text = CurrentPage.ToString();
         }
 
 
@@ -243,6 +253,8 @@ namespace yu_gi_oh
 
             if (CurrentPage <= 1) btnPreviousPage.Enabled = false;
             if (CurrentPage >= MaxPage) btnNextPage.Enabled = false;
+            lblcurr.Text = CurrentPage.ToString();
+
         }
 
         private void ReadCard(CardDto card)

@@ -61,6 +61,11 @@ namespace yu_gi_oh
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.btnRefresh = new System.Windows.Forms.Button();
+            this.label5 = new System.Windows.Forms.Label();
+            this.lblnumberofcardsinDeck = new System.Windows.Forms.Label();
+            this.lblmax = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.lblcurr = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDeck)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.loadingPB)).BeginInit();
@@ -248,7 +253,7 @@ namespace yu_gi_oh
             this.btnPreviousPage.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.btnPreviousPage.Enabled = false;
             this.btnPreviousPage.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.btnPreviousPage.Location = new System.Drawing.Point(1068, 717);
+            this.btnPreviousPage.Location = new System.Drawing.Point(1066, 733);
             this.btnPreviousPage.Name = "btnPreviousPage";
             this.btnPreviousPage.Size = new System.Drawing.Size(59, 40);
             this.btnPreviousPage.TabIndex = 16;
@@ -260,7 +265,7 @@ namespace yu_gi_oh
             // 
             this.btnNextPage.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.btnNextPage.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.btnNextPage.Location = new System.Drawing.Point(1133, 717);
+            this.btnNextPage.Location = new System.Drawing.Point(1131, 733);
             this.btnNextPage.Name = "btnNextPage";
             this.btnNextPage.Size = new System.Drawing.Size(54, 40);
             this.btnNextPage.TabIndex = 17;
@@ -460,6 +465,51 @@ namespace yu_gi_oh
             this.btnRefresh.UseVisualStyleBackColor = false;
             this.btnRefresh.Click += new System.EventHandler(this.btnRefresh_Click);
             // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(24, 717);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(79, 15);
+            this.label5.TabIndex = 23;
+            this.label5.Text = "cards in deck:";
+            // 
+            // lblnumberofcardsinDeck
+            // 
+            this.lblnumberofcardsinDeck.AutoSize = true;
+            this.lblnumberofcardsinDeck.Location = new System.Drawing.Point(105, 717);
+            this.lblnumberofcardsinDeck.Name = "lblnumberofcardsinDeck";
+            this.lblnumberofcardsinDeck.Size = new System.Drawing.Size(79, 15);
+            this.lblnumberofcardsinDeck.TabIndex = 24;
+            this.lblnumberofcardsinDeck.Text = "cards in deck:";
+            // 
+            // lblmax
+            // 
+            this.lblmax.AutoSize = true;
+            this.lblmax.Location = new System.Drawing.Point(1133, 717);
+            this.lblmax.Name = "lblmax";
+            this.lblmax.Size = new System.Drawing.Size(79, 15);
+            this.lblmax.TabIndex = 26;
+            this.lblmax.Text = "cards in deck:";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(1125, 717);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(12, 15);
+            this.label7.TabIndex = 25;
+            this.label7.Text = "/";
+            // 
+            // lblcurr
+            // 
+            this.lblcurr.AutoSize = true;
+            this.lblcurr.Location = new System.Drawing.Point(1108, 717);
+            this.lblcurr.Name = "lblcurr";
+            this.lblcurr.Size = new System.Drawing.Size(19, 15);
+            this.lblcurr.TabIndex = 27;
+            this.lblcurr.Text = "12";
+            // 
             // Deckbuilder
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -467,6 +517,11 @@ namespace yu_gi_oh
             this.BackgroundImage = global::yu_gi_oh.Properties.Resources.d17ad80144ef56adbf58a17a686ea619;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(1852, 829);
+            this.Controls.Add(this.lblcurr);
+            this.Controls.Add(this.lblmax);
+            this.Controls.Add(this.label7);
+            this.Controls.Add(this.lblnumberofcardsinDeck);
+            this.Controls.Add(this.label5);
             this.Controls.Add(this.btnRefresh);
             this.Controls.Add(this.gbCardFilter);
             this.Controls.Add(this.SelectedCardGB);
@@ -495,6 +550,7 @@ namespace yu_gi_oh
             ((System.ComponentModel.ISupportInitialize)(this.nudDEF)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudATK)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -528,5 +584,10 @@ namespace yu_gi_oh
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btnRefresh;
         private System.Windows.Forms.Button btnResetFilter;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label lblnumberofcardsinDeck;
+        private System.Windows.Forms.Label lblmax;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label lblcurr;
     }
 }
