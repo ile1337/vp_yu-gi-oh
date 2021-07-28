@@ -86,7 +86,7 @@ namespace yu_gi_oh
 
             Middleware.Controllers.CardController.GetAllCardDtosShortAsync(filterCard, CurrentPage).ContinueWith(t =>
             {
-                Invoke((MethodInvoker)(() => CleanCards()));
+                Invoker.SafeInvoke(this, () => CleanCards(), false);
 
                 Middleware.Models.Meta.PageResponse<CardDto> page = t.Result;
                 MaxPage = page.totalPages;
@@ -94,10 +94,10 @@ namespace yu_gi_oh
                 foreach (CardDto card in page.content)
                 {
                     card.img = Middleware.Controllers.YGOController.GetImage(card.cardId);
-                    Invoke((MethodInvoker)(() => cards.Add(card)));
+                    Invoker.SafeInvoke(this, () => cards.Add(card), false);
                 }
 
-                Invoke((MethodInvoker)(() => loadingPB.Visible = false));
+                Invoker.SafeInvoke(this, () => loadingPB.Visible = false, false);
             });
         }
 
