@@ -149,7 +149,7 @@ namespace yu_gi_oh
 
         private bool MaxCards()
         {
-            return dgvDeck.Rows.Count > 30;
+            return deckCards.Count >= 30;
         }
 
         private void btnRemoveFromDeck_Click(object sender, EventArgs e)
