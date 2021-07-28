@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace yu_gi_oh.Properties {
+namespace yu_gi_oh {
     using System;
     
     
@@ -22,14 +22,14 @@ namespace yu_gi_oh.Properties {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "16.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    internal class Resources {
+    internal class Configuration {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
         private static global::System.Globalization.CultureInfo resourceCulture;
         
         [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
-        internal Resources() {
+        internal Configuration() {
         }
         
         /// <summary>
@@ -39,7 +39,7 @@ namespace yu_gi_oh.Properties {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("yu_gi_oh.Properties.Resources", typeof(Resources).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("yu_gi_oh.Configuration", typeof(Configuration).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -61,52 +61,20 @@ namespace yu_gi_oh.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized string similar to *.ygo.
         /// </summary>
-        internal static System.Drawing.Bitmap d17ad80144ef56adbf58a17a686ea619 {
+        internal static string YGO_DEFAULT_EXTENSION {
             get {
-                object obj = ResourceManager.GetObject("d17ad80144ef56adbf58a17a686ea619", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return ResourceManager.GetString("YGO_DEFAULT_EXTENSION", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized string similar to YGO files (*.ygo)|*.ygo.
         /// </summary>
-        internal static System.Drawing.Bitmap link_wizard__bg__by_alanmac95_dcbum43_250t {
+        internal static string YGO_FILTER_EXTENSION {
             get {
-                object obj = ResourceManager.GetObject("link_wizard__bg__by_alanmac95_dcbum43-250t", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap loading {
-            get {
-                object obj = ResourceManager.GetObject("loading", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap Refresh {
-            get {
-                object obj = ResourceManager.GetObject("Refresh", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap wp2866512 {
-            get {
-                object obj = ResourceManager.GetObject("wp2866512", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return ResourceManager.GetString("YGO_FILTER_EXTENSION", resourceCulture);
             }
         }
     }

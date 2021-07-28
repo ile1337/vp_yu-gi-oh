@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 
 namespace Middleware.Models
@@ -14,12 +16,14 @@ namespace Middleware.Models
         public string name { get; set; }
         public string description { get; set; }
         public string subType { get; set; }//enum
-        public int atk { get; set; }
-        public int def { get; set; }
+        public int? atk { get; set; }
+        public int? def { get; set; }
+
+        [JsonIgnore]
+        public Image img { get; set; }
         public override string ToString()
         {
             return string.Format("{0} - {1}",name,subType);
         }
-
     }
 }
