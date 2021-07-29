@@ -29,6 +29,7 @@ namespace yu_gi_oh
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(EndGame));
             this.btnPlayAgain = new System.Windows.Forms.Button();
             this.btnQuit = new System.Windows.Forms.Button();
             this.SuspendLayout();
@@ -60,6 +61,7 @@ namespace yu_gi_oh
             this.ClientSize = new System.Drawing.Size(250, 130);
             this.Controls.Add(this.btnQuit);
             this.Controls.Add(this.btnPlayAgain);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "EndGame";
             this.Text = "EndGame";
             this.ResumeLayout(false);

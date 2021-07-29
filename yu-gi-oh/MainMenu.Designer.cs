@@ -29,6 +29,7 @@ namespace yu_gi_oh
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainMenu));
             this.btnPlay = new System.Windows.Forms.Button();
             this.btnDeckBuild = new System.Windows.Forms.Button();
             this.btnQuit = new System.Windows.Forms.Button();
@@ -80,6 +81,7 @@ namespace yu_gi_oh
             this.Controls.Add(this.btnQuit);
             this.Controls.Add(this.btnDeckBuild);
             this.Controls.Add(this.btnPlay);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "MainMenu";
             this.Text = "MainMenu";
             this.Load += new System.EventHandler(this.MainMenu_Load);

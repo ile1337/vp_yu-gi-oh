@@ -37,6 +37,7 @@ namespace yu_gi_oh
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Deckbuilder));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.dgvDeck = new System.Windows.Forms.DataGridView();
             this.loadingPB = new System.Windows.Forms.PictureBox();
@@ -583,6 +584,7 @@ namespace yu_gi_oh
             this.Controls.Add(this.btnSaveDeck);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Deckbuilder";
             this.Text = "Deckbuilder";
             this.Load += new System.EventHandler(this.Deckbuilder_Load);
