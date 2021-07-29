@@ -83,5 +83,19 @@ namespace yu_gi_oh
             Register registerForm = new Register();
             registerForm.ShowDialog();
         }
+
+        private void btnMute_Click(object sender, EventArgs e)
+        {
+            if (player.settings.volume != 0)
+            {
+                btnMute.BackgroundImage = Properties.Resources.mute;
+                player.settings.volume = 0;
+            }
+            else
+            {
+                btnMute.BackgroundImage = Properties.Resources.notmute;
+                player.settings.volume = 2;
+            }
+        }
     }
 }

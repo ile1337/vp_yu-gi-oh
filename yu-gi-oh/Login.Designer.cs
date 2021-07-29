@@ -39,6 +39,7 @@ namespace yu_gi_oh
             this.tbUsername = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.ep1 = new System.Windows.Forms.ErrorProvider(this.components);
+            this.btnMute = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ep1)).BeginInit();
             this.SuspendLayout();
@@ -48,6 +49,7 @@ namespace yu_gi_oh
             this.groupBox1.BackColor = System.Drawing.SystemColors.Control;
             this.groupBox1.BackgroundImage = global::yu_gi_oh.Properties.Resources.link_wizard__bg__by_alanmac95_dcbum43_250t;
             this.groupBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.groupBox1.Controls.Add(this.btnMute);
             this.groupBox1.Controls.Add(this.btnRegister);
             this.groupBox1.Controls.Add(this.btnLogIn);
             this.groupBox1.Controls.Add(this.mtbPassword);
@@ -133,6 +135,20 @@ namespace yu_gi_oh
             // 
             this.ep1.ContainerControl = this;
             // 
+            // btnMute
+            // 
+            this.btnMute.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.btnMute.BackgroundImage = global::yu_gi_oh.Properties.Resources.notmute;
+            this.btnMute.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnMute.CausesValidation = false;
+            this.btnMute.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btnMute.Location = new System.Drawing.Point(147, 12);
+            this.btnMute.Name = "btnMute";
+            this.btnMute.Size = new System.Drawing.Size(33, 31);
+            this.btnMute.TabIndex = 6;
+            this.btnMute.UseVisualStyleBackColor = false;
+            this.btnMute.Click += new System.EventHandler(this.btnMute_Click);
+            // 
             // Login
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -162,6 +178,7 @@ namespace yu_gi_oh
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ErrorProvider ep1;
         private System.Windows.Forms.Button btnRegister;
+        private System.Windows.Forms.Button btnMute;
     }
 }
 
