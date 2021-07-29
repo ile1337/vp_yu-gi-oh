@@ -12,7 +12,7 @@ namespace yu_gi_oh
 {
     public partial class Duel : Form
     {
-        Login l = new Login();
+        //Login l = new Login();
 
         /**
          * Starting position: 512, 649
