@@ -1,21 +1,30 @@
 ﻿using System;
 using System.ComponentModel;
 using System.Diagnostics;
+using System.Media;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Middleware.Models;
 using Middleware.Models.Meta;
+using WMPLib;
+
 
 namespace yu_gi_oh
 {
     public partial class Login : Form
     {
         Thread loadImages = new Thread(new ThreadStart(Middleware.Controllers.YGOController.DownloadAllImages));
+        public static WindowsMediaPlayer player = new WindowsMediaPlayer();
+      
         public Login()
         {
             InitializeComponent();
             loadImages.IsBackground = true;
+            player.URL = Application.StartupPath + "\\Yu-Gi-Oh! Full Theme (High Quality).mp3";
+            player.controls.play();
+            player.settings.volume = 2;
+            player.settings.setMode("loop", true);
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -73,6 +82,20 @@ namespace yu_gi_oh
         {
             Register registerForm = new Register();
             registerForm.ShowDialog();
+        }
+
+        private void btnMute_Click(object sender, EventArgs e)
+        {
+            if (player.settings.volume != 0)
+            {
+                btnMute.BackgroundImage = Properties.Resources.mute;
+                player.settings.volume = 0;
+            }
+            else
+            {
+                btnMute.BackgroundImage = Properties.Resources.notmute;
+                player.settings.volume = 2;
+            }
         }
     }
 }
