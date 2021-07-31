@@ -9,7 +9,8 @@
 
   <ItemGroup>
     <None Remove="Resources\Yu-Gi-Oh! Full Theme %28High Quality%29.mp3" />
-    <None Remove="Yu-Gi-Oh! Full Theme %28High Quality%29.mp3" />
+    <None Remove="Yu-Gi-Oh! Theme on Guitar %28mp3cut.net%29.mp3" />
+    <None Remove="Yu-Gi-Oh! Theme on Guitar.mp3" />
   </ItemGroup>
 
   <ItemGroup>
@@ -25,7 +26,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Content Include="Yu-Gi-Oh! Full Theme (High Quality).mp3">
+    <Content Include="Yu-Gi-Oh! Theme on Guitar.mp3">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
   </ItemGroup>

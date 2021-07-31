@@ -21,9 +21,9 @@ namespace yu_gi_oh
         {
             InitializeComponent();
             loadImages.IsBackground = true;
-            player.URL = Application.StartupPath + "\\Yu-Gi-Oh! Full Theme (High Quality).mp3";
+            player.URL = Application.StartupPath + "\\Yu-Gi-Oh! Theme on Guitar.mp3";
             player.controls.play();
-            player.settings.volume = 2;
+            player.settings.volume = 7;
             player.settings.setMode("loop", true);
         }
 
@@ -94,7 +94,7 @@ namespace yu_gi_oh
             else
             {
                 btnMute.BackgroundImage = Properties.Resources.notmute;
-                player.settings.volume = 2;
+                player.settings.volume = 7;
             }
         }
     }

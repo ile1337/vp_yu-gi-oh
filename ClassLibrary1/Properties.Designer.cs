@@ -61,7 +61,7 @@ namespace Middleware {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to localhost.
+        ///   Looks up a localized string similar to 34.141.61.108.
         /// </summary>
         internal static string DB_HOST {
             get {
