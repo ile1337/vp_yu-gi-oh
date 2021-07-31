@@ -32,6 +32,7 @@ namespace yu_gi_oh
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Login));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.btnMute = new System.Windows.Forms.Button();
             this.btnRegister = new System.Windows.Forms.Button();
             this.btnLogIn = new System.Windows.Forms.Button();
             this.mtbPassword = new System.Windows.Forms.MaskedTextBox();
@@ -39,13 +40,13 @@ namespace yu_gi_oh
             this.tbUsername = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.ep1 = new System.Windows.Forms.ErrorProvider(this.components);
-            this.btnMute = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ep1)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBox1
             // 
+            this.groupBox1.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.groupBox1.BackColor = System.Drawing.SystemColors.Control;
             this.groupBox1.BackgroundImage = global::yu_gi_oh.Properties.Resources.link_wizard__bg__by_alanmac95_dcbum43_250t;
             this.groupBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
@@ -65,8 +66,24 @@ namespace yu_gi_oh
             this.groupBox1.Text = "Log In";
             this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
             // 
+            // btnMute
+            // 
+            this.btnMute.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.btnMute.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.btnMute.BackgroundImage = global::yu_gi_oh.Properties.Resources.notmute;
+            this.btnMute.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnMute.CausesValidation = false;
+            this.btnMute.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btnMute.Location = new System.Drawing.Point(147, 12);
+            this.btnMute.Name = "btnMute";
+            this.btnMute.Size = new System.Drawing.Size(33, 31);
+            this.btnMute.TabIndex = 6;
+            this.btnMute.UseVisualStyleBackColor = false;
+            this.btnMute.Click += new System.EventHandler(this.btnMute_Click);
+            // 
             // btnRegister
             // 
+            this.btnRegister.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.btnRegister.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.btnRegister.CausesValidation = false;
             this.btnRegister.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
@@ -80,6 +97,7 @@ namespace yu_gi_oh
             // 
             // btnLogIn
             // 
+            this.btnLogIn.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.btnLogIn.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.btnLogIn.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.btnLogIn.Location = new System.Drawing.Point(98, 204);
@@ -92,6 +110,7 @@ namespace yu_gi_oh
             // 
             // mtbPassword
             // 
+            this.mtbPassword.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.mtbPassword.Location = new System.Drawing.Point(7, 145);
             this.mtbPassword.Name = "mtbPassword";
             this.mtbPassword.PasswordChar = '*';
@@ -101,6 +120,7 @@ namespace yu_gi_oh
             // 
             // label2
             // 
+            this.label2.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.label2.AutoSize = true;
             this.label2.BackColor = System.Drawing.Color.LightSkyBlue;
             this.label2.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
@@ -113,6 +133,7 @@ namespace yu_gi_oh
             // 
             // tbUsername
             // 
+            this.tbUsername.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.tbUsername.Location = new System.Drawing.Point(6, 80);
             this.tbUsername.Name = "tbUsername";
             this.tbUsername.Size = new System.Drawing.Size(174, 27);
@@ -121,6 +142,7 @@ namespace yu_gi_oh
             // 
             // label1
             // 
+            this.label1.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.label1.AutoSize = true;
             this.label1.BackColor = System.Drawing.Color.LightSkyBlue;
             this.label1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
@@ -135,29 +157,18 @@ namespace yu_gi_oh
             // 
             this.ep1.ContainerControl = this;
             // 
-            // btnMute
-            // 
-            this.btnMute.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.btnMute.BackgroundImage = global::yu_gi_oh.Properties.Resources.notmute;
-            this.btnMute.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnMute.CausesValidation = false;
-            this.btnMute.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.btnMute.Location = new System.Drawing.Point(147, 12);
-            this.btnMute.Name = "btnMute";
-            this.btnMute.Size = new System.Drawing.Size(33, 31);
-            this.btnMute.TabIndex = 6;
-            this.btnMute.UseVisualStyleBackColor = false;
-            this.btnMute.Click += new System.EventHandler(this.btnMute_Click);
-            // 
             // Login
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.SystemColors.Control;
             this.BackgroundImage = global::yu_gi_oh.Properties.Resources.d17ad80144ef56adbf58a17a686ea619;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(792, 505);
             this.Controls.Add(this.groupBox1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximizeBox = false;
             this.Name = "Login";
             this.Text = "Log In";
             this.Load += new System.EventHandler(this.Form1_Load);

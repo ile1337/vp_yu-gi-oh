@@ -40,7 +40,9 @@ namespace yu_gi_oh
             PictureBox card = CreateCard();
             hand.Add(card);
             Controls.Add(card);
+            card.Anchor = AnchorStyles.Bottom;
             card.BringToFront();
+           
         }
 
         private PictureBox CreateCard()

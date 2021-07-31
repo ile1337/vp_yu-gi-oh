@@ -85,6 +85,7 @@ namespace yu_gi_oh
             // 
             // groupBox1
             // 
+            this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
             this.groupBox1.BackgroundImage = global::yu_gi_oh.Properties.Resources.link_wizard__bg__by_alanmac95_dcbum43_250t;
             this.groupBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.groupBox1.Controls.Add(this.dgvDeck);
@@ -104,6 +105,7 @@ namespace yu_gi_oh
             this.dgvDeck.AllowUserToResizeRows = false;
             dataGridViewCellStyle1.Font = new System.Drawing.Font("Arial Black", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.dgvDeck.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            this.dgvDeck.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
             this.dgvDeck.BackgroundColor = System.Drawing.SystemColors.ActiveCaption;
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
@@ -144,6 +146,7 @@ namespace yu_gi_oh
             // loadingPB
             // 
             this.loadingPB.AccessibleName = "";
+            this.loadingPB.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
             this.loadingPB.BackColor = System.Drawing.SystemColors.Window;
             this.loadingPB.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.loadingPB.ErrorImage = null;
@@ -158,6 +161,7 @@ namespace yu_gi_oh
             // 
             // groupBox2
             // 
+            this.groupBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
             this.groupBox2.BackgroundImage = global::yu_gi_oh.Properties.Resources.link_wizard__bg__by_alanmac95_dcbum43_250t;
             this.groupBox2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.groupBox2.Controls.Add(this.loadingPB);
@@ -178,6 +182,7 @@ namespace yu_gi_oh
             this.dgv1.AllowUserToResizeRows = false;
             dataGridViewCellStyle5.Font = new System.Drawing.Font("Arial Black", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.dgv1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle5;
+            this.dgv1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
             this.dgv1.BackgroundColor = System.Drawing.SystemColors.ActiveCaption;
             dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Control;
@@ -217,6 +222,7 @@ namespace yu_gi_oh
             // 
             // btnSaveDeck
             // 
+            this.btnSaveDeck.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.btnSaveDeck.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.btnSaveDeck.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.btnSaveDeck.Location = new System.Drawing.Point(105, 754);
@@ -229,6 +235,7 @@ namespace yu_gi_oh
             // 
             // btnNewDeck
             // 
+            this.btnNewDeck.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.btnNewDeck.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.btnNewDeck.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.btnNewDeck.Location = new System.Drawing.Point(420, 754);
@@ -241,6 +248,7 @@ namespace yu_gi_oh
             // 
             // btnBack
             // 
+            this.btnBack.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.btnBack.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.btnBack.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.btnBack.Location = new System.Drawing.Point(1713, 784);
@@ -253,6 +261,7 @@ namespace yu_gi_oh
             // 
             // btnAddtoDeck
             // 
+            this.btnAddtoDeck.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.btnAddtoDeck.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.btnAddtoDeck.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.btnAddtoDeck.Location = new System.Drawing.Point(878, 163);
@@ -265,6 +274,7 @@ namespace yu_gi_oh
             // 
             // btnRemoveFromDeck
             // 
+            this.btnRemoveFromDeck.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.btnRemoveFromDeck.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.btnRemoveFromDeck.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.btnRemoveFromDeck.Location = new System.Drawing.Point(1057, 164);
@@ -277,6 +287,7 @@ namespace yu_gi_oh
             // 
             // btnOpenDeck
             // 
+            this.btnOpenDeck.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.btnOpenDeck.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.btnOpenDeck.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.btnOpenDeck.Location = new System.Drawing.Point(254, 754);
@@ -289,6 +300,7 @@ namespace yu_gi_oh
             // 
             // btnPreviousPage
             // 
+            this.btnPreviousPage.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.btnPreviousPage.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.btnPreviousPage.Enabled = false;
             this.btnPreviousPage.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
@@ -302,6 +314,7 @@ namespace yu_gi_oh
             // 
             // btnNextPage
             // 
+            this.btnNextPage.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.btnNextPage.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.btnNextPage.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.btnNextPage.Location = new System.Drawing.Point(1144, 750);
@@ -314,6 +327,7 @@ namespace yu_gi_oh
             // 
             // pbCardImage
             // 
+            this.pbCardImage.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.pbCardImage.BackgroundImage = global::yu_gi_oh.Properties.Resources.wp2866512;
             this.pbCardImage.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.pbCardImage.Enabled = false;
@@ -325,6 +339,7 @@ namespace yu_gi_oh
             // 
             // rtbDescription
             // 
+            this.rtbDescription.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.rtbDescription.Location = new System.Drawing.Point(19, 267);
             this.rtbDescription.Name = "rtbDescription";
             this.rtbDescription.ReadOnly = true;
@@ -334,6 +349,7 @@ namespace yu_gi_oh
             // 
             // SelectedCardGB
             // 
+            this.SelectedCardGB.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.SelectedCardGB.BackgroundImage = global::yu_gi_oh.Properties.Resources.link_wizard__bg__by_alanmac95_dcbum43_250t;
             this.SelectedCardGB.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.SelectedCardGB.Controls.Add(this.pbCardImage);
@@ -344,10 +360,11 @@ namespace yu_gi_oh
             this.SelectedCardGB.Size = new System.Drawing.Size(260, 538);
             this.SelectedCardGB.TabIndex = 20;
             this.SelectedCardGB.TabStop = false;
-            this.SelectedCardGB.Text = "Selected Card InfoBox";
+            this.SelectedCardGB.Text = "Selected Card Info";
             // 
             // gbCardFilter
             // 
+            this.gbCardFilter.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.gbCardFilter.BackgroundImage = global::yu_gi_oh.Properties.Resources.link_wizard__bg__by_alanmac95_dcbum43_250t;
             this.gbCardFilter.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.gbCardFilter.Controls.Add(this.btnResetFilter);
@@ -370,6 +387,7 @@ namespace yu_gi_oh
             // 
             // btnResetFilter
             // 
+            this.btnResetFilter.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.btnResetFilter.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.btnResetFilter.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.btnResetFilter.Location = new System.Drawing.Point(1074, 42);
@@ -382,6 +400,7 @@ namespace yu_gi_oh
             // 
             // btnFilter
             // 
+            this.btnFilter.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.btnFilter.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.btnFilter.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.btnFilter.Location = new System.Drawing.Point(943, 42);
@@ -394,6 +413,7 @@ namespace yu_gi_oh
             // 
             // nudDEF
             // 
+            this.nudDEF.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.nudDEF.Increment = new decimal(new int[] {
             100,
             0,
@@ -411,6 +431,7 @@ namespace yu_gi_oh
             // 
             // nudATK
             // 
+            this.nudATK.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.nudATK.Increment = new decimal(new int[] {
             100,
             0,
@@ -428,6 +449,7 @@ namespace yu_gi_oh
             // 
             // cbCardType
             // 
+            this.cbCardType.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.cbCardType.FormattingEnabled = true;
             this.cbCardType.Items.AddRange(new object[] {
             "MONSTER",
@@ -439,6 +461,7 @@ namespace yu_gi_oh
             // 
             // tbCardName
             // 
+            this.tbCardName.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.tbCardName.Location = new System.Drawing.Point(7, 53);
             this.tbCardName.Name = "tbCardName";
             this.tbCardName.Size = new System.Drawing.Size(202, 25);
@@ -446,6 +469,7 @@ namespace yu_gi_oh
             // 
             // label4
             // 
+            this.label4.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label4.AutoSize = true;
             this.label4.BackColor = System.Drawing.Color.LightSkyBlue;
             this.label4.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
@@ -458,6 +482,7 @@ namespace yu_gi_oh
             // 
             // label3
             // 
+            this.label3.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label3.AutoSize = true;
             this.label3.BackColor = System.Drawing.Color.LightSkyBlue;
             this.label3.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
@@ -470,6 +495,7 @@ namespace yu_gi_oh
             // 
             // label2
             // 
+            this.label2.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label2.AutoSize = true;
             this.label2.BackColor = System.Drawing.Color.LightSkyBlue;
             this.label2.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
@@ -482,6 +508,7 @@ namespace yu_gi_oh
             // 
             // label1
             // 
+            this.label1.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label1.AutoSize = true;
             this.label1.BackColor = System.Drawing.Color.LightSkyBlue;
             this.label1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
@@ -494,6 +521,7 @@ namespace yu_gi_oh
             // 
             // btnRefresh
             // 
+            this.btnRefresh.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.btnRefresh.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.btnRefresh.BackgroundImage = global::yu_gi_oh.Properties.Resources.Refresh;
             this.btnRefresh.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
@@ -506,6 +534,7 @@ namespace yu_gi_oh
             // 
             // label5
             // 
+            this.label5.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.label5.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.label5.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.label5.Location = new System.Drawing.Point(31, 715);
@@ -517,6 +546,7 @@ namespace yu_gi_oh
             // 
             // lblnumberofcardsinDeck
             // 
+            this.lblnumberofcardsinDeck.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.lblnumberofcardsinDeck.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.lblnumberofcardsinDeck.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.lblnumberofcardsinDeck.Location = new System.Drawing.Point(170, 715);
@@ -528,6 +558,7 @@ namespace yu_gi_oh
             // 
             // lblmax
             // 
+            this.lblmax.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.lblmax.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.lblmax.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.lblmax.Location = new System.Drawing.Point(1122, 717);
@@ -539,6 +570,7 @@ namespace yu_gi_oh
             // 
             // lblcurr
             // 
+            this.lblcurr.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.lblcurr.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.lblcurr.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.lblcurr.Location = new System.Drawing.Point(1085, 717);
@@ -550,6 +582,7 @@ namespace yu_gi_oh
             // 
             // label8
             // 
+            this.label8.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.label8.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.label8.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.label8.Location = new System.Drawing.Point(209, 715);

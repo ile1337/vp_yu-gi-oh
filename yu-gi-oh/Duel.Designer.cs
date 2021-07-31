@@ -106,6 +106,7 @@ namespace yu_gi_oh
             // 
             // pictureBox1
             // 
+            this.pictureBox1.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.pictureBox1.Location = new System.Drawing.Point(50, 12);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(82, 112);
@@ -114,6 +115,7 @@ namespace yu_gi_oh
             // 
             // pictureBox2
             // 
+            this.pictureBox2.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.pictureBox2.Location = new System.Drawing.Point(154, 12);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(82, 112);
@@ -122,6 +124,7 @@ namespace yu_gi_oh
             // 
             // pictureBox3
             // 
+            this.pictureBox3.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.pictureBox3.Location = new System.Drawing.Point(259, 12);
             this.pictureBox3.Name = "pictureBox3";
             this.pictureBox3.Size = new System.Drawing.Size(82, 112);
@@ -130,6 +133,7 @@ namespace yu_gi_oh
             // 
             // pictureBox4
             // 
+            this.pictureBox4.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.pictureBox4.Location = new System.Drawing.Point(368, 12);
             this.pictureBox4.Name = "pictureBox4";
             this.pictureBox4.Size = new System.Drawing.Size(82, 112);
@@ -138,6 +142,7 @@ namespace yu_gi_oh
             // 
             // pictureBox5
             // 
+            this.pictureBox5.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.pictureBox5.Location = new System.Drawing.Point(368, 130);
             this.pictureBox5.Name = "pictureBox5";
             this.pictureBox5.Size = new System.Drawing.Size(82, 112);
@@ -146,6 +151,7 @@ namespace yu_gi_oh
             // 
             // pictureBox6
             // 
+            this.pictureBox6.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.pictureBox6.Location = new System.Drawing.Point(259, 130);
             this.pictureBox6.Name = "pictureBox6";
             this.pictureBox6.Size = new System.Drawing.Size(82, 112);
@@ -154,6 +160,7 @@ namespace yu_gi_oh
             // 
             // pictureBox7
             // 
+            this.pictureBox7.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.pictureBox7.Location = new System.Drawing.Point(154, 130);
             this.pictureBox7.Name = "pictureBox7";
             this.pictureBox7.Size = new System.Drawing.Size(82, 112);
@@ -162,6 +169,7 @@ namespace yu_gi_oh
             // 
             // pictureBox8
             // 
+            this.pictureBox8.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.pictureBox8.Location = new System.Drawing.Point(50, 130);
             this.pictureBox8.Name = "pictureBox8";
             this.pictureBox8.Size = new System.Drawing.Size(82, 112);
@@ -170,7 +178,8 @@ namespace yu_gi_oh
             // 
             // pictureBox21
             // 
-            this.pictureBox21.Location = new System.Drawing.Point(825, 15);
+            this.pictureBox21.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.pictureBox21.Location = new System.Drawing.Point(793, 12);
             this.pictureBox21.Name = "pictureBox21";
             this.pictureBox21.Size = new System.Drawing.Size(82, 112);
             this.pictureBox21.TabIndex = 23;
@@ -178,7 +187,8 @@ namespace yu_gi_oh
             // 
             // pictureBox22
             // 
-            this.pictureBox22.Location = new System.Drawing.Point(610, 15);
+            this.pictureBox22.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.pictureBox22.Location = new System.Drawing.Point(578, 12);
             this.pictureBox22.Name = "pictureBox22";
             this.pictureBox22.Size = new System.Drawing.Size(82, 112);
             this.pictureBox22.TabIndex = 22;
@@ -186,7 +196,8 @@ namespace yu_gi_oh
             // 
             // pictureBox23
             // 
-            this.pictureBox23.Location = new System.Drawing.Point(717, 15);
+            this.pictureBox23.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.pictureBox23.Location = new System.Drawing.Point(685, 12);
             this.pictureBox23.Name = "pictureBox23";
             this.pictureBox23.Size = new System.Drawing.Size(82, 112);
             this.pictureBox23.TabIndex = 21;
@@ -194,7 +205,8 @@ namespace yu_gi_oh
             // 
             // pictureBox24
             // 
-            this.pictureBox24.Location = new System.Drawing.Point(512, 15);
+            this.pictureBox24.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.pictureBox24.Location = new System.Drawing.Point(480, 12);
             this.pictureBox24.Name = "pictureBox24";
             this.pictureBox24.Size = new System.Drawing.Size(82, 112);
             this.pictureBox24.TabIndex = 20;
@@ -202,6 +214,7 @@ namespace yu_gi_oh
             // 
             // p2Zone
             // 
+            this.p2Zone.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.p2Zone.BackgroundImage = global::yu_gi_oh.Properties.Resources.link_wizard__bg__by_alanmac95_dcbum43_250t;
             this.p2Zone.Controls.Add(this.pictureBox5);
             this.p2Zone.Controls.Add(this.pictureBox1);
@@ -212,7 +225,7 @@ namespace yu_gi_oh
             this.p2Zone.Controls.Add(this.pictureBox7);
             this.p2Zone.Controls.Add(this.pictureBox6);
             this.p2Zone.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.p2Zone.Location = new System.Drawing.Point(483, 133);
+            this.p2Zone.Location = new System.Drawing.Point(451, 130);
             this.p2Zone.Name = "p2Zone";
             this.p2Zone.Size = new System.Drawing.Size(486, 252);
             this.p2Zone.TabIndex = 24;
@@ -221,6 +234,7 @@ namespace yu_gi_oh
             // 
             // p1Zone
             // 
+            this.p1Zone.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.p1Zone.BackgroundImage = global::yu_gi_oh.Properties.Resources.link_wizard__bg__by_alanmac95_dcbum43_250t;
             this.p1Zone.Controls.Add(this.pictureBox9);
             this.p1Zone.Controls.Add(this.pictureBox10);
@@ -231,7 +245,7 @@ namespace yu_gi_oh
             this.p1Zone.Controls.Add(this.pictureBox15);
             this.p1Zone.Controls.Add(this.pictureBox16);
             this.p1Zone.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.p1Zone.Location = new System.Drawing.Point(483, 391);
+            this.p1Zone.Location = new System.Drawing.Point(451, 388);
             this.p1Zone.Name = "p1Zone";
             this.p1Zone.Size = new System.Drawing.Size(486, 252);
             this.p1Zone.TabIndex = 25;
@@ -240,6 +254,7 @@ namespace yu_gi_oh
             // 
             // pictureBox9
             // 
+            this.pictureBox9.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.pictureBox9.Location = new System.Drawing.Point(368, 130);
             this.pictureBox9.Name = "pictureBox9";
             this.pictureBox9.Size = new System.Drawing.Size(82, 112);
@@ -248,6 +263,7 @@ namespace yu_gi_oh
             // 
             // pictureBox10
             // 
+            this.pictureBox10.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.pictureBox10.Location = new System.Drawing.Point(50, 12);
             this.pictureBox10.Name = "pictureBox10";
             this.pictureBox10.Size = new System.Drawing.Size(82, 112);
@@ -256,6 +272,7 @@ namespace yu_gi_oh
             // 
             // pictureBox11
             // 
+            this.pictureBox11.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.pictureBox11.Location = new System.Drawing.Point(154, 12);
             this.pictureBox11.Name = "pictureBox11";
             this.pictureBox11.Size = new System.Drawing.Size(82, 112);
@@ -264,6 +281,7 @@ namespace yu_gi_oh
             // 
             // pictureBox12
             // 
+            this.pictureBox12.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.pictureBox12.Location = new System.Drawing.Point(259, 12);
             this.pictureBox12.Name = "pictureBox12";
             this.pictureBox12.Size = new System.Drawing.Size(82, 112);
@@ -272,6 +290,7 @@ namespace yu_gi_oh
             // 
             // pictureBox13
             // 
+            this.pictureBox13.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.pictureBox13.Location = new System.Drawing.Point(368, 12);
             this.pictureBox13.Name = "pictureBox13";
             this.pictureBox13.Size = new System.Drawing.Size(82, 112);
@@ -280,6 +299,7 @@ namespace yu_gi_oh
             // 
             // pictureBox14
             // 
+            this.pictureBox14.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.pictureBox14.Location = new System.Drawing.Point(50, 130);
             this.pictureBox14.Name = "pictureBox14";
             this.pictureBox14.Size = new System.Drawing.Size(82, 112);
@@ -288,6 +308,7 @@ namespace yu_gi_oh
             // 
             // pictureBox15
             // 
+            this.pictureBox15.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.pictureBox15.Location = new System.Drawing.Point(154, 130);
             this.pictureBox15.Name = "pictureBox15";
             this.pictureBox15.Size = new System.Drawing.Size(82, 112);
@@ -296,6 +317,7 @@ namespace yu_gi_oh
             // 
             // pictureBox16
             // 
+            this.pictureBox16.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.pictureBox16.Location = new System.Drawing.Point(259, 130);
             this.pictureBox16.Name = "pictureBox16";
             this.pictureBox16.Size = new System.Drawing.Size(82, 112);
@@ -304,6 +326,7 @@ namespace yu_gi_oh
             // 
             // groupBox1
             // 
+            this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
             this.groupBox1.BackgroundImage = global::yu_gi_oh.Properties.Resources.link_wizard__bg__by_alanmac95_dcbum43_250t;
             this.groupBox1.Controls.Add(this.btnEP);
             this.groupBox1.Controls.Add(this.btnBP);
@@ -311,7 +334,7 @@ namespace yu_gi_oh
             this.groupBox1.Controls.Add(this.btnSP);
             this.groupBox1.Controls.Add(this.btnDP);
             this.groupBox1.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.groupBox1.Location = new System.Drawing.Point(388, 133);
+            this.groupBox1.Location = new System.Drawing.Point(356, 130);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(68, 510);
             this.groupBox1.TabIndex = 26;
@@ -320,6 +343,7 @@ namespace yu_gi_oh
             // 
             // btnEP
             // 
+            this.btnEP.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.btnEP.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.btnEP.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.btnEP.Location = new System.Drawing.Point(12, 402);
@@ -332,6 +356,7 @@ namespace yu_gi_oh
             // 
             // btnBP
             // 
+            this.btnBP.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.btnBP.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.btnBP.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.btnBP.Location = new System.Drawing.Point(12, 317);
@@ -354,6 +379,7 @@ namespace yu_gi_oh
             // 
             // btnSP
             // 
+            this.btnSP.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.btnSP.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.btnSP.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.btnSP.Location = new System.Drawing.Point(12, 130);
@@ -365,6 +391,7 @@ namespace yu_gi_oh
             // 
             // btnDP
             // 
+            this.btnDP.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.btnDP.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.btnDP.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.btnDP.Location = new System.Drawing.Point(12, 33);
@@ -377,12 +404,13 @@ namespace yu_gi_oh
             // 
             // groupBox2
             // 
+            this.groupBox2.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.groupBox2.BackgroundImage = global::yu_gi_oh.Properties.Resources.link_wizard__bg__by_alanmac95_dcbum43_250t;
             this.groupBox2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.groupBox2.Controls.Add(this.richTextBox1);
             this.groupBox2.Controls.Add(this.pictureBox25);
             this.groupBox2.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.groupBox2.Location = new System.Drawing.Point(58, 90);
+            this.groupBox2.Location = new System.Drawing.Point(21, 86);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(296, 596);
             this.groupBox2.TabIndex = 27;
@@ -391,7 +419,8 @@ namespace yu_gi_oh
             // 
             // richTextBox1
             // 
-            this.richTextBox1.Location = new System.Drawing.Point(56, 261);
+            this.richTextBox1.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.richTextBox1.Location = new System.Drawing.Point(47, 248);
             this.richTextBox1.Name = "richTextBox1";
             this.richTextBox1.Size = new System.Drawing.Size(191, 266);
             this.richTextBox1.TabIndex = 1;
@@ -399,9 +428,10 @@ namespace yu_gi_oh
             // 
             // pictureBox25
             // 
+            this.pictureBox25.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.pictureBox25.BackgroundImage = global::yu_gi_oh.Properties.Resources.wp2866512;
             this.pictureBox25.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pictureBox25.Location = new System.Drawing.Point(77, 41);
+            this.pictureBox25.Location = new System.Drawing.Point(68, 28);
             this.pictureBox25.Name = "pictureBox25";
             this.pictureBox25.Size = new System.Drawing.Size(146, 179);
             this.pictureBox25.TabIndex = 0;
@@ -409,6 +439,7 @@ namespace yu_gi_oh
             // 
             // groupBox3
             // 
+            this.groupBox3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox3.BackgroundImage = global::yu_gi_oh.Properties.Resources.link_wizard__bg__by_alanmac95_dcbum43_250t;
             this.groupBox3.Controls.Add(this.tbP2LifePoints);
             this.groupBox3.Controls.Add(this.label2);
@@ -448,6 +479,7 @@ namespace yu_gi_oh
             // 
             // groupBox4
             // 
+            this.groupBox4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox4.BackgroundImage = global::yu_gi_oh.Properties.Resources.link_wizard__bg__by_alanmac95_dcbum43_250t;
             this.groupBox4.Controls.Add(this.tbP1LifePoints);
             this.groupBox4.Controls.Add(this.label1);
@@ -462,6 +494,7 @@ namespace yu_gi_oh
             // 
             // tbP1LifePoints
             // 
+            this.tbP1LifePoints.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.tbP1LifePoints.Enabled = false;
             this.tbP1LifePoints.Location = new System.Drawing.Point(17, 100);
             this.tbP1LifePoints.Name = "tbP1LifePoints";
@@ -471,6 +504,7 @@ namespace yu_gi_oh
             // 
             // label1
             // 
+            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(17, 82);
             this.label1.Name = "label1";
@@ -480,6 +514,7 @@ namespace yu_gi_oh
             // 
             // pbP1
             // 
+            this.pbP1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.pbP1.Location = new System.Drawing.Point(17, 43);
             this.pbP1.Name = "pbP1";
             this.pbP1.Size = new System.Drawing.Size(139, 23);
@@ -487,6 +522,7 @@ namespace yu_gi_oh
             // 
             // groupBox5
             // 
+            this.groupBox5.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.groupBox5.BackgroundImage = global::yu_gi_oh.Properties.Resources.link_wizard__bg__by_alanmac95_dcbum43_250t;
             this.groupBox5.Controls.Add(this.btnCalculate);
             this.groupBox5.Controls.Add(this.btnSubtraction);
@@ -502,6 +538,7 @@ namespace yu_gi_oh
             // 
             // btnCalculate
             // 
+            this.btnCalculate.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.btnCalculate.Location = new System.Drawing.Point(57, 131);
             this.btnCalculate.Name = "btnCalculate";
             this.btnCalculate.Size = new System.Drawing.Size(75, 23);
