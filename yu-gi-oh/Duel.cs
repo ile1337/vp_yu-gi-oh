@@ -100,6 +100,17 @@ namespace yu_gi_oh
             DestroyCard();
         }
 
-        
+        //Below function is for form flickering on resize or fullscreen
+        protected override CreateParams CreateParams
+        {
+            get
+            {
+                CreateParams handleParam = base.CreateParams;
+                handleParam.ExStyle |= 0x02000000;   // WS_EX_COMPOSITED       
+                return handleParam;
+            }
+        }
+
+
     }
 }
