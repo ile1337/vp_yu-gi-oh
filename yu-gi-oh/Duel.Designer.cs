@@ -179,7 +179,7 @@ namespace yu_gi_oh
             // pictureBox21
             // 
             this.pictureBox21.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.pictureBox21.Location = new System.Drawing.Point(793, 12);
+            this.pictureBox21.Location = new System.Drawing.Point(796, 12);
             this.pictureBox21.Name = "pictureBox21";
             this.pictureBox21.Size = new System.Drawing.Size(82, 112);
             this.pictureBox21.TabIndex = 23;
@@ -188,7 +188,7 @@ namespace yu_gi_oh
             // pictureBox22
             // 
             this.pictureBox22.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.pictureBox22.Location = new System.Drawing.Point(578, 12);
+            this.pictureBox22.Location = new System.Drawing.Point(581, 12);
             this.pictureBox22.Name = "pictureBox22";
             this.pictureBox22.Size = new System.Drawing.Size(82, 112);
             this.pictureBox22.TabIndex = 22;
@@ -197,7 +197,7 @@ namespace yu_gi_oh
             // pictureBox23
             // 
             this.pictureBox23.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.pictureBox23.Location = new System.Drawing.Point(685, 12);
+            this.pictureBox23.Location = new System.Drawing.Point(688, 12);
             this.pictureBox23.Name = "pictureBox23";
             this.pictureBox23.Size = new System.Drawing.Size(82, 112);
             this.pictureBox23.TabIndex = 21;
@@ -206,7 +206,7 @@ namespace yu_gi_oh
             // pictureBox24
             // 
             this.pictureBox24.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.pictureBox24.Location = new System.Drawing.Point(480, 12);
+            this.pictureBox24.Location = new System.Drawing.Point(483, 12);
             this.pictureBox24.Name = "pictureBox24";
             this.pictureBox24.Size = new System.Drawing.Size(82, 112);
             this.pictureBox24.TabIndex = 20;
@@ -225,7 +225,7 @@ namespace yu_gi_oh
             this.p2Zone.Controls.Add(this.pictureBox7);
             this.p2Zone.Controls.Add(this.pictureBox6);
             this.p2Zone.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.p2Zone.Location = new System.Drawing.Point(451, 130);
+            this.p2Zone.Location = new System.Drawing.Point(454, 130);
             this.p2Zone.Name = "p2Zone";
             this.p2Zone.Size = new System.Drawing.Size(486, 252);
             this.p2Zone.TabIndex = 24;
@@ -245,7 +245,7 @@ namespace yu_gi_oh
             this.p1Zone.Controls.Add(this.pictureBox15);
             this.p1Zone.Controls.Add(this.pictureBox16);
             this.p1Zone.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.p1Zone.Location = new System.Drawing.Point(451, 388);
+            this.p1Zone.Location = new System.Drawing.Point(454, 388);
             this.p1Zone.Name = "p1Zone";
             this.p1Zone.Size = new System.Drawing.Size(486, 252);
             this.p1Zone.TabIndex = 25;
@@ -334,7 +334,7 @@ namespace yu_gi_oh
             this.groupBox1.Controls.Add(this.btnSP);
             this.groupBox1.Controls.Add(this.btnDP);
             this.groupBox1.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.groupBox1.Location = new System.Drawing.Point(356, 130);
+            this.groupBox1.Location = new System.Drawing.Point(359, 130);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(68, 510);
             this.groupBox1.TabIndex = 26;
@@ -422,6 +422,7 @@ namespace yu_gi_oh
             this.richTextBox1.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.richTextBox1.Location = new System.Drawing.Point(47, 248);
             this.richTextBox1.Name = "richTextBox1";
+            this.richTextBox1.ReadOnly = true;
             this.richTextBox1.Size = new System.Drawing.Size(191, 266);
             this.richTextBox1.TabIndex = 1;
             this.richTextBox1.Text = "";
@@ -445,7 +446,7 @@ namespace yu_gi_oh
             this.groupBox3.Controls.Add(this.label2);
             this.groupBox3.Controls.Add(this.pbP2);
             this.groupBox3.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.groupBox3.Location = new System.Drawing.Point(1003, 33);
+            this.groupBox3.Location = new System.Drawing.Point(1009, 33);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(178, 171);
             this.groupBox3.TabIndex = 28;
@@ -485,7 +486,7 @@ namespace yu_gi_oh
             this.groupBox4.Controls.Add(this.label1);
             this.groupBox4.Controls.Add(this.pbP1);
             this.groupBox4.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.groupBox4.Location = new System.Drawing.Point(1003, 567);
+            this.groupBox4.Location = new System.Drawing.Point(1009, 567);
             this.groupBox4.Name = "groupBox4";
             this.groupBox4.Size = new System.Drawing.Size(178, 171);
             this.groupBox4.TabIndex = 29;
@@ -529,7 +530,7 @@ namespace yu_gi_oh
             this.groupBox5.Controls.Add(this.btnAddition);
             this.groupBox5.Controls.Add(this.tbValue);
             this.groupBox5.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.groupBox5.Location = new System.Drawing.Point(1003, 272);
+            this.groupBox5.Location = new System.Drawing.Point(1009, 272);
             this.groupBox5.Name = "groupBox5";
             this.groupBox5.Size = new System.Drawing.Size(182, 174);
             this.groupBox5.TabIndex = 30;
@@ -577,7 +578,7 @@ namespace yu_gi_oh
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = global::yu_gi_oh.Properties.Resources.d17ad80144ef56adbf58a17a686ea619;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(1193, 765);
+            this.ClientSize = new System.Drawing.Size(1199, 765);
             this.Controls.Add(this.groupBox5);
             this.Controls.Add(this.groupBox4);
             this.Controls.Add(this.groupBox3);
