@@ -63,10 +63,15 @@ namespace yu_gi_oh
             
             return card;
         }
+        private void ReadCard(CardDto card)
+        {
+            cardDescription.Text = card.description;
+            cardImg.BackgroundImage = card.img;
+        }
 
         private void Card_MouseLeave(object sender, EventArgs e)
         {
-            PictureBox card = sender as PictureBox;
+            CardPictureBox card = sender as CardPictureBox;
             Controls.SetChildIndex(card, zIndex);
             card.Location = new Point(card.Location.X, card.Location.Y + hoverHeight);
             card.Size = CardPictureBox.defaultSize;
@@ -74,9 +79,9 @@ namespace yu_gi_oh
 
         private void Card_MouseEnter(object sender, EventArgs e)
         {
-            PictureBox card = (sender as PictureBox);
+            CardPictureBox card = (sender as CardPictureBox);
+            ReadCard(card.Card);
             zIndex = Controls.GetChildIndex(card);
-
             card.Size = hoverSize;
             card.Location = new Point(card.Location.X, card.Location.Y - hoverHeight);
             card.BringToFront();
