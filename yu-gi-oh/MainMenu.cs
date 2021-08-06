@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Middleware.Models;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,6 +13,7 @@ namespace yu_gi_oh
 {
     public partial class MainMenu : Form
     {
+        public static List<CardDto> deck;
         public MainMenu()
         {
             InitializeComponent();
