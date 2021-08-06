@@ -617,6 +617,7 @@ namespace yu_gi_oh
             this.Controls.Add(this.btnSaveDeck);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
+            this.DoubleBuffered = true;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Deckbuilder";
             this.Text = "Deckbuilder";

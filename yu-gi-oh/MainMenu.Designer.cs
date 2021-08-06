@@ -95,11 +95,12 @@ namespace yu_gi_oh
             this.Controls.Add(this.btnQuit);
             this.Controls.Add(this.btnDeckBuild);
             this.Controls.Add(this.btnPlay);
+            this.DoubleBuffered = true;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.Name = "MainMenu";
-            this.Text = "MainMenu";
+            this.Text = "Main Menu";
             this.Load += new System.EventHandler(this.MainMenu_Load);
             this.ResumeLayout(false);
 

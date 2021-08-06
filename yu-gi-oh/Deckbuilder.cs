@@ -135,12 +135,12 @@ namespace yu_gi_oh
                     CardDto card = cards[row.Index].Clone();
                     if (IsMoreThan3(card))
                     {
-                        MessageBox.Show("You can't add more than 3 instances of that card!", "ERROR");
+                        MessageBox.Show("You can't add more than 3 instances of that card!", "Maximum Instances Error");
                         return;
                     }
                     else if (MaxCards())
                     {
-                        MessageBox.Show("The maximum number of cards for a deck is 30 !", "ERROR");
+                        MessageBox.Show("The maximum number of cards for a deck is 30 !", "Maximum Cards Error");
                         return;
                     }
                     deckCards.Add(card);
