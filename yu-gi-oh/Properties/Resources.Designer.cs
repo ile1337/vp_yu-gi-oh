@@ -63,6 +63,16 @@ namespace yu_gi_oh.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap _97077563 {
+            get {
+                object obj = ResourceManager.GetObject("97077563", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap d17ad80144ef56adbf58a17a686ea619 {
             get {
                 object obj = ResourceManager.GetObject("d17ad80144ef56adbf58a17a686ea619", resourceCulture);
@@ -93,6 +103,26 @@ namespace yu_gi_oh.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap MonsterZone {
+            get {
+                object obj = ResourceManager.GetObject("MonsterZone", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap MonsterZone1 {
+            get {
+                object obj = ResourceManager.GetObject("MonsterZone1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap mute {
             get {
                 object obj = ResourceManager.GetObject("mute", resourceCulture);
@@ -116,6 +146,26 @@ namespace yu_gi_oh.Properties {
         internal static System.Drawing.Bitmap Refresh {
             get {
                 object obj = ResourceManager.GetObject("Refresh", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap RotatedGrave {
+            get {
+                object obj = ResourceManager.GetObject("RotatedGrave", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap SpellZone {
+            get {
+                object obj = ResourceManager.GetObject("SpellZone", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
