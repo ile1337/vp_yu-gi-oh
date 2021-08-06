@@ -4,7 +4,7 @@ using System.Windows.Forms;
 
 namespace yu_gi_oh.Components
 {
-    class CardPictureBox : PictureBox
+    public class CardPictureBox : PictureBox
     {
         public static readonly Size defaultSize = new(122, 152);
 

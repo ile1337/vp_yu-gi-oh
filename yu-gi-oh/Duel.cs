@@ -35,11 +35,55 @@ namespace yu_gi_oh
         // ONLY FOR TESTING UNTIL READ DECK IS IMPLEMENTED
         private List<CardDto> deck = MainMenu.deck;
         private readonly Random random = new Random();
-
+        private static int ctr = 0;
+        private ListBox monsterActions = new ListBox();
+        private ListBox spellActions = new ListBox();
+        private ListBox trapActions = new ListBox();
+        
 
         public Duel()
         {
             InitializeComponent();
+            setMonsterActions();
+            setSpellActions();
+            setTrapActions();
+            
+        }
+
+        public void setMonsterActions()
+        {
+            monsterActions.Items.Add("Summon in Attack");
+            monsterActions.Items.Add("Summon in Defense");
+            monsterActions.Items.Add("Summon Face Down");
+            monsterActions.Items.Add("Send to Graveyard");
+            monsterActions.Items.Add("Send to Deck");
+            monsterActions.BorderStyle = BorderStyle.Fixed3D;
+            monsterActions.BackColor = Color.MediumPurple;
+            monsterActions.Size = new Size(150, 125);
+            monsterActions.Font = new Font(monsterActions.Font, FontStyle.Bold);
+        }
+
+        public void setSpellActions()
+        {
+            spellActions.Items.Add("Activate");
+            spellActions.Items.Add("Send to Graveyard");
+            spellActions.Items.Add("Set");
+            spellActions.Items.Add("Send to Deck");
+            spellActions.BorderStyle = BorderStyle.Fixed3D;
+            spellActions.BackColor = Color.MediumPurple;
+            spellActions.Size = new Size(150, 125);
+            spellActions.Font = new Font(spellActions.Font, FontStyle.Bold);
+        }
+
+        public void setTrapActions()
+        {
+            trapActions.Items.Add("Send to Graveyard");
+            trapActions.Items.Add("Set");
+            trapActions.Items.Add("Send to Deck");
+            trapActions.BorderStyle = BorderStyle.Fixed3D;
+            trapActions.BackColor = Color.MediumPurple;
+            trapActions.Size = new Size(150, 125);
+            trapActions.Font = new Font(spellActions.Font, FontStyle.Bold);
         }
 
         private void Draw()
@@ -57,9 +101,12 @@ namespace yu_gi_oh
             
             currentPosition.Offset(xOffset, 0);
             CardPictureBox card = new(dto, currentPosition);
-            
+            Controls.Remove(monsterActions);
+            Controls.Remove(spellActions);
+            Controls.Remove(trapActions);
             card.MouseEnter += Card_MouseEnter;
             card.MouseLeave += Card_MouseLeave;
+            card.Click += Card_Click;
             
             return card;
         }
@@ -67,6 +114,37 @@ namespace yu_gi_oh
         {
             cardDescription.Text = card.description;
             cardImg.BackgroundImage = card.img;
+        }
+
+        private void Card_Click(object sender, EventArgs e)
+        {
+            CardPictureBox card = sender as CardPictureBox;
+            if (card.Card.type.Equals("MONSTER"))
+            {
+                monsterActions.Location = new Point(card.Location.X, card.Location.Y + hoverHeight - 100);
+                Controls.Remove(spellActions);
+                Controls.Remove(trapActions);
+                Controls.Add(monsterActions);
+                monsterActions.BringToFront();
+            }
+            else if (card.Card.subType.Equals("SPELL"))
+            {
+                spellActions.Location = new Point(card.Location.X, card.Location.Y + hoverHeight - 100);
+                Controls.Remove(monsterActions);
+                Controls.Remove(trapActions);
+                Controls.Add(spellActions);
+                spellActions.BringToFront();
+            }
+            else
+            {
+                trapActions.Location = new Point(card.Location.X, card.Location.Y + hoverHeight - 100);
+                Controls.Remove(monsterActions);
+                Controls.Remove(spellActions);
+                Controls.Add(trapActions);
+                trapActions.BringToFront();
+
+            }
+            
         }
 
         private void Card_MouseLeave(object sender, EventArgs e)
@@ -85,6 +163,7 @@ namespace yu_gi_oh
             card.Size = hoverSize;
             card.Location = new Point(card.Location.X, card.Location.Y - hoverHeight);
             card.BringToFront();
+           
         }
 
         private void DestroyCard()
@@ -101,11 +180,43 @@ namespace yu_gi_oh
 
         private void btnDP_Click(object sender, EventArgs e)
         {
+            ++ctr;
+            if (ctr >= 4)
+            {
+                btnDP.Enabled = false;
+            }
+            else
+            {
+                btnDP.Enabled = true;
+            }
+            if (ctr < 4 && ctr > 0)
+            {
+                btnDP.Enabled = true;
+                btnEP.Enabled = true;
+            }
             Draw();
         }
 
         private void btnEP_Click(object sender, EventArgs e)
         {
+            --ctr;
+            if (ctr <= 0)
+            {
+                btnEP.Enabled = false;
+            }
+            else
+            {
+                btnEP.Enabled = true;
+            }
+            if (ctr < 4 && ctr > 0)
+            {
+                btnDP.Enabled = true;
+                btnEP.Enabled = true;
+            }
+
+            Controls.Remove(monsterActions);
+            Controls.Remove(spellActions);
+            Controls.Remove(trapActions);
             DestroyCard();
         }
 
