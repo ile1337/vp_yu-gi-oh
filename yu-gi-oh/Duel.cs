@@ -39,6 +39,10 @@ namespace yu_gi_oh
         private ListBox monsterActions = new ListBox();
         private ListBox spellActions = new ListBox();
         private ListBox trapActions = new ListBox();
+        public CardPictureBox c;
+        public bool monsterField1 = true;
+        public bool monsterField2 = false;
+        public bool monsterField3 = false;
         
 
         public Duel()
@@ -98,7 +102,6 @@ namespace yu_gi_oh
         private CardPictureBox DrawCard()
         {
             CardDto dto = deck[random.Next(0, deck.Count)];
-            
             currentPosition.Offset(xOffset, 0);
             CardPictureBox card = new(dto, currentPosition);
             Controls.Remove(monsterActions);
@@ -107,7 +110,6 @@ namespace yu_gi_oh
             card.MouseEnter += Card_MouseEnter;
             card.MouseLeave += Card_MouseLeave;
             card.Click += Card_Click;
-            
             return card;
         }
         private void ReadCard(CardDto card)
@@ -119,6 +121,7 @@ namespace yu_gi_oh
         private void Card_Click(object sender, EventArgs e)
         {
             CardPictureBox card = sender as CardPictureBox;
+            c = card;
             if (card.Card.type.Equals("MONSTER"))
             {
                 monsterActions.Location = new Point(card.Location.X, card.Location.Y + hoverHeight - 100);
@@ -126,6 +129,8 @@ namespace yu_gi_oh
                 Controls.Remove(trapActions);
                 Controls.Add(monsterActions);
                 monsterActions.BringToFront();
+                monsterActions.ClearSelected();
+                monsterActions.DoubleClick += monsterActions_DoubleClick;
             }
             else if (card.Card.subType.Equals("SPELL"))
             {
@@ -134,6 +139,7 @@ namespace yu_gi_oh
                 Controls.Remove(trapActions);
                 Controls.Add(spellActions);
                 spellActions.BringToFront();
+                spellActions.ClearSelected();
             }
             else
             {
@@ -142,9 +148,53 @@ namespace yu_gi_oh
                 Controls.Remove(spellActions);
                 Controls.Add(trapActions);
                 trapActions.BringToFront();
-
+                trapActions.ClearSelected();
             }
             
+        }
+
+        private void monsterActions_DoubleClick(object sender, EventArgs e)
+        {
+            monsterActions_Click(c);
+            Invalidate();
+        }
+
+        private void monsterActions_Click(CardPictureBox card)
+        {
+            pictureBox10.BackgroundImage.Dispose();
+            pictureBox11.BackgroundImage.Dispose();
+            pictureBox12.BackgroundImage.Dispose();
+            if (monsterActions.SelectedIndex != -1)
+            {
+                var item = monsterActions.Items[monsterActions.SelectedIndex].ToString();
+                if (item.Equals("Summon in Attack"))
+                {
+                    if (monsterField1)
+                    {
+                        ChangePictureBoxBackgroundImage(pictureBox10, card.Card.img);
+                        monsterField1 = false;
+                        monsterField2 = true;
+                    }
+                    else if(monsterField2)
+                    {
+                        ChangePictureBoxBackgroundImage(pictureBox11, card.Card.img);
+                        monsterField2 = false;
+                        monsterField3 = true;
+                    }
+                    else if(monsterField3)
+                    {
+                        ChangePictureBoxBackgroundImage(pictureBox12, card.Card.img);
+                        monsterField3 = false;
+                    }
+                }
+            }
+        }
+
+        private void ChangePictureBoxBackgroundImage(PictureBox p ,Image image)
+        {
+            p.BackgroundImage.Dispose();//dispose the old image.
+
+            p.BackgroundImage = image;
         }
 
         private void Card_MouseLeave(object sender, EventArgs e)
