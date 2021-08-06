@@ -117,6 +117,7 @@ namespace yu_gi_oh
 
         private void btnBack_Click(object sender, EventArgs e)
         {
+            MainMenu.deck = deckCards.ToList();
             this.Hide();
             MainMenu form = new();
             form.ShowDialog();

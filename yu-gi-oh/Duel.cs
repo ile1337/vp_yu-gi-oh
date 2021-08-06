@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Middleware.Models;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -7,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using yu_gi_oh.Components;
 
 namespace yu_gi_oh
 {
@@ -21,15 +23,20 @@ namespace yu_gi_oh
          */
 
         private static Point currentPosition = new(412, 609);
-        private static readonly Size defaultSize = new(122, 152);
         private static readonly double hoverCoefficient = 1.5;
         private static readonly Size hoverSize = new((int)(122 * hoverCoefficient), (int)(152 * hoverCoefficient));
 
         private static readonly int xOffset = 100;
-        private static readonly List<PictureBox> hand = new();
+        private static readonly List<CardPictureBox> hand = new();
 
         private static int zIndex;
         private static readonly int hoverHeight = 80;
+
+        // ONLY FOR TESTING UNTIL READ DECK IS IMPLEMENTED
+        private List<CardDto> deck = MainMenu.deck;
+        private readonly Random random = new Random();
+
+
         public Duel()
         {
             InitializeComponent();
@@ -37,42 +44,44 @@ namespace yu_gi_oh
 
         private void Draw()
         {
-            PictureBox card = CreateCard();
+            CardPictureBox card = DrawCard();
+            card.Anchor = AnchorStyles.Bottom;
             hand.Add(card);
             Controls.Add(card);
-            card.Anchor = AnchorStyles.Bottom;
             card.BringToFront();
-           
         }
 
-        private PictureBox CreateCard()
+        private CardPictureBox DrawCard()
         {
-            PictureBox card = new();
+            CardDto dto = deck[random.Next(0, deck.Count)];
+            
             currentPosition.Offset(xOffset, 0);
-            card.Location = currentPosition;
-            card.Size = defaultSize;
-            card.SizeMode = PictureBoxSizeMode.StretchImage;
-            card.Image = Middleware.Controllers.YGOController.GetRandomImage();
-            // Add mouse enter event
+            CardPictureBox card = new(dto, currentPosition);
+            
             card.MouseEnter += Card_MouseEnter;
-            // Add mouse leave event
             card.MouseLeave += Card_MouseLeave;
+            
             return card;
+        }
+        private void ReadCard(CardDto card)
+        {
+            cardDescription.Text = card.description;
+            cardImg.BackgroundImage = card.img;
         }
 
         private void Card_MouseLeave(object sender, EventArgs e)
         {
-            PictureBox card = sender as PictureBox;
+            CardPictureBox card = sender as CardPictureBox;
             Controls.SetChildIndex(card, zIndex);
             card.Location = new Point(card.Location.X, card.Location.Y + hoverHeight);
-            card.Size = defaultSize;
+            card.Size = CardPictureBox.defaultSize;
         }
 
         private void Card_MouseEnter(object sender, EventArgs e)
         {
-            PictureBox card = (sender as PictureBox);
+            CardPictureBox card = (sender as CardPictureBox);
+            ReadCard(card.Card);
             zIndex = Controls.GetChildIndex(card);
-
             card.Size = hoverSize;
             card.Location = new Point(card.Location.X, card.Location.Y - hoverHeight);
             card.BringToFront();
@@ -82,7 +91,7 @@ namespace yu_gi_oh
         {
             if (hand.Count == 0) return;
 
-            PictureBox card = hand.Last();
+            CardPictureBox card = hand.Last();
             Controls.Remove(card);
             hand.Remove(card);
             card.Image.Dispose();

@@ -59,8 +59,8 @@ namespace yu_gi_oh
             this.btnSP = new System.Windows.Forms.Button();
             this.btnDP = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
-            this.pictureBox25 = new System.Windows.Forms.PictureBox();
+            this.cardDescription = new System.Windows.Forms.RichTextBox();
+            this.cardImg = new System.Windows.Forms.PictureBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.tbP2LifePoints = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
@@ -98,7 +98,7 @@ namespace yu_gi_oh
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox16)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox25)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cardImg)).BeginInit();
             this.groupBox3.SuspendLayout();
             this.groupBox4.SuspendLayout();
             this.groupBox5.SuspendLayout();
@@ -407,8 +407,8 @@ namespace yu_gi_oh
             this.groupBox2.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.groupBox2.BackgroundImage = global::yu_gi_oh.Properties.Resources.link_wizard__bg__by_alanmac95_dcbum43_250t;
             this.groupBox2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.groupBox2.Controls.Add(this.richTextBox1);
-            this.groupBox2.Controls.Add(this.pictureBox25);
+            this.groupBox2.Controls.Add(this.cardDescription);
+            this.groupBox2.Controls.Add(this.cardImg);
             this.groupBox2.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.groupBox2.Location = new System.Drawing.Point(21, 86);
             this.groupBox2.Name = "groupBox2";
@@ -417,26 +417,25 @@ namespace yu_gi_oh
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Selected Card Info";
             // 
-            // richTextBox1
+            // cardDescription
             // 
-            this.richTextBox1.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.richTextBox1.Location = new System.Drawing.Point(47, 248);
-            this.richTextBox1.Name = "richTextBox1";
-            this.richTextBox1.ReadOnly = true;
-            this.richTextBox1.Size = new System.Drawing.Size(191, 266);
-            this.richTextBox1.TabIndex = 1;
-            this.richTextBox1.Text = "";
+            this.cardDescription.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.cardDescription.Location = new System.Drawing.Point(47, 248);
+            this.cardDescription.Name = "cardDescription";
+            this.cardDescription.Size = new System.Drawing.Size(191, 266);
+            this.cardDescription.TabIndex = 1;
+            this.cardDescription.Text = "";
             // 
-            // pictureBox25
+            // cardImg
             // 
-            this.pictureBox25.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.pictureBox25.BackgroundImage = global::yu_gi_oh.Properties.Resources.wp2866512;
-            this.pictureBox25.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pictureBox25.Location = new System.Drawing.Point(68, 28);
-            this.pictureBox25.Name = "pictureBox25";
-            this.pictureBox25.Size = new System.Drawing.Size(146, 179);
-            this.pictureBox25.TabIndex = 0;
-            this.pictureBox25.TabStop = false;
+            this.cardImg.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.cardImg.BackgroundImage = global::yu_gi_oh.Properties.Resources.wp2866512;
+            this.cardImg.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.cardImg.Location = new System.Drawing.Point(68, 28);
+            this.cardImg.Name = "cardImg";
+            this.cardImg.Size = new System.Drawing.Size(146, 179);
+            this.cardImg.TabIndex = 0;
+            this.cardImg.TabStop = false;
             // 
             // groupBox3
             // 
@@ -617,7 +616,7 @@ namespace yu_gi_oh
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox16)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox25)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cardImg)).EndInit();
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
             this.groupBox4.ResumeLayout(false);
@@ -659,8 +658,8 @@ namespace yu_gi_oh
         private System.Windows.Forms.Button btnSP;
         private System.Windows.Forms.Button btnDP;
         private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.RichTextBox richTextBox1;
-        private System.Windows.Forms.PictureBox pictureBox25;
+        private System.Windows.Forms.RichTextBox cardDescription;
+        private System.Windows.Forms.PictureBox cardImg;
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.TextBox tbP2LifePoints;
         private System.Windows.Forms.Label label2;
