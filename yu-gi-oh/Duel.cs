@@ -184,9 +184,9 @@ namespace yu_gi_oh
 
         private void monsterActions_Click(CardPictureBox card)
         {
-            pictureBox10.BackgroundImage.Dispose();
-            pictureBox11.BackgroundImage.Dispose();
-            pictureBox12.BackgroundImage.Dispose();
+            //pictureBox10.BackgroundImage.Dispose();
+            //pictureBox11.BackgroundImage.Dispose();
+            //pictureBox12.BackgroundImage.Dispose();
             if (monsterActions.SelectedIndex != -1)
             {
                 var item = monsterActions.Items[monsterActions.SelectedIndex].ToString();
@@ -215,7 +215,7 @@ namespace yu_gi_oh
 
         private void ChangePictureBoxBackgroundImage(PictureBox p ,Image image)
         {
-            p.BackgroundImage.Dispose();//dispose the old image.
+            //p.BackgroundImage.Dispose();//dispose the old image.
 
             p.BackgroundImage = image;
         }
