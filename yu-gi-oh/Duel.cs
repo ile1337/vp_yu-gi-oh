@@ -55,7 +55,10 @@ namespace yu_gi_oh
             tbDEF.Visible = false;
             textBox1.Visible = false;
             textBox2.Visible = false;
-
+            pbP1.Maximum = int.Parse(tbP1LifePoints.Text);
+            pbP1.Value = int.Parse(tbP1LifePoints.Text);
+            pbP2.Maximum = int.Parse(tbP2LifePoints.Text);
+            pbP2.Value = int.Parse(tbP2LifePoints.Text);
         }
 
         public void setMonsterActions()
@@ -301,6 +304,45 @@ namespace yu_gi_oh
             }
         }
 
-        
+        private void btnAddition_Click(object sender, EventArgs e)
+        {
+            int addition_value = (int)nudCalculate.Value;
+            int newLifePoints = int.Parse(tbP1LifePoints.Text);
+            newLifePoints += addition_value;
+            if (newLifePoints <= nudCalculate.Maximum)
+            {
+                tbP1LifePoints.Text = newLifePoints.ToString();
+                pbP1.Value = newLifePoints;
+            }
+            else
+            {
+                MessageBox.Show("The Maximum Life Points is 8000!", "Maximum Life Points Error");
+                return;
+            }
+        }
+
+        private void btnSubtraction_Click(object sender, EventArgs e)
+        {
+            int subtraction_value = (int)nudCalculate.Value;
+            int newLifePoints = int.Parse(tbP1LifePoints.Text);
+            newLifePoints -= subtraction_value;
+            if(newLifePoints > 0)
+            {
+                tbP1LifePoints.Text = newLifePoints.ToString();
+                pbP1.Value = newLifePoints;
+            }
+            else
+            {
+                if (MessageBox.Show("Do you want to play again?", "Game Over", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                {
+                    Duel duel = new Duel();
+                    hand.Clear();
+                    duel.ShowDialog();
+                    this.Close();
+                }
+                else return;
+            }
+            
+        }
     }
 }

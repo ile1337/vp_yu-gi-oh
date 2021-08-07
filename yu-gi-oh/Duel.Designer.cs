@@ -74,10 +74,10 @@ namespace yu_gi_oh
             this.label1 = new System.Windows.Forms.Label();
             this.pbP1 = new System.Windows.Forms.ProgressBar();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.nudCalculate = new System.Windows.Forms.NumericUpDown();
             this.btnCalculate = new System.Windows.Forms.Button();
             this.btnSubtraction = new System.Windows.Forms.Button();
             this.btnAddition = new System.Windows.Forms.Button();
-            this.tbValue = new System.Windows.Forms.TextBox();
             this.button1 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
@@ -107,6 +107,7 @@ namespace yu_gi_oh
             this.groupBox3.SuspendLayout();
             this.groupBox4.SuspendLayout();
             this.groupBox5.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nudCalculate)).BeginInit();
             this.SuspendLayout();
             // 
             // pictureBox1
@@ -457,39 +458,50 @@ namespace yu_gi_oh
             // 
             // tbDEF
             // 
-            this.tbDEF.Location = new System.Drawing.Point(216, 525);
+            this.tbDEF.BackColor = System.Drawing.Color.MediumSlateBlue;
+            this.tbDEF.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.tbDEF.Location = new System.Drawing.Point(205, 524);
             this.tbDEF.Name = "tbDEF";
-            this.tbDEF.Size = new System.Drawing.Size(45, 29);
+            this.tbDEF.Size = new System.Drawing.Size(45, 22);
             this.tbDEF.TabIndex = 5;
             // 
             // tbATK
             // 
-            this.tbATK.Location = new System.Drawing.Point(103, 524);
+            this.tbATK.BackColor = System.Drawing.Color.MediumSlateBlue;
+            this.tbATK.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.tbATK.Location = new System.Drawing.Point(82, 524);
             this.tbATK.Name = "tbATK";
-            this.tbATK.Size = new System.Drawing.Size(45, 29);
+            this.tbATK.Size = new System.Drawing.Size(45, 22);
             this.tbATK.TabIndex = 4;
             // 
             // textBox2
             // 
+            this.textBox2.BackColor = System.Drawing.Color.MediumSlateBlue;
+            this.textBox2.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.textBox2.Location = new System.Drawing.Point(166, 524);
             this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(44, 29);
+            this.textBox2.Size = new System.Drawing.Size(44, 22);
             this.textBox2.TabIndex = 3;
             this.textBox2.Text = "DEF : ";
             // 
             // textBox1
             // 
+            this.textBox1.BackColor = System.Drawing.Color.MediumSlateBlue;
+            this.textBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.textBox1.Location = new System.Drawing.Point(41, 524);
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(44, 29);
+            this.textBox1.Size = new System.Drawing.Size(44, 22);
             this.textBox1.TabIndex = 2;
             this.textBox1.Text = "ATK :";
             // 
             // cardDescription
             // 
             this.cardDescription.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.cardDescription.BackColor = System.Drawing.Color.CornflowerBlue;
+            this.cardDescription.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.cardDescription.Location = new System.Drawing.Point(18, 270);
             this.cardDescription.Name = "cardDescription";
+            this.cardDescription.ReadOnly = true;
             this.cardDescription.Size = new System.Drawing.Size(262, 323);
             this.cardDescription.TabIndex = 1;
             this.cardDescription.Text = "";
@@ -594,17 +606,34 @@ namespace yu_gi_oh
             // 
             this.groupBox5.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.groupBox5.BackgroundImage = global::yu_gi_oh.Properties.Resources.link_wizard__bg__by_alanmac95_dcbum43_250t;
+            this.groupBox5.Controls.Add(this.nudCalculate);
             this.groupBox5.Controls.Add(this.btnCalculate);
             this.groupBox5.Controls.Add(this.btnSubtraction);
             this.groupBox5.Controls.Add(this.btnAddition);
-            this.groupBox5.Controls.Add(this.tbValue);
-            this.groupBox5.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.groupBox5.Font = new System.Drawing.Font("Segoe UI Black", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.groupBox5.Location = new System.Drawing.Point(1009, 272);
             this.groupBox5.Name = "groupBox5";
             this.groupBox5.Size = new System.Drawing.Size(182, 174);
             this.groupBox5.TabIndex = 30;
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "Calculate";
+            // 
+            // nudCalculate
+            // 
+            this.nudCalculate.Increment = new decimal(new int[] {
+            100,
+            0,
+            0,
+            0});
+            this.nudCalculate.Location = new System.Drawing.Point(36, 85);
+            this.nudCalculate.Maximum = new decimal(new int[] {
+            8000,
+            0,
+            0,
+            0});
+            this.nudCalculate.Name = "nudCalculate";
+            this.nudCalculate.Size = new System.Drawing.Size(120, 25);
+            this.nudCalculate.TabIndex = 4;
             // 
             // btnCalculate
             // 
@@ -620,29 +649,26 @@ namespace yu_gi_oh
             // btnSubtraction
             // 
             this.btnSubtraction.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.btnSubtraction.Font = new System.Drawing.Font("Segoe UI Black", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.btnSubtraction.Location = new System.Drawing.Point(103, 41);
             this.btnSubtraction.Name = "btnSubtraction";
             this.btnSubtraction.Size = new System.Drawing.Size(53, 37);
             this.btnSubtraction.TabIndex = 2;
             this.btnSubtraction.Text = "-";
             this.btnSubtraction.UseVisualStyleBackColor = false;
+            this.btnSubtraction.Click += new System.EventHandler(this.btnSubtraction_Click);
             // 
             // btnAddition
             // 
             this.btnAddition.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.btnAddition.Font = new System.Drawing.Font("Segoe UI Black", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.btnAddition.Location = new System.Drawing.Point(29, 41);
             this.btnAddition.Name = "btnAddition";
             this.btnAddition.Size = new System.Drawing.Size(53, 37);
             this.btnAddition.TabIndex = 1;
             this.btnAddition.Text = "+";
             this.btnAddition.UseVisualStyleBackColor = false;
-            // 
-            // tbValue
-            // 
-            this.tbValue.Location = new System.Drawing.Point(29, 90);
-            this.tbValue.Name = "tbValue";
-            this.tbValue.Size = new System.Drawing.Size(127, 25);
-            this.tbValue.TabIndex = 0;
+            this.btnAddition.Click += new System.EventHandler(this.btnAddition_Click);
             // 
             // button1
             // 
@@ -711,7 +737,7 @@ namespace yu_gi_oh
             this.groupBox4.ResumeLayout(false);
             this.groupBox4.PerformLayout();
             this.groupBox5.ResumeLayout(false);
-            this.groupBox5.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nudCalculate)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -761,11 +787,11 @@ namespace yu_gi_oh
         private System.Windows.Forms.Button btnCalculate;
         private System.Windows.Forms.Button btnSubtraction;
         private System.Windows.Forms.Button btnAddition;
-        private System.Windows.Forms.TextBox tbValue;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.TextBox tbDEF;
         private System.Windows.Forms.TextBox tbATK;
         private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.NumericUpDown nudCalculate;
     }
 }
