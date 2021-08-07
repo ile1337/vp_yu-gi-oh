@@ -40,8 +40,8 @@ namespace yu_gi_oh
         private ListBox trapActions = new ListBox();
         public CardPictureBox c;
         public bool monsterField1 = true;
-        public bool monsterField2 = false;
-        public bool monsterField3 = false;
+        public bool monsterField2 = true;
+        public bool monsterField3 = true;
         
 
         public  Duel()
@@ -189,9 +189,6 @@ namespace yu_gi_oh
 
         private void monsterActions_Click(CardPictureBox card)
         {
-            //pictureBox10.BackgroundImage.Dispose();
-            //pictureBox11.BackgroundImage.Dispose();
-            //pictureBox12.BackgroundImage.Dispose();
             if (monsterActions.SelectedIndex != -1)
             {
                 var item = monsterActions.Items[monsterActions.SelectedIndex].ToString();
@@ -199,30 +196,32 @@ namespace yu_gi_oh
                 {
                     if (monsterField1)
                     {
-                        ChangePictureBoxBackgroundImage(pictureBox10, card.Card.img);
+                        ChangePictureBoxImage(pictureBox10, card.Card.img);
                         monsterField1 = false;
-                        monsterField2 = true;
+                        //monsterField2 = true;
+                        return;
                     }
-                    else if(monsterField2)
+                     if(monsterField2)
                     {
-                        ChangePictureBoxBackgroundImage(pictureBox11, card.Card.img);
+                        ChangePictureBoxImage(pictureBox11, card.Card.img);
                         monsterField2 = false;
-                        monsterField3 = true;
+                        // monsterField3 = true;
+                        return;
                     }
-                    else if(monsterField3)
+                     if(monsterField3)
                     {
-                        ChangePictureBoxBackgroundImage(pictureBox12, card.Card.img);
+                        ChangePictureBoxImage(pictureBox12, card.Card.img);
                         monsterField3 = false;
+                        return;
                     }
                 }
             }
         }
 
-        private void ChangePictureBoxBackgroundImage(PictureBox p ,Image image)
+        private void ChangePictureBoxImage(PictureBox p ,Image image)
         {
-            //p.BackgroundImage.Dispose();//dispose the old image.
-
-            p.BackgroundImage = image;
+            p.Image = image;
+            p.SizeMode = PictureBoxSizeMode.StretchImage;
         }
 
         private void Card_MouseLeave(object sender, EventArgs e)
