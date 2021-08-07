@@ -51,7 +51,11 @@ namespace yu_gi_oh
             setMonsterActions();
             setSpellActions();
             setTrapActions();
-            
+            tbATK.Visible = false;
+            tbDEF.Visible = false;
+            textBox1.Visible = false;
+            textBox2.Visible = false;
+
         }
 
         public void setMonsterActions()
@@ -116,6 +120,22 @@ namespace yu_gi_oh
         {
             cardDescription.Text = card.description;
             cardImg.BackgroundImage = card.img;
+            if (card.type.Equals("MONSTER"))
+            {
+                tbATK.Text = card.atk.ToString();
+                tbDEF.Text = card.def.ToString();
+                tbATK.Visible = true;
+                tbDEF.Visible = true;
+                textBox1.Visible = true;
+                textBox2.Visible = true;
+            }
+            else
+            {
+                tbATK.Visible = false;
+                tbDEF.Visible = false;
+                textBox1.Visible = false;
+                textBox2.Visible = false;
+            }
         }
 
         private void Card_Click(object sender, EventArgs e)
@@ -281,6 +301,6 @@ namespace yu_gi_oh
             }
         }
 
-
+        
     }
 }

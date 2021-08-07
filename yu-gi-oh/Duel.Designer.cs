@@ -59,6 +59,10 @@ namespace yu_gi_oh
             this.btnSP = new System.Windows.Forms.Button();
             this.btnDP = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.tbDEF = new System.Windows.Forms.TextBox();
+            this.tbATK = new System.Windows.Forms.TextBox();
+            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.textBox1 = new System.Windows.Forms.TextBox();
             this.cardDescription = new System.Windows.Forms.RichTextBox();
             this.cardImg = new System.Windows.Forms.PictureBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
@@ -437,6 +441,10 @@ namespace yu_gi_oh
             this.groupBox2.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.groupBox2.BackgroundImage = global::yu_gi_oh.Properties.Resources.link_wizard__bg__by_alanmac95_dcbum43_250t;
             this.groupBox2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.groupBox2.Controls.Add(this.tbDEF);
+            this.groupBox2.Controls.Add(this.tbATK);
+            this.groupBox2.Controls.Add(this.textBox2);
+            this.groupBox2.Controls.Add(this.textBox1);
             this.groupBox2.Controls.Add(this.cardDescription);
             this.groupBox2.Controls.Add(this.cardImg);
             this.groupBox2.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
@@ -447,12 +455,42 @@ namespace yu_gi_oh
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Selected Card Info";
             // 
+            // tbDEF
+            // 
+            this.tbDEF.Location = new System.Drawing.Point(216, 525);
+            this.tbDEF.Name = "tbDEF";
+            this.tbDEF.Size = new System.Drawing.Size(45, 29);
+            this.tbDEF.TabIndex = 5;
+            // 
+            // tbATK
+            // 
+            this.tbATK.Location = new System.Drawing.Point(103, 524);
+            this.tbATK.Name = "tbATK";
+            this.tbATK.Size = new System.Drawing.Size(45, 29);
+            this.tbATK.TabIndex = 4;
+            // 
+            // textBox2
+            // 
+            this.textBox2.Location = new System.Drawing.Point(166, 524);
+            this.textBox2.Name = "textBox2";
+            this.textBox2.Size = new System.Drawing.Size(44, 29);
+            this.textBox2.TabIndex = 3;
+            this.textBox2.Text = "DEF : ";
+            // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(41, 524);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(44, 29);
+            this.textBox1.TabIndex = 2;
+            this.textBox1.Text = "ATK :";
+            // 
             // cardDescription
             // 
             this.cardDescription.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.cardDescription.Location = new System.Drawing.Point(29, 270);
+            this.cardDescription.Location = new System.Drawing.Point(18, 270);
             this.cardDescription.Name = "cardDescription";
-            this.cardDescription.Size = new System.Drawing.Size(233, 299);
+            this.cardDescription.Size = new System.Drawing.Size(262, 323);
             this.cardDescription.TabIndex = 1;
             this.cardDescription.Text = "";
             // 
@@ -461,9 +499,9 @@ namespace yu_gi_oh
             this.cardImg.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.cardImg.BackgroundImage = global::yu_gi_oh.Properties.Resources.wp2866512;
             this.cardImg.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.cardImg.Location = new System.Drawing.Point(52, 35);
+            this.cardImg.Location = new System.Drawing.Point(41, 26);
             this.cardImg.Name = "cardImg";
-            this.cardImg.Size = new System.Drawing.Size(191, 229);
+            this.cardImg.Size = new System.Drawing.Size(199, 246);
             this.cardImg.TabIndex = 0;
             this.cardImg.TabStop = false;
             // 
@@ -666,6 +704,7 @@ namespace yu_gi_oh
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox16)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);
+            this.groupBox2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.cardImg)).EndInit();
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
@@ -724,5 +763,9 @@ namespace yu_gi_oh
         private System.Windows.Forms.Button btnAddition;
         private System.Windows.Forms.TextBox tbValue;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.TextBox tbDEF;
+        private System.Windows.Forms.TextBox tbATK;
+        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox textBox1;
     }
 }
