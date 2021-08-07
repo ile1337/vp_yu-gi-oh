@@ -13,7 +13,7 @@ namespace yu_gi_oh
 {
     public partial class MainMenu : Form
     {
-        public static List<CardDto> deck = new List<CardDto>();
+        
         public MainMenu()
         {
             InitializeComponent();
@@ -49,18 +49,11 @@ namespace yu_gi_oh
 
         private void btnPlaySinglePlayer_Click(object sender, EventArgs e)
         {
-            if (deck.Count<=0 || deck.Count>30)
-            {
-                MessageBox.Show("Your deck is empty! Select a deck in deckbuilder!", "Deck Empty");
-                return;
-            }
-            else
-            {
-                this.Hide();
-                Duel duelForm = new Duel();
-                duelForm.ShowDialog();
-                this.Close();
-            }
+            this.Hide();
+            Duel duelForm = new Duel();
+            duelForm.ShowDialog();
+            this.Close();
+            
         }
     }
 }

@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -14,8 +15,6 @@ namespace yu_gi_oh
 {
     public partial class Duel : Form
     {
-        //Login l = new Login();
-
         /**
          * Starting position: 512, 649
          * Size: 82, 112
@@ -23,17 +22,17 @@ namespace yu_gi_oh
          */
 
         private static Point currentPosition = new(412, 609);
-        private static readonly double hoverCoefficient = 1.5;
-        private static readonly Size hoverSize = new((int)(122 * hoverCoefficient), (int)(152 * hoverCoefficient));
+        private static  double hoverCoefficient = 1.5;
+        private static  Size hoverSize = new((int)(122 * hoverCoefficient), (int)(152 * hoverCoefficient));
 
-        private static readonly int xOffset = 100;
-        private static readonly List<CardPictureBox> hand = new();
+        private static  int xOffset = 100;
+        private static  List<CardPictureBox> hand = new();
 
         private static int zIndex;
-        private static readonly int hoverHeight = 80;
+        private static  int hoverHeight = 80;
 
         // ONLY FOR TESTING UNTIL READ DECK IS IMPLEMENTED
-        private List<CardDto> deck = MainMenu.deck;
+        private List<CardDto> deck = new();
         private readonly Random random = new Random();
         private static int ctr = 0;
         private ListBox monsterActions = new ListBox();
@@ -45,7 +44,7 @@ namespace yu_gi_oh
         public bool monsterField3 = false;
         
 
-        public Duel()
+        public  Duel()
         {
             InitializeComponent();
             setMonsterActions();
@@ -59,6 +58,12 @@ namespace yu_gi_oh
             pbP1.Value = int.Parse(tbP1LifePoints.Text);
             pbP2.Maximum = int.Parse(tbP2LifePoints.Text);
             pbP2.Value = int.Parse(tbP2LifePoints.Text);
+            currentPosition = new(412, 609);
+            hoverCoefficient = 1.5;
+            hoverSize = new((int)(122 * hoverCoefficient), (int)(152 * hoverCoefficient));
+            hand = new();
+            hoverHeight = 80;
+            ctr = 0;
         }
 
         public void setMonsterActions()
@@ -253,21 +258,31 @@ namespace yu_gi_oh
 
         private void btnDP_Click(object sender, EventArgs e)
         {
-            ++ctr;
-            if (ctr >= 4)
+            
+            if (deck.Count > 0)
             {
-                btnDP.Enabled = false;
+                ctr++;
+                if (ctr >= 4)
+                {
+                    btnDP.Enabled = false;
+                }
+                else
+                {
+                    btnDP.Enabled = true;
+                }
+                if (ctr < 4 && ctr > 0)
+                {
+                    btnDP.Enabled = true;
+                    btnEP.Enabled = true;
+                }
+                Draw();
             }
             else
             {
-                btnDP.Enabled = true;
+                MessageBox.Show("You haven't selected a Deck! Please Select a Deck!", "No Deck Error");
+                return;
             }
-            if (ctr < 4 && ctr > 0)
-            {
-                btnDP.Enabled = true;
-                btnEP.Enabled = true;
-            }
-            Draw();
+            
         }
 
         private void btnEP_Click(object sender, EventArgs e)
@@ -337,12 +352,51 @@ namespace yu_gi_oh
                 {
                     Duel duel = new Duel();
                     hand.Clear();
+                    this.Hide();
                     duel.ShowDialog();
                     this.Close();
                 }
-                else return;
+                else
+                {
+                    MainMenu menu = new MainMenu();
+                    this.Hide();
+                    menu.ShowDialog();
+                    this.Close();
+                }
             }
             
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            CallFileExplorer(new OpenFileDialog(), (dialog) =>
+            {
+                deck.Clear();
+                OpenAsync(dialog.FileName);
+            });
+
+        }
+
+        private async void OpenAsync(string s)
+        {
+            using FileStream fs = new(s, FileMode.Open);
+
+            Deck d = await System.Text.Json.JsonSerializer.DeserializeAsync<Deck>(fs);
+            foreach (CardDto card in d.cards)
+            {
+                card.img = Middleware.Controllers.YGOController.GetImage(card.cardId);
+                deck.Add(card);
+            }
+            
+        }
+
+        private static void CallFileExplorer(FileDialog dialog, Action<FileDialog> action)
+        {
+            dialog.AddExtension = true;
+            dialog.DefaultExt = Configuration.YGO_DEFAULT_EXTENSION;
+            dialog.Filter = Configuration.YGO_FILTER_EXTENSION;
+
+            if (dialog.ShowDialog() == DialogResult.OK) action.Invoke(dialog);
         }
     }
 }
