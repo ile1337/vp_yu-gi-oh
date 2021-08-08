@@ -23,8 +23,8 @@ namespace yu_gi_oh
         private static readonly int xOffset = 100;
 
         // Hover properties/constants
-        private static readonly Size hoverSize = new((int)(122 * hoverCoefficient), (int)(152 * hoverCoefficient));
         private static readonly double hoverCoefficient = 1.5;
+        private static readonly Size hoverSize = new((int)(122 * hoverCoefficient), (int)(152 * hoverCoefficient));
         private static readonly int hoverHeight = 80;
 
         // Depth
