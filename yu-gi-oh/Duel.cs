@@ -203,15 +203,15 @@ namespace yu_gi_oh
 
             currentPhase++;
             // TODO: Uncomment for production, commented for Debug reasons
-            //btnDP.Enabled = false;
+            // btnDP.Enabled = false;
             Draw();
+            ClearListBoxes();
         }
 
         private void btnEP_Click(object sender, EventArgs e)
         {
             currentPhase = 0;
             btnDP.Enabled = true;
-            btnEP.Enabled = true;
             ClearListBoxes();
         }
 
