@@ -35,6 +35,7 @@ namespace yu_gi_oh
         public List<CardPictureBox> graveyardCards = new();
         public List<CardDto> deck = new();
         private static int currentPhase = 0;
+        public static int currentCardsInHand = 0;
         private CardPictureBox SelectedCard;
 
         // Action ListBoxes
@@ -47,6 +48,8 @@ namespace yu_gi_oh
         private List<PictureBox> spellFields = new();
         private int AvailableMonsterField = 0;
         private int AvailableSpellField = 0;
+
+        
 
         public Duel()
         {
@@ -210,6 +213,7 @@ namespace yu_gi_oh
                         return;
                     }
                     ChangePictureBoxImageAtk(monsterFields[AvailableMonsterField++], card.Card.img);
+                    --currentCardsInHand;
                     DestroyCard(card);
                     break;
                 case MonsterActions.SUMMON_DEFENSE:
@@ -219,16 +223,24 @@ namespace yu_gi_oh
                         return;
                     }
                     ChangePictureBoxImageDef(monsterFields[AvailableMonsterField++], card.Card.img);
+                    --currentCardsInHand;
                     DestroyCard(card);
                     break;
                 case MonsterActions.SEND_DECK:
                     deck.Add(card.Card);
                     lbDeckCardsNum.Text = deck.Count.ToString();
+                    --currentCardsInHand;
                     DestroyCard(card);
                     break;
                 case MonsterActions.SEND_GRAVEYARD:
                     graveyardCards.Add(card);
                     lblGraveYard.Text = graveyardCards.Count.ToString();
+                    --currentCardsInHand;
+                    DestroyCard(card);
+                    break;
+                case MonsterActions.SUMMON_FACE_DOWN:
+                    ChangePictureAndDrawCardbackMonster(monsterFields[AvailableMonsterField++], card.Card.img);
+                    --currentCardsInHand;
                     DestroyCard(card);
                     break;
 
@@ -250,16 +262,29 @@ namespace yu_gi_oh
                         return;
                     }
                     ChangePictureBoxImageAtk(spellFields[AvailableSpellField++], card.Card.img);
+                    --currentCardsInHand;
                     DestroyCard(card);
                     break;
                 case SpellActions.SEND_DECK:
                     deck.Add(card.Card);
                     lbDeckCardsNum.Text = deck.Count.ToString();
+                    --currentCardsInHand;
                     DestroyCard(card);
                     break;
                 case SpellActions.SEND_GRAVEYARD:
                     graveyardCards.Add(card);
                     lblGraveYard.Text = graveyardCards.Count.ToString();
+                    --currentCardsInHand;
+                    DestroyCard(card);
+                    break;
+                case SpellActions.SET:
+                    if (AvailableSpellField >= 3)
+                    {
+                        MessageBox.Show("No free fields!", "Fields error");
+                        return;
+                    }
+                    ChangePictureAndDrawCardback(spellFields[AvailableSpellField++], card.Card.img);
+                    --currentCardsInHand;
                     DestroyCard(card);
                     break;
             }
@@ -268,6 +293,7 @@ namespace yu_gi_oh
 
         private void trapActions_Click(object sender, EventArgs e)
         {
+            PictureBox back = new PictureBox();
             CardPictureBox card = SelectedCard;
             if (trapActions.SelectedIndex == -1) return;
             TrapActions item = trapActions.Items[trapActions.SelectedIndex].ToString().ToAction<TrapActions>();
@@ -279,17 +305,20 @@ namespace yu_gi_oh
                         MessageBox.Show("No free fields!", "Fields error");
                         return;
                     }
-                    ChangePictureBoxImageAtk(spellFields[AvailableSpellField++], card.Card.img);
+                    ChangePictureAndDrawCardback(spellFields[AvailableSpellField++], card.Card.img);
+                    --currentCardsInHand;
                     DestroyCard(card);
                     break;
                 case TrapActions.SEND_DECK:
                     deck.Add(card.Card);
                     lbDeckCardsNum.Text = deck.Count.ToString();
+                    --currentCardsInHand;
                     DestroyCard(card);
                     break;
                 case TrapActions.SEND_GRAVEYARD:
                     graveyardCards.Add(card);
                     lblGraveYard.Text = graveyardCards.Count.ToString();
+                    --currentCardsInHand;
                     DestroyCard(card);
                     break;
             }
@@ -316,13 +345,23 @@ namespace yu_gi_oh
                     this.Close();
                 }
             }
-            
 
-            currentPhase++;
-            // TODO: Uncomment for production, commented for Debug reasons
-            // btnDP.Enabled = false;
-            Draw();
-            ClearListBoxes();
+
+            if (currentCardsInHand >= 4)
+            {
+                MessageBox.Show("You can have only 4 cards in hand!", "Cards in Hand");
+                return;
+            }
+            else
+            {
+
+                currentPhase++;
+                // TODO: Uncomment for production, commented for Debug reasons
+                // btnDP.Enabled = false;
+                Draw();
+                ++currentCardsInHand;
+                ClearListBoxes();
+            }
         }
 
         private void btnEP_Click(object sender, EventArgs e)
@@ -338,6 +377,38 @@ namespace yu_gi_oh
         {
             p.Image = image;
             p.SizeMode = PictureBoxSizeMode.StretchImage;
+        }
+
+        private void ChangePictureAndDrawCardback(PictureBox p, Image img)
+        {
+            int width = 100;
+            int height = 100;
+            Image image = new Bitmap(width, height);
+
+            using (var graphics = Graphics.FromImage(image))
+            {
+                graphics.DrawImage(img, new Rectangle(0, 0, width, height));
+                graphics.DrawImage(Properties.Resources.wp2866512, new Rectangle(0, 0, width, height));
+            }
+
+            p.SizeMode = PictureBoxSizeMode.StretchImage;
+            p.Image = image;
+        }
+
+        private void ChangePictureAndDrawCardbackMonster(PictureBox p, Image img)
+        {
+            int width = 400;
+            int height = 355;
+            Image image = new Bitmap(width, height);
+            image.RotateFlip(RotateFlipType.Rotate90FlipNone);
+            using (var graphics = Graphics.FromImage(image))
+            {
+                graphics.DrawImage(img, new Rectangle(-1,-1, width, height));
+                graphics.DrawImage(Properties.Resources.wp2866512, new Rectangle(-1,-1, width, height));
+            }
+
+            p.Image = image;
+            p.SizeMode = PictureBoxSizeMode.Zoom;
         }
 
         private void ChangePictureBoxImageDef(PictureBox p, Image image)

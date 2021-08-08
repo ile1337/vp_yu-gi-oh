@@ -59,16 +59,26 @@ namespace yu_gi_oh
 
         private void btnToHand_Click(object sender, EventArgs e)
         {
+            
             if (lbGraveyardCards.SelectedIndex == -1) return;
-            int i = lbGraveyardCards.SelectedIndex;
-            hand.Push(graveList[i]);
-            CardPictureBox cd = graveList[i];
-            duel.PutCardInHand(i);
-            graveList.RemoveAt(i);
-            lbGraveyardCards.Items.RemoveAt(lbGraveyardCards.SelectedIndex);
-            duel.lblGraveYard.Text = graveList.Count.ToString();
-            duel.lbDeckCardsNum.Text = deck.Count.ToString();
-            duel.Refresh();
+            if (Duel.currentCardsInHand >= 4)
+            {
+                MessageBox.Show("You can have only 4 cards in hand!", "Cards in Hand");
+                return;
+            }
+            else
+            {
+                Duel.currentCardsInHand++;
+                int i = lbGraveyardCards.SelectedIndex;
+                hand.Push(graveList[i]);
+                CardPictureBox cd = graveList[i];
+                duel.PutCardInHand(i);
+                graveList.RemoveAt(i);
+                lbGraveyardCards.Items.RemoveAt(lbGraveyardCards.SelectedIndex);
+                duel.lblGraveYard.Text = graveList.Count.ToString();
+                duel.lbDeckCardsNum.Text = deck.Count.ToString();
+                duel.Refresh();
+            }
         }
 
         private void btnToDeck_Click(object sender, EventArgs e)
