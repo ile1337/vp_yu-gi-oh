@@ -83,6 +83,16 @@ namespace yu_gi_oh.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Grobishta {
+            get {
+                object obj = ResourceManager.GetObject("Grobishta", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap link_wizard__bg__by_alanmac95_dcbum43_250t {
             get {
                 object obj = ResourceManager.GetObject("link_wizard__bg__by_alanmac95_dcbum43-250t", resourceCulture);
@@ -136,6 +146,16 @@ namespace yu_gi_oh.Properties {
         internal static System.Drawing.Bitmap notmute {
             get {
                 object obj = ResourceManager.GetObject("notmute", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap ReaperoftheCards_TF04_JP_VG {
+            get {
+                object obj = ResourceManager.GetObject("ReaperoftheCards-TF04-JP-VG", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
