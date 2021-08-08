@@ -16,14 +16,12 @@ namespace yu_gi_oh
     {
         public  List<CardPictureBox> graveList = new();
         public  List<CardDto> deck = new();
-        public  Stack<CardPictureBox> hand = new();
         public Duel duel;
-        public Graveyard(List<CardPictureBox> grave,List<CardDto> d,Stack<CardPictureBox> h,Duel dl)
+        public Graveyard(List<CardPictureBox> grave,List<CardDto> d,Duel dl)
         {
             InitializeComponent();
             graveList = grave;
             deck = d;
-            hand = h;
             duel = dl;
             foreach (CardPictureBox c in graveList)
             {
@@ -70,8 +68,7 @@ namespace yu_gi_oh
             {
                 Duel.currentCardsInHand++;
                 int i = lbGraveyardCards.SelectedIndex;
-                hand.Push(graveList[i]);
-                duel.PutCardInHand();
+                duel.PutCardInHand(graveList[i].Card);
                 graveList.RemoveAt(i);
                 lbGraveyardCards.Items.RemoveAt(lbGraveyardCards.SelectedIndex);
                 duel.lblGraveYard.Text = graveList.Count.ToString();
