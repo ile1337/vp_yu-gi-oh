@@ -45,7 +45,7 @@ namespace yu_gi_oh
             btnRefresh.BackgroundImageLayout = ImageLayout.Stretch;
             lblnumberofcardsinDeck.Text = "0";
             lblcurr.Text = CurrentPage.ToString();
-           
+
         }
 
         public void ConstructDGV(DataGridView dgv, BindingList<CardDto> source)
@@ -94,7 +94,7 @@ namespace yu_gi_oh
 
                 Middleware.Models.Meta.PageResponse<CardDto> page = t.Result;
                 MaxPage = page.totalPages;
-              
+
                 foreach (CardDto card in page.content)
                 {
                     card.img = Middleware.Controllers.YGOController.GetImage(card.cardId);
@@ -102,9 +102,9 @@ namespace yu_gi_oh
                 }
                 Invoker.SafeInvoke(this, () => lblmax.Text = "/ " + MaxPage.ToString(), false);
                 Invoker.SafeInvoke(this, () => loadingPB.Visible = false, false);
-      
+
             });
-            
+
         }
 
         private void CleanCards()

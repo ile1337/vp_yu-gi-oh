@@ -12,8 +12,8 @@ namespace yu_gi_oh.Components.Actions
         private static string[] LabelActions<T>(IEnumerable<T> actions) => actions.Select(item => item.ToLabel()).ToArray();
 
         public static IEnumerable<T> FilterActions<T, K>() where T : struct, Enum, IConvertible => (from val in typeof(T).GetFields()
-                                                                                             where val.GetCustomAttribute(typeof(K)) != null
-                                                                                             select (T)val.GetRawConstantValue());
+                                                                                                    where val.GetCustomAttribute(typeof(K)) != null
+                                                                                                    select (T)val.GetRawConstantValue());
 
     }
 }

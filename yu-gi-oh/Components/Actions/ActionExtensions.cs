@@ -36,11 +36,11 @@ namespace yu_gi_oh.Components.Actions
         public static Enum FindAction(this string label)
         {
             return (
-                from val in 
-                    (from action in actionTypes 
+                from val in
+                    (from action in actionTypes
                      select Enum.GetValues(action))
                      .SelectMany(item => item.Cast<Enum>())
-                where val.ToLabel() == label 
+                where val.ToLabel() == label
                 select val
                 ).FirstOrDefault();
 
