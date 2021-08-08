@@ -184,9 +184,23 @@ namespace yu_gi_oh
                         MessageBox.Show("No free fields!", "Fields error");
                         return;
                     }
-                    ChangePictureBoxImage(monsterFields[AvailableMonsterField++], card.Card.img);
+                    ChangePictureBoxImageAtk(monsterFields[AvailableMonsterField++], card.Card.img);
                     DestroyCard(card);
                     break;
+                case MonsterActions.SUMMON_DEFENSE:
+                    if(AvailableMonsterField >= 3)
+                    {
+                        MessageBox.Show("No free fields!", "Fields error");
+                        return;
+                    }
+                    ChangePictureBoxImageDef(monsterFields[AvailableMonsterField++], card.Card.img);
+                    DestroyCard(card);
+                    break;
+                case MonsterActions.SEND_DECK:
+                    deck.Add(card.Card);
+                    DestroyCard(card);
+                    break;
+
             }
             ClearListBoxes();
         }
@@ -229,10 +243,17 @@ namespace yu_gi_oh
 
 
         // Card effects/events
-        private void ChangePictureBoxImage(PictureBox p, Image image)
+        private void ChangePictureBoxImageAtk(PictureBox p, Image image)
         {
             p.Image = image;
             p.SizeMode = PictureBoxSizeMode.StretchImage;
+        }
+
+        private void ChangePictureBoxImageDef(PictureBox p, Image image)
+        {
+            image.RotateFlip(RotateFlipType.Rotate90FlipNone);
+            p.Image = image;
+            p.SizeMode = PictureBoxSizeMode.Zoom;
         }
 
         private void Card_MouseLeave(object sender, EventArgs e)
