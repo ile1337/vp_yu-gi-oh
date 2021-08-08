@@ -17,7 +17,6 @@ namespace yu_gi_oh
          */
 
         private readonly Random random = new();
-
         // Position properties/constants
         private static Point currentPosition = new(312, 609);
         private static readonly int xOffset = 100;
@@ -50,8 +49,9 @@ namespace yu_gi_oh
             InitializeComponent();
             CreateListBoxes();
             InitializeProperties();
-
             monsterFields = new List<PictureBox> { pictureBox10, pictureBox11, pictureBox12 };
+            btnDP.Enabled = false;
+            MessageBox.Show("At the start of the game please select a deck!", "Warning!");
         }
 
         private void InitializeProperties()
@@ -194,12 +194,24 @@ namespace yu_gi_oh
         // Phases logic
         private void btnDP_Click(object sender, EventArgs e)
         {
-
-            if (deck.Count <= 0)
+           if(deck.Count <= 0)
             {
-                MessageBox.Show("You haven't selected a Deck! Please Select a Deck!", "No Deck Error");
-                return;
+                if (MessageBox.Show("Do you want to play again?", "Game Over", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                {
+                    Duel duel = new();
+                    this.Hide();
+                    duel.ShowDialog();
+                    this.Close();
+                }
+                else
+                {
+                    MainMenu menu = new();
+                    this.Hide();
+                    menu.ShowDialog();
+                    this.Close();
+                }
             }
+            
 
             currentPhase++;
             // TODO: Uncomment for production, commented for Debug reasons
@@ -300,6 +312,7 @@ namespace yu_gi_oh
                 deck.Clear();
                 ReadDeckAsync(dialog.FileName);
             });
+            btnDP.Enabled = true;
 
         }
 
