@@ -49,12 +49,12 @@ namespace yu_gi_oh
         {
             InitializeComponent();
             CreateListBoxes();
-            InitializeVariables();
+            InitializeProperties();
 
             monsterFields = new List<PictureBox> { pictureBox10, pictureBox11, pictureBox12 };
         }
 
-        private void InitializeVariables()
+        private void InitializeProperties()
         {
             currentPosition = new(312, 609);
             hand.Clear();
