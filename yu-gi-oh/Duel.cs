@@ -44,7 +44,9 @@ namespace yu_gi_oh
 
         // Field properties/constants
         private List<PictureBox> monsterFields = new();
+        private List<PictureBox> spellFields = new();
         private int AvailableMonsterField = 0;
+        private int AvailableSpellField = 0;
 
         public Duel()
         {
@@ -52,6 +54,7 @@ namespace yu_gi_oh
             CreateListBoxes();
             InitializeProperties();
             monsterFields = new List<PictureBox> { pictureBox10, pictureBox11, pictureBox12 };
+            spellFields = new List<PictureBox> { pictureBox14, pictureBox15, pictureBox16 };
             btnDP.Enabled = false;
             lblGraveYard.Text = graveyardCards.Count.ToString();
             lblGraveYard.Update();
@@ -79,8 +82,8 @@ namespace yu_gi_oh
         public void CreateListBoxes()
         {
             CreateListBox<MonsterActions, Hand>(monsterActions, monsterActions_Click);
-            CreateListBox<SpellActions, Hand>(spellActions, null);
-            CreateListBox<TrapActions, Hand>(trapActions, null);
+            CreateListBox<SpellActions, Hand>(spellActions, spellActions_Click);
+            CreateListBox<TrapActions, Hand>(trapActions, trapActions_Click);
         }
 
 
@@ -229,6 +232,66 @@ namespace yu_gi_oh
                     DestroyCard(card);
                     break;
 
+            }
+            ClearListBoxes();
+        }
+
+        private void spellActions_Click(object sender, EventArgs e)
+        {
+            CardPictureBox card = SelectedCard;
+            if (spellActions.SelectedIndex == -1) return;
+            SpellActions item = spellActions.Items[spellActions.SelectedIndex].ToString().ToAction<SpellActions>();
+            switch (item)
+            {
+                case SpellActions.ACTIVATE:
+                    if (AvailableSpellField >= 3)
+                    {
+                        MessageBox.Show("No free fields!", "Fields error");
+                        return;
+                    }
+                    ChangePictureBoxImageAtk(spellFields[AvailableSpellField++], card.Card.img);
+                    DestroyCard(card);
+                    break;
+                case SpellActions.SEND_DECK:
+                    deck.Add(card.Card);
+                    lbDeckCardsNum.Text = deck.Count.ToString();
+                    DestroyCard(card);
+                    break;
+                case SpellActions.SEND_GRAVEYARD:
+                    graveyardCards.Add(card);
+                    lblGraveYard.Text = graveyardCards.Count.ToString();
+                    DestroyCard(card);
+                    break;
+            }
+            ClearListBoxes();
+        }
+
+        private void trapActions_Click(object sender, EventArgs e)
+        {
+            CardPictureBox card = SelectedCard;
+            if (trapActions.SelectedIndex == -1) return;
+            TrapActions item = trapActions.Items[trapActions.SelectedIndex].ToString().ToAction<TrapActions>();
+            switch (item)
+            {
+                case TrapActions.SET:
+                    if (AvailableSpellField >= 3)
+                    {
+                        MessageBox.Show("No free fields!", "Fields error");
+                        return;
+                    }
+                    ChangePictureBoxImageAtk(spellFields[AvailableSpellField++], card.Card.img);
+                    DestroyCard(card);
+                    break;
+                case TrapActions.SEND_DECK:
+                    deck.Add(card.Card);
+                    lbDeckCardsNum.Text = deck.Count.ToString();
+                    DestroyCard(card);
+                    break;
+                case TrapActions.SEND_GRAVEYARD:
+                    graveyardCards.Add(card);
+                    lblGraveYard.Text = graveyardCards.Count.ToString();
+                    DestroyCard(card);
+                    break;
             }
             ClearListBoxes();
         }
