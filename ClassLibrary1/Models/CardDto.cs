@@ -23,7 +23,7 @@ namespace Middleware.Models
         public Image img { get; set; }
         public override string ToString()
         {
-            return string.Format("{0} - {1}",name,subType);
+            return string.Format("{0}",name);
         }
         public CardDto Clone()
         {
@@ -40,5 +40,7 @@ namespace Middleware.Models
                 img =  this.img != null ? this.img.Clone() as Image : null
             };
         }
+
+       
     }
 }

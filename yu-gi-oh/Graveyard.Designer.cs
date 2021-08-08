@@ -32,10 +32,10 @@ namespace yu_gi_oh
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Graveyard));
             this.lbGraveyardCards = new System.Windows.Forms.ListBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.pbGrobishta = new System.Windows.Forms.PictureBox();
             this.btnToDeck = new System.Windows.Forms.Button();
             this.btnToHand = new System.Windows.Forms.Button();
             this.btnBack = new System.Windows.Forms.Button();
-            this.pbGrobishta = new System.Windows.Forms.PictureBox();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbGrobishta)).BeginInit();
             this.SuspendLayout();
@@ -49,6 +49,7 @@ namespace yu_gi_oh
             this.lbGraveyardCards.Name = "lbGraveyardCards";
             this.lbGraveyardCards.Size = new System.Drawing.Size(209, 289);
             this.lbGraveyardCards.TabIndex = 0;
+            this.lbGraveyardCards.SelectedIndexChanged += new System.EventHandler(this.lbGraveyardCards_SelectedIndexChanged);
             // 
             // groupBox1
             // 
@@ -63,6 +64,16 @@ namespace yu_gi_oh
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Card ";
             // 
+            // pbGrobishta
+            // 
+            this.pbGrobishta.BackgroundImage = global::yu_gi_oh.Properties.Resources.wp2866512;
+            this.pbGrobishta.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pbGrobishta.Location = new System.Drawing.Point(24, 27);
+            this.pbGrobishta.Name = "pbGrobishta";
+            this.pbGrobishta.Size = new System.Drawing.Size(186, 237);
+            this.pbGrobishta.TabIndex = 0;
+            this.pbGrobishta.TabStop = false;
+            // 
             // btnToDeck
             // 
             this.btnToDeck.BackColor = System.Drawing.SystemColors.ActiveCaption;
@@ -73,6 +84,7 @@ namespace yu_gi_oh
             this.btnToDeck.TabIndex = 2;
             this.btnToDeck.Text = "To Deck";
             this.btnToDeck.UseVisualStyleBackColor = false;
+            this.btnToDeck.Click += new System.EventHandler(this.btnToDeck_Click);
             // 
             // btnToHand
             // 
@@ -84,6 +96,7 @@ namespace yu_gi_oh
             this.btnToHand.TabIndex = 3;
             this.btnToHand.Text = "To Hand";
             this.btnToHand.UseVisualStyleBackColor = false;
+            this.btnToHand.Click += new System.EventHandler(this.btnToHand_Click);
             // 
             // btnBack
             // 
@@ -95,16 +108,7 @@ namespace yu_gi_oh
             this.btnBack.TabIndex = 4;
             this.btnBack.Text = "Back";
             this.btnBack.UseVisualStyleBackColor = false;
-            // 
-            // pbGrobishta
-            // 
-            this.pbGrobishta.BackgroundImage = global::yu_gi_oh.Properties.Resources.wp2866512;
-            this.pbGrobishta.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pbGrobishta.Location = new System.Drawing.Point(24, 27);
-            this.pbGrobishta.Name = "pbGrobishta";
-            this.pbGrobishta.Size = new System.Drawing.Size(186, 237);
-            this.pbGrobishta.TabIndex = 0;
-            this.pbGrobishta.TabStop = false;
+            this.btnBack.Click += new System.EventHandler(this.btnBack_Click);
             // 
             // Graveyard
             // 
@@ -124,6 +128,7 @@ namespace yu_gi_oh
             this.MaximizeBox = false;
             this.Name = "Graveyard";
             this.Text = "Graveyard";
+            this.Load += new System.EventHandler(this.Graveyard_Load);
             this.groupBox1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pbGrobishta)).EndInit();
             this.ResumeLayout(false);

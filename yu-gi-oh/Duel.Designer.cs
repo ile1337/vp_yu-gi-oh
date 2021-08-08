@@ -44,6 +44,8 @@ namespace yu_gi_oh
             this.pictureBox24 = new System.Windows.Forms.PictureBox();
             this.p2Zone = new System.Windows.Forms.GroupBox();
             this.p1Zone = new System.Windows.Forms.GroupBox();
+            this.lblGraveYard = new System.Windows.Forms.Label();
+            this.lbDeckCardsNum = new System.Windows.Forms.Label();
             this.pictureBox9 = new System.Windows.Forms.PictureBox();
             this.pictureBox10 = new System.Windows.Forms.PictureBox();
             this.pictureBox11 = new System.Windows.Forms.PictureBox();
@@ -79,7 +81,6 @@ namespace yu_gi_oh
             this.btnSubtraction = new System.Windows.Forms.Button();
             this.btnAddition = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
-            this.lbDeckCardsNum = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
@@ -261,6 +262,7 @@ namespace yu_gi_oh
             // 
             this.p1Zone.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.p1Zone.BackgroundImage = global::yu_gi_oh.Properties.Resources.link_wizard__bg__by_alanmac95_dcbum43_250t;
+            this.p1Zone.Controls.Add(this.lblGraveYard);
             this.p1Zone.Controls.Add(this.lbDeckCardsNum);
             this.p1Zone.Controls.Add(this.pictureBox9);
             this.p1Zone.Controls.Add(this.pictureBox10);
@@ -277,6 +279,30 @@ namespace yu_gi_oh
             this.p1Zone.TabIndex = 25;
             this.p1Zone.TabStop = false;
             this.p1Zone.Text = "P1Zone";
+            // 
+            // lblGraveYard
+            // 
+            this.lblGraveYard.AutoSize = true;
+            this.lblGraveYard.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.lblGraveYard.Font = new System.Drawing.Font("Segoe UI Black", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.lblGraveYard.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.lblGraveYard.Location = new System.Drawing.Point(397, 59);
+            this.lblGraveYard.Name = "lblGraveYard";
+            this.lblGraveYard.Size = new System.Drawing.Size(18, 20);
+            this.lblGraveYard.TabIndex = 9;
+            this.lblGraveYard.Text = "0";
+            // 
+            // lbDeckCardsNum
+            // 
+            this.lbDeckCardsNum.AutoSize = true;
+            this.lbDeckCardsNum.BackColor = System.Drawing.SystemColors.ControlText;
+            this.lbDeckCardsNum.Font = new System.Drawing.Font("Segoe UI Black", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.lbDeckCardsNum.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.lbDeckCardsNum.Location = new System.Drawing.Point(397, 179);
+            this.lbDeckCardsNum.Name = "lbDeckCardsNum";
+            this.lbDeckCardsNum.Size = new System.Drawing.Size(18, 20);
+            this.lbDeckCardsNum.TabIndex = 8;
+            this.lbDeckCardsNum.Text = "0";
             // 
             // pictureBox9
             // 
@@ -330,6 +356,7 @@ namespace yu_gi_oh
             this.pictureBox13.Size = new System.Drawing.Size(82, 112);
             this.pictureBox13.TabIndex = 3;
             this.pictureBox13.TabStop = false;
+            this.pictureBox13.Click += new System.EventHandler(this.pictureBox13_Click);
             // 
             // pictureBox14
             // 
@@ -692,18 +719,6 @@ namespace yu_gi_oh
             this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
-            // lbDeckCardsNum
-            // 
-            this.lbDeckCardsNum.AutoSize = true;
-            this.lbDeckCardsNum.BackColor = System.Drawing.SystemColors.ControlText;
-            this.lbDeckCardsNum.Font = new System.Drawing.Font("Segoe UI Black", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.lbDeckCardsNum.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.lbDeckCardsNum.Location = new System.Drawing.Point(397, 179);
-            this.lbDeckCardsNum.Name = "lbDeckCardsNum";
-            this.lbDeckCardsNum.Size = new System.Drawing.Size(18, 20);
-            this.lbDeckCardsNum.TabIndex = 8;
-            this.lbDeckCardsNum.Text = "0";
-            // 
             // Duel
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -817,6 +832,7 @@ namespace yu_gi_oh
         private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.NumericUpDown nudCalculate;
-        private System.Windows.Forms.Label lbDeckCardsNum;
+        public System.Windows.Forms.Label lbDeckCardsNum { get; set; }
+        public System.Windows.Forms.Label lblGraveYard { get; set; }
     }
 }

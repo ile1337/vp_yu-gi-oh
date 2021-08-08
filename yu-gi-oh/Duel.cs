@@ -30,8 +30,9 @@ namespace yu_gi_oh
         private static int zIndex;
 
         // Logic properties/constants
-        private static readonly List<CardPictureBox> hand = new();
-        private readonly List<CardDto> deck = new();
+        public static  List<CardPictureBox> hand = new();
+        public List<CardPictureBox> graveyardCards = new();
+        public List<CardDto> deck = new();
         private static int currentPhase = 0;
         private CardPictureBox SelectedCard;
 
@@ -51,7 +52,10 @@ namespace yu_gi_oh
             InitializeProperties();
             monsterFields = new List<PictureBox> { pictureBox10, pictureBox11, pictureBox12 };
             btnDP.Enabled = false;
+            lblGraveYard.Text = graveyardCards.Count.ToString();
+            lblGraveYard.Update();
             MessageBox.Show("At the start of the game please select a deck!", "Warning!");
+            this.Refresh();
         }
 
         private void InitializeProperties()
@@ -64,6 +68,9 @@ namespace yu_gi_oh
             SelectedCard = null;
             AvailableMonsterField = 0;
             monsterFields.Clear();
+            lblGraveYard.Text = graveyardCards.Count.ToString();
+            lblGraveYard.Refresh();
+            this.Refresh();
         }
 
 
@@ -199,6 +206,11 @@ namespace yu_gi_oh
                 case MonsterActions.SEND_DECK:
                     deck.Add(card.Card);
                     lbDeckCardsNum.Text = deck.Count.ToString();
+                    DestroyCard(card);
+                    break;
+                case MonsterActions.SEND_GRAVEYARD:
+                    graveyardCards.Add(card);
+                    lblGraveYard.Text = graveyardCards.Count.ToString();
                     DestroyCard(card);
                     break;
 
@@ -364,5 +376,12 @@ namespace yu_gi_oh
             }
         }
 
+        // Graveyard functionality
+        private void pictureBox13_Click(object sender, EventArgs e)
+        {
+            lblGraveYard.Text = graveyardCards.Count.ToString();
+            Graveyard graveyard = new Graveyard(graveyardCards,deck,this);
+            graveyard.ShowDialog();
+        }
     }
 }

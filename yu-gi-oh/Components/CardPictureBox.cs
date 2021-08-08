@@ -10,6 +10,10 @@ namespace yu_gi_oh.Components
 
         public readonly CardDto Card;
 
+        public CardPictureBox()
+        {
+        }
+
         public CardPictureBox(CardDto dto, Point position) : base()
         {
             Card = dto;
@@ -17,6 +21,11 @@ namespace yu_gi_oh.Components
             Location = position;
             Size = defaultSize;
             SizeMode = PictureBoxSizeMode.StretchImage;
+        }
+
+        public override string ToString()
+        {
+            return string.Format("{0}", Card.name);
         }
     }
 }
