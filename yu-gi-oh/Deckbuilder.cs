@@ -5,6 +5,7 @@ using System.ComponentModel;
 using System.IO;
 using System.Linq;
 using System.Windows.Forms;
+using yu_gi_oh.Components;
 using yu_gi_oh.Threading;
 
 namespace yu_gi_oh
@@ -170,7 +171,7 @@ namespace yu_gi_oh
             if (dgvDeck.Rows.Count <= 0) return;
 
             deck.cards = deckCards.ToList();
-            CallFileExplorer(new SaveFileDialog(), (dialog) => SaveAsync(dialog.FileName));
+            FileUtilities.CallFileExplorer(new SaveFileDialog(), (dialog) => SaveAsync(dialog.FileName));
         }
 
         private async void SaveAsync(string s)
@@ -194,27 +195,17 @@ namespace yu_gi_oh
             }
         }
 
-        private static void CallFileExplorer(FileDialog dialog, Action<FileDialog> action)
-        {
-            dialog.AddExtension = true;
-            dialog.DefaultExt = Configuration.YGO_DEFAULT_EXTENSION;
-            dialog.Filter = Configuration.YGO_FILTER_EXTENSION;
-
-            if (dialog.ShowDialog() == DialogResult.OK) action.Invoke(dialog);
-        }
-
-
         private void btnOpenDeck_Click(object sender, EventArgs e)
         {
             btnNewDeck.Enabled = true;
-            CallFileExplorer(new OpenFileDialog(), (dialog) =>
+            FileUtilities.CallFileExplorer(new OpenFileDialog(), (dialog) =>
             {
                 deckCards.Clear();
-                OpenAsync(dialog.FileName);
+                ReadDeckAsync(dialog.FileName);
             });
         }
 
-        private async void OpenAsync(string s)
+        private async void ReadDeckAsync(string s)
         {
             using FileStream fs = new(s, FileMode.Open);
 
@@ -284,11 +275,10 @@ namespace yu_gi_oh
             {
                 card.img = Middleware.Controllers.YGOController.GetImage(card.cardId);
             }
-            refresh();
+            RefreshDataGrids();
         }
-        private void refresh()
+        private void RefreshDataGrids()
         {
-           
             dgvDeck.Refresh();
             dgv1.Refresh();
         }

@@ -464,6 +464,7 @@ namespace yu_gi_oh
             this.tbDEF.Name = "tbDEF";
             this.tbDEF.Size = new System.Drawing.Size(45, 22);
             this.tbDEF.TabIndex = 5;
+            this.tbDEF.Visible = false;
             // 
             // tbATK
             // 
@@ -473,6 +474,7 @@ namespace yu_gi_oh
             this.tbATK.Name = "tbATK";
             this.tbATK.Size = new System.Drawing.Size(45, 22);
             this.tbATK.TabIndex = 4;
+            this.tbATK.Visible = false;
             // 
             // textBox2
             // 
@@ -483,6 +485,7 @@ namespace yu_gi_oh
             this.textBox2.Size = new System.Drawing.Size(44, 22);
             this.textBox2.TabIndex = 3;
             this.textBox2.Text = "DEF : ";
+            this.textBox2.Visible = false;
             // 
             // textBox1
             // 
@@ -493,6 +496,7 @@ namespace yu_gi_oh
             this.textBox1.Size = new System.Drawing.Size(44, 22);
             this.textBox1.TabIndex = 2;
             this.textBox1.Text = "ATK :";
+            this.textBox1.Visible = false;
             // 
             // cardDescription
             // 
@@ -554,9 +558,11 @@ namespace yu_gi_oh
             // pbP2
             // 
             this.pbP2.Location = new System.Drawing.Point(17, 121);
+            this.pbP2.Maximum = 8000;
             this.pbP2.Name = "pbP2";
             this.pbP2.Size = new System.Drawing.Size(139, 23);
             this.pbP2.TabIndex = 0;
+            this.pbP2.Value = 8000;
             // 
             // groupBox4
             // 
@@ -598,9 +604,11 @@ namespace yu_gi_oh
             // 
             this.pbP1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.pbP1.Location = new System.Drawing.Point(17, 43);
+            this.pbP1.Maximum = 8000;
             this.pbP1.Name = "pbP1";
             this.pbP1.Size = new System.Drawing.Size(139, 23);
             this.pbP1.TabIndex = 1;
+            this.pbP1.Value = 8000;
             // 
             // groupBox5
             // 

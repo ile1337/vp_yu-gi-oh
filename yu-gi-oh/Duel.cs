@@ -1,15 +1,11 @@
 ﻿using Middleware.Models;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using yu_gi_oh.Components;
+using yu_gi_oh.Components.Actions;
 
 namespace yu_gi_oh
 {
@@ -18,90 +14,80 @@ namespace yu_gi_oh
         /**
          * Starting position: 512, 649
          * Size: 82, 112
-         * 
          */
 
-        private static Point currentPosition = new(412, 609);
-        private static  double hoverCoefficient = 1.5;
-        private static  Size hoverSize = new((int)(122 * hoverCoefficient), (int)(152 * hoverCoefficient));
+        private readonly Random random = new();
 
-        private static  int xOffset = 100;
-        private static  List<CardPictureBox> hand = new();
+        // Position properties/constants
+        private static Point currentPosition = new(312, 609);
+        private static readonly int xOffset = 100;
 
+        // Hover properties/constants
+        private static readonly Size hoverSize = new((int)(122 * hoverCoefficient), (int)(152 * hoverCoefficient));
+        private static readonly double hoverCoefficient = 1.5;
+        private static readonly int hoverHeight = 80;
+
+        // Depth
         private static int zIndex;
-        private static  int hoverHeight = 80;
 
-        // ONLY FOR TESTING UNTIL READ DECK IS IMPLEMENTED
-        private List<CardDto> deck = new();
-        private readonly Random random = new Random();
-        private static int ctr = 0;
-        private ListBox monsterActions = new ListBox();
-        private ListBox spellActions = new ListBox();
-        private ListBox trapActions = new ListBox();
-        public CardPictureBox c;
-        public bool monsterField1 = true;
-        public bool monsterField2 = true;
-        public bool monsterField3 = true;
-        
+        // Logic properties/constants
+        private static readonly List<CardPictureBox> hand = new();
+        private readonly List<CardDto> deck = new();
+        private static int currentPhase = 0;
+        private CardPictureBox SelectedCard;
 
-        public  Duel()
+        // Action ListBoxes
+        private ListBox monsterActions = new();
+        private ListBox spellActions = new();
+        private ListBox trapActions = new();
+
+        // Field properties/constants
+        private List<PictureBox> monsterFields = new();
+        private int AvailableMonsterField = 0;
+
+        public Duel()
         {
             InitializeComponent();
-            setMonsterActions();
-            setSpellActions();
-            setTrapActions();
-            tbATK.Visible = false;
-            tbDEF.Visible = false;
-            textBox1.Visible = false;
-            textBox2.Visible = false;
-            pbP1.Maximum = int.Parse(tbP1LifePoints.Text);
-            pbP1.Value = int.Parse(tbP1LifePoints.Text);
-            pbP2.Maximum = int.Parse(tbP2LifePoints.Text);
-            pbP2.Value = int.Parse(tbP2LifePoints.Text);
-            currentPosition = new(412, 609);
-            hoverCoefficient = 1.5;
-            hoverSize = new((int)(122 * hoverCoefficient), (int)(152 * hoverCoefficient));
-            hand = new();
-            hoverHeight = 80;
-            ctr = 0;
+            CreateListBoxes();
+            InitializeVariables();
+
+            monsterFields = new List<PictureBox> { pictureBox10, pictureBox11, pictureBox12 };
         }
 
-        public void setMonsterActions()
+        private void InitializeVariables()
         {
-            monsterActions.Items.Add("Summon in Attack");
-            monsterActions.Items.Add("Summon in Defense");
-            monsterActions.Items.Add("Summon Face Down");
-            monsterActions.Items.Add("Send to Graveyard");
-            monsterActions.Items.Add("Send to Deck");
-            monsterActions.BorderStyle = BorderStyle.Fixed3D;
-            monsterActions.BackColor = Color.MediumPurple;
-            monsterActions.Size = new Size(150, 125);
-            monsterActions.Font = new Font(monsterActions.Font, FontStyle.Bold);
+            currentPosition = new(312, 609);
+            hand.Clear();
+            zIndex = 0;
+            deck.Clear();
+            currentPhase = 0;
+            SelectedCard = null;
+            AvailableMonsterField = 0;
+            monsterFields.Clear();
         }
 
-        public void setSpellActions()
+
+        // ListBox creation
+        public void CreateListBoxes()
         {
-            spellActions.Items.Add("Activate");
-            spellActions.Items.Add("Send to Graveyard");
-            spellActions.Items.Add("Set");
-            spellActions.Items.Add("Send to Deck");
-            spellActions.BorderStyle = BorderStyle.Fixed3D;
-            spellActions.BackColor = Color.MediumPurple;
-            spellActions.Size = new Size(150, 125);
-            spellActions.Font = new Font(spellActions.Font, FontStyle.Bold);
+            CreateListBox<MonsterActions, Hand>(monsterActions, monsterActions_Click);
+            CreateListBox<SpellActions, Hand>(spellActions, null);
+            CreateListBox<TrapActions, Hand>(trapActions, null);
         }
 
-        public void setTrapActions()
+
+        public void CreateListBox<T, K>(ListBox actions, EventHandler handler) where T : struct, Enum, IConvertible
         {
-            trapActions.Items.Add("Send to Graveyard");
-            trapActions.Items.Add("Set");
-            trapActions.Items.Add("Send to Deck");
-            trapActions.BorderStyle = BorderStyle.Fixed3D;
-            trapActions.BackColor = Color.MediumPurple;
-            trapActions.Size = new Size(150, 125);
-            trapActions.Font = new Font(spellActions.Font, FontStyle.Bold);
+            actions.DataSource = ActionUtilities.FilterLabelActions<T, K>();
+            actions.BorderStyle = BorderStyle.Fixed3D;
+            actions.BackColor = Color.MediumPurple;
+            actions.Size = new Size(150, 125);
+            actions.Font = new Font(actions.Font, FontStyle.Bold);
+            if (handler != null) actions.Click += handler;
         }
 
+
+        // Logic
         private void Draw()
         {
             CardPictureBox card = DrawCard();
@@ -109,116 +95,129 @@ namespace yu_gi_oh
             hand.Add(card);
             Controls.Add(card);
             card.BringToFront();
+
         }
 
+        // Card logic
         private CardPictureBox DrawCard()
         {
-            CardDto dto = deck[random.Next(0, deck.Count)];
+            int idx = random.Next(0, deck.Count);
+            CardDto dto = deck[idx];
             currentPosition.Offset(xOffset, 0);
             CardPictureBox card = new(dto, currentPosition);
-            Controls.Remove(monsterActions);
-            Controls.Remove(spellActions);
-            Controls.Remove(trapActions);
+            ClearListBoxes();
             card.MouseEnter += Card_MouseEnter;
             card.MouseLeave += Card_MouseLeave;
             card.Click += Card_Click;
+            deck.RemoveAt(idx);
             return card;
         }
+
         private void ReadCard(CardDto card)
         {
             cardDescription.Text = card.description;
             cardImg.BackgroundImage = card.img;
-            if (card.type.Equals("MONSTER"))
-            {
-                tbATK.Text = card.atk.ToString();
-                tbDEF.Text = card.def.ToString();
-                tbATK.Visible = true;
-                tbDEF.Visible = true;
-                textBox1.Visible = true;
-                textBox2.Visible = true;
-            }
-            else
-            {
-                tbATK.Visible = false;
-                tbDEF.Visible = false;
-                textBox1.Visible = false;
-                textBox2.Visible = false;
-            }
+            bool isMonster = card.type.Equals("MONSTER");
+            tbATK.Text = card.atk.ToString();
+            tbDEF.Text = card.def.ToString();
+            tbATK.Visible = isMonster;
+            tbDEF.Visible = isMonster;
+            textBox1.Visible = isMonster;
+            textBox2.Visible = isMonster;
+        }
+
+        private void DestroyCard(CardPictureBox card)
+        {
+            Controls.Remove(card);
+            RepositionCards(card);
+            hand.Remove(card);
+            card.Dispose();
+            currentPosition.Offset(-xOffset, 0);
+        }
+
+
+        // ListBox logic
+        private void ClearListBoxes()
+        {
+            Controls.Remove(monsterActions);
+            Controls.Remove(spellActions);
+            Controls.Remove(trapActions);
+        }
+
+        private void CreateAction(ListBox action, CardPictureBox card)
+        {
+            action.Location = new Point(card.Location.X, card.Location.Y + hoverHeight - 100);
+            Controls.Add(action);
+            action.BringToFront();
+            action.ClearSelected();
         }
 
         private void Card_Click(object sender, EventArgs e)
         {
-            CardPictureBox card = sender as CardPictureBox;
-            c = card;
-            if (card.Card.type.Equals("MONSTER"))
+            SelectedCard = sender as CardPictureBox;
+            ListBox selectedActions;
+            if (SelectedCard.Card.type.Equals("MONSTER")) selectedActions = monsterActions;
+            else if (SelectedCard.Card.subType.Equals("SPELL")) selectedActions = spellActions;
+            else selectedActions = trapActions;
+
+            if (Controls.Contains(selectedActions))
             {
-                monsterActions.Location = new Point(card.Location.X, card.Location.Y + hoverHeight - 100);
-                Controls.Remove(spellActions);
-                Controls.Remove(trapActions);
-                Controls.Add(monsterActions);
-                monsterActions.BringToFront();
-                monsterActions.ClearSelected();
-                monsterActions.DoubleClick += monsterActions_DoubleClick;
+                ClearListBoxes();
+                return;
             }
-            else if (card.Card.subType.Equals("SPELL"))
-            {
-                spellActions.Location = new Point(card.Location.X, card.Location.Y + hoverHeight - 100);
-                Controls.Remove(monsterActions);
-                Controls.Remove(trapActions);
-                Controls.Add(spellActions);
-                spellActions.BringToFront();
-                spellActions.ClearSelected();
-            }
-            else
-            {
-                trapActions.Location = new Point(card.Location.X, card.Location.Y + hoverHeight - 100);
-                Controls.Remove(monsterActions);
-                Controls.Remove(spellActions);
-                Controls.Add(trapActions);
-                trapActions.BringToFront();
-                trapActions.ClearSelected();
-            }
-            
+
+            ClearListBoxes();
+            CreateAction(selectedActions, SelectedCard);
         }
 
-        private void monsterActions_DoubleClick(object sender, EventArgs e)
+        // ListBox actions
+        private void monsterActions_Click(object sender, EventArgs e)
         {
-            monsterActions_Click(c);
-            Invalidate();
-        }
-
-        private void monsterActions_Click(CardPictureBox card)
-        {
-            if (monsterActions.SelectedIndex != -1)
+            CardPictureBox card = SelectedCard;
+            if (monsterActions.SelectedIndex == -1) return;
+            MonsterActions item = monsterActions.Items[monsterActions.SelectedIndex].ToString().ToAction<MonsterActions>();
+            switch (item)
             {
-                var item = monsterActions.Items[monsterActions.SelectedIndex].ToString();
-                if (item.Equals("Summon in Attack"))
-                {
-                    if (monsterField1)
+                case MonsterActions.SUMMON_ATTACK:
+                    if (AvailableMonsterField >= 3)
                     {
-                        ChangePictureBoxImage(pictureBox10, card.Card.img);
-                        monsterField1 = false;
-                        //monsterField2 = true;
+                        MessageBox.Show("No free fields!", "Fields error");
                         return;
                     }
-                     if(monsterField2)
-                    {
-                        ChangePictureBoxImage(pictureBox11, card.Card.img);
-                        monsterField2 = false;
-                        // monsterField3 = true;
-                        return;
-                    }
-                     if(monsterField3)
-                    {
-                        ChangePictureBoxImage(pictureBox12, card.Card.img);
-                        monsterField3 = false;
-                        return;
-                    }
-                }
+                    ChangePictureBoxImage(monsterFields[AvailableMonsterField++], card.Card.img);
+                    DestroyCard(card);
+                    break;
             }
+            ClearListBoxes();
         }
 
-        private void ChangePictureBoxImage(PictureBox p ,Image image)
+        // Phases logic
+        private void btnDP_Click(object sender, EventArgs e)
+        {
+
+            if (deck.Count <= 0)
+            {
+                MessageBox.Show("You haven't selected a Deck! Please Select a Deck!", "No Deck Error");
+                return;
+            }
+
+            currentPhase++;
+            // TODO: Uncomment for production, commented for Debug reasons
+            //btnDP.Enabled = false;
+            Draw();
+        }
+
+        private void btnEP_Click(object sender, EventArgs e)
+        {
+            currentPhase = 0;
+            btnDP.Enabled = true;
+            btnEP.Enabled = true;
+            ClearListBoxes();
+        }
+
+
+        // Card effects/events
+        private void ChangePictureBoxImage(PictureBox p, Image image)
         {
             p.Image = image;
             p.SizeMode = PictureBoxSizeMode.StretchImage;
@@ -240,74 +239,86 @@ namespace yu_gi_oh
             card.Size = hoverSize;
             card.Location = new Point(card.Location.X, card.Location.Y - hoverHeight);
             card.BringToFront();
-           
         }
 
-        private void DestroyCard()
+        private static void RepositionCards(CardPictureBox card)
         {
-            if (hand.Count == 0) return;
-
-            CardPictureBox card = hand.Last();
-            Controls.Remove(card);
-            hand.Remove(card);
-            card.Image.Dispose();
-            card.Dispose();
-            currentPosition.Offset(-xOffset, 0);
-        }
-
-        private void btnDP_Click(object sender, EventArgs e)
-        {
-            
-            if (deck.Count > 0)
+            Point lastPosition = card.Location;
+            for (int idx = hand.IndexOf(card) + 1; idx < hand.Count; idx++)
             {
-                ctr++;
-                if (ctr >= 4)
+                CardPictureBox currentCard = hand[idx];
+                Point tmp = currentCard.Location;
+                currentCard.Location = lastPosition;
+                lastPosition = tmp;
+            }
+        }
+
+        // Life points calculation
+        private void btnAddition_Click(object sender, EventArgs e)
+        {
+            int newLifePoints = int.Parse(tbP1LifePoints.Text) + (int)nudCalculate.Value;
+            if (newLifePoints > nudCalculate.Maximum)
+            {
+                MessageBox.Show("The Maximum Life Points is 8000!", "Maximum Life Points Error");
+                return;
+            }
+
+            tbP1LifePoints.Text = newLifePoints.ToString();
+            pbP1.Value = newLifePoints;
+        }
+
+        private void btnSubtraction_Click(object sender, EventArgs e)
+        {
+            int newLifePoints = int.Parse(tbP1LifePoints.Text) - (int)nudCalculate.Value;
+            if (newLifePoints <= 0)
+            {
+                if (MessageBox.Show("Do you want to play again?", "Game Over", MessageBoxButtons.YesNo) == DialogResult.Yes)
                 {
-                    btnDP.Enabled = false;
+                    Duel duel = new();
+                    this.Hide();
+                    duel.ShowDialog();
+                    this.Close();
                 }
                 else
                 {
-                    btnDP.Enabled = true;
+                    MainMenu menu = new();
+                    this.Hide();
+                    menu.ShowDialog();
+                    this.Close();
                 }
-                if (ctr < 4 && ctr > 0)
-                {
-                    btnDP.Enabled = true;
-                    btnEP.Enabled = true;
-                }
-                Draw();
             }
-            else
-            {
-                MessageBox.Show("You haven't selected a Deck! Please Select a Deck!", "No Deck Error");
-                return;
-            }
-            
+            tbP1LifePoints.Text = newLifePoints.ToString();
+            pbP1.Value = newLifePoints;
+
         }
 
-        private void btnEP_Click(object sender, EventArgs e)
+        // Select Deck
+        private void button1_Click(object sender, EventArgs e)
         {
-            --ctr;
-            if (ctr <= 0)
+            FileUtilities.CallFileExplorer(new OpenFileDialog(), (dialog) =>
             {
-                btnEP.Enabled = false;
-            }
-            else
-            {
-                btnEP.Enabled = true;
-            }
-            if (ctr < 4 && ctr > 0)
-            {
-                btnDP.Enabled = true;
-                btnEP.Enabled = true;
-            }
+                deck.Clear();
+                ReadDeckAsync(dialog.FileName);
+            });
 
-            Controls.Remove(monsterActions);
-            Controls.Remove(spellActions);
-            Controls.Remove(trapActions);
-            DestroyCard();
         }
 
-        //Below function is for form flickering on resize or fullscreen
+        private async void ReadDeckAsync(string s)
+        {
+            using FileStream fs = new(s, FileMode.Open);
+
+            Deck d = await System.Text.Json.JsonSerializer.DeserializeAsync<Deck>(fs);
+            foreach (CardDto card in d.cards)
+            {
+                card.img = Middleware.Controllers.YGOController.GetImage(card.cardId);
+                deck.Add(card);
+            }
+
+        }
+
+
+
+        //Below function is for form flickering (makes all animations look smoother)
         protected override CreateParams CreateParams
         {
             get
@@ -318,84 +329,5 @@ namespace yu_gi_oh
             }
         }
 
-        private void btnAddition_Click(object sender, EventArgs e)
-        {
-            int addition_value = (int)nudCalculate.Value;
-            int newLifePoints = int.Parse(tbP1LifePoints.Text);
-            newLifePoints += addition_value;
-            if (newLifePoints <= nudCalculate.Maximum)
-            {
-                tbP1LifePoints.Text = newLifePoints.ToString();
-                pbP1.Value = newLifePoints;
-            }
-            else
-            {
-                MessageBox.Show("The Maximum Life Points is 8000!", "Maximum Life Points Error");
-                return;
-            }
-        }
-
-        private void btnSubtraction_Click(object sender, EventArgs e)
-        {
-            int subtraction_value = (int)nudCalculate.Value;
-            int newLifePoints = int.Parse(tbP1LifePoints.Text);
-            newLifePoints -= subtraction_value;
-            if(newLifePoints > 0)
-            {
-                tbP1LifePoints.Text = newLifePoints.ToString();
-                pbP1.Value = newLifePoints;
-            }
-            else
-            {
-                if (MessageBox.Show("Do you want to play again?", "Game Over", MessageBoxButtons.YesNo) == DialogResult.Yes)
-                {
-                    Duel duel = new Duel();
-                    hand.Clear();
-                    this.Hide();
-                    duel.ShowDialog();
-                    this.Close();
-                }
-                else
-                {
-                    MainMenu menu = new MainMenu();
-                    this.Hide();
-                    menu.ShowDialog();
-                    this.Close();
-                }
-            }
-            
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            CallFileExplorer(new OpenFileDialog(), (dialog) =>
-            {
-                deck.Clear();
-                OpenAsync(dialog.FileName);
-            });
-
-        }
-
-        private async void OpenAsync(string s)
-        {
-            using FileStream fs = new(s, FileMode.Open);
-
-            Deck d = await System.Text.Json.JsonSerializer.DeserializeAsync<Deck>(fs);
-            foreach (CardDto card in d.cards)
-            {
-                card.img = Middleware.Controllers.YGOController.GetImage(card.cardId);
-                deck.Add(card);
-            }
-            
-        }
-
-        private static void CallFileExplorer(FileDialog dialog, Action<FileDialog> action)
-        {
-            dialog.AddExtension = true;
-            dialog.DefaultExt = Configuration.YGO_DEFAULT_EXTENSION;
-            dialog.Filter = Configuration.YGO_FILTER_EXTENSION;
-
-            if (dialog.ShowDialog() == DialogResult.OK) action.Invoke(dialog);
-        }
     }
 }
