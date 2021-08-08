@@ -71,8 +71,7 @@ namespace yu_gi_oh
                 Duel.currentCardsInHand++;
                 int i = lbGraveyardCards.SelectedIndex;
                 hand.Push(graveList[i]);
-                CardPictureBox cd = graveList[i];
-                duel.PutCardInHand(i);
+                duel.PutCardInHand();
                 graveList.RemoveAt(i);
                 lbGraveyardCards.Items.RemoveAt(lbGraveyardCards.SelectedIndex);
                 duel.lblGraveYard.Text = graveList.Count.ToString();

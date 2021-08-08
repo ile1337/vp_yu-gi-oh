@@ -74,6 +74,7 @@ namespace yu_gi_oh
             currentPhase = 0;
             SelectedCard = null;
             AvailableMonsterField = 0;
+            currentCardsInHand = 0;
             monsterFields.Clear();
             lblGraveYard.Text = graveyardCards.Count.ToString();
             lblGraveYard.Refresh();
@@ -127,7 +128,7 @@ namespace yu_gi_oh
             return card;
         }
 
-        public void PutCardInHand(int i)
+        public void PutCardInHand()
         {
             currentPosition.Offset(xOffset, 0);
             CardPictureBox card = new CardPictureBox(graveyardToHand.Pop().Card,currentPosition);
