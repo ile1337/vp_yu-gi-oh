@@ -95,7 +95,7 @@ namespace yu_gi_oh
             hand.Add(card);
             Controls.Add(card);
             card.BringToFront();
-
+            lbDeckCardsNum.Text = deck.Count.ToString();
         }
 
         // Card logic
@@ -198,6 +198,7 @@ namespace yu_gi_oh
                     break;
                 case MonsterActions.SEND_DECK:
                     deck.Add(card.Card);
+                    lbDeckCardsNum.Text = deck.Count.ToString();
                     DestroyCard(card);
                     break;
 
@@ -331,10 +332,10 @@ namespace yu_gi_oh
             FileUtilities.CallFileExplorer(new OpenFileDialog(), (dialog) =>
             {
                 deck.Clear();
-                ReadDeckAsync(dialog.FileName);
-            });
+                ReadDeckAsync(dialog.FileName);              
+            });          
             btnDP.Enabled = true;
-
+            lbDeckCardsNum.Text = deck.Count.ToString();
         }
 
         private async void ReadDeckAsync(string s)
@@ -347,7 +348,7 @@ namespace yu_gi_oh
                 card.img = Middleware.Controllers.YGOController.GetImage(card.cardId);
                 deck.Add(card);
             }
-
+            lbDeckCardsNum.Text = deck.Count.ToString();
         }
 
 

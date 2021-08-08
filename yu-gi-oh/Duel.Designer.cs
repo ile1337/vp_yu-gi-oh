@@ -79,6 +79,7 @@ namespace yu_gi_oh
             this.btnSubtraction = new System.Windows.Forms.Button();
             this.btnAddition = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
+            this.lbDeckCardsNum = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
@@ -260,6 +261,7 @@ namespace yu_gi_oh
             // 
             this.p1Zone.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.p1Zone.BackgroundImage = global::yu_gi_oh.Properties.Resources.link_wizard__bg__by_alanmac95_dcbum43_250t;
+            this.p1Zone.Controls.Add(this.lbDeckCardsNum);
             this.p1Zone.Controls.Add(this.pictureBox9);
             this.p1Zone.Controls.Add(this.pictureBox10);
             this.p1Zone.Controls.Add(this.pictureBox11);
@@ -690,6 +692,18 @@ namespace yu_gi_oh
             this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
+            // lbDeckCardsNum
+            // 
+            this.lbDeckCardsNum.AutoSize = true;
+            this.lbDeckCardsNum.BackColor = System.Drawing.SystemColors.ControlText;
+            this.lbDeckCardsNum.Font = new System.Drawing.Font("Segoe UI Black", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.lbDeckCardsNum.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.lbDeckCardsNum.Location = new System.Drawing.Point(397, 179);
+            this.lbDeckCardsNum.Name = "lbDeckCardsNum";
+            this.lbDeckCardsNum.Size = new System.Drawing.Size(18, 20);
+            this.lbDeckCardsNum.TabIndex = 8;
+            this.lbDeckCardsNum.Text = "0";
+            // 
             // Duel
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -729,6 +743,7 @@ namespace yu_gi_oh
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox24)).EndInit();
             this.p2Zone.ResumeLayout(false);
             this.p1Zone.ResumeLayout(false);
+            this.p1Zone.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox9)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox10)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox11)).EndInit();
@@ -802,5 +817,6 @@ namespace yu_gi_oh
         private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.NumericUpDown nudCalculate;
+        private System.Windows.Forms.Label lbDeckCardsNum;
     }
 }
