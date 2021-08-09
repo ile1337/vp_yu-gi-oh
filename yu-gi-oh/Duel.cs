@@ -31,11 +31,9 @@ namespace yu_gi_oh
 
         // Logic properties/constants
         public static  List<CardPictureBox> hand = new();
-        public static  Stack<CardPictureBox> graveyardToHand = new();
-        public List<CardPictureBox> graveyardCards = new();
+        public List<CardDto> graveyardCards = new();
         public List<CardDto> deck = new();
         private static int currentPhase = 0;
-        public static int currentCardsInHand = 0;
         private CardPictureBox SelectedCard;
 
         // Action ListBoxes
@@ -59,8 +57,6 @@ namespace yu_gi_oh
             monsterFields = new List<PictureBox> { pictureBox10, pictureBox11, pictureBox12 };
             spellFields = new List<PictureBox> { pictureBox14, pictureBox15, pictureBox16 };
             btnDP.Enabled = false;
-            lblGraveYard.Text = graveyardCards.Count.ToString();
-            lblGraveYard.Update();
             MessageBox.Show("At the start of the game please select a deck!", "Warning!");
             this.Refresh();
         }
@@ -71,13 +67,14 @@ namespace yu_gi_oh
             hand.Clear();
             zIndex = 0;
             deck.Clear();
+            graveyardCards.Clear();
             currentPhase = 0;
             SelectedCard = null;
             AvailableMonsterField = 0;
-            currentCardsInHand = 0;
+            AvailableSpellField = 0;
             monsterFields.Clear();
-            lblGraveYard.Text = graveyardCards.Count.ToString();
-            lblGraveYard.Refresh();
+            spellFields.Clear();
+            UpdateGraveyardLabel(graveyardCards.Count.ToString());
             this.Refresh();
         }
 
@@ -110,7 +107,7 @@ namespace yu_gi_oh
             hand.Add(card);
             Controls.Add(card);
             card.BringToFront();
-            lbDeckCardsNum.Text = deck.Count.ToString();
+            UpdateDeckLabel(deck.Count.ToString());
         }
 
         // Card logic
@@ -119,7 +116,13 @@ namespace yu_gi_oh
             int idx = random.Next(0, deck.Count);
             CardDto dto = deck[idx];
             currentPosition.Offset(xOffset, 0);
-            CardPictureBox card = new(dto, currentPosition);
+
+            CardPictureBox card = new() 
+            {
+                Card = dto
+            };
+            card.SetInHand(currentPosition);
+
             ClearListBoxes();
             card.MouseEnter += Card_MouseEnter;
             card.MouseLeave += Card_MouseLeave;
@@ -128,10 +131,16 @@ namespace yu_gi_oh
             return card;
         }
 
-        public void PutCardInHand()
+        public void PutCardInHand(CardDto dto)
         {
             currentPosition.Offset(xOffset, 0);
-            CardPictureBox card = new CardPictureBox(graveyardToHand.Pop().Card,currentPosition);
+
+            CardPictureBox card = new()
+            {
+                Card = dto
+            };
+            card.SetInHand(currentPosition);
+
             ClearListBoxes();
             card.MouseEnter += Card_MouseEnter;
             card.MouseLeave += Card_MouseLeave;
@@ -214,8 +223,6 @@ namespace yu_gi_oh
                         return;
                     }
                     ChangePictureBoxImageAtk(monsterFields[AvailableMonsterField++], card.Card.img);
-                    --currentCardsInHand;
-                    DestroyCard(card);
                     break;
                 case MonsterActions.SUMMON_DEFENSE:
                     if(AvailableMonsterField >= 3)
@@ -224,28 +231,21 @@ namespace yu_gi_oh
                         return;
                     }
                     ChangePictureBoxImageDef(monsterFields[AvailableMonsterField++], card.Card.img);
-                    --currentCardsInHand;
-                    DestroyCard(card);
                     break;
                 case MonsterActions.SEND_DECK:
                     deck.Add(card.Card);
-                    lbDeckCardsNum.Text = deck.Count.ToString();
-                    --currentCardsInHand;
-                    DestroyCard(card);
+                    UpdateDeckLabel(deck.Count.ToString());
                     break;
                 case MonsterActions.SEND_GRAVEYARD:
-                    graveyardCards.Add(card);
-                    lblGraveYard.Text = graveyardCards.Count.ToString();
-                    --currentCardsInHand;
-                    DestroyCard(card);
+                    graveyardCards.Add(card.Card);
+                    UpdateGraveyardLabel(graveyardCards.Count.ToString());
                     break;
                 case MonsterActions.SUMMON_FACE_DOWN:
                     ChangePictureAndDrawCardbackMonster(monsterFields[AvailableMonsterField++], card.Card.img);
-                    --currentCardsInHand;
-                    DestroyCard(card);
                     break;
-
             }
+
+            DestroyCard(card);
             ClearListBoxes();
         }
 
@@ -263,20 +263,6 @@ namespace yu_gi_oh
                         return;
                     }
                     ChangePictureBoxImageAtk(spellFields[AvailableSpellField++], card.Card.img);
-                    --currentCardsInHand;
-                    DestroyCard(card);
-                    break;
-                case SpellActions.SEND_DECK:
-                    deck.Add(card.Card);
-                    lbDeckCardsNum.Text = deck.Count.ToString();
-                    --currentCardsInHand;
-                    DestroyCard(card);
-                    break;
-                case SpellActions.SEND_GRAVEYARD:
-                    graveyardCards.Add(card);
-                    lblGraveYard.Text = graveyardCards.Count.ToString();
-                    --currentCardsInHand;
-                    DestroyCard(card);
                     break;
                 case SpellActions.SET:
                     if (AvailableSpellField >= 3)
@@ -285,16 +271,23 @@ namespace yu_gi_oh
                         return;
                     }
                     ChangePictureAndDrawCardback(spellFields[AvailableSpellField++], card.Card.img);
-                    --currentCardsInHand;
-                    DestroyCard(card);
+                    break;
+                case SpellActions.SEND_DECK:
+                    deck.Add(card.Card);
+                    UpdateDeckLabel(deck.Count.ToString());
+                    break;
+                case SpellActions.SEND_GRAVEYARD:
+                    graveyardCards.Add(card.Card);
+                    UpdateGraveyardLabel(graveyardCards.Count.ToString());
                     break;
             }
+
+            DestroyCard(card);
             ClearListBoxes();
         }
 
         private void trapActions_Click(object sender, EventArgs e)
         {
-            PictureBox back = new PictureBox();
             CardPictureBox card = SelectedCard;
             if (trapActions.SelectedIndex == -1) return;
             TrapActions item = trapActions.Items[trapActions.SelectedIndex].ToString().ToAction<TrapActions>();
@@ -307,22 +300,17 @@ namespace yu_gi_oh
                         return;
                     }
                     ChangePictureAndDrawCardback(spellFields[AvailableSpellField++], card.Card.img);
-                    --currentCardsInHand;
-                    DestroyCard(card);
                     break;
                 case TrapActions.SEND_DECK:
                     deck.Add(card.Card);
-                    lbDeckCardsNum.Text = deck.Count.ToString();
-                    --currentCardsInHand;
-                    DestroyCard(card);
+                    UpdateDeckLabel(deck.Count.ToString());
                     break;
                 case TrapActions.SEND_GRAVEYARD:
-                    graveyardCards.Add(card);
-                    lblGraveYard.Text = graveyardCards.Count.ToString();
-                    --currentCardsInHand;
-                    DestroyCard(card);
+                    graveyardCards.Add(card.Card);
+                    UpdateGraveyardLabel(graveyardCards.Count.ToString());
                     break;
             }
+            DestroyCard(card);
             ClearListBoxes();
         }
 
@@ -348,21 +336,17 @@ namespace yu_gi_oh
             }
 
 
-            if (currentCardsInHand >= 4)
+            if (hand.Count >= 4)
             {
                 MessageBox.Show("You can have only 4 cards in hand!", "Cards in Hand");
                 return;
             }
-            else
-            {
 
-                currentPhase++;
-                // TODO: Uncomment for production, commented for Debug reasons
-                // btnDP.Enabled = false;
-                Draw();
-                ++currentCardsInHand;
-                ClearListBoxes();
-            }
+            currentPhase++;
+            // TODO: Uncomment for production, commented for Debug reasons
+            // btnDP.Enabled = false;
+            Draw();
+            ClearListBoxes();
         }
 
         private void btnEP_Click(object sender, EventArgs e)
@@ -382,6 +366,7 @@ namespace yu_gi_oh
 
         private void ChangePictureAndDrawCardback(PictureBox p, Image img)
         {
+            // TODO: Fix after fields get replaced with CardPictureBox
             int width = 100;
             int height = 100;
             Image image = new Bitmap(width, height);
@@ -398,6 +383,7 @@ namespace yu_gi_oh
 
         private void ChangePictureAndDrawCardbackMonster(PictureBox p, Image img)
         {
+            // TODO: Fix after fields get replaced with CardPictureBox
             int width = 400;
             int height = 355;
             Image image = new Bitmap(width, height);
@@ -497,7 +483,7 @@ namespace yu_gi_oh
                 ReadDeckAsync(dialog.FileName);              
             });          
             btnDP.Enabled = true;
-            lbDeckCardsNum.Text = deck.Count.ToString();
+            UpdateDeckLabel(deck.Count.ToString());
         }
 
         private async void ReadDeckAsync(string s)
@@ -510,16 +496,31 @@ namespace yu_gi_oh
                 card.img = Middleware.Controllers.YGOController.GetImage(card.cardId);
                 deck.Add(card);
             }
-            lbDeckCardsNum.Text = deck.Count.ToString();
+            UpdateDeckLabel(deck.Count.ToString());
         }
 
         // Graveyard functionality
         private void pictureBox13_Click(object sender, EventArgs e)
         {
-            lblGraveYard.Text = graveyardCards.Count.ToString();
-            Graveyard graveyard = new Graveyard(graveyardCards,deck,graveyardToHand,this);
+            Graveyard graveyard = new Graveyard(graveyardCards,deck,this);
             graveyard.ShowDialog();
         }
+
+        public void UpdateGraveyardLabel(string txt)
+        {
+            lbGraveyard.Text = txt;
+        }
+
+        public void UpdateDeckLabel(string txt)
+        {
+            lbDeckCardsNum.Text = txt;
+        }
+
+        public int CurrentHandCount()
+        {
+            return hand.Count;
+        }
+
 
 
         //Below function is for form flickering (makes all animations look smoother)
@@ -533,6 +534,12 @@ namespace yu_gi_oh
             }
         }
 
-        
+
+
+        private void Duel_Load(object sender, EventArgs e)
+        {
+
+        }
+
     }
 }

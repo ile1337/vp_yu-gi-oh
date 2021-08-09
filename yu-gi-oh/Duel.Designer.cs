@@ -44,7 +44,7 @@ namespace yu_gi_oh
             this.pictureBox24 = new System.Windows.Forms.PictureBox();
             this.p2Zone = new System.Windows.Forms.GroupBox();
             this.p1Zone = new System.Windows.Forms.GroupBox();
-            this.lblGraveYard = new System.Windows.Forms.Label();
+            this.lbGraveyard = new System.Windows.Forms.Label();
             this.lbDeckCardsNum = new System.Windows.Forms.Label();
             this.pictureBox9 = new System.Windows.Forms.PictureBox();
             this.pictureBox10 = new System.Windows.Forms.PictureBox();
@@ -262,7 +262,7 @@ namespace yu_gi_oh
             // 
             this.p1Zone.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.p1Zone.BackgroundImage = global::yu_gi_oh.Properties.Resources.link_wizard__bg__by_alanmac95_dcbum43_250t;
-            this.p1Zone.Controls.Add(this.lblGraveYard);
+            this.p1Zone.Controls.Add(this.lbGraveyard);
             this.p1Zone.Controls.Add(this.lbDeckCardsNum);
             this.p1Zone.Controls.Add(this.pictureBox9);
             this.p1Zone.Controls.Add(this.pictureBox10);
@@ -280,27 +280,25 @@ namespace yu_gi_oh
             this.p1Zone.TabStop = false;
             this.p1Zone.Text = "P1Zone";
             // 
-            // lblGraveYard
+            // lbGraveyard
             // 
-            this.lblGraveYard.AutoSize = true;
-            this.lblGraveYard.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.lblGraveYard.Font = new System.Drawing.Font("Segoe UI Black", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.lblGraveYard.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.lblGraveYard.Location = new System.Drawing.Point(397, 59);
-            this.lblGraveYard.Name = "lblGraveYard";
-            this.lblGraveYard.Size = new System.Drawing.Size(18, 20);
-            this.lblGraveYard.TabIndex = 9;
-            this.lblGraveYard.Text = "0";
+            this.lbGraveyard.AutoSize = true;
+            this.lbGraveyard.BackColor = System.Drawing.Color.Black;
+            this.lbGraveyard.ForeColor = System.Drawing.SystemColors.ControlLight;
+            this.lbGraveyard.Location = new System.Drawing.Point(401, 59);
+            this.lbGraveyard.Name = "lbGraveyard";
+            this.lbGraveyard.Size = new System.Drawing.Size(14, 15);
+            this.lbGraveyard.TabIndex = 9;
+            this.lbGraveyard.Text = "0";
             // 
             // lbDeckCardsNum
             // 
             this.lbDeckCardsNum.AutoSize = true;
-            this.lbDeckCardsNum.BackColor = System.Drawing.SystemColors.ControlText;
-            this.lbDeckCardsNum.Font = new System.Drawing.Font("Segoe UI Black", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.lbDeckCardsNum.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.lbDeckCardsNum.Location = new System.Drawing.Point(397, 179);
+            this.lbDeckCardsNum.BackColor = System.Drawing.Color.Black;
+            this.lbDeckCardsNum.ForeColor = System.Drawing.SystemColors.ControlLight;
+            this.lbDeckCardsNum.Location = new System.Drawing.Point(401, 180);
             this.lbDeckCardsNum.Name = "lbDeckCardsNum";
-            this.lbDeckCardsNum.Size = new System.Drawing.Size(18, 20);
+            this.lbDeckCardsNum.Size = new System.Drawing.Size(14, 15);
             this.lbDeckCardsNum.TabIndex = 8;
             this.lbDeckCardsNum.Text = "0";
             // 
@@ -308,7 +306,7 @@ namespace yu_gi_oh
             // 
             this.pictureBox9.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.pictureBox9.Image = global::yu_gi_oh.Properties.Resources.wp2866512;
-            this.pictureBox9.Location = new System.Drawing.Point(368, 130);
+            this.pictureBox9.Location = new System.Drawing.Point(368, 134);
             this.pictureBox9.Name = "pictureBox9";
             this.pictureBox9.Size = new System.Drawing.Size(82, 112);
             this.pictureBox9.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -410,7 +408,7 @@ namespace yu_gi_oh
             this.btnEP.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.btnEP.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.btnEP.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.btnEP.Location = new System.Drawing.Point(12, 402);
+            this.btnEP.Location = new System.Drawing.Point(12, 411);
             this.btnEP.Name = "btnEP";
             this.btnEP.Size = new System.Drawing.Size(50, 47);
             this.btnEP.TabIndex = 31;
@@ -423,7 +421,7 @@ namespace yu_gi_oh
             this.btnBP.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.btnBP.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.btnBP.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.btnBP.Location = new System.Drawing.Point(12, 317);
+            this.btnBP.Location = new System.Drawing.Point(12, 326);
             this.btnBP.Name = "btnBP";
             this.btnBP.Size = new System.Drawing.Size(50, 47);
             this.btnBP.TabIndex = 30;
@@ -580,9 +578,9 @@ namespace yu_gi_oh
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(17, 79);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(83, 20);
+            this.label2.Size = new System.Drawing.Size(87, 20);
             this.label2.TabIndex = 31;
-            this.label2.Text = "LifePoints:";
+            this.label2.Text = "Life Points:";
             // 
             // pbP2
             // 
@@ -744,6 +742,7 @@ namespace yu_gi_oh
             this.MaximizeBox = false;
             this.Name = "Duel";
             this.Text = "Duel";
+            this.Load += new System.EventHandler(this.Duel_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
@@ -832,7 +831,7 @@ namespace yu_gi_oh
         private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.NumericUpDown nudCalculate;
-        public System.Windows.Forms.Label lbDeckCardsNum { get; set; }
-        public System.Windows.Forms.Label lblGraveYard { get; set; }
+        private System.Windows.Forms.Label lbDeckCardsNum;
+        private System.Windows.Forms.Label lbGraveyard;
     }
 }
