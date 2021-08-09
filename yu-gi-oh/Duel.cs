@@ -31,6 +31,7 @@ namespace yu_gi_oh
 
         // Logic properties/constants
         public static  List<CardPictureBox> hand = new();
+        public static  Stack<CardPictureBox> graveyardToHand = new();
         public List<CardPictureBox> graveyardCards = new();
         public List<CardDto> deck = new();
         private static int currentPhase = 0;
@@ -127,10 +128,10 @@ namespace yu_gi_oh
             return card;
         }
 
-        public void PutCardInHand(CardDto dto)
+        public void PutCardInHand()
         {
             currentPosition.Offset(xOffset, 0);
-            CardPictureBox card = new CardPictureBox(dto,currentPosition);
+            CardPictureBox card = new CardPictureBox(graveyardToHand.Pop().Card,currentPosition);
             ClearListBoxes();
             card.MouseEnter += Card_MouseEnter;
             card.MouseLeave += Card_MouseLeave;
@@ -516,7 +517,7 @@ namespace yu_gi_oh
         private void pictureBox13_Click(object sender, EventArgs e)
         {
             lblGraveYard.Text = graveyardCards.Count.ToString();
-            Graveyard graveyard = new Graveyard(graveyardCards, deck, this);
+            Graveyard graveyard = new Graveyard(graveyardCards,deck,graveyardToHand,this);
             graveyard.ShowDialog();
         }
 
