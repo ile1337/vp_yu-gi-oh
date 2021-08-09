@@ -1,26 +1,47 @@
 ﻿using Middleware.Models;
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
 using System.Drawing;
 using System.Windows.Forms;
 
 namespace yu_gi_oh.Components
 {
-    public class CardPictureBox : PictureBox
+    public partial class CardPictureBox : PictureBox
     {
+
         public static readonly Size defaultSize = new(122, 152);
 
-        public readonly CardDto Card;
+        protected static readonly Size fieldSize = new(82, 112);
+
+        protected CardDto _card { get; set; } = new();
+
+        public CardDto Card
+        {
+            get { return _card; }
+            set
+            {
+                _card = value;
+                Image = value.img;
+            }
+        }
 
         public CardPictureBox()
         {
+            InitializeComponent();
+            SizeMode = PictureBoxSizeMode.StretchImage;
+            Size = fieldSize;
         }
 
-        public CardPictureBox(CardDto dto, Point position) : base()
+        public void SetInHand(Point position)
         {
-            Card = dto;
-            Image = Card.img;
             Location = position;
             Size = defaultSize;
-            SizeMode = PictureBoxSizeMode.StretchImage;
+        }
+
+        protected override void OnPaint(PaintEventArgs pe)
+        {
+            base.OnPaint(pe);
         }
 
         public override string ToString()
