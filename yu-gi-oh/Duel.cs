@@ -42,8 +42,8 @@ namespace yu_gi_oh
         private ListBox trapActions = new();
 
         // Field properties/constants
-        private List<PictureBox> monsterFields = new();
-        private List<PictureBox> spellFields = new();
+        private List<CardPictureBox> monsterFields = new();
+        private List<CardPictureBox> spellFields = new();
         private int AvailableMonsterField = 0;
         private int AvailableSpellField = 0;
 
@@ -54,8 +54,8 @@ namespace yu_gi_oh
             InitializeComponent();
             CreateListBoxes();
             InitializeProperties();
-            monsterFields = new List<PictureBox> { pictureBox10, pictureBox11, pictureBox12 };
-            spellFields = new List<PictureBox> { pictureBox14, pictureBox15, pictureBox16 };
+            monsterFields = new List<CardPictureBox> { cardPictureBox1, cardPictureBox2, cardPictureBox3 };
+            spellFields = new List<CardPictureBox> { cardPictureBox4, cardPictureBox5, cardPictureBox6 };
             btnDP.Enabled = false;
             MessageBox.Show("At the start of the game please select a deck!", "Warning!");
             this.Refresh();
@@ -222,7 +222,7 @@ namespace yu_gi_oh
                         MessageBox.Show("No free fields!", "Fields error");
                         return;
                     }
-                    ChangePictureBoxImageAtk(monsterFields[AvailableMonsterField++], card.Card.img);
+                    ChangePictureBoxImageAtk(monsterFields[AvailableMonsterField++], card.Card);
                     break;
                 case MonsterActions.SUMMON_DEFENSE:
                     if(AvailableMonsterField >= 3)
@@ -230,7 +230,7 @@ namespace yu_gi_oh
                         MessageBox.Show("No free fields!", "Fields error");
                         return;
                     }
-                    ChangePictureBoxImageDef(monsterFields[AvailableMonsterField++], card.Card.img);
+                    ChangePictureBoxImageDef(monsterFields[AvailableMonsterField++], card.Card);
                     break;
                 case MonsterActions.SEND_DECK:
                     deck.Add(card.Card);
@@ -241,7 +241,7 @@ namespace yu_gi_oh
                     UpdateGraveyardLabel(graveyardCards.Count.ToString());
                     break;
                 case MonsterActions.SUMMON_FACE_DOWN:
-                    ChangePictureAndDrawCardbackMonster(monsterFields[AvailableMonsterField++], card.Card.img);
+                    ChangePictureAndDrawCardbackMonster(monsterFields[AvailableMonsterField++], card.Card);
                     break;
             }
 
@@ -262,7 +262,7 @@ namespace yu_gi_oh
                         MessageBox.Show("No free fields!", "Fields error");
                         return;
                     }
-                    ChangePictureBoxImageAtk(spellFields[AvailableSpellField++], card.Card.img);
+                    ChangePictureBoxImageAtk(spellFields[AvailableSpellField++], card.Card);
                     break;
                 case SpellActions.SET:
                     if (AvailableSpellField >= 3)
@@ -270,7 +270,7 @@ namespace yu_gi_oh
                         MessageBox.Show("No free fields!", "Fields error");
                         return;
                     }
-                    ChangePictureAndDrawCardback(spellFields[AvailableSpellField++], card.Card.img);
+                    ChangePictureAndDrawCardback(spellFields[AvailableSpellField++], card.Card);
                     break;
                 case SpellActions.SEND_DECK:
                     deck.Add(card.Card);
@@ -299,7 +299,7 @@ namespace yu_gi_oh
                         MessageBox.Show("No free fields!", "Fields error");
                         return;
                     }
-                    ChangePictureAndDrawCardback(spellFields[AvailableSpellField++], card.Card.img);
+                    ChangePictureAndDrawCardback(spellFields[AvailableSpellField++], card.Card);
                     break;
                 case TrapActions.SEND_DECK:
                     deck.Add(card.Card);
@@ -358,50 +358,37 @@ namespace yu_gi_oh
 
 
         // Card effects/events
-        private void ChangePictureBoxImageAtk(PictureBox p, Image image)
+        private void ChangePictureBoxImageAtk(CardPictureBox p, CardDto card)
         {
-            p.Image = image;
+            p.Image = card.img;
             p.SizeMode = PictureBoxSizeMode.StretchImage;
         }
 
-        private void ChangePictureAndDrawCardback(PictureBox p, Image img)
+        private void ChangePictureAndDrawCardback(CardPictureBox p, CardDto card)
         {
             // TODO: Fix after fields get replaced with CardPictureBox
-            int width = 100;
-            int height = 100;
-            Image image = new Bitmap(width, height);
-
-            using (var graphics = Graphics.FromImage(image))
-            {
-                graphics.DrawImage(img, new Rectangle(0, 0, width, height));
-                graphics.DrawImage(Properties.Resources.wp2866512, new Rectangle(0, 0, width, height));
-            }
-
+            p.Card = card;
+            p.Image = Properties.Resources.wp2866512;
             p.SizeMode = PictureBoxSizeMode.StretchImage;
-            p.Image = image;
         }
 
-        private void ChangePictureAndDrawCardbackMonster(PictureBox p, Image img)
+        private void ChangePictureAndDrawCardbackMonster(CardPictureBox p, CardDto card)
         {
             // TODO: Fix after fields get replaced with CardPictureBox
-            int width = 400;
-            int height = 355;
-            Image image = new Bitmap(width, height);
-            image.RotateFlip(RotateFlipType.Rotate90FlipNone);
-            using (var graphics = Graphics.FromImage(image))
-            {
-                graphics.DrawImage(img, new Rectangle(-1,-1, width, height));
-                graphics.DrawImage(Properties.Resources.wp2866512, new Rectangle(-1,-1, width, height));
-            }
-
-            p.Image = image;
+            
+            card.img.RotateFlip(RotateFlipType.Rotate90FlipNone);
+            Image cardback = Properties.Resources.wp2866512;
+            cardback.RotateFlip(RotateFlipType.Rotate90FlipNone);
+            p.Card = card;
+            p.Image = cardback;
             p.SizeMode = PictureBoxSizeMode.Zoom;
         }
 
-        private void ChangePictureBoxImageDef(PictureBox p, Image image)
+        private void ChangePictureBoxImageDef(CardPictureBox p, CardDto card)
         {
-            image.RotateFlip(RotateFlipType.Rotate90FlipNone);
-            p.Image = image;
+            card.img.RotateFlip(RotateFlipType.Rotate90FlipNone);
+            p.Image = card.img;
+            p.Card = card;
             p.SizeMode = PictureBoxSizeMode.Zoom;
         }
 
