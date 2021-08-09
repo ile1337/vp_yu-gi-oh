@@ -35,11 +35,15 @@ namespace yu_gi_oh
         public List<CardDto> deck = new();
         private static int currentPhase = 0;
         private CardPictureBox SelectedCard;
+        private CardPictureBox SelectedCardOnField;
 
         // Action ListBoxes
         private ListBox monsterActions = new();
         private ListBox spellActions = new();
         private ListBox trapActions = new();
+        private ListBox monsterActionsField = new();
+        private ListBox spellActionsField = new();
+        private ListBox trapActionsField = new();
 
         // Field properties/constants
         private List<CardPictureBox> monsterFields = new();
@@ -70,6 +74,7 @@ namespace yu_gi_oh
             graveyardCards.Clear();
             currentPhase = 0;
             SelectedCard = null;
+            SelectedCardOnField = null;
             AvailableMonsterField = 0;
             AvailableSpellField = 0;
             monsterFields.Clear();
@@ -85,6 +90,9 @@ namespace yu_gi_oh
             CreateListBox<MonsterActions, Hand>(monsterActions, monsterActions_Click);
             CreateListBox<SpellActions, Hand>(spellActions, spellActions_Click);
             CreateListBox<TrapActions, Hand>(trapActions, trapActions_Click);
+            CreateListBox<MonsterActions, Field>(monsterActionsField, monsterActionsField_Click);
+            CreateListBox<SpellActions, Field>(spellActionsField, spellActionsField_Click);
+            CreateListBox<TrapActions, Field>(trapActionsField, trapActionsField_Click);
         }
 
 
@@ -173,6 +181,16 @@ namespace yu_gi_oh
             currentPosition.Offset(-xOffset, 0);
         }
 
+        private void DestroyCardFromField(CardPictureBox card,CardPictureBox field)
+        {
+            if (field.Image == null) return;
+            card.Card = null;
+            field.Image.Dispose();
+            field.Image = null;
+            field.Invalidate();
+            ClearListBoxes();
+        }
+
 
         // ListBox logic
         private void ClearListBoxes()
@@ -186,6 +204,15 @@ namespace yu_gi_oh
         {
             action.Location = new Point(card.Location.X, card.Location.Y + hoverHeight - 100);
             Controls.Add(action);
+            action.BringToFront();
+            action.ClearSelected();
+        }
+
+        private void CreateActionField(ListBox action, CardPictureBox card)
+        {
+            
+            Controls.Add(action);
+            action.Location = new Point(card.Location.X, card.Location.Y + 100);
             action.BringToFront();
             action.ClearSelected();
         }
@@ -314,6 +341,49 @@ namespace yu_gi_oh
             ClearListBoxes();
         }
 
+        private void monsterActionsField_Click(object sender,EventArgs e)
+        {
+            CardPictureBox card = SelectedCardOnField;
+            if (monsterActionsField.SelectedIndex == -1) return;
+            MonsterActions item = monsterActionsField.Items[monsterActionsField.SelectedIndex].ToString().ToAction<MonsterActions>();
+            switch (item)
+            {
+                case MonsterActions.SEND_DECK:
+                    deck.Add(card.Card);
+                    UpdateDeckLabel(deck.Count.ToString());
+                    //++AvailableMonsterField;
+                    //DestroyCardFromField(card, monsterFields[AvailableMonsterField]);
+                    //monsterActionsField.Items.Clear();
+                    //Controls.Remove(monsterActionsField);
+                    break;
+                case MonsterActions.SEND_GRAVEYARD:
+                    graveyardCards.Add(card.Card);
+                    UpdateGraveyardLabel(graveyardCards.Count.ToString());
+                   // ++AvailableMonsterField;
+                    //DestroyCardFromField(card, monsterFields[AvailableMonsterField]);
+                    //Controls.Remove(monsterActionsField);
+                    break;
+                case MonsterActions.FLIP:
+                    ChangeImageOnFieldMonsterFlip(monsterFields[--AvailableMonsterField], card.Card);
+                    //Controls.Remove(monsterActionsField);
+                    break;
+            }
+            
+
+            ClearListBoxes();
+
+        }
+
+        private void spellActionsField_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void trapActionsField_Click(object sender, EventArgs e)
+        {
+
+        }
+
         // Phases logic
         private void btnDP_Click(object sender, EventArgs e)
         {
@@ -382,6 +452,15 @@ namespace yu_gi_oh
             p.Card = card;
             p.Image = cardback;
             p.SizeMode = PictureBoxSizeMode.Zoom;
+        }
+
+        private void ChangeImageOnFieldMonsterFlip(CardPictureBox p, CardDto card)
+        {
+            card.img.RotateFlip(RotateFlipType.Rotate270FlipNone);
+            p.Card = card;
+            p.Image = card.img;
+            p.SizeMode = PictureBoxSizeMode.Zoom;
+
         }
 
         private void ChangePictureBoxImageDef(CardPictureBox p, CardDto card)
@@ -528,5 +607,17 @@ namespace yu_gi_oh
 
         }
 
+        private void cardPictureBox1_Click(object sender, EventArgs e)
+        {
+          
+            SelectedCardOnField = sender as CardPictureBox;
+            if (SelectedCard.Card == null || SelectedCard.Image == null) return;
+            ListBox selectedActions;
+            selectedActions = monsterActionsField;
+            
+
+            ClearListBoxes();
+            CreateActionField(monsterActionsField, cardPictureBox1);
+        }
     }
 }

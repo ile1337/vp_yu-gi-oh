@@ -427,6 +427,7 @@ namespace yu_gi_oh
             this.cardPictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.cardPictureBox1.TabIndex = 32;
             this.cardPictureBox1.TabStop = false;
+            this.cardPictureBox1.Click += new System.EventHandler(this.cardPictureBox1_Click);
             // 
             // pictureBox9
             // 

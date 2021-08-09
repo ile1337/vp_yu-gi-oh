@@ -13,6 +13,9 @@ namespace yu_gi_oh.Components.Actions
         [Description("Summon Face Down")]
         [Hand]
         SUMMON_FACE_DOWN,
+        [Description("Flip")]
+        [Field]
+        FLIP,
         [Description("Send to Graveyard")]
         [Hand]
         [Field]
