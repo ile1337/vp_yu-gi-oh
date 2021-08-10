@@ -159,6 +159,7 @@ namespace yu_gi_oh
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.Name = "Lobby";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Lobby";
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();

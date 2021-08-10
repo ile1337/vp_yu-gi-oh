@@ -620,6 +620,7 @@ namespace yu_gi_oh
             this.DoubleBuffered = true;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Deckbuilder";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Deckbuilder";
             this.Load += new System.EventHandler(this.Deckbuilder_Load);
             this.groupBox1.ResumeLayout(false);

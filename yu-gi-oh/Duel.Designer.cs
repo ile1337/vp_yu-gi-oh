@@ -83,7 +83,6 @@ namespace yu_gi_oh
             this.pbP1 = new System.Windows.Forms.ProgressBar();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
             this.nudCalculate = new System.Windows.Forms.NumericUpDown();
-            this.btnCalculate = new System.Windows.Forms.Button();
             this.btnSubtraction = new System.Windows.Forms.Button();
             this.btnAddition = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
@@ -300,6 +299,7 @@ namespace yu_gi_oh
             cardDto1.subType = null;
             cardDto1.type = null;
             this.cardPictureBox6.Card = cardDto1;
+            this.cardPictureBox6.isDefence = false;
             this.cardPictureBox6.Location = new System.Drawing.Point(259, 130);
             this.cardPictureBox6.Name = "cardPictureBox6";
             this.cardPictureBox6.Size = new System.Drawing.Size(82, 112);
@@ -321,6 +321,7 @@ namespace yu_gi_oh
             cardDto2.subType = null;
             cardDto2.type = null;
             this.cardPictureBox3.Card = cardDto2;
+            this.cardPictureBox3.isDefence = false;
             this.cardPictureBox3.Location = new System.Drawing.Point(259, 12);
             this.cardPictureBox3.Name = "cardPictureBox3";
             this.cardPictureBox3.Size = new System.Drawing.Size(82, 112);
@@ -342,6 +343,7 @@ namespace yu_gi_oh
             cardDto3.subType = null;
             cardDto3.type = null;
             this.cardPictureBox5.Card = cardDto3;
+            this.cardPictureBox5.isDefence = false;
             this.cardPictureBox5.Location = new System.Drawing.Point(154, 130);
             this.cardPictureBox5.Name = "cardPictureBox5";
             this.cardPictureBox5.Size = new System.Drawing.Size(82, 112);
@@ -374,6 +376,7 @@ namespace yu_gi_oh
             cardDto4.subType = null;
             cardDto4.type = null;
             this.cardPictureBox4.Card = cardDto4;
+            this.cardPictureBox4.isDefence = false;
             this.cardPictureBox4.Location = new System.Drawing.Point(50, 130);
             this.cardPictureBox4.Name = "cardPictureBox4";
             this.cardPictureBox4.Size = new System.Drawing.Size(82, 112);
@@ -395,6 +398,7 @@ namespace yu_gi_oh
             cardDto5.subType = null;
             cardDto5.type = null;
             this.cardPictureBox2.Card = cardDto5;
+            this.cardPictureBox2.isDefence = false;
             this.cardPictureBox2.Location = new System.Drawing.Point(154, 12);
             this.cardPictureBox2.Name = "cardPictureBox2";
             this.cardPictureBox2.Size = new System.Drawing.Size(82, 112);
@@ -427,6 +431,7 @@ namespace yu_gi_oh
             cardDto6.subType = null;
             cardDto6.type = null;
             this.cardPictureBox1.Card = cardDto6;
+            this.cardPictureBox1.isDefence = false;
             this.cardPictureBox1.Location = new System.Drawing.Point(50, 12);
             this.cardPictureBox1.Name = "cardPictureBox1";
             this.cardPictureBox1.Size = new System.Drawing.Size(82, 112);
@@ -671,7 +676,7 @@ namespace yu_gi_oh
             this.groupBox4.Controls.Add(this.label1);
             this.groupBox4.Controls.Add(this.pbP1);
             this.groupBox4.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.groupBox4.Location = new System.Drawing.Point(1009, 567);
+            this.groupBox4.Location = new System.Drawing.Point(1009, 473);
             this.groupBox4.Name = "groupBox4";
             this.groupBox4.Size = new System.Drawing.Size(178, 171);
             this.groupBox4.TabIndex = 29;
@@ -714,13 +719,12 @@ namespace yu_gi_oh
             this.groupBox5.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.groupBox5.BackgroundImage = global::yu_gi_oh.Properties.Resources.link_wizard__bg__by_alanmac95_dcbum43_250t;
             this.groupBox5.Controls.Add(this.nudCalculate);
-            this.groupBox5.Controls.Add(this.btnCalculate);
             this.groupBox5.Controls.Add(this.btnSubtraction);
             this.groupBox5.Controls.Add(this.btnAddition);
             this.groupBox5.Font = new System.Drawing.Font("Segoe UI Black", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.groupBox5.Location = new System.Drawing.Point(1009, 272);
+            this.groupBox5.Location = new System.Drawing.Point(1009, 255);
             this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Size = new System.Drawing.Size(182, 174);
+            this.groupBox5.Size = new System.Drawing.Size(182, 127);
             this.groupBox5.TabIndex = 30;
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "Calculate";
@@ -742,22 +746,11 @@ namespace yu_gi_oh
             this.nudCalculate.Size = new System.Drawing.Size(120, 25);
             this.nudCalculate.TabIndex = 4;
             // 
-            // btnCalculate
-            // 
-            this.btnCalculate.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.btnCalculate.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.btnCalculate.Location = new System.Drawing.Point(57, 131);
-            this.btnCalculate.Name = "btnCalculate";
-            this.btnCalculate.Size = new System.Drawing.Size(75, 26);
-            this.btnCalculate.TabIndex = 3;
-            this.btnCalculate.Text = "OK";
-            this.btnCalculate.UseVisualStyleBackColor = false;
-            // 
             // btnSubtraction
             // 
             this.btnSubtraction.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.btnSubtraction.Font = new System.Drawing.Font("Segoe UI Black", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.btnSubtraction.Location = new System.Drawing.Point(103, 41);
+            this.btnSubtraction.Location = new System.Drawing.Point(103, 42);
             this.btnSubtraction.Name = "btnSubtraction";
             this.btnSubtraction.Size = new System.Drawing.Size(53, 37);
             this.btnSubtraction.TabIndex = 2;
@@ -769,7 +762,7 @@ namespace yu_gi_oh
             // 
             this.btnAddition.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.btnAddition.Font = new System.Drawing.Font("Segoe UI Black", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.btnAddition.Location = new System.Drawing.Point(29, 41);
+            this.btnAddition.Location = new System.Drawing.Point(36, 42);
             this.btnAddition.Name = "btnAddition";
             this.btnAddition.Size = new System.Drawing.Size(53, 37);
             this.btnAddition.TabIndex = 1;
@@ -793,9 +786,9 @@ namespace yu_gi_oh
             // 
             this.button2.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.button2.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.button2.Location = new System.Drawing.Point(1009, 489);
+            this.button2.Location = new System.Drawing.Point(1009, 411);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(154, 36);
+            this.button2.Size = new System.Drawing.Size(178, 36);
             this.button2.TabIndex = 32;
             this.button2.Text = "Admit Defeat";
             this.button2.UseVisualStyleBackColor = false;
@@ -826,6 +819,7 @@ namespace yu_gi_oh
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.Name = "Duel";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Duel";
             this.Load += new System.EventHandler(this.Duel_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
@@ -901,7 +895,6 @@ namespace yu_gi_oh
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ProgressBar pbP1;
         private System.Windows.Forms.GroupBox groupBox5;
-        private System.Windows.Forms.Button btnCalculate;
         private System.Windows.Forms.Button btnSubtraction;
         private System.Windows.Forms.Button btnAddition;
         private System.Windows.Forms.Button button1;
