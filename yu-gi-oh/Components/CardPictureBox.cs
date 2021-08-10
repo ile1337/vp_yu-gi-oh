@@ -14,6 +14,8 @@ namespace yu_gi_oh.Components
 
         protected static readonly Size fieldSize = new(82, 112);
 
+        public bool isDefence { get; set; }
+
         protected CardDto _card { get; set; } = new();
 
         public CardDto Card
@@ -31,6 +33,7 @@ namespace yu_gi_oh.Components
             InitializeComponent();
             SizeMode = PictureBoxSizeMode.StretchImage;
             Size = fieldSize;
+            isDefence = false;
         }
 
         public void SetInHand(Point position)

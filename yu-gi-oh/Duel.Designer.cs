@@ -87,6 +87,7 @@ namespace yu_gi_oh
             this.btnSubtraction = new System.Windows.Forms.Button();
             this.btnAddition = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
@@ -305,6 +306,7 @@ namespace yu_gi_oh
             this.cardPictureBox6.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.cardPictureBox6.TabIndex = 34;
             this.cardPictureBox6.TabStop = false;
+            this.cardPictureBox6.Click += new System.EventHandler(this.cardPictureBox6_Click);
             // 
             // cardPictureBox3
             // 
@@ -325,6 +327,7 @@ namespace yu_gi_oh
             this.cardPictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.cardPictureBox3.TabIndex = 34;
             this.cardPictureBox3.TabStop = false;
+            this.cardPictureBox3.Click += new System.EventHandler(this.cardPictureBox3_Click);
             // 
             // cardPictureBox5
             // 
@@ -345,6 +348,7 @@ namespace yu_gi_oh
             this.cardPictureBox5.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.cardPictureBox5.TabIndex = 33;
             this.cardPictureBox5.TabStop = false;
+            this.cardPictureBox5.Click += new System.EventHandler(this.cardPictureBox5_Click);
             // 
             // lbGraveyard
             // 
@@ -376,6 +380,7 @@ namespace yu_gi_oh
             this.cardPictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.cardPictureBox4.TabIndex = 32;
             this.cardPictureBox4.TabStop = false;
+            this.cardPictureBox4.Click += new System.EventHandler(this.cardPictureBox4_Click);
             // 
             // cardPictureBox2
             // 
@@ -396,6 +401,7 @@ namespace yu_gi_oh
             this.cardPictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.cardPictureBox2.TabIndex = 33;
             this.cardPictureBox2.TabStop = false;
+            this.cardPictureBox2.Click += new System.EventHandler(this.cardPictureBox2_Click);
             // 
             // lbDeckCardsNum
             // 
@@ -783,6 +789,18 @@ namespace yu_gi_oh
             this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
+            // button2
+            // 
+            this.button2.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.button2.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.button2.Location = new System.Drawing.Point(1009, 489);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(154, 36);
+            this.button2.TabIndex = 32;
+            this.button2.Text = "Admit Defeat";
+            this.button2.UseVisualStyleBackColor = false;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
             // Duel
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -790,6 +808,7 @@ namespace yu_gi_oh
             this.BackgroundImage = global::yu_gi_oh.Properties.Resources.d17ad80144ef56adbf58a17a686ea619;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(1199, 765);
+            this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.groupBox5);
             this.Controls.Add(this.groupBox4);
@@ -899,5 +918,6 @@ namespace yu_gi_oh
         private Components.CardPictureBox cardPictureBox4;
         private Components.CardPictureBox cardPictureBox5;
         private Components.CardPictureBox cardPictureBox6;
+        private System.Windows.Forms.Button button2;
     }
 }

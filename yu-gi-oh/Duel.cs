@@ -35,7 +35,7 @@ namespace yu_gi_oh
         public List<CardDto> deck = new();
         private static int currentPhase = 0;
         private CardPictureBox SelectedCard;
-        private CardPictureBox SelectedCardOnField;
+        public CardPictureBox SelectedCardOnField;
 
         // Action ListBoxes
         private ListBox monsterActions = new();
@@ -181,14 +181,10 @@ namespace yu_gi_oh
             currentPosition.Offset(-xOffset, 0);
         }
 
-        private void DestroyCardFromField(CardPictureBox card,CardPictureBox field)
+        private void DestroyCardFromField()
         {
-            if (field.Image == null) return;
-            card.Card = null;
-            field.Image.Dispose();
-            field.Image = null;
-            field.Invalidate();
-            ClearListBoxes();
+            SelectedCardOnField.Image = null;
+            //SelectedCardOnField.Card = null;
         }
 
 
@@ -349,38 +345,95 @@ namespace yu_gi_oh
             switch (item)
             {
                 case MonsterActions.SEND_DECK:
+                    if (card.isDefence)
+                    {
+                        card.Card.img.RotateFlip(RotateFlipType.Rotate270FlipNone);
+                    }
                     deck.Add(card.Card);
                     UpdateDeckLabel(deck.Count.ToString());
-                    //++AvailableMonsterField;
-                    //DestroyCardFromField(card, monsterFields[AvailableMonsterField]);
-                    //monsterActionsField.Items.Clear();
-                    //Controls.Remove(monsterActionsField);
+                    DestroyCardFromField();
+                    --AvailableMonsterField;
+                    Controls.Remove(monsterActionsField);
                     break;
                 case MonsterActions.SEND_GRAVEYARD:
+                    if (card.isDefence)
+                    {
+                        card.Card.img.RotateFlip(RotateFlipType.Rotate270FlipNone);
+                    }
                     graveyardCards.Add(card.Card);
                     UpdateGraveyardLabel(graveyardCards.Count.ToString());
-                   // ++AvailableMonsterField;
-                    //DestroyCardFromField(card, monsterFields[AvailableMonsterField]);
-                    //Controls.Remove(monsterActionsField);
+                    DestroyCardFromField();
+                    --AvailableMonsterField;
+                    Controls.Remove(monsterActionsField);
                     break;
                 case MonsterActions.FLIP:
-                    ChangeImageOnFieldMonsterFlip(monsterFields[--AvailableMonsterField], card.Card);
-                    //Controls.Remove(monsterActionsField);
+                    if (card.isDefence)
+                    {
+                        card.Card.img.RotateFlip(RotateFlipType.Rotate270FlipNone);
+                    }
+                    ChangeImageOnFieldMonsterFlip(monsterFields[AvailableMonsterField-1], card.Card);
+                    Controls.Remove(monsterActionsField);
                     break;
             }
-            
 
+            Controls.Remove(monsterActionsField);
             ClearListBoxes();
 
         }
 
         private void spellActionsField_Click(object sender, EventArgs e)
         {
+            CardPictureBox card = SelectedCardOnField;
+            if (spellActionsField.SelectedIndex == -1) return;
+            SpellActions item = spellActionsField.Items[spellActionsField.SelectedIndex].ToString().ToAction<SpellActions>();
+            switch (item)
+            {
+                case SpellActions.ACTIVATE:
+                    ChangePictureBoxImageAtk(spellFields[AvailableSpellField-1], card.Card);
+                    Controls.Remove(spellActionsField);
+                    break;
+                case SpellActions.SEND_DECK:
+                    deck.Add(card.Card);
+                    UpdateDeckLabel(deck.Count.ToString());
+                    --AvailableSpellField;
+                    DestroyCardFromField();
+                    Controls.Remove(spellActionsField);
+                    break;
+                case SpellActions.SEND_GRAVEYARD:
+                    graveyardCards.Add(card.Card);
+                    UpdateGraveyardLabel(graveyardCards.Count.ToString());
+                    --AvailableSpellField;
+                    DestroyCardFromField();
+                    Controls.Remove(spellActionsField);
+                    break;
+            }
+            ClearListBoxes();
 
         }
 
         private void trapActionsField_Click(object sender, EventArgs e)
         {
+            CardPictureBox card = SelectedCardOnField;
+            if (trapActionsField.SelectedIndex == -1) return;
+            TrapActions item = trapActionsField.Items[trapActionsField.SelectedIndex].ToString().ToAction<TrapActions>();
+            switch (item)
+            {
+                case TrapActions.SEND_DECK:
+                    deck.Add(card.Card);
+                    UpdateDeckLabel(deck.Count.ToString());
+                    --AvailableSpellField;
+                    DestroyCardFromField();
+                    Controls.Remove(trapActionsField);
+                    break;
+                case TrapActions.SEND_GRAVEYARD:
+                    graveyardCards.Add(card.Card);
+                    UpdateGraveyardLabel(graveyardCards.Count.ToString());
+                    --AvailableSpellField;
+                    DestroyCardFromField();
+                    Controls.Remove(trapActionsField);
+                    break;
+            }
+            ClearListBoxes();
 
         }
 
@@ -431,6 +484,8 @@ namespace yu_gi_oh
         private void ChangePictureBoxImageAtk(CardPictureBox p, CardDto card)
         {
             p.Image = card.img;
+            p.Card = card;
+            p.isDefence = false;
             p.SizeMode = PictureBoxSizeMode.StretchImage;
         }
 
@@ -456,9 +511,10 @@ namespace yu_gi_oh
 
         private void ChangeImageOnFieldMonsterFlip(CardPictureBox p, CardDto card)
         {
-            card.img.RotateFlip(RotateFlipType.Rotate270FlipNone);
+            //card.img.RotateFlip(RotateFlipType.Rotate90FlipNone);
             p.Card = card;
             p.Image = card.img;
+            p.isDefence = true;
             p.SizeMode = PictureBoxSizeMode.Zoom;
 
         }
@@ -468,6 +524,7 @@ namespace yu_gi_oh
             card.img.RotateFlip(RotateFlipType.Rotate90FlipNone);
             p.Image = card.img;
             p.Card = card;
+            p.isDefence = true;
             p.SizeMode = PictureBoxSizeMode.Zoom;
         }
 
@@ -609,15 +666,99 @@ namespace yu_gi_oh
 
         private void cardPictureBox1_Click(object sender, EventArgs e)
         {
-          
-            SelectedCardOnField = sender as CardPictureBox;
-            if (SelectedCard.Card == null || SelectedCard.Image == null) return;
-            ListBox selectedActions;
-            selectedActions = monsterActionsField;
-            
-
+            if (cardPictureBox1.Card == null || cardPictureBox1.Image == null) return;
+            SelectedCardOnField = cardPictureBox1;
             ClearListBoxes();
-            CreateActionField(monsterActionsField, cardPictureBox1);
+            CreateActionField(monsterActionsField, SelectedCardOnField);
+        }
+
+        private void cardPictureBox2_Click(object sender, EventArgs e)
+        {
+            if (cardPictureBox2.Card == null || cardPictureBox2.Image == null) return;
+            SelectedCardOnField = cardPictureBox2;
+            ClearListBoxes();
+            CreateActionField(monsterActionsField, SelectedCardOnField);
+        }
+
+        private void cardPictureBox3_Click(object sender, EventArgs e)
+        {
+            if (cardPictureBox3.Card == null || cardPictureBox3.Image == null) return;
+            SelectedCardOnField = cardPictureBox3;
+            ClearListBoxes();
+            CreateActionField(monsterActionsField, SelectedCardOnField);
+        }
+
+        private void cardPictureBox4_Click(object sender, EventArgs e)
+        {
+            if (cardPictureBox4.Card == null || cardPictureBox4.Image == null) return;
+            SelectedCardOnField = cardPictureBox4;
+            ListBox selectedActions = new ListBox();
+            if (SelectedCardOnField.Card.subType.Equals("SPELL"))
+            {
+                selectedActions = spellActionsField;
+            }
+            else if (SelectedCardOnField.Card.subType.Equals("TRAP"))
+            {
+                selectedActions = trapActionsField;
+            }
+            ClearListBoxes();
+            CreateActionField(selectedActions, SelectedCardOnField);
+
+        }
+
+        private void cardPictureBox5_Click(object sender, EventArgs e)
+        {
+            if (cardPictureBox5.Card == null || cardPictureBox5.Image == null) return;
+            SelectedCardOnField = cardPictureBox5;
+            ListBox selectedActions = new ListBox();
+            if (SelectedCardOnField.Card.subType.Equals("SPELL"))
+            {
+                selectedActions = spellActionsField;
+            }
+            else if (SelectedCardOnField.Card.subType.Equals("TRAP"))
+            {
+                selectedActions = trapActionsField;
+            }
+            ClearListBoxes();
+            CreateActionField(selectedActions, SelectedCardOnField);
+
+        }
+
+        private void cardPictureBox6_Click(object sender, EventArgs e)
+        {
+            if (cardPictureBox6.Card == null || cardPictureBox6.Image == null) return;
+            SelectedCardOnField = cardPictureBox6;
+            ListBox selectedActions = new ListBox();
+            if (SelectedCardOnField.Card.subType.Equals("SPELL"))
+            {
+                selectedActions = spellActionsField;
+            }
+            else if (SelectedCardOnField.Card.subType.Equals("TRAP"))
+            {
+                selectedActions = trapActionsField;
+            }
+            ClearListBoxes();
+            CreateActionField(selectedActions, SelectedCardOnField);
+
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            if (MessageBox.Show("Do you want to play again?", "Game Over", MessageBoxButtons.YesNo) == DialogResult.Yes)
+            {
+                Duel duel = new();
+                this.Hide();
+                duel.ShowDialog();
+                this.Close();
+            }
+            else
+            {
+                MainMenu menu = new();
+                this.Hide();
+                menu.ShowDialog();
+                this.Close();
+            }
+
         }
     }
 }
