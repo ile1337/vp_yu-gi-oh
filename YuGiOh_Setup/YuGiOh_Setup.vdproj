@@ -43,6 +43,14 @@
         "PrivateKeyFile" = "8:"
         "TimeStampServer" = "8:"
         "InstallerBootstrapper" = "3:2"
+            "BootstrapperCfg:{63ACBE69-63AA-4F98-B2B6-99F9E24495F2}"
+            {
+            "Enabled" = "11:TRUE"
+            "PromptEnabled" = "11:TRUE"
+            "PrerequisitesLocation" = "2:1"
+            "Url" = "8:"
+            "ComponentsUrl" = "8:"
+            }
         }
         "Release"
         {
@@ -59,6 +67,14 @@
         "PrivateKeyFile" = "8:"
         "TimeStampServer" = "8:"
         "InstallerBootstrapper" = "3:2"
+            "BootstrapperCfg:{63ACBE69-63AA-4F98-B2B6-99F9E24495F2}"
+            {
+            "Enabled" = "11:TRUE"
+            "PromptEnabled" = "11:TRUE"
+            "PrerequisitesLocation" = "2:1"
+            "Url" = "8:"
+            "ComponentsUrl" = "8:"
+            }
         }
     }
     "Deployable"
@@ -177,15 +193,15 @@
         {
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:YuGiOh"
-        "ProductCode" = "8:{4918D003-B09E-4670-9BF8-10B259646A03}"
-        "PackageCode" = "8:{9AAFE01C-88B4-4496-A30E-63F985AA4C57}"
+        "ProductCode" = "8:{060E064C-CB9F-4240-8155-BC73895E86E2}"
+        "PackageCode" = "8:{BFD590E7-1BEB-4B11-842E-0094A2B04EA5}"
         "UpgradeCode" = "8:{104EAC04-2EB1-4F53-AFBC-14E814155FC2}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"
         "RemovePreviousVersions" = "11:FALSE"
         "DetectNewerInstalledVersion" = "11:TRUE"
         "InstallAllUsers" = "11:FALSE"
-        "ProductVersion" = "8:1.0.0"
+        "ProductVersion" = "8:1.0.1"
         "Manufacturer" = "8:Finki Students"
         "ARPHELPTELEPHONE" = "8:"
         "ARPHELPLINK" = "8:https://github.com/ile1337/vp_yu-gi-oh"
