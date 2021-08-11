@@ -63,6 +63,36 @@ namespace yu_gi_oh.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap _10000040 {
+            get {
+                object obj = ResourceManager.GetObject("10000040", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap _51rPciNvlSL__AC_ {
+            get {
+                object obj = ResourceManager.GetObject("51rPciNvlSL._AC_", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap _51z2aXPyyGL__AC_ {
+            get {
+                object obj = ResourceManager.GetObject("51z2aXPyyGL._AC_", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap _97077563 {
             get {
                 object obj = ResourceManager.GetObject("97077563", resourceCulture);
@@ -76,6 +106,16 @@ namespace yu_gi_oh.Properties {
         internal static System.Drawing.Bitmap d17ad80144ef56adbf58a17a686ea619 {
             get {
                 object obj = ResourceManager.GetObject("d17ad80144ef56adbf58a17a686ea619", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap d76p02r_766e3e6f_d1ed_4e54_a2a8_06c3a988281f {
+            get {
+                object obj = ResourceManager.GetObject("d76p02r-766e3e6f-d1ed-4e54-a2a8-06c3a988281f", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

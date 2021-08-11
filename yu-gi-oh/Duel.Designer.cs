@@ -132,7 +132,8 @@ namespace yu_gi_oh
             // pictureBox2
             // 
             this.pictureBox2.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.pictureBox2.Image = global::yu_gi_oh.Properties.Resources.SpellZone;
+            this.pictureBox2.BackgroundImage = global::yu_gi_oh.Properties.Resources._51z2aXPyyGL__AC_;
+            this.pictureBox2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.pictureBox2.Location = new System.Drawing.Point(154, 12);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(82, 112);
@@ -142,7 +143,8 @@ namespace yu_gi_oh
             // pictureBox3
             // 
             this.pictureBox3.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.pictureBox3.Image = global::yu_gi_oh.Properties.Resources.SpellZone;
+            this.pictureBox3.BackgroundImage = global::yu_gi_oh.Properties.Resources.wp2866512;
+            this.pictureBox3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.pictureBox3.Location = new System.Drawing.Point(259, 12);
             this.pictureBox3.Name = "pictureBox3";
             this.pictureBox3.Size = new System.Drawing.Size(82, 112);
@@ -152,7 +154,8 @@ namespace yu_gi_oh
             // pictureBox4
             // 
             this.pictureBox4.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.pictureBox4.BackgroundImage = global::yu_gi_oh.Properties.Resources.SpellZone;
+            this.pictureBox4.BackgroundImage = global::yu_gi_oh.Properties.Resources.wp2866512;
+            this.pictureBox4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.pictureBox4.Location = new System.Drawing.Point(368, 12);
             this.pictureBox4.Name = "pictureBox4";
             this.pictureBox4.Size = new System.Drawing.Size(82, 112);
@@ -162,7 +165,8 @@ namespace yu_gi_oh
             // pictureBox5
             // 
             this.pictureBox5.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.pictureBox5.BackgroundImage = global::yu_gi_oh.Properties.Resources.MonsterZone1;
+            this.pictureBox5.BackgroundImage = global::yu_gi_oh.Properties.Resources._51rPciNvlSL__AC_;
+            this.pictureBox5.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.pictureBox5.Location = new System.Drawing.Point(368, 130);
             this.pictureBox5.Name = "pictureBox5";
             this.pictureBox5.Size = new System.Drawing.Size(82, 112);
@@ -172,7 +176,8 @@ namespace yu_gi_oh
             // pictureBox6
             // 
             this.pictureBox6.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.pictureBox6.BackgroundImage = global::yu_gi_oh.Properties.Resources.MonsterZone1;
+            this.pictureBox6.BackgroundImage = global::yu_gi_oh.Properties.Resources.d76p02r_766e3e6f_d1ed_4e54_a2a8_06c3a988281f;
+            this.pictureBox6.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.pictureBox6.Location = new System.Drawing.Point(259, 130);
             this.pictureBox6.Name = "pictureBox6";
             this.pictureBox6.Size = new System.Drawing.Size(82, 112);
@@ -182,7 +187,8 @@ namespace yu_gi_oh
             // pictureBox7
             // 
             this.pictureBox7.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.pictureBox7.BackgroundImage = global::yu_gi_oh.Properties.Resources.MonsterZone1;
+            this.pictureBox7.BackgroundImage = global::yu_gi_oh.Properties.Resources._10000040;
+            this.pictureBox7.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.pictureBox7.Location = new System.Drawing.Point(154, 130);
             this.pictureBox7.Name = "pictureBox7";
             this.pictureBox7.Size = new System.Drawing.Size(82, 112);
