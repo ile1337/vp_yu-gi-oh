@@ -311,6 +311,7 @@ namespace yu_gi_oh
             this.btnBP.TabIndex = 30;
             this.btnBP.Text = "BP";
             this.btnBP.UseVisualStyleBackColor = false;
+            this.btnBP.Click += new System.EventHandler(this.btnBP_Click);
             // 
             // btnMP
             // 
@@ -322,6 +323,7 @@ namespace yu_gi_oh
             this.btnMP.TabIndex = 29;
             this.btnMP.Text = "MP";
             this.btnMP.UseVisualStyleBackColor = false;
+            this.btnMP.Click += new System.EventHandler(this.btnMP_Click);
             // 
             // btnSP
             // 
@@ -334,6 +336,7 @@ namespace yu_gi_oh
             this.btnSP.TabIndex = 28;
             this.btnSP.Text = "SP";
             this.btnSP.UseVisualStyleBackColor = false;
+            this.btnSP.Click += new System.EventHandler(this.btnSP_Click);
             // 
             // btnDP
             // 

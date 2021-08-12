@@ -129,7 +129,6 @@ namespace yu_gi_oh
             this.Name = "Graveyard";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Graveyard";
-            this.Load += new System.EventHandler(this.Graveyard_Load);
             this.groupBox1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pbGrobishta)).EndInit();
             this.ResumeLayout(false);

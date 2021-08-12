@@ -22,11 +22,6 @@ namespace yu_gi_oh
             lbGraveyardCards.DataSource = graveList;
         }
 
-        private void Graveyard_Load(object sender, EventArgs e)
-        {
-
-        }
-
         private void lbGraveyardCards_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (lbGraveyardCards.SelectedIndex == -1) return;

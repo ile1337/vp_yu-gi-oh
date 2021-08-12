@@ -218,11 +218,6 @@ namespace yu_gi_oh
             lblnumberofcardsinDeck.Text = deckCards.Count.ToString();
         }
 
-        private void Deckbuilder_Load(object sender, EventArgs e)
-        {
-
-        }
-
         private void btnNextPage_Click(object sender, EventArgs e)
         {
             loadingPB.Visible = true;
@@ -233,7 +228,6 @@ namespace yu_gi_oh
             if (CurrentPage <= 1) btnPreviousPage.Enabled = false;
             lblcurr.Text = CurrentPage.ToString();
         }
-
 
 
         private void btnPreviousPage_Click(object sender, EventArgs e)

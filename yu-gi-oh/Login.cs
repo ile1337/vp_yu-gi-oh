@@ -27,16 +27,6 @@ namespace yu_gi_oh
             player.settings.setMode("loop", true);
         }
 
-        private void Form1_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void groupBox1_Enter(object sender, EventArgs e)
-        {
-
-        }
-
         private async void btnLogIn_Click(object sender, EventArgs e)
         {
             OAuth oauth = await Middleware.Controllers.AccountController.GetLoginToken(tbUsername.Text, mtbPassword.Text);

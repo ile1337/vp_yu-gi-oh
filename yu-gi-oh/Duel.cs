@@ -484,6 +484,7 @@ namespace yu_gi_oh
 
         private void btnEP_Click(object sender, EventArgs e)
         {
+            MessageBox.Show("Now you End your Phase!", "Phase");
             currentPhase = 0;
             btnDP.Enabled = true;
             ClearListBoxes();
@@ -585,7 +586,11 @@ namespace yu_gi_oh
         private void btnSubtraction_Click(object sender, EventArgs e)
         {
             int newLifePoints = int.Parse(tbP1LifePoints.Text) - (int)nudCalculate.Value;
-            if (newLifePoints <= 0) NewGame();
+            if (newLifePoints <= 0)
+            {
+                pbP1.Value = 0;
+               NewGame();
+            }
             tbP1LifePoints.Text = newLifePoints.ToString();
             pbP1.Value = newLifePoints;
 
@@ -613,21 +618,21 @@ namespace yu_gi_oh
         // Select Deck
         private void SelectDeck_Click(object sender, EventArgs e)
         {
+            
             FileUtilities.CallFileExplorer(new OpenFileDialog(), (dialog) =>
             {
+                
                 deck.Clear();
-                ReadDeckAsync(dialog.FileName);              
+                ReadDeckAsync(dialog.FileName);
             });          
             btnDP.Enabled = true;
             UpdateDeckLabel(deck);
-            
-          
         }
 
         private async void ReadDeckAsync(string s)
         {
             using FileStream fs = new(s, FileMode.Open);
-
+            if(fs!=null) button1.Enabled = false;
             Deck d = await System.Text.Json.JsonSerializer.DeserializeAsync<Deck>(fs);
             foreach (CardDto card in d.cards)
             {
@@ -635,6 +640,13 @@ namespace yu_gi_oh
                 deck.Add(card);
             }
             UpdateDeckLabel(deck);
+
+            if (deck.Count < 4)
+            {
+                MessageBox.Show("Please select deck with more than 4 cards!", "Not enough cards error");
+                button1.Enabled = true;
+                return;
+            }
             for (int i = 0; i < 4; ++i)
                 Draw();
         }
@@ -658,6 +670,21 @@ namespace yu_gi_oh
                 handleParam.ExStyle |= 0x02000000;   // WS_EX_COMPOSITED       
                 return handleParam;
             }
+        }
+
+        private void btnSP_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Now you are in Stand-By Phase!", "Phase");
+        }
+
+        private void btnMP_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Now you are in Main Phase!", "Phase");
+        }
+
+        private void btnBP_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Now you are in Battle Phase!", "Phase");
         }
     }
 }

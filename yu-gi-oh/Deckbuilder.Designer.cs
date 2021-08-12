@@ -622,7 +622,6 @@ namespace yu_gi_oh
             this.Name = "Deckbuilder";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Deckbuilder";
-            this.Load += new System.EventHandler(this.Deckbuilder_Load);
             this.groupBox1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvDeck)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.loadingPB)).EndInit();
