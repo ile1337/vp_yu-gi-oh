@@ -192,6 +192,7 @@ namespace yu_gi_oh
         private void DestroyCardFromField()
         {
             SelectedCardOnField.Image = null;
+            SelectedCardOnField.Card = null;
             SelectedCardOnField.isFree = true;
         }
 

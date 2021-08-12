@@ -25,7 +25,7 @@ namespace yu_gi_oh.Components
             set
             {
                 _card = value;
-                Image = value.CloneImage();
+                Image = value != null ? value.CloneImage() : null;
             }
         }
 
