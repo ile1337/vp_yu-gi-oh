@@ -21,6 +21,10 @@ namespace Middleware.Models
 
         [JsonIgnore]
         public Image img { get; set; }
+
+        [JsonIgnore]
+        public int position { get; set; }
+
         public override string ToString()
         {
             return string.Format("{0}",name);
@@ -41,6 +45,10 @@ namespace Middleware.Models
             };
         }
 
+        public Image CloneImage()
+        {
+            return img != null ? new Bitmap(img.Clone() as Image) : null;
+        }
        
     }
 }
