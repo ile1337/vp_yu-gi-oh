@@ -11,10 +11,11 @@ namespace yu_gi_oh.Components
     {
 
         public static readonly Size defaultSize = new(122, 152);
-
         protected static readonly Size fieldSize = new(82, 112);
 
-        public bool isDefence { get; set; }
+        public bool isDefense { get; set; }
+
+        public bool isFree { get; set; } = true;
 
         protected CardDto _card { get; set; } = new();
 
@@ -24,7 +25,7 @@ namespace yu_gi_oh.Components
             set
             {
                 _card = value;
-                Image = value.img;
+                Image = value.CloneImage();
             }
         }
 
@@ -33,7 +34,7 @@ namespace yu_gi_oh.Components
             InitializeComponent();
             SizeMode = PictureBoxSizeMode.StretchImage;
             Size = fieldSize;
-            isDefence = false;
+            isDefense = false;
         }
 
         public void SetInHand(Point position)
@@ -41,15 +42,7 @@ namespace yu_gi_oh.Components
             Location = position;
             Size = defaultSize;
         }
-
-        protected override void OnPaint(PaintEventArgs pe)
-        {
-            base.OnPaint(pe);
-        }
-
-        public override string ToString()
-        {
-            return string.Format("{0}", Card.name);
-        }
+        protected override void OnPaint(PaintEventArgs pe) => base.OnPaint(pe);
+        public override string ToString() => string.Format("{0}", Card.name);
     }
 }
