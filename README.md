@@ -99,7 +99,7 @@ https://img.yugioh-card.com/ygo_cms/ygo/all/uploads/Speed_Duel_Guide_EN.pdf
 # 3.2 Музика
 Во кодот на [Login](https://github.com/ile1337/vp_yu-gi-oh/blob/master/yu-gi-oh/Login.cs) класата има имплементирано **“WindowsMediaPlayer”** објект кој пушта музика која трае низ цела игра. Исто така има mute/unmute копче на истата форма за ако корисникот сака да ја изгаси музиката.
 
-#4. Линкови
+# 4. Линкови
 - **C# Frontend:**  https://github.com/ile1337/vp_yu-gi-oh
 - **Java Spring Boot Backend:** https://github.com/KixerRealm/Yu-Gi-Oh-Backend
 
