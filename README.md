@@ -73,7 +73,7 @@ insert duel form pic here
 
 # 3.1 Опис на класата Deckbuilder
 
-Во класата Deckbuilder ги имаме следниве променливи:
+Во класата [Deckbuilder](https://github.com/ile1337/vp_yu-gi-oh/blob/master/yu-gi-oh/Deckbuilder.cs) ги имаме следниве променливи:
 - **објект од типот Deck** за да се зачува шпилот локално
 - **2 integer променливи** кои се користат за pagination
 - **CardDto објект** кој се користи во филтрирањето на карти
