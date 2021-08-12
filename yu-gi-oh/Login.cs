@@ -69,7 +69,6 @@ namespace yu_gi_oh
             if(mtbPassword.Text == "")
             {
                 ep1.SetError(mtbPassword, "Password is needed");
-                e.Cancel = true;
             }
             else
             {

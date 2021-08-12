@@ -29,6 +29,12 @@ namespace yu_gi_oh
         /// </summary>
         private void InitializeComponent()
         {
+            Middleware.Models.CardDto cardDto1 = new Middleware.Models.CardDto();
+            Middleware.Models.CardDto cardDto2 = new Middleware.Models.CardDto();
+            Middleware.Models.CardDto cardDto3 = new Middleware.Models.CardDto();
+            Middleware.Models.CardDto cardDto4 = new Middleware.Models.CardDto();
+            Middleware.Models.CardDto cardDto5 = new Middleware.Models.CardDto();
+            Middleware.Models.CardDto cardDto6 = new Middleware.Models.CardDto();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Duel));
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
@@ -43,15 +49,6 @@ namespace yu_gi_oh
             this.pictureBox23 = new System.Windows.Forms.PictureBox();
             this.pictureBox24 = new System.Windows.Forms.PictureBox();
             this.p2Zone = new System.Windows.Forms.GroupBox();
-            this.p1Zone = new System.Windows.Forms.GroupBox();
-            this.pictureBox9 = new System.Windows.Forms.PictureBox();
-            this.pictureBox10 = new System.Windows.Forms.PictureBox();
-            this.pictureBox11 = new System.Windows.Forms.PictureBox();
-            this.pictureBox12 = new System.Windows.Forms.PictureBox();
-            this.pictureBox13 = new System.Windows.Forms.PictureBox();
-            this.pictureBox14 = new System.Windows.Forms.PictureBox();
-            this.pictureBox15 = new System.Windows.Forms.PictureBox();
-            this.pictureBox16 = new System.Windows.Forms.PictureBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.btnEP = new System.Windows.Forms.Button();
             this.btnBP = new System.Windows.Forms.Button();
@@ -59,6 +56,10 @@ namespace yu_gi_oh
             this.btnSP = new System.Windows.Forms.Button();
             this.btnDP = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.tbDEF = new System.Windows.Forms.TextBox();
+            this.tbATK = new System.Windows.Forms.TextBox();
+            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.textBox1 = new System.Windows.Forms.TextBox();
             this.cardDescription = new System.Windows.Forms.RichTextBox();
             this.cardImg = new System.Windows.Forms.PictureBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
@@ -70,11 +71,22 @@ namespace yu_gi_oh
             this.label1 = new System.Windows.Forms.Label();
             this.pbP1 = new System.Windows.Forms.ProgressBar();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
-            this.btnCalculate = new System.Windows.Forms.Button();
+            this.nudCalculate = new System.Windows.Forms.NumericUpDown();
             this.btnSubtraction = new System.Windows.Forms.Button();
             this.btnAddition = new System.Windows.Forms.Button();
-            this.tbValue = new System.Windows.Forms.TextBox();
             this.button1 = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
+            this.pictureBox13 = new System.Windows.Forms.PictureBox();
+            this.pictureBox9 = new System.Windows.Forms.PictureBox();
+            this.cardPictureBox1 = new yu_gi_oh.Components.CardPictureBox();
+            this.lbDeckCardsNum = new System.Windows.Forms.Label();
+            this.cardPictureBox2 = new yu_gi_oh.Components.CardPictureBox();
+            this.cardPictureBox4 = new yu_gi_oh.Components.CardPictureBox();
+            this.lbGraveyard = new System.Windows.Forms.Label();
+            this.cardPictureBox5 = new yu_gi_oh.Components.CardPictureBox();
+            this.cardPictureBox3 = new yu_gi_oh.Components.CardPictureBox();
+            this.cardPictureBox6 = new yu_gi_oh.Components.CardPictureBox();
+            this.p1Zone = new System.Windows.Forms.GroupBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
@@ -88,21 +100,22 @@ namespace yu_gi_oh
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox23)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox24)).BeginInit();
             this.p2Zone.SuspendLayout();
-            this.p1Zone.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox9)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox10)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox11)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox12)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox13)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox14)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox15)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox16)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.cardImg)).BeginInit();
             this.groupBox3.SuspendLayout();
             this.groupBox4.SuspendLayout();
             this.groupBox5.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nudCalculate)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox13)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox9)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cardPictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cardPictureBox2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cardPictureBox4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cardPictureBox5)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cardPictureBox3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cardPictureBox6)).BeginInit();
+            this.p1Zone.SuspendLayout();
             this.SuspendLayout();
             // 
             // pictureBox1
@@ -119,7 +132,8 @@ namespace yu_gi_oh
             // pictureBox2
             // 
             this.pictureBox2.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.pictureBox2.Image = global::yu_gi_oh.Properties.Resources.SpellZone;
+            this.pictureBox2.BackgroundImage = global::yu_gi_oh.Properties.Resources._51z2aXPyyGL__AC_;
+            this.pictureBox2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.pictureBox2.Location = new System.Drawing.Point(154, 12);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(82, 112);
@@ -129,7 +143,8 @@ namespace yu_gi_oh
             // pictureBox3
             // 
             this.pictureBox3.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.pictureBox3.Image = global::yu_gi_oh.Properties.Resources.SpellZone;
+            this.pictureBox3.BackgroundImage = global::yu_gi_oh.Properties.Resources.wp2866512;
+            this.pictureBox3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.pictureBox3.Location = new System.Drawing.Point(259, 12);
             this.pictureBox3.Name = "pictureBox3";
             this.pictureBox3.Size = new System.Drawing.Size(82, 112);
@@ -139,7 +154,8 @@ namespace yu_gi_oh
             // pictureBox4
             // 
             this.pictureBox4.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.pictureBox4.BackgroundImage = global::yu_gi_oh.Properties.Resources.SpellZone;
+            this.pictureBox4.BackgroundImage = global::yu_gi_oh.Properties.Resources.wp2866512;
+            this.pictureBox4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.pictureBox4.Location = new System.Drawing.Point(368, 12);
             this.pictureBox4.Name = "pictureBox4";
             this.pictureBox4.Size = new System.Drawing.Size(82, 112);
@@ -149,7 +165,8 @@ namespace yu_gi_oh
             // pictureBox5
             // 
             this.pictureBox5.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.pictureBox5.BackgroundImage = global::yu_gi_oh.Properties.Resources.MonsterZone1;
+            this.pictureBox5.BackgroundImage = global::yu_gi_oh.Properties.Resources._51rPciNvlSL__AC_;
+            this.pictureBox5.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.pictureBox5.Location = new System.Drawing.Point(368, 130);
             this.pictureBox5.Name = "pictureBox5";
             this.pictureBox5.Size = new System.Drawing.Size(82, 112);
@@ -159,7 +176,8 @@ namespace yu_gi_oh
             // pictureBox6
             // 
             this.pictureBox6.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.pictureBox6.BackgroundImage = global::yu_gi_oh.Properties.Resources.MonsterZone1;
+            this.pictureBox6.BackgroundImage = global::yu_gi_oh.Properties.Resources.d76p02r_766e3e6f_d1ed_4e54_a2a8_06c3a988281f;
+            this.pictureBox6.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.pictureBox6.Location = new System.Drawing.Point(259, 130);
             this.pictureBox6.Name = "pictureBox6";
             this.pictureBox6.Size = new System.Drawing.Size(82, 112);
@@ -169,7 +187,8 @@ namespace yu_gi_oh
             // pictureBox7
             // 
             this.pictureBox7.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.pictureBox7.BackgroundImage = global::yu_gi_oh.Properties.Resources.MonsterZone1;
+            this.pictureBox7.BackgroundImage = global::yu_gi_oh.Properties.Resources._10000040;
+            this.pictureBox7.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.pictureBox7.Location = new System.Drawing.Point(154, 130);
             this.pictureBox7.Name = "pictureBox7";
             this.pictureBox7.Size = new System.Drawing.Size(82, 112);
@@ -251,109 +270,6 @@ namespace yu_gi_oh
             this.p2Zone.TabStop = false;
             this.p2Zone.Text = "P2Zone";
             // 
-            // p1Zone
-            // 
-            this.p1Zone.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.p1Zone.BackgroundImage = global::yu_gi_oh.Properties.Resources.link_wizard__bg__by_alanmac95_dcbum43_250t;
-            this.p1Zone.Controls.Add(this.pictureBox9);
-            this.p1Zone.Controls.Add(this.pictureBox10);
-            this.p1Zone.Controls.Add(this.pictureBox11);
-            this.p1Zone.Controls.Add(this.pictureBox12);
-            this.p1Zone.Controls.Add(this.pictureBox13);
-            this.p1Zone.Controls.Add(this.pictureBox14);
-            this.p1Zone.Controls.Add(this.pictureBox15);
-            this.p1Zone.Controls.Add(this.pictureBox16);
-            this.p1Zone.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.p1Zone.Location = new System.Drawing.Point(454, 388);
-            this.p1Zone.Name = "p1Zone";
-            this.p1Zone.Size = new System.Drawing.Size(486, 252);
-            this.p1Zone.TabIndex = 25;
-            this.p1Zone.TabStop = false;
-            this.p1Zone.Text = "P1Zone";
-            // 
-            // pictureBox9
-            // 
-            this.pictureBox9.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.pictureBox9.Image = global::yu_gi_oh.Properties.Resources.wp2866512;
-            this.pictureBox9.Location = new System.Drawing.Point(368, 130);
-            this.pictureBox9.Name = "pictureBox9";
-            this.pictureBox9.Size = new System.Drawing.Size(82, 112);
-            this.pictureBox9.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox9.TabIndex = 7;
-            this.pictureBox9.TabStop = false;
-            // 
-            // pictureBox10
-            // 
-            this.pictureBox10.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.pictureBox10.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pictureBox10.BackgroundImage")));
-            this.pictureBox10.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pictureBox10.Location = new System.Drawing.Point(50, 12);
-            this.pictureBox10.Name = "pictureBox10";
-            this.pictureBox10.Size = new System.Drawing.Size(82, 112);
-            this.pictureBox10.TabIndex = 0;
-            this.pictureBox10.TabStop = false;
-            // 
-            // pictureBox11
-            // 
-            this.pictureBox11.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.pictureBox11.BackgroundImage = global::yu_gi_oh.Properties.Resources.MonsterZone1;
-            this.pictureBox11.Location = new System.Drawing.Point(154, 12);
-            this.pictureBox11.Name = "pictureBox11";
-            this.pictureBox11.Size = new System.Drawing.Size(82, 112);
-            this.pictureBox11.TabIndex = 1;
-            this.pictureBox11.TabStop = false;
-            // 
-            // pictureBox12
-            // 
-            this.pictureBox12.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.pictureBox12.BackgroundImage = global::yu_gi_oh.Properties.Resources.MonsterZone1;
-            this.pictureBox12.Location = new System.Drawing.Point(259, 12);
-            this.pictureBox12.Name = "pictureBox12";
-            this.pictureBox12.Size = new System.Drawing.Size(82, 112);
-            this.pictureBox12.TabIndex = 2;
-            this.pictureBox12.TabStop = false;
-            // 
-            // pictureBox13
-            // 
-            this.pictureBox13.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.pictureBox13.BackgroundImage = global::yu_gi_oh.Properties.Resources._97077563;
-            this.pictureBox13.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pictureBox13.Location = new System.Drawing.Point(368, 12);
-            this.pictureBox13.Name = "pictureBox13";
-            this.pictureBox13.Size = new System.Drawing.Size(82, 112);
-            this.pictureBox13.TabIndex = 3;
-            this.pictureBox13.TabStop = false;
-            // 
-            // pictureBox14
-            // 
-            this.pictureBox14.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.pictureBox14.BackgroundImage = global::yu_gi_oh.Properties.Resources.SpellZone;
-            this.pictureBox14.Location = new System.Drawing.Point(50, 130);
-            this.pictureBox14.Name = "pictureBox14";
-            this.pictureBox14.Size = new System.Drawing.Size(82, 112);
-            this.pictureBox14.TabIndex = 4;
-            this.pictureBox14.TabStop = false;
-            // 
-            // pictureBox15
-            // 
-            this.pictureBox15.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.pictureBox15.BackgroundImage = global::yu_gi_oh.Properties.Resources.SpellZone;
-            this.pictureBox15.Location = new System.Drawing.Point(154, 130);
-            this.pictureBox15.Name = "pictureBox15";
-            this.pictureBox15.Size = new System.Drawing.Size(82, 112);
-            this.pictureBox15.TabIndex = 5;
-            this.pictureBox15.TabStop = false;
-            // 
-            // pictureBox16
-            // 
-            this.pictureBox16.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.pictureBox16.BackgroundImage = global::yu_gi_oh.Properties.Resources.SpellZone;
-            this.pictureBox16.Location = new System.Drawing.Point(259, 130);
-            this.pictureBox16.Name = "pictureBox16";
-            this.pictureBox16.Size = new System.Drawing.Size(82, 112);
-            this.pictureBox16.TabIndex = 6;
-            this.pictureBox16.TabStop = false;
-            // 
             // groupBox1
             // 
             this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
@@ -376,7 +292,7 @@ namespace yu_gi_oh
             this.btnEP.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.btnEP.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.btnEP.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.btnEP.Location = new System.Drawing.Point(12, 402);
+            this.btnEP.Location = new System.Drawing.Point(12, 411);
             this.btnEP.Name = "btnEP";
             this.btnEP.Size = new System.Drawing.Size(50, 47);
             this.btnEP.TabIndex = 31;
@@ -389,7 +305,7 @@ namespace yu_gi_oh
             this.btnBP.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.btnBP.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.btnBP.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.btnBP.Location = new System.Drawing.Point(12, 317);
+            this.btnBP.Location = new System.Drawing.Point(12, 326);
             this.btnBP.Name = "btnBP";
             this.btnBP.Size = new System.Drawing.Size(50, 47);
             this.btnBP.TabIndex = 30;
@@ -437,6 +353,10 @@ namespace yu_gi_oh
             this.groupBox2.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.groupBox2.BackgroundImage = global::yu_gi_oh.Properties.Resources.link_wizard__bg__by_alanmac95_dcbum43_250t;
             this.groupBox2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.groupBox2.Controls.Add(this.tbDEF);
+            this.groupBox2.Controls.Add(this.tbATK);
+            this.groupBox2.Controls.Add(this.textBox2);
+            this.groupBox2.Controls.Add(this.textBox1);
             this.groupBox2.Controls.Add(this.cardDescription);
             this.groupBox2.Controls.Add(this.cardImg);
             this.groupBox2.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
@@ -447,12 +367,57 @@ namespace yu_gi_oh
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Selected Card Info";
             // 
+            // tbDEF
+            // 
+            this.tbDEF.BackColor = System.Drawing.Color.MediumSlateBlue;
+            this.tbDEF.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.tbDEF.Location = new System.Drawing.Point(205, 524);
+            this.tbDEF.Name = "tbDEF";
+            this.tbDEF.Size = new System.Drawing.Size(45, 22);
+            this.tbDEF.TabIndex = 5;
+            this.tbDEF.Visible = false;
+            // 
+            // tbATK
+            // 
+            this.tbATK.BackColor = System.Drawing.Color.MediumSlateBlue;
+            this.tbATK.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.tbATK.Location = new System.Drawing.Point(82, 524);
+            this.tbATK.Name = "tbATK";
+            this.tbATK.Size = new System.Drawing.Size(45, 22);
+            this.tbATK.TabIndex = 4;
+            this.tbATK.Visible = false;
+            // 
+            // textBox2
+            // 
+            this.textBox2.BackColor = System.Drawing.Color.MediumSlateBlue;
+            this.textBox2.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textBox2.Location = new System.Drawing.Point(166, 524);
+            this.textBox2.Name = "textBox2";
+            this.textBox2.Size = new System.Drawing.Size(44, 22);
+            this.textBox2.TabIndex = 3;
+            this.textBox2.Text = "DEF : ";
+            this.textBox2.Visible = false;
+            // 
+            // textBox1
+            // 
+            this.textBox1.BackColor = System.Drawing.Color.MediumSlateBlue;
+            this.textBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textBox1.Location = new System.Drawing.Point(41, 524);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(44, 22);
+            this.textBox1.TabIndex = 2;
+            this.textBox1.Text = "ATK :";
+            this.textBox1.Visible = false;
+            // 
             // cardDescription
             // 
             this.cardDescription.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.cardDescription.Location = new System.Drawing.Point(29, 270);
+            this.cardDescription.BackColor = System.Drawing.Color.CornflowerBlue;
+            this.cardDescription.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.cardDescription.Location = new System.Drawing.Point(18, 270);
             this.cardDescription.Name = "cardDescription";
-            this.cardDescription.Size = new System.Drawing.Size(233, 299);
+            this.cardDescription.ReadOnly = true;
+            this.cardDescription.Size = new System.Drawing.Size(262, 323);
             this.cardDescription.TabIndex = 1;
             this.cardDescription.Text = "";
             // 
@@ -461,9 +426,9 @@ namespace yu_gi_oh
             this.cardImg.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.cardImg.BackgroundImage = global::yu_gi_oh.Properties.Resources.wp2866512;
             this.cardImg.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.cardImg.Location = new System.Drawing.Point(52, 35);
+            this.cardImg.Location = new System.Drawing.Point(41, 26);
             this.cardImg.Name = "cardImg";
-            this.cardImg.Size = new System.Drawing.Size(191, 229);
+            this.cardImg.Size = new System.Drawing.Size(199, 246);
             this.cardImg.TabIndex = 0;
             this.cardImg.TabStop = false;
             // 
@@ -497,16 +462,18 @@ namespace yu_gi_oh
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(17, 79);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(83, 20);
+            this.label2.Size = new System.Drawing.Size(87, 20);
             this.label2.TabIndex = 31;
-            this.label2.Text = "LifePoints:";
+            this.label2.Text = "Life Points:";
             // 
             // pbP2
             // 
             this.pbP2.Location = new System.Drawing.Point(17, 121);
+            this.pbP2.Maximum = 8000;
             this.pbP2.Name = "pbP2";
             this.pbP2.Size = new System.Drawing.Size(139, 23);
             this.pbP2.TabIndex = 0;
+            this.pbP2.Value = 8000;
             // 
             // groupBox4
             // 
@@ -516,7 +483,7 @@ namespace yu_gi_oh
             this.groupBox4.Controls.Add(this.label1);
             this.groupBox4.Controls.Add(this.pbP1);
             this.groupBox4.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.groupBox4.Location = new System.Drawing.Point(1009, 567);
+            this.groupBox4.Location = new System.Drawing.Point(1009, 473);
             this.groupBox4.Name = "groupBox4";
             this.groupBox4.Size = new System.Drawing.Size(178, 171);
             this.groupBox4.TabIndex = 29;
@@ -548,63 +515,67 @@ namespace yu_gi_oh
             // 
             this.pbP1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.pbP1.Location = new System.Drawing.Point(17, 43);
+            this.pbP1.Maximum = 8000;
             this.pbP1.Name = "pbP1";
             this.pbP1.Size = new System.Drawing.Size(139, 23);
             this.pbP1.TabIndex = 1;
+            this.pbP1.Value = 8000;
             // 
             // groupBox5
             // 
             this.groupBox5.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.groupBox5.BackgroundImage = global::yu_gi_oh.Properties.Resources.link_wizard__bg__by_alanmac95_dcbum43_250t;
-            this.groupBox5.Controls.Add(this.btnCalculate);
+            this.groupBox5.Controls.Add(this.nudCalculate);
             this.groupBox5.Controls.Add(this.btnSubtraction);
             this.groupBox5.Controls.Add(this.btnAddition);
-            this.groupBox5.Controls.Add(this.tbValue);
-            this.groupBox5.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.groupBox5.Location = new System.Drawing.Point(1009, 272);
+            this.groupBox5.Font = new System.Drawing.Font("Segoe UI Black", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.groupBox5.Location = new System.Drawing.Point(1009, 255);
             this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Size = new System.Drawing.Size(182, 174);
+            this.groupBox5.Size = new System.Drawing.Size(182, 127);
             this.groupBox5.TabIndex = 30;
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "Calculate";
             // 
-            // btnCalculate
+            // nudCalculate
             // 
-            this.btnCalculate.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.btnCalculate.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.btnCalculate.Location = new System.Drawing.Point(57, 131);
-            this.btnCalculate.Name = "btnCalculate";
-            this.btnCalculate.Size = new System.Drawing.Size(75, 26);
-            this.btnCalculate.TabIndex = 3;
-            this.btnCalculate.Text = "OK";
-            this.btnCalculate.UseVisualStyleBackColor = false;
+            this.nudCalculate.Increment = new decimal(new int[] {
+            100,
+            0,
+            0,
+            0});
+            this.nudCalculate.Location = new System.Drawing.Point(36, 85);
+            this.nudCalculate.Maximum = new decimal(new int[] {
+            8000,
+            0,
+            0,
+            0});
+            this.nudCalculate.Name = "nudCalculate";
+            this.nudCalculate.Size = new System.Drawing.Size(120, 25);
+            this.nudCalculate.TabIndex = 4;
             // 
             // btnSubtraction
             // 
             this.btnSubtraction.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.btnSubtraction.Location = new System.Drawing.Point(103, 41);
+            this.btnSubtraction.Font = new System.Drawing.Font("Segoe UI Black", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btnSubtraction.Location = new System.Drawing.Point(103, 42);
             this.btnSubtraction.Name = "btnSubtraction";
             this.btnSubtraction.Size = new System.Drawing.Size(53, 37);
             this.btnSubtraction.TabIndex = 2;
             this.btnSubtraction.Text = "-";
             this.btnSubtraction.UseVisualStyleBackColor = false;
+            this.btnSubtraction.Click += new System.EventHandler(this.btnSubtraction_Click);
             // 
             // btnAddition
             // 
             this.btnAddition.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.btnAddition.Location = new System.Drawing.Point(29, 41);
+            this.btnAddition.Font = new System.Drawing.Font("Segoe UI Black", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btnAddition.Location = new System.Drawing.Point(36, 42);
             this.btnAddition.Name = "btnAddition";
             this.btnAddition.Size = new System.Drawing.Size(53, 37);
             this.btnAddition.TabIndex = 1;
             this.btnAddition.Text = "+";
             this.btnAddition.UseVisualStyleBackColor = false;
-            // 
-            // tbValue
-            // 
-            this.tbValue.Location = new System.Drawing.Point(29, 90);
-            this.tbValue.Name = "tbValue";
-            this.tbValue.Size = new System.Drawing.Size(127, 25);
-            this.tbValue.TabIndex = 0;
+            this.btnAddition.Click += new System.EventHandler(this.btnAddition_Click);
             // 
             // button1
             // 
@@ -616,6 +587,230 @@ namespace yu_gi_oh
             this.button1.TabIndex = 31;
             this.button1.Text = "Select Deck";
             this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.SelectDeck_Click);
+            // 
+            // button2
+            // 
+            this.button2.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.button2.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.button2.Location = new System.Drawing.Point(1009, 411);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(178, 36);
+            this.button2.TabIndex = 32;
+            this.button2.Text = "Admit Defeat";
+            this.button2.UseVisualStyleBackColor = false;
+            this.button2.Click += new System.EventHandler(this.AdminDefeat_Click);
+            // 
+            // pictureBox13
+            // 
+            this.pictureBox13.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.pictureBox13.BackgroundImage = global::yu_gi_oh.Properties.Resources._97077563;
+            this.pictureBox13.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pictureBox13.Location = new System.Drawing.Point(368, 12);
+            this.pictureBox13.Name = "pictureBox13";
+            this.pictureBox13.Size = new System.Drawing.Size(82, 112);
+            this.pictureBox13.TabIndex = 3;
+            this.pictureBox13.TabStop = false;
+            this.pictureBox13.Click += new System.EventHandler(this.Graveyard_Click);
+            // 
+            // pictureBox9
+            // 
+            this.pictureBox9.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.pictureBox9.Image = global::yu_gi_oh.Properties.Resources.wp2866512;
+            this.pictureBox9.Location = new System.Drawing.Point(368, 134);
+            this.pictureBox9.Name = "pictureBox9";
+            this.pictureBox9.Size = new System.Drawing.Size(82, 112);
+            this.pictureBox9.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox9.TabIndex = 7;
+            this.pictureBox9.TabStop = false;
+            // 
+            // cardPictureBox1
+            // 
+            this.cardPictureBox1.BackgroundImage = global::yu_gi_oh.Properties.Resources.MonsterZone1;
+            cardDto1.atk = null;
+            cardDto1.cardId = null;
+            cardDto1.def = null;
+            cardDto1.description = null;
+            cardDto1.id = null;
+            cardDto1.img = null;
+            cardDto1.name = null;
+            cardDto1.position = 0;
+            cardDto1.subType = null;
+            cardDto1.type = null;
+            this.cardPictureBox1.Card = cardDto1;
+            this.cardPictureBox1.isDefense = false;
+            this.cardPictureBox1.Location = new System.Drawing.Point(50, 12);
+            this.cardPictureBox1.Name = "cardPictureBox1";
+            this.cardPictureBox1.Size = new System.Drawing.Size(82, 112);
+            this.cardPictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.cardPictureBox1.TabIndex = 32;
+            this.cardPictureBox1.TabStop = false;
+            this.cardPictureBox1.Click += new System.EventHandler(this.CardField_Click);
+            this.cardPictureBox1.MouseEnter += new System.EventHandler(this.Field_MouseEnter);
+            // 
+            // lbDeckCardsNum
+            // 
+            this.lbDeckCardsNum.AutoSize = true;
+            this.lbDeckCardsNum.BackColor = System.Drawing.Color.Black;
+            this.lbDeckCardsNum.ForeColor = System.Drawing.SystemColors.ControlLight;
+            this.lbDeckCardsNum.Location = new System.Drawing.Point(401, 180);
+            this.lbDeckCardsNum.Name = "lbDeckCardsNum";
+            this.lbDeckCardsNum.Size = new System.Drawing.Size(14, 15);
+            this.lbDeckCardsNum.TabIndex = 8;
+            this.lbDeckCardsNum.Text = "0";
+            // 
+            // cardPictureBox2
+            // 
+            this.cardPictureBox2.BackgroundImage = global::yu_gi_oh.Properties.Resources.MonsterZone1;
+            cardDto2.atk = null;
+            cardDto2.cardId = null;
+            cardDto2.def = null;
+            cardDto2.description = null;
+            cardDto2.id = null;
+            cardDto2.img = null;
+            cardDto2.name = null;
+            cardDto2.position = 0;
+            cardDto2.subType = null;
+            cardDto2.type = null;
+            this.cardPictureBox2.Card = cardDto2;
+            this.cardPictureBox2.isDefense = false;
+            this.cardPictureBox2.Location = new System.Drawing.Point(154, 12);
+            this.cardPictureBox2.Name = "cardPictureBox2";
+            this.cardPictureBox2.Size = new System.Drawing.Size(82, 112);
+            this.cardPictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.cardPictureBox2.TabIndex = 33;
+            this.cardPictureBox2.TabStop = false;
+            this.cardPictureBox2.Click += new System.EventHandler(this.CardField_Click);
+            this.cardPictureBox2.MouseEnter += new System.EventHandler(this.Field_MouseEnter);
+            // 
+            // cardPictureBox4
+            // 
+            this.cardPictureBox4.BackgroundImage = global::yu_gi_oh.Properties.Resources.SpellZone;
+            cardDto3.atk = null;
+            cardDto3.cardId = null;
+            cardDto3.def = null;
+            cardDto3.description = null;
+            cardDto3.id = null;
+            cardDto3.img = null;
+            cardDto3.name = null;
+            cardDto3.position = 0;
+            cardDto3.subType = null;
+            cardDto3.type = null;
+            this.cardPictureBox4.Card = cardDto3;
+            this.cardPictureBox4.isDefense = false;
+            this.cardPictureBox4.Location = new System.Drawing.Point(50, 130);
+            this.cardPictureBox4.Name = "cardPictureBox4";
+            this.cardPictureBox4.Size = new System.Drawing.Size(82, 112);
+            this.cardPictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.cardPictureBox4.TabIndex = 32;
+            this.cardPictureBox4.TabStop = false;
+            this.cardPictureBox4.Click += new System.EventHandler(this.CardField_Click);
+            this.cardPictureBox4.MouseEnter += new System.EventHandler(this.Field_MouseEnter);
+            // 
+            // lbGraveyard
+            // 
+            this.lbGraveyard.AutoSize = true;
+            this.lbGraveyard.BackColor = System.Drawing.Color.Black;
+            this.lbGraveyard.ForeColor = System.Drawing.SystemColors.ControlLight;
+            this.lbGraveyard.Location = new System.Drawing.Point(401, 59);
+            this.lbGraveyard.Name = "lbGraveyard";
+            this.lbGraveyard.Size = new System.Drawing.Size(14, 15);
+            this.lbGraveyard.TabIndex = 9;
+            this.lbGraveyard.Text = "0";
+            // 
+            // cardPictureBox5
+            // 
+            this.cardPictureBox5.BackgroundImage = global::yu_gi_oh.Properties.Resources.SpellZone;
+            cardDto4.atk = null;
+            cardDto4.cardId = null;
+            cardDto4.def = null;
+            cardDto4.description = null;
+            cardDto4.id = null;
+            cardDto4.img = null;
+            cardDto4.name = null;
+            cardDto4.position = 0;
+            cardDto4.subType = null;
+            cardDto4.type = null;
+            this.cardPictureBox5.Card = cardDto4;
+            this.cardPictureBox5.isDefense = false;
+            this.cardPictureBox5.Location = new System.Drawing.Point(154, 130);
+            this.cardPictureBox5.Name = "cardPictureBox5";
+            this.cardPictureBox5.Size = new System.Drawing.Size(82, 112);
+            this.cardPictureBox5.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.cardPictureBox5.TabIndex = 33;
+            this.cardPictureBox5.TabStop = false;
+            this.cardPictureBox5.Click += new System.EventHandler(this.CardField_Click);
+            this.cardPictureBox5.MouseEnter += new System.EventHandler(this.Field_MouseEnter);
+            // 
+            // cardPictureBox3
+            // 
+            this.cardPictureBox3.BackgroundImage = global::yu_gi_oh.Properties.Resources.MonsterZone1;
+            cardDto5.atk = null;
+            cardDto5.cardId = null;
+            cardDto5.def = null;
+            cardDto5.description = null;
+            cardDto5.id = null;
+            cardDto5.img = null;
+            cardDto5.name = null;
+            cardDto5.position = 0;
+            cardDto5.subType = null;
+            cardDto5.type = null;
+            this.cardPictureBox3.Card = cardDto5;
+            this.cardPictureBox3.isDefense = false;
+            this.cardPictureBox3.Location = new System.Drawing.Point(259, 12);
+            this.cardPictureBox3.Name = "cardPictureBox3";
+            this.cardPictureBox3.Size = new System.Drawing.Size(82, 112);
+            this.cardPictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.cardPictureBox3.TabIndex = 34;
+            this.cardPictureBox3.TabStop = false;
+            this.cardPictureBox3.Click += new System.EventHandler(this.CardField_Click);
+            this.cardPictureBox3.MouseEnter += new System.EventHandler(this.Field_MouseEnter);
+            // 
+            // cardPictureBox6
+            // 
+            this.cardPictureBox6.BackgroundImage = global::yu_gi_oh.Properties.Resources.SpellZone;
+            cardDto6.atk = null;
+            cardDto6.cardId = null;
+            cardDto6.def = null;
+            cardDto6.description = null;
+            cardDto6.id = null;
+            cardDto6.img = null;
+            cardDto6.name = null;
+            cardDto6.position = 0;
+            cardDto6.subType = null;
+            cardDto6.type = null;
+            this.cardPictureBox6.Card = cardDto6;
+            this.cardPictureBox6.isDefense = false;
+            this.cardPictureBox6.Location = new System.Drawing.Point(259, 130);
+            this.cardPictureBox6.Name = "cardPictureBox6";
+            this.cardPictureBox6.Size = new System.Drawing.Size(82, 112);
+            this.cardPictureBox6.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.cardPictureBox6.TabIndex = 34;
+            this.cardPictureBox6.TabStop = false;
+            this.cardPictureBox6.Click += new System.EventHandler(this.CardField_Click);
+            this.cardPictureBox6.MouseEnter += new System.EventHandler(this.Field_MouseEnter);
+            // 
+            // p1Zone
+            // 
+            this.p1Zone.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.p1Zone.BackgroundImage = global::yu_gi_oh.Properties.Resources.link_wizard__bg__by_alanmac95_dcbum43_250t;
+            this.p1Zone.Controls.Add(this.cardPictureBox6);
+            this.p1Zone.Controls.Add(this.cardPictureBox3);
+            this.p1Zone.Controls.Add(this.cardPictureBox5);
+            this.p1Zone.Controls.Add(this.lbGraveyard);
+            this.p1Zone.Controls.Add(this.cardPictureBox4);
+            this.p1Zone.Controls.Add(this.cardPictureBox2);
+            this.p1Zone.Controls.Add(this.lbDeckCardsNum);
+            this.p1Zone.Controls.Add(this.cardPictureBox1);
+            this.p1Zone.Controls.Add(this.pictureBox9);
+            this.p1Zone.Controls.Add(this.pictureBox13);
+            this.p1Zone.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.p1Zone.Location = new System.Drawing.Point(454, 388);
+            this.p1Zone.Name = "p1Zone";
+            this.p1Zone.Size = new System.Drawing.Size(486, 252);
+            this.p1Zone.TabIndex = 25;
+            this.p1Zone.TabStop = false;
+            this.p1Zone.Text = "P1Zone";
             // 
             // Duel
             // 
@@ -624,6 +819,7 @@ namespace yu_gi_oh
             this.BackgroundImage = global::yu_gi_oh.Properties.Resources.d17ad80144ef56adbf58a17a686ea619;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(1199, 765);
+            this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.groupBox5);
             this.Controls.Add(this.groupBox4);
@@ -641,7 +837,9 @@ namespace yu_gi_oh
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.Name = "Duel";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Duel";
+            this.Load += new System.EventHandler(this.Duel_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
@@ -655,24 +853,26 @@ namespace yu_gi_oh
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox23)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox24)).EndInit();
             this.p2Zone.ResumeLayout(false);
-            this.p1Zone.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox9)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox10)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox11)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox12)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox13)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox14)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox15)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox16)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);
+            this.groupBox2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.cardImg)).EndInit();
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
             this.groupBox4.ResumeLayout(false);
             this.groupBox4.PerformLayout();
             this.groupBox5.ResumeLayout(false);
-            this.groupBox5.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nudCalculate)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox13)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox9)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cardPictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cardPictureBox2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cardPictureBox4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cardPictureBox5)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cardPictureBox3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cardPictureBox6)).EndInit();
+            this.p1Zone.ResumeLayout(false);
+            this.p1Zone.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -692,15 +892,6 @@ namespace yu_gi_oh
         private System.Windows.Forms.PictureBox pictureBox23;
         private System.Windows.Forms.PictureBox pictureBox24;
         private System.Windows.Forms.GroupBox p2Zone;
-        private System.Windows.Forms.GroupBox p1Zone;
-        private System.Windows.Forms.PictureBox pictureBox9;
-        private System.Windows.Forms.PictureBox pictureBox10;
-        private System.Windows.Forms.PictureBox pictureBox11;
-        private System.Windows.Forms.PictureBox pictureBox12;
-        private System.Windows.Forms.PictureBox pictureBox13;
-        private System.Windows.Forms.PictureBox pictureBox14;
-        private System.Windows.Forms.PictureBox pictureBox15;
-        private System.Windows.Forms.PictureBox pictureBox16;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Button btnEP;
         private System.Windows.Forms.Button btnBP;
@@ -719,10 +910,25 @@ namespace yu_gi_oh
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ProgressBar pbP1;
         private System.Windows.Forms.GroupBox groupBox5;
-        private System.Windows.Forms.Button btnCalculate;
         private System.Windows.Forms.Button btnSubtraction;
         private System.Windows.Forms.Button btnAddition;
-        private System.Windows.Forms.TextBox tbValue;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.TextBox tbDEF;
+        private System.Windows.Forms.TextBox tbATK;
+        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.NumericUpDown nudCalculate;
+        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.PictureBox pictureBox13;
+        private System.Windows.Forms.PictureBox pictureBox9;
+        private Components.CardPictureBox cardPictureBox1;
+        private System.Windows.Forms.Label lbDeckCardsNum;
+        private Components.CardPictureBox cardPictureBox2;
+        private Components.CardPictureBox cardPictureBox4;
+        private System.Windows.Forms.Label lbGraveyard;
+        private Components.CardPictureBox cardPictureBox5;
+        private Components.CardPictureBox cardPictureBox3;
+        private Components.CardPictureBox cardPictureBox6;
+        private System.Windows.Forms.GroupBox p1Zone;
     }
 }

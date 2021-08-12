@@ -7,6 +7,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "yu-gi-oh", "yu-gi-oh\yu-gi-
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Middleware", "ClassLibrary1\Middleware.csproj", "{80FE831C-C51B-4EF1-982A-D436DF02BFE5}"
 EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "YuGiOh_Setup", "YuGiOh_Setup\YuGiOh_Setup.vdproj", "{318A7CA6-F65B-4425-8A52-8170307449AC}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,8 @@ Global
 		{80FE831C-C51B-4EF1-982A-D436DF02BFE5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{80FE831C-C51B-4EF1-982A-D436DF02BFE5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{80FE831C-C51B-4EF1-982A-D436DF02BFE5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{318A7CA6-F65B-4425-8A52-8170307449AC}.Debug|Any CPU.ActiveCfg = Debug
+		{318A7CA6-F65B-4425-8A52-8170307449AC}.Release|Any CPU.ActiveCfg = Release
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

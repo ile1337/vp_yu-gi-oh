@@ -21,9 +21,13 @@ namespace Middleware.Models
 
         [JsonIgnore]
         public Image img { get; set; }
+
+        [JsonIgnore]
+        public int position { get; set; }
+
         public override string ToString()
         {
-            return string.Format("{0} - {1}",name,subType);
+            return string.Format("{0}",name);
         }
         public CardDto Clone()
         {
@@ -40,5 +44,11 @@ namespace Middleware.Models
                 img =  this.img != null ? this.img.Clone() as Image : null
             };
         }
+
+        public Image CloneImage()
+        {
+            return img != null ? new Bitmap(img.Clone() as Image) : null;
+        }
+       
     }
 }
