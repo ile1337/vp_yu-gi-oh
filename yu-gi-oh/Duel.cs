@@ -574,7 +574,7 @@ namespace yu_gi_oh
             int newLifePoints = int.Parse(tbP1LifePoints.Text) + (int)nudCalculate.Value;
             if (newLifePoints > nudCalculate.Maximum)
             {
-                MessageBox.Show("The Maximum Life Points is 8000!", "Maximum Life Points Error");
+                MessageBox.Show("The Maximum Life Points is 4000!", "Maximum Life Points Error");
                 return;
             }
 
@@ -620,6 +620,8 @@ namespace yu_gi_oh
             });          
             btnDP.Enabled = true;
             UpdateDeckLabel(deck);
+            
+          
         }
 
         private async void ReadDeckAsync(string s)
@@ -633,6 +635,8 @@ namespace yu_gi_oh
                 deck.Add(card);
             }
             UpdateDeckLabel(deck);
+            for (int i = 0; i < 4; ++i)
+                Draw();
         }
 
         // Graveyard functionality
@@ -655,13 +659,5 @@ namespace yu_gi_oh
                 return handleParam;
             }
         }
-
-
-
-        private void Duel_Load(object sender, EventArgs e)
-        {
-
-        }
-        
     }
 }

@@ -50,6 +50,14 @@
             "PrerequisitesLocation" = "2:1"
             "Url" = "8:"
             "ComponentsUrl" = "8:"
+                "Items"
+                {
+                    "{EDC2488A-8267-493A-A98E-7D9C3B36CDF3}:.NETFramework,Version=v4.7.2"
+                    {
+                    "Name" = "8:Microsoft .NET Framework 4.7.2 (x86 and x64)"
+                    "ProductCode" = "8:.NETFramework,Version=v4.7.2"
+                    }
+                }
             }
         }
         "Release"
@@ -74,6 +82,14 @@
             "PrerequisitesLocation" = "2:1"
             "Url" = "8:"
             "ComponentsUrl" = "8:"
+                "Items"
+                {
+                    "{EDC2488A-8267-493A-A98E-7D9C3B36CDF3}:.NETFramework,Version=v4.7.2"
+                    {
+                    "Name" = "8:Microsoft .NET Framework 4.7.2 (x86 and x64)"
+                    "ProductCode" = "8:.NETFramework,Version=v4.7.2"
+                    }
+                }
             }
         }
     }
@@ -193,15 +209,15 @@
         {
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:YuGiOh"
-        "ProductCode" = "8:{060E064C-CB9F-4240-8155-BC73895E86E2}"
-        "PackageCode" = "8:{BFD590E7-1BEB-4B11-842E-0094A2B04EA5}"
+        "ProductCode" = "8:{EE71EDE2-5381-4CE7-B900-DF59ADAF2962}"
+        "PackageCode" = "8:{F96AE787-AC62-433E-B888-4E4E9223058A}"
         "UpgradeCode" = "8:{104EAC04-2EB1-4F53-AFBC-14E814155FC2}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"
-        "RemovePreviousVersions" = "11:FALSE"
+        "RemovePreviousVersions" = "11:TRUE"
         "DetectNewerInstalledVersion" = "11:TRUE"
         "InstallAllUsers" = "11:FALSE"
-        "ProductVersion" = "8:1.0.1"
+        "ProductVersion" = "8:1.2.0"
         "Manufacturer" = "8:Finki Students"
         "ARPHELPTELEPHONE" = "8:"
         "ARPHELPLINK" = "8:https://github.com/ile1337/vp_yu-gi-oh"

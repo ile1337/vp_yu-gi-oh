@@ -455,7 +455,7 @@ namespace yu_gi_oh
             this.tbP2LifePoints.ReadOnly = true;
             this.tbP2LifePoints.Size = new System.Drawing.Size(139, 27);
             this.tbP2LifePoints.TabIndex = 4;
-            this.tbP2LifePoints.Text = "8000";
+            this.tbP2LifePoints.Text = "4000";
             // 
             // label2
             // 
@@ -469,11 +469,11 @@ namespace yu_gi_oh
             // pbP2
             // 
             this.pbP2.Location = new System.Drawing.Point(17, 121);
-            this.pbP2.Maximum = 8000;
+            this.pbP2.Maximum = 4000;
             this.pbP2.Name = "pbP2";
             this.pbP2.Size = new System.Drawing.Size(139, 23);
             this.pbP2.TabIndex = 0;
-            this.pbP2.Value = 8000;
+            this.pbP2.Value = 4000;
             // 
             // groupBox4
             // 
@@ -499,7 +499,7 @@ namespace yu_gi_oh
             this.tbP1LifePoints.ReadOnly = true;
             this.tbP1LifePoints.Size = new System.Drawing.Size(139, 29);
             this.tbP1LifePoints.TabIndex = 3;
-            this.tbP1LifePoints.Text = "8000";
+            this.tbP1LifePoints.Text = "4000";
             // 
             // label1
             // 
@@ -515,11 +515,11 @@ namespace yu_gi_oh
             // 
             this.pbP1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.pbP1.Location = new System.Drawing.Point(17, 43);
-            this.pbP1.Maximum = 8000;
+            this.pbP1.Maximum = 4000;
             this.pbP1.Name = "pbP1";
             this.pbP1.Size = new System.Drawing.Size(139, 23);
             this.pbP1.TabIndex = 1;
-            this.pbP1.Value = 8000;
+            this.pbP1.Value = 4000;
             // 
             // groupBox5
             // 
@@ -545,7 +545,7 @@ namespace yu_gi_oh
             0});
             this.nudCalculate.Location = new System.Drawing.Point(36, 85);
             this.nudCalculate.Maximum = new decimal(new int[] {
-            8000,
+            4000,
             0,
             0,
             0});
@@ -639,6 +639,7 @@ namespace yu_gi_oh
             cardDto1.type = null;
             this.cardPictureBox1.Card = cardDto1;
             this.cardPictureBox1.isDefense = false;
+            this.cardPictureBox1.isFree = true;
             this.cardPictureBox1.Location = new System.Drawing.Point(50, 12);
             this.cardPictureBox1.Name = "cardPictureBox1";
             this.cardPictureBox1.Size = new System.Drawing.Size(82, 112);
@@ -674,6 +675,7 @@ namespace yu_gi_oh
             cardDto2.type = null;
             this.cardPictureBox2.Card = cardDto2;
             this.cardPictureBox2.isDefense = false;
+            this.cardPictureBox2.isFree = true;
             this.cardPictureBox2.Location = new System.Drawing.Point(154, 12);
             this.cardPictureBox2.Name = "cardPictureBox2";
             this.cardPictureBox2.Size = new System.Drawing.Size(82, 112);
@@ -698,6 +700,7 @@ namespace yu_gi_oh
             cardDto3.type = null;
             this.cardPictureBox4.Card = cardDto3;
             this.cardPictureBox4.isDefense = false;
+            this.cardPictureBox4.isFree = true;
             this.cardPictureBox4.Location = new System.Drawing.Point(50, 130);
             this.cardPictureBox4.Name = "cardPictureBox4";
             this.cardPictureBox4.Size = new System.Drawing.Size(82, 112);
@@ -733,6 +736,7 @@ namespace yu_gi_oh
             cardDto4.type = null;
             this.cardPictureBox5.Card = cardDto4;
             this.cardPictureBox5.isDefense = false;
+            this.cardPictureBox5.isFree = true;
             this.cardPictureBox5.Location = new System.Drawing.Point(154, 130);
             this.cardPictureBox5.Name = "cardPictureBox5";
             this.cardPictureBox5.Size = new System.Drawing.Size(82, 112);
@@ -757,6 +761,7 @@ namespace yu_gi_oh
             cardDto5.type = null;
             this.cardPictureBox3.Card = cardDto5;
             this.cardPictureBox3.isDefense = false;
+            this.cardPictureBox3.isFree = true;
             this.cardPictureBox3.Location = new System.Drawing.Point(259, 12);
             this.cardPictureBox3.Name = "cardPictureBox3";
             this.cardPictureBox3.Size = new System.Drawing.Size(82, 112);
@@ -781,6 +786,7 @@ namespace yu_gi_oh
             cardDto6.type = null;
             this.cardPictureBox6.Card = cardDto6;
             this.cardPictureBox6.isDefense = false;
+            this.cardPictureBox6.isFree = true;
             this.cardPictureBox6.Location = new System.Drawing.Point(259, 130);
             this.cardPictureBox6.Name = "cardPictureBox6";
             this.cardPictureBox6.Size = new System.Drawing.Size(82, 112);
@@ -839,7 +845,6 @@ namespace yu_gi_oh
             this.Name = "Duel";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Duel";
-            this.Load += new System.EventHandler(this.Duel_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
