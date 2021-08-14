@@ -103,6 +103,7 @@ https://img.yugioh-card.com/ygo_cms/ygo/all/uploads/Speed_Duel_Guide_EN.pdf
 - **C# Frontend:**  https://github.com/ile1337/vp_yu-gi-oh
 - **Java Spring Boot Backend:** https://github.com/KixerRealm/Yu-Gi-Oh-Backend
 - [Инсталер за извршна верзија на нашиот проект](https://drive.google.com/file/d/1swlptmMCic1vmyJgNB6i1e4Mhz3wcK7Y/view?usp=sharing)
+- **Линк до swagger документација:** http://34.141.61.108:8080/swagger-ui/
 
 
 
